@@ -1,4 +1,3 @@
 # ProjetCIR2 2018
 Projet fin d'année CIR 2
-Vient d'idée
-funfvrgnuefby_fhynnrfyh'hhhfhèh_h_n_hzf_ynhz_zzy_nynazy_syysggdyzyzyèfgzybzyf-'z'-fhhaaaaaaHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
