@@ -1,6 +1,6 @@
-Player=function(sprite,posx,posy,isfront){
+Player=function(sprite,posx,posy,groupe){
   //constructeur du player
-  this.player = game.add.sprite(posx, posy,sprite);
+  this.player = groupe.create(posx, posy,sprite);
 
   game.physics.arcade.enable(this.player);
   this.player.body.collideWorldBounds = true;
@@ -16,7 +16,7 @@ Player=function(sprite,posx,posy,isfront){
   this.direction=null;
   this.speed=150;
   this.player.body.setSize(32,34,8,32);
-  this.isfront=isfront;
+
 }
 //deplacement du player en diagonale basdroite
 Player.prototype.downright=function(){
@@ -100,17 +100,13 @@ Player.prototype.wait=function(){
   }
 }
 
-Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,platforms,otherplayer){
+Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,platforms,otherplayer,world){
   var hitPlayer = game.physics.arcade.collide(this.player,otherplayer.player);
   var hitPlatform = game.physics.arcade.collide(this.player,platforms);
 
+ world.sort('y', Phaser.Group.SORT_ASCENDING);
 
-if(this.player.y<otherplayer.player.y && this.isfront==true){
-  game.world.swap(this.player,otherplayer.player);
-  this.isfront=false;
-  otherplayer.isfront=true;
-    console.log(this.isfront,this.player.y,);
-}
+
 
 
   this.player.body.velocity.x = 0;

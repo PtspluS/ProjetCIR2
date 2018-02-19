@@ -14,6 +14,7 @@ function create() {
 game.physics.startSystem(Phaser.Physics.ARCADE);
 var nbcase=6
 map=[[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]];
+
 platforms = game.add.group();
 platforms.enableBody = true;
 for(let i=0;i<nbcase;i++){
@@ -24,22 +25,22 @@ for(let j=0;j<nbcase;j++){
 	}
 }
 
+object=game.add.group();
+player1=new Player('dude',50,50,object);
+player2=new Player('dude',200,200,object);
 
-player1=new Player('dude',50,50,false);
-player2=new Player('dude',200,200,true);
-
-
-
-
+object.add(platforms)
 
 
+
+//object.sort();
 
 }
 function update() {
 
 
-	player1.update(Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,platforms,player2);
-	player2.update(Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,platforms,player1);
+	player1.update(Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,platforms,player2,object);
+	player2.update(Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,platforms,player1,object);
 
 
     if(game.input.keyboard.isDown(Phaser.Keyboard.A)){
