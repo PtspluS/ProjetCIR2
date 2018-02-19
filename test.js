@@ -25,85 +25,25 @@ for(let j=0;j<nbcase;j++){
 }
 
 
-player1=new Player('dude',50,50);
+player1=new Player('dude',50,50,false);
+player2=new Player('dude',200,200,true);
 
 
 
-cursors = game.input.keyboard.createCursorKeys();
+
+
 
 
 }
 function update() {
 
-	var hitPlatform = game.physics.arcade.collide(player1.player, platforms);
-	player1.stop();
 
-		if (cursors.right.isDown && cursors.down.isDown)
-    {
-      player1.downright();
-    }
-    else if (cursors.right.isDown && cursors.up.isDown)
-    {
-        player1.upright();
-    }
-    else if (cursors.left.isDown && cursors.down.isDown)
-    {
-      player1.downleft();
-    }
-	else if (cursors.left.isDown && cursors.up.isDown)
-    {
-      player1.upleft();
-    }
-	else if (cursors.down.isDown)
-    {
-		player1.down();
-    }
-	else if (cursors.right.isDown)
-    {
-		player1.right();
-    }
-	else if (cursors.up.isDown)
-    {
-		player1.up();
-    }
-	else if (cursors.left.isDown)
-    {
-		player1.left();
-    }
-	else{
-		player1.wait();
-	}
+	player1.update(Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,platforms,player2);
+	player2.update(Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,platforms,player1);
+
 
     if(game.input.keyboard.isDown(Phaser.Keyboard.A)){
-let posx=Math.round(player.position.x/64);
-let posy=Math.round(player.position.y/64);
-	console.log(posx,posy)
-if(last==16){
-	if(map[posx][posy-1]==1){
-
-		mech = platforms.create((posx)*64,(posy-1)*64 , 'mech2');
-
-	}
-}else if(last==0){
-	if(map[posx][posy+1]==1){
-
-		mech = platforms.create((posx)*64,(posy+1)*64 , 'mech2');
-
-	}}
-	else if(last==8){
-		if(map[posx+1][posy]==1){
-
-			mech = platforms.create((posx+1)*64,(posy)*64 , 'mech2');
-
-		}}else if(last==24){
-			if(map[posx-1][posy]==1){
-
-				mech = platforms.create((posx-1)*64,(posy)*64 , 'mech2');
-
-			}}
-
-
-
+game.world.swap(player1.player, player2.player);
 
 }
 
