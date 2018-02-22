@@ -1,7 +1,6 @@
 Player=function(sprite,posx,posy,groupe){
   //constructeur du player
   this.player = groupe.create(posx, posy,sprite);
-
   game.physics.arcade.enable(this.player);
   this.player.body.collideWorldBounds = true;
   this.player.enableBody=true;
@@ -15,7 +14,8 @@ Player=function(sprite,posx,posy,groupe){
   this.player.animations.add('downleft', [29,30,31,30], 10, true);
   this.direction=null;
   this.speed=150;
-  this.player.body.setSize(32,34,8,32);
+  this.player.body.setSize(40,34,2,32);
+  this.carry=null;
 
 }
 //deplacement du player en diagonale basdroite
@@ -100,14 +100,9 @@ Player.prototype.wait=function(){
   }
 }
 
-Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,platforms,otherplayer,world){
+Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,platforms,otherplayer){
   var hitPlayer = game.physics.arcade.collide(this.player,otherplayer.player);
   var hitPlatform = game.physics.arcade.collide(this.player,platforms);
-
- world.sort('y', Phaser.Group.SORT_ASCENDING);
-
-
-
 
   this.player.body.velocity.x = 0;
   this.player.body.velocity.y = 0;
@@ -146,5 +141,8 @@ else if (game.input.keyboard.isDown(cursorleft))
 else{
   this.wait();
 }
-
 }
+
+/*Player.prototype.drop=function(){
+
+}*/
