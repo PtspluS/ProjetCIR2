@@ -100,7 +100,7 @@ Player.prototype.wait=function(){
   }
 }
 
-Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,platforms,otherplayer){
+Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,platforms,otherplayer){
   var hitPlayer = game.physics.arcade.collide(this.player,otherplayer.player);
   var hitPlatform = game.physics.arcade.collide(this.player,platforms);
 
@@ -137,17 +137,23 @@ else if (game.input.keyboard.isDown(cursorup))
 else if (game.input.keyboard.isDown(cursorleft))
   {
   this.left();
-  }
+}
 else{
   this.wait();
+}
+
+if(game.input.keyboard.onDown(cursordrop)){
+ this.drop();
 }
 }
 
 Player.prototype.checkfront=function(){
   var x=0;
   var y=0;
+
   switch(this.direction){
     case "downright":
+
     x=1;
     y=1;
     break;
@@ -164,6 +170,7 @@ Player.prototype.checkfront=function(){
     y=-1;
     break;
     case "up":
+
    y=-1;
     break;
     case "down":
@@ -176,11 +183,16 @@ Player.prototype.checkfront=function(){
   x=+1;
     break;
   }
-  return map[Math.round(this.player.x/64)+x][Math.round(this.player.x/64)+y];
+
+   return map[Math.round(this.player.x/64)+x][Math.round(this.player.y/64)+y];
 
 }
 
 Player.prototype.drop=function(){
-this.checkfront
+let machine= this.checkfront()
+console.log(machine);
+if(machine!= null){
 
+//this.carry=machine.drop();
+}else{}
 }
