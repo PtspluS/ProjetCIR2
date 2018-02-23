@@ -143,6 +143,44 @@ else{
 }
 }
 
-/*Player.prototype.drop=function(){
+Player.prototype.checkfront=function(){
+  var x=0;
+  var y=0;
+  switch(this.direction){
+    case "downright":
+    x=1;
+    y=1;
+    break;
+    case "downleft":
+    x=-1;
+    y=1;
+    break;
+    case "upright":
+    x=1;
+    y=-1;
+    break;
+    case "upleft":
+    x=-1;
+    y=-1;
+    break;
+    case "up":
+   y=-1;
+    break;
+    case "down":
+    y=1;
+    break;
+    case "left":
+    x=-1;
+    break;
+    case "right":
+  x=+1;
+    break;
+  }
+  return map[Math.round(this.player.x/64)+x][Math.round(this.player.x/64)+y];
 
-}*/
+}
+
+Player.prototype.drop=function(){
+this.checkfront
+
+}
