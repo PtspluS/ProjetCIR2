@@ -17,6 +17,8 @@ Player=function(sprite,posx,posy,groupe){
   this.player.body.setSize(40,34,2,32);
   this.carry=null;
 
+  this.dropActive = false;
+
 }
 //deplacement du player en diagonale basdroite
 Player.prototype.downright=function(){
@@ -142,8 +144,13 @@ else{
   this.wait();
 }
 
-if(game.input.keyboard.onDown(cursordrop)){
+if(game.input.keyboard.isDown(cursordrop) && this.dropActive == false){
  this.drop();
+ this.dropActive = true;
+}else if(game.input.keyboard.isDown(cursordrop)){
+  this.dropActive = true;
+}else {
+  this.dropActive = false;
 }
 }
 
@@ -184,7 +191,7 @@ Player.prototype.checkfront=function(){
     break;
   }
 
-   return map[Math.round(this.player.x/64)+x][Math.round(this.player.y/64)+y];
+   return map[Math.round(this.player.y/64)+y][Math.round(this.player.x/64)+x];
 
 }
 

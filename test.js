@@ -50,20 +50,11 @@ player1=new Player('dude',50,50,object);
 player2=new Player('dude',200,200,object);
 game.world.bringToTop(object);
 
-KeyUP = new Key(game, UP);
-KeyDOWN = new Key(game, DOWN);
-KeyLEFT = new Key(game, LEFT);
-KeyRIGHT = new Key(game, RIGHT);
-Key0 = new Key(game, NUMPAD_0);
-
-
-
-
 }
 function update() {
 
 
-	player1.update(Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUM0,platformsSolid,player2);
+	player1.update(Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_0,platformsSolid,player2);
 	player2.update(Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.A,platformsSolid,player1);
  	object.sort('y', Phaser.Group.SORT_ASCENDING);
 
