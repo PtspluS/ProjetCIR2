@@ -254,7 +254,6 @@ Player.prototype.checkfront=function(){
 Player.prototype.drop=function(){
 	let machine= this.checkfront()
 	if(machine != 0){
-		console.log(machine);
 		this.carry = machine.drop(this.carry);
 		this.item.frame = this.carry;
 	}

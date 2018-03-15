@@ -43,6 +43,7 @@ for(let j = 0; j < matrice.length; j++){
 	for(let i = 0; i < matrice[0].length; i++){
 		if(matrice[j][i]==0){ // SOL
 			game.add.sprite(i*64, j*64, 'ground');
+			map[j][i] = 0;
 		}else if(matrice[j][i]==1){ // FOUR
 			let tuile = platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
