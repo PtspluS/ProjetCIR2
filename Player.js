@@ -1,4 +1,4 @@
-Player=function(sprite,posx,posy,groupe){
+Player=function(sprite,posx,posy,groupe,itemgroupe){
 	//constructeur du player
 	this.player = groupe.create(posx, posy,sprite);
 	game.physics.arcade.enable(this.player);
@@ -29,7 +29,7 @@ Player=function(sprite,posx,posy,groupe){
 	
 	// Port des items
 	this.carry = 0;
-	this.item = groupe.create(this.player.x + 6, this.player.y - 32, 'items');
+	this.item = itemgroupe.create(this.player.x - 6, this.player.y - 36, 'items');
 	this.item.frame = 0;
 
 	this.dropActive = false;
@@ -157,8 +157,8 @@ Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,curs
   var hitPlayer = game.physics.arcade.collide(this.player,otherplayer.player);
   var hitPlatform = game.physics.arcade.collide(this.player,platforms);
   
-  this.item.x = this.player.x + 6;
-  this.item.y = this.player.y - 30;
+  this.item.x = this.player.x - 6;
+  this.item.y = this.player.y - 36;
 
   this.player.body.velocity.x = 0;
   this.player.body.velocity.y = 0;

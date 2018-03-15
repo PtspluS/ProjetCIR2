@@ -7,7 +7,7 @@ function preload() {
 
 	game.load.spritesheet('dude', 'assets/dude.png', 44, 68);
 	game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
-	game.load.spritesheet('items','assets/items.png', 32, 32);
+	game.load.spritesheet('items','assets/items.png', 56, 56);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
 }
@@ -27,6 +27,8 @@ platformsSolid = game.add.group();
 platformsSolid.enableBody = true;
 object=game.add.group();
 object.enableBody = true;
+itemGui=game.add.group();
+itemGui.enableBody = true;
 
 
 for(let i=0;i<nbcase;i++){
@@ -46,9 +48,10 @@ for(let i=0;i<nbcase;i++){
 }
 
 
-player1=new Player('dude',50,50,object);
-player2=new Player('dude',200,200,object);
+player1=new Player('dude',50,50,object,itemGui);
+player2=new Player('dude',200,200,object,itemGui);
 game.world.bringToTop(object);
+game.world.bringToTop(itemGui);
 
 
 
