@@ -244,7 +244,7 @@ Player.prototype.checkfront=function(){
   x=+1;
     break;
   }
-	if(Math.round(parseInt((this.player.y+32)/64))+y < 0 || Math.round(parseInt((this.player.y+32)/64))+y >= map.length || Math.round(parseInt((this.player.x+22)/64))+x < 0 || Math.round(parseInt((this.player.x+22)/64))+x >= map.length){
+	if(Math.round(parseInt((this.player.y+32)/64))+y < 0 || Math.round(parseInt((this.player.y+32)/64))+y >= map.length || Math.round(parseInt((this.player.x+22)/64))+x < 0 || Math.round(parseInt((this.player.x+22)/64))+x >= map[0].length){
 		return 0;
 	}
 	return map[Math.round(parseInt((this.player.y+32)/64))+y][Math.round(parseInt((this.player.x+22)/64))+x];
@@ -254,6 +254,7 @@ Player.prototype.checkfront=function(){
 Player.prototype.drop=function(){
 	let machine= this.checkfront()
 	if(machine != 0){
+		console.log(machine);
 		this.carry = machine.drop(this.carry);
 		this.item.frame = this.carry;
 	}

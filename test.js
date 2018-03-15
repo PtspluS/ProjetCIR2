@@ -1,7 +1,7 @@
 
 
 
-var game = new Phaser.Game(64*6, 64*6, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(64*10, 64*6, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
 
@@ -14,14 +14,13 @@ function preload() {
 }
 function create() {
 game.physics.startSystem(Phaser.Physics.ARCADE);
-var nbcase=6
 map=[
-		[0,0,0,0,0,1],
-		[0,0,2,1,0,1],
-		[0,0,2,2,0,1],
-		[0,0,0,0,0,1],
-		[0,0,2,2,0,1],
-		[2,0,2,1,0,1]
+		[0,0,0,0,0,0,0,0,0,0],
+		[1,0,1,1,1,0,0,0,0,1],
+		[0,0,0,0,0,0,2,2,0,2],
+		[2,2,2,0,0,0,2,2,0,2],
+		[0,0,0,0,0,0,0,0,0,0],
+		[0,0,0,0,0,0,2,2,1,2]
 ];
 
 platformsSolid = game.add.group();
@@ -32,8 +31,8 @@ itemGui=game.add.group();
 itemGui.enableBody = true;
 
 
-for(let i=0;i<nbcase;i++){
-	for(let j=0;j<nbcase;j++){
+for(let j = 0; j < map.length; j++){
+	for(let i = 0; i < map[0].length; i++){
 		if(map[j][i]==0){
 			game.add.sprite(i*64, j*64, 'ground');
 		}else if(map[j][i]==1){
@@ -49,15 +48,20 @@ for(let i=0;i<nbcase;i++){
 }
 
 
-player1=new Player('dude',50,50,object,itemGui);
-player2=new Player('dude',200,200,object,itemGui);
+player1=new Player('dude',100,300,object,itemGui);
+player2=new Player('dude',200,300,object,itemGui);
 game.world.bringToTop(object);
 game.world.bringToTop(itemGui);
 
 
 
-map[1][2].drop(2);
-map[2][2].drop(7);
+map[3][0].drop(2);
+map[3][1].drop(2);
+map[2][6].drop(7);
+map[2][7].drop(7);
+map[3][6].drop(7);
+map[3][7].drop(7);
+map[5][6].drop(1);
 
 
 }

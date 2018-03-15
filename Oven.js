@@ -15,11 +15,15 @@ this.weight=0;
 Oven.prototype.drop=function(itemId){
   if(this.cook==true){
     return itemId;
-  }else if(this.stock!=0 && (itemId==itemsId.Sceau||(itemId>=this.container&& 3>=itemId+this.container+weight))&& this.cook==false){
-    let tmp = this.stock;
-    this.stock = 0;
-	this.item.frame = 0;
-    return tmp;
+  }else if(this.stock != 0 && (itemId == itemsId.Sceau || (itemId >= this.container && 3 >= itemId - this.container + this.weight)) && this.cook == false){
+		let tmp = this.stock;
+		this.stock = 0;
+		this.item.frame = 0;
+		if(itemId == itemsId.Sceau || itemId == this.container){
+			return tmp;
+		}else{
+			return (itemId + this.weight);
+		}
   }else if(this.stock == 0 && itemId != 0){
     switch(itemId){
       case itemsId.BlockMetal1:
@@ -28,26 +32,26 @@ Oven.prototype.drop=function(itemId){
       break;
 
       case itemsId.BlockMetal2:
-      this.typesort(itemId,0,itemsId.SceauMetal0,2,itemsId.SceauMetal2,5000);
+      this.typesort(itemId,0,itemsId.SceauMetal0,2,itemsId.SceauMetal2,7000);
   		return 0;
       break;
 
       case itemsId.BlockMetal3:
-      this.typesort(itemId,0,itemsId.SceauMetal0,3,itemsId.SceauMetal3,5000)
+      this.typesort(itemId,0,itemsId.SceauMetal0,3,itemsId.SceauMetal3,8000);
       break;
 
       case itemsId.SceauVerre1:
-      this.typesort(itemId,itemsId.SceauVerre0,1,itemsId.SceauVerreLiquide0,itemsId.SceauVerreLiquide1,6000)
+      this.typesort(itemId,itemsId.SceauVerre0,itemsId.SceauVerreLiquide0,1,itemsId.SceauVerreLiquide1,5000);
       return 0;
       break;
 
       case itemsId.SceauVerre2:
-      this.typesort(itemId,itemsId.SceauVerre0,2,itemsId.SceauVerreLiquide0,itemsId.SceauVerreLiquide2,6000)
+      this.typesort(itemId,itemsId.SceauVerre0,itemsId.SceauVerreLiquide0,2,itemsId.SceauVerreLiquide2,7000);
       return 0;
       break;
 
       case itemsId.SceauVerre3:
-      this.typesort(itemId,itemId.SceauVerre0,3,itemsId.SceauVerreLiquide0,itemsId.SceauVerreLiquide3,6000)
+      this.typesort(itemId,itemsId.SceauVerre0,itemsId.SceauVerreLiquide0,3,itemsId.SceauVerreLiquide3,8000);
       return 0;
       break;
 
@@ -56,10 +60,10 @@ Oven.prototype.drop=function(itemId){
 return itemId;
 }
 
-Oven.prototype.typesort=function(itemId,itemreturn,contenaire,weight,itemend,time){
+Oven.prototype.typesort=function(itemId,itemreturn,conteneur,weight,itemend,time){
   this.stock = itemId;
   this.item.frame=itemId;
-  this.container=contenaire;
+  this.container=conteneur;
   this.weight=weight;
   this.oven.animations.play('actif');
   this.cook=true;
@@ -74,7 +78,4 @@ Oven.prototype.iscook=function(itemId){
   this.oven.frame=0;
     this.stock=itemId;
   this.item.frame=itemId;
-
-
-
 }
