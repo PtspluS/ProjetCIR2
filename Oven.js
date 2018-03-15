@@ -4,31 +4,46 @@ Oven=function(sprite,posx,posy,groupe){
   this.oven.frame=0;
   this.stock=0;
   this.cook=false
+  this.container=null;
+this.weight=0;
 
 }
 
 Oven.prototype.drop=function(itemId){
-  if((this.stock != 0 && itemId != 0)||this.cook==true){
+  if(this.cook==true){
     return itemId;
-  }else if(this.stock!=0 && itemId==0){
+  }else if(this.stock!=0 && (itemId==itemsId.Sceau||(itemId>=this.container&& 3>=itemId+this.container+weight))&& this.cook==false){
     let tmp = this.stock;
     this.stock = 0;
     return tmp;
   }else if(this.stock == 0 && itemId != 0){
     switch(itemId){
-      case 'block de metal'://remplacer le nom par son id
-      this.stock = itemId;
-      this.oven.animations.play('actif');
-      this.cook=true
-      setTimeout(this.iscook() , 5000);
+      case itemsId.BlockMetal1:
+      this.typesort(itemId,0,itemsId.SceauMetal0,1,itemsId.SceauMetal1,5000);
   		return 0;
       break;
 
-      case 'block de verre'://remplacer le nom par son id
-      this.stock = itemId;
-      this.oven.animations.play('actif');
-      this.cook=true
-      setTimeout(this.iscook() , 6000);
+      case itemsId.BlockMetal2:
+      this.typesort(itemId,0,itemsId.SceauMetal0,2,itemsId.SceauMetal2,5000);
+  		return 0;
+      break;
+
+      case itemsId.BlockMetal3:
+      this.typesort(itemId,0,itemsId.SceauMetal0,3,itemsId.SceauMetal3,5000)
+      break;
+
+      case itemsId.SceauVerre1:
+      this.typesort(itemId,itemsId.SceauVerre0,1,itemsId.SceauVerreLiquide0,itemsId.SceauVerreLiquide1,6000)
+      return 0;
+      break;
+
+      case itemsId.SceauVerre2:
+      this.typesort(itemId,itemsId.SceauVerre0,2,itemsId.SceauVerreLiquide0,itemsId.SceauVerreLiquide2,6000)
+      return 0;
+      break;
+
+      case itemsId.SceauVerre3:
+      this.typesort(itemId,itemId.SceauVerre0,3,itemsId.SceauVerreLiquide0,itemsId.SceauVerreLiquide3,6000)
       return 0;
       break;
 
@@ -37,23 +52,24 @@ Oven.prototype.drop=function(itemId){
 return itemId;
 }
 
-Oven.prototype.iscook=function(){
+Oven.prototype.typesort=function(itemId,itemreturn,contenaire,weight,itemend,time){
+  this.stock = itemId;
+  itemId=itemreturn;
+  this.container=contenaire;
+  this.weight=weight;
+  this.oven.animations.play('actif');
+  this.cook=true
+  setTimeout(this.iscook(itemend) , time);
+}
+
+
+
+Oven.prototype.iscook=function(item){
   this.cook=false;
   this.oven.animations.stop();
   this.oven.frame=0;
-  switch(this.stock){
-    case 'block metal1'://remplacer le nom par son id
-    this.stock='metal liquide1';//remplacer le nom par son id
-    break;
-    case 'block metal2'://remplacer le nom par son id
-    this.stock='metal liquide2';//remplacer le nom par son id
-    break;
-    case 'block metal3'://remplacer le nom par son id
-    this.stock='metal liquide3';//remplacer le nom par son id
-    break;
-    case 'verre pilé'://remplacer le nom par son id
-    this.stock='verre liquide1';//remplacer le nom par son id
-    break;
-  };
+    this.stock=item
+
+
 
 }
