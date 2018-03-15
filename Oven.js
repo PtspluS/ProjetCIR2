@@ -1,11 +1,14 @@
-Oven=function(sprite,posx,posy,groupe){
+Oven=function(sprite,posx,posy,groupe,itemgroupe){
   this.oven = groupe.create(posx,posy,sprite);
   this.oven.animations.add('actif', [1, 2, 3,4], 10, true);
   this.oven.frame=0;
   this.stock=0;
-  this.cook=false
+  this.cook=false;
   this.container=null;
 this.weight=0;
+
+	this.item = itemgroupe.create(this.oven.x + 2, this.oven.y + 2, 'itemsbubbles');
+	this.item.frame = 0;
 
 }
 
@@ -58,17 +61,19 @@ Oven.prototype.typesort=function(itemId,itemreturn,contenaire,weight,itemend,tim
   this.container=contenaire;
   this.weight=weight;
   this.oven.animations.play('actif');
-  this.cook=true
+  this.cook=true;
+  this.item.frame=itemId;
   setTimeout(this.iscook(itemend) , time);
 }
 
 
 
-Oven.prototype.iscook=function(item){
+Oven.prototype.iscook=function(itemId){
   this.cook=false;
   this.oven.animations.stop();
   this.oven.frame=0;
-    this.stock=item
+  this.item.frame=itemId;
+    this.stock=itemId;
 
 
 

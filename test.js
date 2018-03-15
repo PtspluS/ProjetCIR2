@@ -8,6 +8,7 @@ function preload() {
 	game.load.spritesheet('dude', 'assets/dude.png', 44, 68);
 	game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
 	game.load.spritesheet('items','assets/items.png', 56, 56);
+	game.load.spritesheet('itemsbubbles','assets/itemsbubbles.png', 28, 28);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
 }
@@ -38,7 +39,7 @@ for(let i=0;i<nbcase;i++){
 		}else if(map[j][i]==1){
 			let tuile = platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
-			map[j][i] = new Oven('oven',i*64,j*64 - (94-64),object);
+			map[j][i] = new Oven('oven',i*64,j*64 - (94-64),object,itemGui);
 		}else if(map[j][i]==2){
 			let tuile=platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
