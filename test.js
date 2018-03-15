@@ -56,7 +56,8 @@ game.world.bringToTop(itemGui);
 
 
 
-map[1][2].drop(1);
+map[1][2].drop(2);
+map[2][2].drop(7);
 
 
 }

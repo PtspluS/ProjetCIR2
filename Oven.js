@@ -18,6 +18,7 @@ Oven.prototype.drop=function(itemId){
   }else if(this.stock!=0 && (itemId==itemsId.Sceau||(itemId>=this.container&& 3>=itemId+this.container+weight))&& this.cook==false){
     let tmp = this.stock;
     this.stock = 0;
+	this.item.frame = 0;
     return tmp;
   }else if(this.stock == 0 && itemId != 0){
     switch(itemId){
@@ -57,13 +58,12 @@ return itemId;
 
 Oven.prototype.typesort=function(itemId,itemreturn,contenaire,weight,itemend,time){
   this.stock = itemId;
-  itemId=itemreturn;
+  this.item.frame=itemId;
   this.container=contenaire;
   this.weight=weight;
   this.oven.animations.play('actif');
   this.cook=true;
-  this.item.frame=itemId;
-  setTimeout(this.iscook(itemend) , time);
+  setTimeout(() => {this.iscook(itemend);} , time);
 }
 
 
@@ -72,8 +72,8 @@ Oven.prototype.iscook=function(itemId){
   this.cook=false;
   this.oven.animations.stop();
   this.oven.frame=0;
-  this.item.frame=itemId;
     this.stock=itemId;
+  this.item.frame=itemId;
 
 
 
