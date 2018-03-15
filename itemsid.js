@@ -1,5 +1,5 @@
 var itemsId = Object.freeze({
-  pneu: 1,
+  Pneu: 1,
   Sceau: NaN,
   Metal:NaN,
   Verre:NaN,
