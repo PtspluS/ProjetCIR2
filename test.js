@@ -4,10 +4,10 @@ matrice = [
 		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
 		[3,0,1,1,1,0,0,0,0,0,0,0,0,2,2,1,1,3],
 		[3,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,3],
-		[3,2,2,0,0,0,2,2,0,3,3,0,0,0,0,0,0,3],
-		[3,0,0,0,0,0,0,0,0,3,3,0,0,0,0,1,1,3],
-		[3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,3],
-		[3,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,3],
+		[3,2,2,0,0,0,2,2,0,0,3,0,0,0,0,0,0,3],
+		[3,0,0,0,0,0,0,0,0,3,3,3,0,0,0,1,1,3],
+		[3,0,0,0,0,0,0,0,0,0,3,0,0,0,0,2,2,3],
+		[3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3],
 		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ];
 
@@ -53,9 +53,10 @@ for(let j = 0; j < matrice.length; j++){
 			tuile.body.immovable = true;
 			map[j][i] = new Table('table', i*64, j*64 - (84-64),object);
 		}else if(matrice[j][i]==3){ // MUR
-			let tuile=platformsSolid.create(i*64, j*64, 'ground');
+			let tuile = platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
-			map[j][i] = object.create(i*64, j*64 - (74-64), 'wall');
+			map[j][i] = 0;
+			let wall = object.create(i*64, j*64 - (74-64), 'wall');
 			// Generation du mur
 			let left = true;
 			let right = true;
@@ -77,21 +78,21 @@ for(let j = 0; j < matrice.length; j++){
 			}
 			
 			if(left && right && down){ // Selection de la bonne frame
-				map[j][i].frame = 4;
+				wall.frame = 4;
 			}else if(!left && right && down){
-				map[j][i].frame = 5;
+				wall.frame = 5;
 			}else if(left && !right && down){
-				map[j][i].frame = 3;
+				wall.frame = 3;
 			}else if(left && right && !down){
-				map[j][i].frame = 6;
+				wall.frame = 6;
 			}else if(!left && !right && down){
-				map[j][i].frame = 7;
+				wall.frame = 7;
 			}else if(!left && right && !down){
-				map[j][i].frame = 1;
+				wall.frame = 1;
 			}else if(left && !right && !down){
-				map[j][i].frame = 2;
+				wall.frame = 2;
 			}else{
-				map[j][i].frame = 0;
+				wall.frame = 0;
 			}
 		}
 	}
