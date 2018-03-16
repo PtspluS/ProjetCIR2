@@ -8,14 +8,19 @@ this.weight=0;
 }
 
 Broyeur.prototype.drop=function(itemId){
-  if(this.work==true){
-    return itemId;
-  }else if(this.stock!=0 && (itemId==itemsId.Sceau||(itemId>=this.container&& 3>=itemId+this.container+weight))&& this.work==false){
-    let tmp = this.stock;
-    this.stock = 0;
-    return tmp;
-  }else if(this.stock == 0 && itemId != 0){
-    switch(itemId){
+	if(this.work==true){
+		return itemId;
+	}else if(this.stock != 0 && (itemId == itemsId.Sceau || (itemId >= this.container && 3 >= itemId - this.container + this.weight)) && this.work == false){
+		let tmp = this.stock;
+		this.stock = 0;
+		this.item.frame = 0;
+		if(itemId == itemsId.Sceau || itemId == this.container){
+			return tmp;
+		}else{
+			return (itemId + this.weight);
+		}
+	}else if(this.stock == 0 && itemId != 0){
+		switch(itemId){
       case itemsId.Pneu:
       this.typesort(itemId,0,itemsId.SceuPneu0,1,itemsId.SceauPneu1,500);
   		return 0;
@@ -45,7 +50,7 @@ return itemId;
 
 Broyeur.prototype.typesort=function(itemId,itemreturn,contenaire,weight,itemend,time){
   this.stock = itemId;
-  itemId=itemreturn;
+  this.item.frame=itemreturn;
   this.container=contenaire;
   this.weight=weight;
   this.oven.animations.play('actif');
@@ -54,11 +59,11 @@ Broyeur.prototype.typesort=function(itemId,itemreturn,contenaire,weight,itemend,
 }
 
 Broyeur.prototype.iswork=function(item){
-  this.work=false;
-  this.oven.animations.stop();
-  this.oven.frame=0;
-    this.stock=item
-
+	this.work=false;
+	this.oven.animations.stop();
+	this.oven.frame=0;
+		this.stock=itemId;
+	this.item.frame=itemId;
 
 
 }
