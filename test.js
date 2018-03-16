@@ -106,14 +106,14 @@ game.world.bringToTop(itemGui);
 
 
 
-map[3][2].drop(2);
-map[3][1].drop(2);
-map[2][6].drop(7);
-map[2][7].drop(7);
-map[3][6].drop(7);
-map[3][7].drop(7);
-map[5][15].drop(1);
-map[5][16].drop(3);
+map[3][2].drop(itemsId.Sceau);
+map[3][1].drop(itemsId.Sceau);
+map[2][6].drop(itemsId.Metal);
+map[2][7].drop(itemsId.Metal);
+map[3][6].drop(itemsId.BlockMetal3);
+map[3][7].drop(itemsId.BlockMetal2);
+map[5][15].drop(itemsId.Pneu);
+map[5][16].drop(itemsId.SceauMetal0);
 
 
 }

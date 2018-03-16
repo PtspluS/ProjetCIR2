@@ -26,18 +26,20 @@ Oven.prototype.drop=function(itemId){
 		}
   }else if(this.stock == 0 && itemId != 0){
     switch(itemId){
+	  case itemsId.Metal:
       case itemsId.BlockMetal1:
       this.typesort(itemId,0,itemsId.SceauMetal0,1,itemsId.SceauMetal1,5000);
-  		return 0;
+  	  return 0;
       break;
 
       case itemsId.BlockMetal2:
       this.typesort(itemId,0,itemsId.SceauMetal0,2,itemsId.SceauMetal2,7000);
-  		return 0;
+  	  return 0;
       break;
 
       case itemsId.BlockMetal3:
       this.typesort(itemId,0,itemsId.SceauMetal0,3,itemsId.SceauMetal3,8000);
+	  return 0;
       break;
 
       case itemsId.SceauVerre1:
