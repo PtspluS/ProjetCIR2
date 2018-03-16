@@ -1,12 +1,12 @@
 Broyeur = function(sprite,posx,posy,groupe,itemgroupe){
 	this.broyeur = groupe.create(posx,posy,sprite);
-	this.broyeur.animations.add('actif', [1, 2, 3,4], 10, true);
+	this.broyeur.animations.add('actif', [0, 1], 10, true);
 	this.stock = 0;
   this.work=false;
 	this.container=null;
 this.weight=0;
 
-	this.item = itemgroupe.create(this.broyeur.x + 2, this.broyeur.y + 2, 'itemsbubbles');
+	this.item = itemgroupe.create(this.broyeur.x + 18, this.broyeur.y + 10, 'itemsbubbles');
 	this.item.frame = 0;
 }
 
@@ -25,23 +25,23 @@ Broyeur.prototype.drop=function(itemId){
 	}else if(this.stock == 0 && itemId != 0){
 		switch(itemId){
       case itemsId.Pneu:
-      this.typesort(itemId,itemsId.SceuPneu0,1,itemsId.SceauPneu1,500);
+      this.typesort(itemId,itemsId.SceuPneu0,1,itemsId.SceauPneu1,1000);
   		return 0;
       break;
 
 	  case itemsId.Plastique:
       case itemsId.BlockPlastique1:
-      this.typesort(itemId,itemsId.SceauPlastique0,itemsId.SceauPlastique1,600)
+      this.typesort(itemId,itemsId.SceauPlastique0,1,itemsId.SceauPlastique1,1000)
       return 0;
       break;
 
       case itemsId.BlockPlastique2:
-      this.typesort(itemId,itemsId.SceauPlastique0,itemsId.SceauPlastique2,600)
+      this.typesort(itemId,itemsId.SceauPlastique0,2,itemsId.SceauPlastique2,1000)
       return 0;
       break;
 
       case itemsId.BlockPlastique3:
-      this.typesort(itemId,itemsId.SceauPlastique0,itemsId.SceauPlastique3,600)
+      this.typesort(itemId,itemsId.SceauPlastique0,3,itemsId.SceauPlastique3,1000)
       return 0;
       break;
 

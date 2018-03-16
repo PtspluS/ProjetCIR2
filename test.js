@@ -19,7 +19,8 @@ function preload() {
 	game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
 	game.load.spritesheet('items','assets/items.png', 56, 56);
 	game.load.spritesheet('itemsbubbles','assets/itemsbubbles.png', 28, 28);
-	game.load.spritesheet('wall','assets/wall.png',64,74)
+	game.load.spritesheet('wall','assets/wall.png',64,74);
+	game.load.spritesheet('broyeur','assets/broyeur.png',64,74);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
 }
@@ -97,7 +98,7 @@ for(let j = 0; j < matrice.length; j++){
 		}else if(matrice[j][i]==4){ // BROYEUR
 			let tuile = platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
-			map[j][i] = new Broyeur('oven',i*64,j*64 - (94-64),object,itemGui);
+			map[j][i] = new Broyeur('broyeur',i*64,j*64 - (74-64),object,itemGui);
 		}
 	}
 }
