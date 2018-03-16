@@ -77,7 +77,7 @@ for(let j = 0; j < matrice.length; j++){
 			}else if(matrice[j][i+1] != 3){
 				right = false;
 			}
-			
+
 			if(left && right && down){ // Selection de la bonne frame
 				wall.frame = 4;
 			}else if(!left && right && down){
@@ -114,23 +114,23 @@ game.world.bringToTop(itemGui);
 map[3][2].drop(itemsId.Sceau);
 map[3][1].drop(itemsId.Sceau);
 map[2][6].drop(itemsId.Metal);
-map[2][7].drop(itemsId.Metal);
-map[2][8].drop(itemsId.Plastique);
-map[3][6].drop(itemsId.BlockMetal3);
-map[3][7].drop(itemsId.BlockMetal2);
-map[3][8].drop(itemsId.SceauVerre3);
+map[2][7].drop(itemsId.Sceau);
+map[2][8].drop(itemsId.SceauVerre3);
+map[3][6].drop(itemsId.SceauVerre1);
+map[3][7].drop(itemsId.Pneu);
+map[3][8].drop(itemsId.Sceau);
 map[5][15].drop(itemsId.Pneu);
-map[5][16].drop(itemsId.SceauMetal0);
+map[5][16].drop(itemsId.Pneu);
 
 
 }
 function update() {
-	
+
 	player1.update(Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_0,platformsSolid,player2);
 	player2.update(Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.A,platformsSolid,player1);
  	object.sort('y', Phaser.Group.SORT_ASCENDING);
 
-	
+
 
 
 }

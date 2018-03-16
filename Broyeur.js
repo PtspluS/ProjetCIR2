@@ -25,7 +25,7 @@ Broyeur.prototype.drop=function(itemId){
 	}else if(this.stock == 0 && itemId != 0){
 		switch(itemId){
       case itemsId.Pneu:
-      this.typesort(itemId,itemsId.SceuPneu0,1,itemsId.SceauPneu1,1000);
+      this.typesort(itemId,itemsId.SceauPneu0,1,itemsId.SceauPneu1,1000);
   		return 0;
       break;
 
