@@ -28,33 +28,33 @@ Oven.prototype.drop=function(itemId){
     switch(itemId){
 	  case itemsId.Metal:
       case itemsId.BlockMetal1:
-      this.typesort(itemId,0,itemsId.SceauMetal0,1,itemsId.SceauMetal1,5000);
+      this.typesort(itemId,itemsId.SceauMetal0,1,itemsId.SceauMetal1,5000);
   	  return 0;
       break;
 
       case itemsId.BlockMetal2:
-      this.typesort(itemId,0,itemsId.SceauMetal0,2,itemsId.SceauMetal2,7000);
+      this.typesort(itemId,itemsId.SceauMetal0,2,itemsId.SceauMetal2,7000);
   	  return 0;
       break;
 
       case itemsId.BlockMetal3:
-      this.typesort(itemId,0,itemsId.SceauMetal0,3,itemsId.SceauMetal3,8000);
+      this.typesort(itemId,itemsId.SceauMetal0,3,itemsId.SceauMetal3,8000);
 	  return 0;
       break;
 
       case itemsId.SceauVerre1:
-      this.typesort(itemId,itemsId.SceauVerre0,itemsId.SceauVerreLiquide0,1,itemsId.SceauVerreLiquide1,5000);
-      return 0;
+      this.typesort(itemId,itemsId.SceauVerreLiquide0,1,itemsId.SceauVerreLiquide1,5000);
+      return itemsId.SceauVerre0;
       break;
 
       case itemsId.SceauVerre2:
-      this.typesort(itemId,itemsId.SceauVerre0,itemsId.SceauVerreLiquide0,2,itemsId.SceauVerreLiquide2,7000);
-      return 0;
+      this.typesort(itemId,itemsId.SceauVerreLiquide0,2,itemsId.SceauVerreLiquide2,7000);
+      return itemsId.SceauVerre0;
       break;
 
       case itemsId.SceauVerre3:
-      this.typesort(itemId,itemsId.SceauVerre0,itemsId.SceauVerreLiquide0,3,itemsId.SceauVerreLiquide3,8000);
-      return 0;
+      this.typesort(itemId,itemsId.SceauVerreLiquide0,3,itemsId.SceauVerreLiquide3,8000);
+      return itemsId.SceauVerre0;
       break;
 
     }
@@ -62,7 +62,7 @@ Oven.prototype.drop=function(itemId){
 return itemId;
 }
 
-Oven.prototype.typesort=function(itemId,itemreturn,conteneur,weight,itemend,time){
+Oven.prototype.typesort=function(itemId,conteneur,weight,itemend,time){
   this.stock = itemId;
   this.item.frame=itemId;
   this.container=conteneur;
