@@ -22,11 +22,11 @@ Player=function(sprite,posx,posy,groupe,itemgroupe){
 	this.player.animations.add('aupleft', [53, 54, 55, 54], 10, true);
 	this.player.animations.add('aleft', [57, 58, 59, 58], 10, true);
 	this.player.animations.add('adownleft', [61, 62, 63, 62], 10, true);
-	
+
 	this.direction=null;
 	this.speed=150;
 	this.player.body.setSize(40,34,2,32);
-	
+
 	// Port des items
 	this.carry = 0;
 	this.item = itemgroupe.create(this.player.x - 6, this.player.y - 36, 'items');
@@ -154,9 +154,7 @@ Player.prototype.wait=function(){
 }
 
 Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,platforms,otherplayer){
-  var hitPlayer = game.physics.arcade.collide(this.player,otherplayer.player);
-  var hitPlatform = game.physics.arcade.collide(this.player,platforms);
-  
+
   this.item.x = this.player.x - 6;
   this.item.y = this.player.y - 36;
 
@@ -206,6 +204,9 @@ if(game.input.keyboard.isDown(cursordrop) && this.dropActive == false){
 }else {
   this.dropActive = false;
 }
+
+  var hitPlayer = game.physics.arcade.collide(this.player,otherplayer.player);
+  var hitPlatform = game.physics.arcade.collide(this.player,platforms);
 }
 
 Player.prototype.checkfront=function(){
