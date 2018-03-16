@@ -1,11 +1,13 @@
-Broyeur = function(sprite,posx,posy,groupe){
+Broyeur = function(sprite,posx,posy,groupe,itemgroupe){
 	this.broyeur = groupe.create(posx,posy,sprite);
 	this.broyeur.animations.add('actif', [1, 2, 3,4], 10, true);
 	this.stock = 0;
-	this.item.frame = 0;
   this.work=false;
 	this.container=null;
 this.weight=0;
+
+	this.item = itemgroupe.create(this.broyeur.x + 2, this.broyeur.y + 2, 'itemsbubbles');
+	this.item.frame = 0;
 }
 
 Broyeur.prototype.drop=function(itemId){
@@ -27,7 +29,7 @@ Broyeur.prototype.drop=function(itemId){
   		return 0;
       break;
 
-
+	  case itemsId.Plastique:
       case itemsId.BlockPlastique1:
       this.typesort(itemId,itemsId.SceauPlastique0,itemsId.SceauPlastique1,600)
       return 0;
@@ -49,17 +51,17 @@ return itemId;
 }
 
 
-Broyeur.prototype.typesort=function(itemId,contenaire,weight,itemend,time){
+Broyeur.prototype.typesort=function(itemId,conteneur,weight,itemend,time){
 	this.stock = itemId;
   this.item.frame=itemId;
   this.container=conteneur;
   this.weight=weight;
   this.broyeur.animations.play('actif');
   this.work=true;
-  setTimeout(() => {this.iscook(itemend);} , time);
+  setTimeout(() => {this.iswork(itemend);} , time);
 }
 
-Broyeur.prototype.iswork=function(item){
+Broyeur.prototype.iswork=function(itemId){
 	this.work=false;
 	this.broyeur.animations.stop();
 	this.broyeur.frame=0;
