@@ -5,6 +5,10 @@ Table = function(sprite,posx,posy,groupe){
 	this.item.frame = 0;
 }
 
+Table.prototype.interact = function(){
+	return;
+}
+
 Table.prototype.drop = function(itemId){
 	if(this.stock != 0 && itemId != 0){
 		return this.vider(itemsId.SceauPneu0,itemId);

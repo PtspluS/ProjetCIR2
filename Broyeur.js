@@ -10,6 +10,10 @@ this.weight=0;
 	this.item.frame = 0;
 }
 
+Broyeur.prototype.interact = function(){
+	return;
+}
+
 Broyeur.prototype.drop=function(itemId){
 	if(this.work==true){
 		return itemId;

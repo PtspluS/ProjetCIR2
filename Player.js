@@ -153,7 +153,7 @@ Player.prototype.wait=function(){
   }
 }
 
-Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,platforms,otherplayer){
+Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,otherplayer){
 
   this.item.x = this.player.x - 6;
   this.item.y = this.player.y - 36;
@@ -203,6 +203,15 @@ if(game.input.keyboard.isDown(cursordrop) && this.dropActive == false){
   this.dropActive = true;
 }else {
   this.dropActive = false;
+}
+
+if(game.input.keyboard.isDown(cursorinteract) && this.interactActive == false && this.carry == 0){
+ this.interact();
+ this.interactActive = true;
+}else if(game.input.keyboard.isDown(cursorinteract)){
+  this.interactActive = true;
+}else {
+  this.interactActive = false;
 }
 
   var hitPlayer = game.physics.arcade.collide(this.player,otherplayer.player);
@@ -257,5 +266,12 @@ Player.prototype.drop=function(){
 	if(machine != 0){
 		this.carry = machine.drop(this.carry);
 		this.item.frame = this.carry;
+	}
+}
+
+Player.prototype.interact=function(){
+	let machine= this.checkfront()
+	if(machine != 0){
+		machine.interact();
 	}
 }

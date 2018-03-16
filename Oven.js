@@ -12,6 +12,10 @@ this.weight=0;
 
 }
 
+Oven.prototype.interact = function(){
+	return;
+}
+
 Oven.prototype.drop=function(itemId){
   if(this.cook==true){
     return itemId;

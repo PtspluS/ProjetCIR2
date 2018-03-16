@@ -4,10 +4,10 @@ matrice = [
 		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
 		[3,0,1,1,1,0,0,0,0,0,0,0,0,2,2,1,1,3],
 		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,4,0,0,3],
-		[3,2,2,0,0,0,2,2,2,0,3,0,3,0,0,0,0,3],
+		[3,2,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,3],
 		[3,0,0,0,0,0,0,0,0,0,3,3,3,0,0,1,1,3],
-		[3,0,0,0,0,0,0,0,0,0,3,0,3,0,0,2,2,3],
-		[3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3],
+		[3,0,0,0,0,0,0,5,5,0,0,0,0,0,0,2,2,3],
+		[3,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,3],
 		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ];
 
@@ -21,6 +21,7 @@ function preload() {
 	game.load.spritesheet('itemsbubbles','assets/itemsbubbles.png', 28, 28);
 	game.load.spritesheet('wall','assets/wall.png',64,74);
 	game.load.spritesheet('broyeur','assets/broyeur.png',64,74);
+	game.load.spritesheet('compresseur','assets/compresseur.png',128,64);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
 }
@@ -42,63 +43,72 @@ itemGui.enableBody = true;
 
 for(let j = 0; j < matrice.length; j++){
 	for(let i = 0; i < matrice[0].length; i++){
-		if(matrice[j][i]==0){ // SOL
-			game.add.sprite(i*64, j*64, 'ground');
-			map[j][i] = 0;
-		}else if(matrice[j][i]==1){ // FOUR
-			let tuile = platformsSolid.create(i*64, j*64, 'ground');
-			tuile.body.immovable = true;
-			map[j][i] = new Oven('oven',i*64,j*64 - (94-64),object,itemGui);
-		}else if(matrice[j][i]==2){ // TABLE
-			let tuile=platformsSolid.create(i*64, j*64, 'ground');
-			tuile.body.immovable = true;
-			map[j][i] = new Table('table', i*64, j*64 - (84-64),object);
-		}else if(matrice[j][i]==3){ // MUR
-			let tuile = platformsSolid.create(i*64, j*64, 'ground');
-			tuile.body.immovable = true;
-			map[j][i] = 0;
-			let wall = object.create(i*64, j*64 - (74-64), 'wall');
-			// Generation du mur
-			let left = true;
-			let right = true;
-			let down = true;
-			if(j == matrice.length - 1){ // Bas
-				down = false;
-			}else if(matrice[j+1][i] != 3){
-				down = false;
-			}
-			if(i == 0){ // Gauche
-				left = false;
-			}else if(matrice[j][i-1] != 3){
-				left = false;
-			}
-			if(i == matrice[0].length - 1){ // Droite
-				right = false;
-			}else if(matrice[j][i+1] != 3){
-				right = false;
-			}
+		if(map[j][i] == undefined){
+			if(matrice[j][i]==0){ // SOL
+				game.add.sprite(i*64, j*64, 'ground');
+				map[j][i] = 0;
+			}else if(matrice[j][i]==1){ // FOUR
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Oven('oven',i*64,j*64 - (94-64),object,itemGui);
+			}else if(matrice[j][i]==2){ // TABLE
+				let tuile=platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Table('table', i*64, j*64 - (84-64),object);
+			}else if(matrice[j][i]==3){ // MUR
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = 0;
+				let wall = object.create(i*64, j*64 - (74-64), 'wall');
+				// Generation du mur
+				let left = true;
+				let right = true;
+				let down = true;
+				if(j == matrice.length - 1){ // Bas
+					down = false;
+				}else if(matrice[j+1][i] != 3){
+					down = false;
+				}
+				if(i == 0){ // Gauche
+					left = false;
+				}else if(matrice[j][i-1] != 3){
+					left = false;
+				}
+				if(i == matrice[0].length - 1){ // Droite
+					right = false;
+				}else if(matrice[j][i+1] != 3){
+					right = false;
+				}
 
-			if(left && right && down){ // Selection de la bonne frame
-				wall.frame = 4;
-			}else if(!left && right && down){
-				wall.frame = 5;
-			}else if(left && !right && down){
-				wall.frame = 3;
-			}else if(left && right && !down){
-				wall.frame = 6;
-			}else if(!left && !right && down){
-				wall.frame = 7;
-			}else if(!left && right && !down){
-				wall.frame = 1;
-			}else if(left && !right && !down){
-				wall.frame = 2;
-			}else{
-				wall.frame = 0;
+				if(left && right && down){ // Selection de la bonne frame
+					wall.frame = 4;
+				}else if(!left && right && down){
+					wall.frame = 5;
+				}else if(left && !right && down){
+					wall.frame = 3;
+				}else if(left && right && !down){
+					wall.frame = 6;
+				}else if(!left && !right && down){
+					wall.frame = 7;
+				}else if(!left && right && !down){
+					wall.frame = 1;
+				}else if(left && !right && !down){
+					wall.frame = 2;
+				}else{
+					wall.frame = 0;
+				}
+			}else if(matrice[j][i] == 4){ // BROYEUR
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Broyeur('broyeur',i*64,j*64 - (74-64),object,itemGui);
+			}else if(matrice[j][i] == 5){ // COMPRESSEUR
+				let tuile = platformsSolid.create(i*64, j*64, 'ground')
+				let tuile2 = platformsSolid.create((i+1)*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				tuile2.body.immovable = true;
+				map[j][i] = new Compresseur('compresseur',i*64,j*64,object,itemGui);
+				map[j][i+1] = map[j][i];
 			}
-		}else if(matrice[j][i]==4){ // BROYEUR
-			let tuile = platformsSolid.create(i*64, j*64, 'ground');
-			tuile.body.immovable = true;
-			map[j][i] = new Broyeur('broyeur',i*64,j*64 - (74-64),object,itemGui);
 		}
 	}
 }
@@ -115,10 +125,13 @@ map[3][2].drop(itemsId.Sceau);
 map[3][1].drop(itemsId.Sceau);
 map[2][6].drop(itemsId.Metal);
 map[2][7].drop(itemsId.Sceau);
-map[2][8].drop(itemsId.SceauVerre3);
-map[3][6].drop(itemsId.SceauVerre1);
+map[2][8].drop(itemsId.Metal);
+map[3][6].drop(itemsId.Metal);
 map[3][7].drop(itemsId.Pneu);
 map[3][8].drop(itemsId.Sceau);
+map[3][10].drop(itemsId.Carton);
+map[3][11].drop(itemsId.Plastique);
+map[3][12].drop(itemsId.Plastique);
 map[5][15].drop(itemsId.Pneu);
 map[5][16].drop(itemsId.Pneu);
 
@@ -126,8 +139,8 @@ map[5][16].drop(itemsId.Pneu);
 }
 function update() {
 
-	player1.update(Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_0,platformsSolid,player2);
-	player2.update(Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.A,platformsSolid,player1);
+	player1.update(Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3,platformsSolid,player2);
+	player2.update(Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.F,Phaser.Keyboard.G,platformsSolid,player1);
  	object.sort('y', Phaser.Group.SORT_ASCENDING);
 
 
