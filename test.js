@@ -1,13 +1,13 @@
 
 // Ici on doit charge le json et la map recup est matrice!!
 matrice = [
-		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
-		[3,0,1,1,1,0,0,0,0,0,0,0,0,2,2,1,1,3],
-		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,4,0,0,3],
+		[3,3,3,3,3,4,3,3,4,4,3,3,3,3,3,3,3,3],
+		[3,0,1,1,1,0,0,0,0,0,0,0,5,2,2,1,1,3],
+		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,3],
 		[3,2,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,3],
-		[3,0,0,0,0,0,0,0,0,0,3,3,3,0,0,1,1,3],
-		[3,0,0,0,0,0,0,5,5,0,0,0,0,0,0,2,2,3],
-		[3,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,3],
+		[3,0,0,0,0,0,0,0,0,0,4,3,3,0,0,1,1,3],
+		[3,0,0,0,0,0,0,6,6,0,0,0,0,0,0,2,2,3],
+		[3,0,0,0,0,0,0,6,0,0,0,5,5,0,0,0,0,3],
 		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ];
 
@@ -20,6 +20,7 @@ function preload() {
 	game.load.spritesheet('items','assets/items.png', 56, 56);
 	game.load.spritesheet('itemsbubbles','assets/itemsbubbles.png', 28, 28);
 	game.load.spritesheet('wall','assets/wall.png',64,74);
+	game.load.spritesheet('wallposters','assets/wallposters.png',64,74);
 	game.load.spritesheet('broyeur','assets/broyeur.png',64,74);
 	game.load.spritesheet('compresseur','assets/compresseur.png',128,64);
 	game.load.image('ground','assets/beton.png');
@@ -66,17 +67,17 @@ for(let j = 0; j < matrice.length; j++){
 				let down = true;
 				if(j == matrice.length - 1){ // Bas
 					down = false;
-				}else if(matrice[j+1][i] != 3){
+				}else if(matrice[j+1][i] != 3 && matrice[j+1][i] != 4){
 					down = false;
 				}
 				if(i == 0){ // Gauche
 					left = false;
-				}else if(matrice[j][i-1] != 3){
+				}else if(matrice[j][i-1] != 3 && matrice[j][i-1] != 4){
 					left = false;
 				}
 				if(i == matrice[0].length - 1){ // Droite
 					right = false;
-				}else if(matrice[j][i+1] != 3){
+				}else if(matrice[j][i+1] != 3 && matrice[j][i+1] != 4){
 					right = false;
 				}
 
@@ -97,11 +98,17 @@ for(let j = 0; j < matrice.length; j++){
 				}else{
 					wall.frame = 0;
 				}
-			}else if(matrice[j][i] == 4){ // BROYEUR
+			}else if(matrice[j][i] == 4){ // MUR POSTERS
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = 0;
+				let wall = object.create(i*64, j*64 - (74-64), 'wallposters');
+				wall.frame = Math.floor(Math.random() * 11);
+			}else if(matrice[j][i] == 5){ // BROYEUR
 				let tuile = platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
 				map[j][i] = new Broyeur('broyeur',i*64,j*64 - (74-64),object,itemGui);
-			}else if(matrice[j][i] == 5){ // COMPRESSEUR
+			}else if(matrice[j][i] == 6){ // COMPRESSEUR
 				let tuile = platformsSolid.create(i*64, j*64, 'ground')
 				let tuile2 = platformsSolid.create((i+1)*64, j*64, 'ground');
 				tuile.body.immovable = true;
