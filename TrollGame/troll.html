@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Serious Game</title>
+  <script src="./phaser/phaser.js"></script>
+  <style type="text/css">
+  body {
+    margin: 0;
+  }
+  </style>
+</head>
+<body>
+
+  <script type="text/javascript">
+
+  var game;
+  var menuGroup;
+
+  window.onload = function(){
+    game = new Phaser.Game(700,500);
+    game.state.add("Boot",boot);
+    game.state.add("Preload", preload);
+    game.state.add("GameTitle", gameTitle);
+    game.state.start("Boot");
+  }
+
+  var boot = function(game){};
+
+  boot.prototype = {
+    preload : function(){
+      game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+      game.scale.setScreenSize = true;
+      game.scale.pageAlignHorizontally = true;
+      game.scale.pageAlignVertically = true;
+      game.stage.backgroundColor = '#000000';
+    },
+    create : function(){
+      game.state.start("Preload");
+    }
+  }
+game.preload = preload;
+  var preload = function(game){};
+
+  preload.prototype = {
+    preload : function(){
+      game.load.image('wine','./assets/wine-bottle.png');
+      game.load.image('dechet','./assets/dechet.png');
+      game.load.image('bottle','./assets/bottle.png');
+      game.load.image('sky','./assets/sky.png');
+      game.load.spritesheet('bean','./assets/poub.png');
+      ///////////////menu/////////////////
+      game.load.image('gametitle','./assets/WTF.png');
+      game.load.image('gridedition','./assets/dechet.png');
+      game.load.image('playButton','./assets/playButton.png');
+      game.load.image('menubutton','./assets/menu.png');
+      game.load.image('resetGame','./assets/reset.png');
+    },
+    create : function(){
+      game.state.start("GameTitle");
+    }
+  }
+
+  var gameTitle = function(game){}
+
+  gameTitle.prototype = {
+    create : function(){
+      var title = game.add.sprite(game.width/2,60,"gametitle");
+      title.anchor.set(0.5);
+      var grid = game.add.sprite(game.width/2,130,"gridedition");
+      grid.anchor.set(0.5);
+      var playButton = game.add.button(game.width/2, game.height/2+100,"playButton",bitedechameau);
+      playButton.anchor.set(0.5);
+      menuGroup = game.add.group();
+      var menuButton = game.add.button(game.width/2, game.height-30,'menubutton',toggleMenu);
+      menuButton.anchor.set(0.5);
+      menuGroup.add(menuButton);
+      var resetGame = game.add.button(game.width/2, game.height+50, 'resetGame',bitedechameau);
+      resetGame.anchor.set(0.5);
+      menuGroup.add(resetGame);
+    }
+  }
+
+  function toggleMenu(){
+    if(menuGroup.y == 0){
+      var menuTween = game.add.tween(menuGroup).to({
+        y : -180
+      }, 500, Phaser.Easing.Bounce.Out, true);
+    }
+    else if(menuGroup.y == -180){
+      var menuTween = game.add.tween(menuGroup).to({
+        y : 0
+      }, 500, Phaser.Easing.Bounce.Out, true);
+    }
+  }
+  ///////////////////////////////////////////////////
+
+  var player;
+  var cursors;
+
+  var score = 0;
+  var scoreTxt;
+  var trash;
+
+  function bitedechameau(){
+      game.physics.startSystem(Phaser.Physics.ARCADE);
+      game.add.sprite(0,0,'sky');
+      trash = game.add.group();
+      trash.enableBody = true;
+
+      player = game.add.sprite(32,game.world.height - 75, 'bean');
+      player.scale.setTo(0.25,0.25);
+      game.physics.arcade.enable(player);
+      player.body.collideWorldBounds = true;
+      scoreText = game.add.text(16,15, 'score: 0', {fontSize : '32px',fill : '#000'});
+      cursors = game.input.keyboard.createCursorKeys();
+      update();
+      console.log("update");
+  }
+ update = function(){
+  game.physics.arcade.overlap(player,trash,collecTrash,null,this);
+  player.body.velocity.x = 0;
+  if(cursors.left.isDown){
+    player.body.velocity.x = -150;
+  }
+  else if(cursors.right.isDown){
+    player.body.velocity.x = 150;
+  }
+  function collecTrash (player, trash){
+    star.kill();
+    score += 10;
+    scoreText.text= 'Score: '+score;
+  }
+  function destroyTrash(trash){
+
+  }
+}
+</script>
+</body>
+</html>
