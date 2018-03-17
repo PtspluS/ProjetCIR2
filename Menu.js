@@ -5,5 +5,6 @@ function preload() {
   Menu.load.image('button1','assets/table.png');
 }
 function create() {
+Menu.add.sprite(Menu.world.centerX, 0, 'title');
 button = Menu.add.button(Menu.world.centerX, Menu.world.centerY, 'button1', function(){Level1();}, this, 2, 1, 0);
 }
