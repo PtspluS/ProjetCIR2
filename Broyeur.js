@@ -33,7 +33,6 @@ Broyeur.prototype.drop=function(itemId){
   		return 0;
       break;
 
-	  case itemsId.Plastique:
       case itemsId.BlockPlastique1:
       this.typesort(itemId,itemsId.SceauPlastique0,1,itemsId.SceauPlastique1,1000)
       return 0;

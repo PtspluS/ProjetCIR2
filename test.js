@@ -34,6 +34,7 @@ for(let i = 0; i < matrice.length; i++){
 	map[i] = Array(matrice[0].length);
 }
 
+// Groupes de sprites
 platformsSolid = game.add.group();
 platformsSolid.enableBody = true;
 object=game.add.group();
@@ -41,7 +42,7 @@ object.enableBody = true;
 itemGui=game.add.group();
 itemGui.enableBody = true;
 
-
+// Generation de la map
 for(let j = 0; j < matrice.length; j++){
 	for(let i = 0; i < matrice[0].length; i++){
 		if(map[j][i] == undefined){
@@ -149,8 +150,5 @@ function update() {
 	player1.update(Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3,platformsSolid,player2);
 	player2.update(Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.F,Phaser.Keyboard.G,platformsSolid,player1);
  	object.sort('y', Phaser.Group.SORT_ASCENDING);
-
-
-
 
 }
