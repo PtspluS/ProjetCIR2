@@ -2,7 +2,7 @@
 // Ici on doit charge le json et la map recup est matrice!!
 matrice = [
 		[3,3,3,3,3,4,3,3,4,4,3,3,3,3,3,3,3,3],
-		[3,0,1,1,1,0,0,0,0,0,0,0,5,2,2,1,1,3],
+		[3,0,1,1,1,0,0,0,0,0,7,0,7,2,2,1,1,3],
 		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,3],
 		[3,2,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,3],
 		[3,0,0,0,0,0,0,0,0,0,4,3,3,0,0,1,1,3],
@@ -23,6 +23,7 @@ function preload() {
 	game.load.spritesheet('wallposters','assets/wallposters.png',64,74);
 	game.load.spritesheet('broyeur','assets/broyeur.png',64,74);
 	game.load.spritesheet('compresseur','assets/compresseur.png',128,64);
+	game.load.spritesheet('etabli','assets/etabli.png',192,96);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
 }
@@ -116,6 +117,16 @@ for(let j = 0; j < matrice.length; j++){
 				tuile2.body.immovable = true;
 				map[j][i] = new Compresseur('compresseur',i*64,j*64,object,itemGui);
 				map[j][i+1] = map[j][i];
+			}else if(matrice[j][i] == 7){ // ETABLI
+				let tuile = platformsSolid.create(i*64, j*64, 'ground')
+				let tuile2 = platformsSolid.create((i+1)*64, j*64, 'ground');
+				let tuile3 = platformsSolid.create((i+2)*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				tuile2.body.immovable = true;
+				tuile3.body.immovable = true;
+				map[j][i] = new Etabli('etabli',i*64,j*64 - (96-64),object,itemGui);;
+				map[j][i+1] = map[j][i].table2;
+				map[j][i+2] = map[j][i].table3;
 			}
 		}
 	}
@@ -129,6 +140,8 @@ game.world.bringToTop(itemGui);
 
 
 
+map[1][13].drop(itemsId.Verre);
+map[1][14].drop(itemsId.Verre);
 map[3][2].drop(itemsId.Sceau);
 map[3][1].drop(itemsId.Sceau);
 map[2][6].drop(itemsId.Metal);

@@ -94,8 +94,6 @@ Compresseur.prototype.typesort = function(itemend){
 	return;
 }
 
-
-
 Compresseur.prototype.iswork = function(itemId){
 	this.work = false;
 	this.stockf = itemId;
