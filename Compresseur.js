@@ -2,9 +2,7 @@ Compresseur = function(sprite,posx,posy,groupe,itemgroupe){
   this.compresseur = groupe.create(posx,posy,sprite);
   this.compresseur.animations.add('actif', [ 0, 1, 2, 3, 0, 4, 5, 6, 5, 4, 0, 1, 2, 3, 0], 10, false);
   this.compresseur.frame = 0;
-  this.stock = 0;
   this.work = false;
-  this.weight = 0;
 
 	this.item1 = itemgroupe.create(this.compresseur.x + 2, this.compresseur.y + 24, 'itemsbubbles');
 	this.item1.frame = 0;
@@ -22,16 +20,18 @@ Compresseur = function(sprite,posx,posy,groupe,itemgroupe){
 }
 
 Compresseur.prototype.interact = function(){
-	switch(this.stock1){
-		case itemsId.Metal:
-			this.typesort(itemsId.BlockMetal1 - 1 +(this.stock1 + this.stock2 + this.stock3) / itemsId.Metal);
-			break;
-		case itemsId.Plastique:
-			this.typesort(itemsId.BlockPlastique1 - 1 +(this.stock1 + this.stock2 + this.stock3) / itemsId.Plastique);
-			break;
-		case itemsId.Carton:
-			this.typesort(itemsId.BlockCarton1 - 1 +(this.stock1 + this.stock2 + this.stock3) / itemsId.Carton);
-			break;
+	if(this.work == false){
+		switch(this.stock1){
+			case itemsId.Metal:
+				this.typesort(itemsId.BlockMetal1 - 1 +(this.stock1 + this.stock2 + this.stock3) / itemsId.Metal);
+				break;
+			case itemsId.Plastique:
+				this.typesort(itemsId.BlockPlastique1 - 1 +(this.stock1 + this.stock2 + this.stock3) / itemsId.Plastique);
+				break;
+			case itemsId.Carton:
+				this.typesort(itemsId.BlockCarton1 - 1 +(this.stock1 + this.stock2 + this.stock3) / itemsId.Carton);
+				break;
+		}
 	}
 	return;
 }

@@ -2,12 +2,12 @@
 // Ici on doit charge le json et la map recup est matrice!!
 matrice = [
 		[3,3,3,3,3,4,3,3,4,4,3,3,3,3,3,3,3,3],
-		[3,0,1,1,1,0,0,0,0,0,7,0,7,2,2,1,1,3],
+		[3,1,1,8,0,0,0,0,0,0,7,0,7,2,2,1,1,3],
 		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,3],
 		[3,2,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,3],
-		[3,0,0,0,0,0,0,0,0,0,4,3,3,0,0,1,1,3],
-		[3,0,0,0,0,0,0,6,6,0,0,0,0,0,0,2,2,3],
-		[3,0,0,0,0,0,0,6,0,0,0,5,5,0,0,0,0,3],
+		[3,0,0,0,0,0,0,0,0,0,6,6,9,0,0,1,1,3],
+		[3,0,0,0,0,0,8,9,0,0,0,0,0,0,0,2,2,3],
+		[3,0,0,0,0,0,0,0,0,0,0,5,5,0,0,0,0,3],
 		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ];
 
@@ -24,6 +24,8 @@ function preload() {
 	game.load.spritesheet('broyeur','assets/broyeur.png',64,74);
 	game.load.spritesheet('compresseur','assets/compresseur.png',128,64);
 	game.load.spritesheet('etabli','assets/etabli.png',192,96);
+	game.load.spritesheet('presse','assets/presse.png',64,108);
+	game.load.spritesheet('bassine','assets/bassine.png',64,82);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
 }
@@ -127,6 +129,14 @@ for(let j = 0; j < matrice.length; j++){
 				map[j][i] = new Etabli('etabli',i*64,j*64 - (96-64),object,itemGui);;
 				map[j][i+1] = map[j][i].table2;
 				map[j][i+2] = map[j][i].table3;
+			}else if(matrice[j][i] == 8){ // PRESSE
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Presse('presse',i*64,j*64 - (108-64),object,itemGui);
+			}else if(matrice[j][i] == 9){ // BASSINE
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Bassine('bassine',i*64,j*64 - (82-64),object,itemGui);
 			}
 		}
 	}

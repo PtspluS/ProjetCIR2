@@ -11,7 +11,7 @@ Table.prototype.interact = function(){
 
 Table.prototype.drop = function(itemId){
 	if(this.stock != 0 && itemId != 0){
-		return this.vider(itemsId.SceauPneu0,itemId);
+		return this.vider(itemId);
 	}
 	else if(this.stock != 0 && itemId == 0){
 		let tmp = this.stock;
@@ -27,9 +27,9 @@ Table.prototype.drop = function(itemId){
 	return itemId;
 }
 
-Table.prototype.vider=function(idbase,itemId){
+Table.prototype.vider=function(itemId){
 	let tabase = [itemsId.SceauPneu0,itemsId.SceauVerre0,itemsId.SceauVerreLiquide0,itemsId.SceauMetal0,itemsId.SceauPlastique0];
-
+	var idbase = 0;
 	for(let i = 0; i < tabase.length; i++){
 		idbase = tabase[i];
 		if(itemId==idbase+1||itemId==idbase+2||itemId==idbase+3){
