@@ -1,5 +1,5 @@
 
-// Ici on doit charge le json et la map recup est matrice!!
+Level1=function(){ // Ici on doit charge le json et la map recup est matrice!!
 matrice = [
 		[3,3,3,3,3,4,3,3,4,4,3,3,3,3,3,3,3,3],
 		[3,0,1,1,1,0,0,0,0,0,7,0,7,2,2,1,1,3],
@@ -133,8 +133,8 @@ for(let j = 0; j < matrice.length; j++){
 }
 
 
-player1=new Player('dude',64+16,64*4,object,itemGui);
-player2=new Player('dude',64*2+16,64*4,object,itemGui);
+player1=new Player(game,'dude',64+16,64*4,object,itemGui);
+player2=new Player(game,'dude',64*2+16,64*4,object,itemGui);
 game.world.bringToTop(object);
 game.world.bringToTop(itemGui);
 
@@ -160,8 +160,9 @@ map[5][16].drop(itemsId.Pneu);
 }
 function update() {
 
-	player1.update(Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3,platformsSolid,player2);
-	player2.update(Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.F,Phaser.Keyboard.G,platformsSolid,player1);
+	player1.update(game,Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3,platformsSolid,player2);
+	player2.update(game,Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.F,Phaser.Keyboard.G,platformsSolid,player1);
  	object.sort('y', Phaser.Group.SORT_ASCENDING);
 
+}
 }

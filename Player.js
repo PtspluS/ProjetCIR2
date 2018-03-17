@@ -1,4 +1,4 @@
-Player=function(sprite,posx,posy,groupe,itemgroupe){
+Player=function(game,sprite,posx,posy,groupe,itemgroupe){
 	//constructeur du player
 	this.player = groupe.create(posx, posy,sprite);
 	game.physics.arcade.enable(this.player);
@@ -153,7 +153,7 @@ Player.prototype.wait=function(){
   }
 }
 
-Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,otherplayer){
+Player.prototype.update=function(game,cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,otherplayer){
 
   this.item.x = this.player.x - 6;
   this.item.y = this.player.y - 36;
