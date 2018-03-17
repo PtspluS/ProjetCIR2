@@ -24,4 +24,5 @@ button.anchor.setTo(0.5,0.5);
 mg = function(){
   console.log("hello here");
   let button = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY, 'button1');
+  button.anchor.setTo(0.5,0.5);
 }
