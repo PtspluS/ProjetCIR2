@@ -1,5 +1,6 @@
 
-Level1=function(){ // Ici on doit charge le json et la map recup est matrice!!
+Level1=function(menu){
+// Ici on doit charge le json et la map recup est matrice!!
 matrice = [
 		[3,3,3,3,3,4,3,3,4,4,3,3,3,3,3,3,3,3],
 		[3,0,1,1,1,0,0,0,0,0,7,0,7,2,2,1,1,3],
