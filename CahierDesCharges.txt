@@ -31,3 +31,6 @@ X - Niveau nucleaire
 X - Sol glissant
 X - Chariot Elevateur mouvant
 X - Power Ups
+X - Wall-E
+X - Camions
+X - Eau ou vide faisant despawn
