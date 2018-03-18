@@ -5,10 +5,10 @@ matrice = [
 		[3,1,1,8,0,0,0,0,0,0,7,0,7,2,2,1,1,0,0,0,3],
 		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,3],
 		[3,2,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,0,0,0,3],
-		[3,0,0,0,0,0,0,0,0,0,6,6,9,0,0,1,1,0,0,0,3],
-		[3,0,0,0,0,0,8,9,0,0,0,0,0,0,0,2,2,0,0,0,3],
-		[3,0,0,0,0,0,12,12,12,12,11,0,0,0,0,5,5,0,0,0,3],
-		[3,0,0,0,0,0,10,13,13,13,11,0,0,0,0,0,0,0,0,0,3],
+		[3,11,0,0,0,0,0,0,0,0,6,6,9,0,0,1,1,0,0,0,3],
+		[3,11,0,0,0,0,8,9,0,0,0,0,0,0,0,2,2,0,0,0,3],
+		[3,11,0,0,0,0,12,12,12,12,11,0,0,0,0,5,5,0,0,0,3],
+		[3,14,0,0,0,0,10,13,13,13,11,0,0,0,0,0,0,0,0,0,3],
 		[3,0,0,0,0,0,0,0,0,10,13,0,0,0,0,0,0,0,0,0,3],
 		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ];
@@ -29,6 +29,8 @@ function preload() {
 	game.load.spritesheet('presse','assets/presse.png',64,108);
 	game.load.spritesheet('bassine','assets/bassine.png',64,82);
 	game.load.spritesheet('conveyor','assets/conveyor.png',64,74);
+	game.load.spritesheet('arrive','assets/arrive.png',64,80);
+	game.load.spritesheet('incinerateur','assets/incinerateur.png',64,64);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
 }
@@ -156,13 +158,17 @@ for(let j = 0; j < matrice.length; j++){
 				let tuile = platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
 				map[j][i] = new Conveyor('conveyor',i*64,j*64 - (74-64),object,itemGui,'left');
+			}else if(matrice[j][i] == 14){ // INCINERATEUR
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Incinerateur('incinerateur',i*64,j*64,object);
 			}
 		}
 	}
 }
 
 
-player1=new Player('dude',64+16,64*4,object,itemGui);
+player1=new Player('dude',64*3+16,64*4,object,itemGui);
 player2=new Player('dude',64*2+16,64*4,object,itemGui);
 game.world.bringToTop(object);
 game.world.bringToTop(itemGui);
