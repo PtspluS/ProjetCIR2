@@ -116,7 +116,6 @@ Conveyor.prototype.recup = function(itemId,incoming){
 }
 
 Conveyor.prototype.envoie = function(){
-	console.log('cc')
 	var infront = this.checkfront();
 	switch(this.sens){
 		case 'up':
