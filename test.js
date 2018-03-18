@@ -4,7 +4,7 @@ matrice = [
 		[3,3,3,3,3,4,3,3,4,4,3,3,3,3,3,3,3,3,3,3,3],
 		[3,1,1,8,0,0,0,0,0,0,7,0,7,2,2,1,1,0,0,0,3],
 		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,3],
-		[3,2,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,0,0,0,3],
+		[3,15,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,0,0,0,3],
 		[3,11,0,0,0,0,0,0,0,0,6,6,9,0,0,1,1,0,0,0,3],
 		[3,11,0,0,0,0,8,9,0,0,0,0,0,0,0,2,2,0,0,0,3],
 		[3,11,0,0,0,0,12,12,12,12,11,0,0,0,0,5,5,0,0,0,3],
@@ -29,7 +29,7 @@ function preload() {
 	game.load.spritesheet('presse','assets/presse.png',64,108);
 	game.load.spritesheet('bassine','assets/bassine.png',64,82);
 	game.load.spritesheet('conveyor','assets/conveyor.png',64,74);
-	game.load.spritesheet('arrive','assets/arrive.png',64,80);
+	game.load.spritesheet('arrive','assets/arrive.png',64,90);
 	game.load.spritesheet('incinerateur','assets/incinerateur.png',64,64);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
@@ -162,6 +162,10 @@ for(let j = 0; j < matrice.length; j++){
 				let tuile = platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
 				map[j][i] = new Incinerateur('incinerateur',i*64,j*64,object);
+			}else if(matrice[j][i] == 15){ // ARRIVE
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Arrive('arrive',i*64,j*64 - (90-64),object, [itemsId.Pneu, itemsId.Verre, itemsId.Metal, itemsId.Plastique, itemsId.Carton], 10000, false);
 			}
 		}
 	}
@@ -178,7 +182,6 @@ game.world.bringToTop(itemGui);
 map[1][13].drop(itemsId.Verre);
 map[1][14].drop(itemsId.Verre);
 map[3][2].drop(itemsId.Sceau);
-map[3][1].drop(itemsId.Sceau);
 map[2][6].drop(itemsId.Metal);
 map[2][7].drop(itemsId.Sceau);
 map[2][8].drop(itemsId.Metal);
