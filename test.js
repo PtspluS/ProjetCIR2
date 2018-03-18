@@ -1,14 +1,16 @@
 
 // Ici on doit charge le json et la map recup est matrice!!
 matrice = [
-		[3,3,3,3,3,4,3,3,4,4,3,3,3,3,3,3,3,3],
-		[3,1,1,8,0,0,0,0,0,0,7,0,7,2,2,1,1,3],
-		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,3],
-		[3,2,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,3],
-		[3,0,0,0,0,0,0,0,0,0,6,6,9,0,0,1,1,3],
-		[3,0,0,0,0,0,8,9,0,0,0,0,0,0,0,2,2,3],
-		[3,0,0,0,0,0,0,0,0,0,0,5,5,0,0,0,0,3],
-		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
+		[3,3,3,3,3,4,3,3,4,4,3,3,3,3,3,3,3,3,3,3,3],
+		[3,1,1,8,0,0,0,0,0,0,7,0,7,2,2,1,1,0,0,0,3],
+		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,3],
+		[3,2,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,0,0,0,3],
+		[3,0,0,0,0,0,0,0,0,0,6,6,9,0,0,1,1,0,0,0,3],
+		[3,0,0,0,0,0,8,9,0,0,0,0,0,0,0,2,2,0,0,0,3],
+		[3,0,0,0,0,0,12,12,12,12,11,0,0,0,0,5,5,0,0,0,3],
+		[3,0,0,0,0,0,10,13,13,13,11,0,0,0,0,0,0,0,0,0,3],
+		[3,0,0,0,0,0,0,0,0,10,13,0,0,0,0,0,0,0,0,0,3],
+		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ];
 
 var game = new Phaser.Game(64*matrice[0].length, 64*matrice.length, Phaser.AUTO, '', { preload: preload, create: create, update: update });
@@ -26,6 +28,7 @@ function preload() {
 	game.load.spritesheet('etabli','assets/etabli.png',192,96);
 	game.load.spritesheet('presse','assets/presse.png',64,108);
 	game.load.spritesheet('bassine','assets/bassine.png',64,82);
+	game.load.spritesheet('conveyor','assets/conveyor.png',64,74);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
 }
@@ -59,7 +62,7 @@ for(let j = 0; j < matrice.length; j++){
 			}else if(matrice[j][i]==2){ // TABLE
 				let tuile=platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
-				map[j][i] = new Table('table', i*64, j*64 - (84-64),object);
+				map[j][i] = new Table('table', i*64, j*64 - (84-64),object,itemGui);
 			}else if(matrice[j][i]==3){ // MUR
 				let tuile = platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
@@ -137,6 +140,22 @@ for(let j = 0; j < matrice.length; j++){
 				let tuile = platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
 				map[j][i] = new Bassine('bassine',i*64,j*64 - (82-64),object,itemGui);
+			}else if(matrice[j][i] == 10){ // ROULEAU HAUT
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Conveyor('conveyor',i*64,j*64 - (74-64),object,itemGui,'up');
+			}else if(matrice[j][i] == 11){ // ROULEAU BAS
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Conveyor('conveyor',i*64,j*64 - (74-64),object,itemGui,'down');
+			}else if(matrice[j][i] == 12){ // ROULEAU DROITE
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Conveyor('conveyor',i*64,j*64 - (74-64),object,itemGui,'right');
+			}else if(matrice[j][i] == 13){ // ROULEAU GAUCHE
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Conveyor('conveyor',i*64,j*64 - (74-64),object,itemGui,'left');
 			}
 		}
 	}

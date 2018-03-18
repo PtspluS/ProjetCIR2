@@ -1,9 +1,9 @@
-Etabli = function(sprite, posx, posy, groupe){
+Etabli = function(sprite, posx, posy, groupe,itemgroupe){
 	this.etabli = groupe.create(posx, posy, sprite);
 	
-	this.table1 = new Table(null, posx, posy + 12, groupe);
-	this.table2 = new Table(null, posx + 64, posy + 12, groupe);
-	this.table3 = new Table(null, posx + 128, posy + 12, groupe);
+	this.table1 = new Table(null, posx, posy + 12, groupe,itemgroupe);
+	this.table2 = new Table(null, posx + 64, posy + 12, groupe,itemgroupe);
+	this.table3 = new Table(null, posx + 128, posy + 12, groupe,itemgroupe);
 	
 	// tableX sont les parties de l'etabli stockees dans la map respectivement de gauche a droite
 	

@@ -1,7 +1,7 @@
-Table = function(sprite,posx,posy,groupe){
+Table = function(sprite,posx,posy,groupe,itemgroupe){
 	this.table = groupe.create(posx,posy,sprite);
 	this.stock = 0;
-	this.item = groupe.create(this.table.position.x + 4, this.table.position.y + 4, 'items');
+	this.item = itemgroupe.create(this.table.position.x + 4, this.table.position.y + 4, 'items');
 	this.item.frame = 0;
 }
 
