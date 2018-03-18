@@ -10,7 +10,7 @@ var Menu = {
     musicMenu.play("",0,0.5,true);
     let button = Menu.add.button(Menu.world.centerX, Menu.world.centerY, 'button1', goMenuGame,this,0,0,0);
     button.anchor.setTo(0.5,0.5);
-    let btt = Menu.add.button(Menu.world.centerX, Menu.world.centerY+32,'button1',goMenuOpt, this,0,0,0);
+    let btt = Menu.add.button(Menu.world.centerX, Menu.world.centerY+64,'button1',goMenuOpt, this,0,0,0);
     btt.anchor.setTo(0.5,0.5);
   }
 }
@@ -41,7 +41,7 @@ var MenuOpt ={
     MenuOpt.load.image('button3','assets/table.png');
   },
   create : function(){
-    musicMenu.resume();//relance la musique là ou elle s'était arrêtée 
+    musicMenu.resume();//relance la musique là ou elle s'était arrêtée
     let button = MenuOpt.add.button(MenuOpt.world.centerX,MenuOpt.world.centerY, 'button3');
     button.anchor.setTo(0.5,0.5);
   }
