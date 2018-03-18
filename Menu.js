@@ -6,11 +6,17 @@ var Menu = {
   },
   create : function(){
     let music = Menu.add.audio('testmus');
-    musi.play("",0,0.5,true);
+    music.play("",0,0.5,true);
     let button = Menu.add.button(Menu.world.centerX, Menu.world.centerY, 'button1', goMenuGame,this,0,0,0);
     button.anchor.setTo(0.5,0.5);
-  },
-  goMenuGame : function(){
+  }
+}
+  let goMenuGame =  function(){
     this.state.start('MenuGame');
+  }
+
+var MenuGame ={
+  preload : function(){
+    
   }
 }
