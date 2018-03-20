@@ -31,7 +31,7 @@ function preload() {
 	game.load.spritesheet('conveyor','assets/conveyor.png',64,74);
 	game.load.spritesheet('arrive','assets/arrive.png',64,90);
 	game.load.spritesheet('incinerateur','assets/incinerateur.png',64,64);
-	game.load.spritesheet('soufflerie','assets/soufflerie.png',64,64);
+	game.load.spritesheet('soufflerie','assets/soufflerie.png',64,90);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
 	game.load.image('benneverre','assets/benneverre.png');
@@ -192,10 +192,10 @@ for(let j = 0; j < matrice.length; j++){
 				let tuile = platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
 				map[j][i] = new Benne('bennecarton',i*64,j*64 - (84-64),object,'carton');
-			}else if(matrice[j][i] == 21){ // Soufflerie
+			}else if(matrice[j][i] == 21){ // SOUFFLERIE
 				let tuile = platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
-				map[j][i] = new Soufflerie('soufflerie',i*64,j*64 - (84-64),object,itemGui);
+				map[j][i] = new Soufflerie('soufflerie',i*64,j*64 - (90-64),object,itemGui);
 		}}
 	}
 }
