@@ -2,14 +2,14 @@
 // Ici on doit charge le json et la map recup est matrice!!
 matrice = [
 		[3,3,3,3,3,4,3,3,4,4,3,3,3,3,3,3,3,3,3,3,3],
-		[3,1,1,8,0,0,0,0,0,0,7,0,7,2,2,1,1,0,0,0,3],
+		[3,1,1,8,0,0,0,0,0,0,7,0,7,2,2,1,1,0,0,16,3],
 		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,0,0,0,3],
-		[3,15,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,0,0,0,3],
+		[3,15,2,0,0,0,2,2,2,0,2,2,2,0,0,0,0,0,0,17,3],
 		[3,11,0,0,0,0,0,0,0,0,6,6,9,0,0,1,1,0,0,0,3],
-		[3,11,0,0,0,0,8,9,0,0,0,0,0,0,0,2,2,0,0,0,3],
+		[3,11,0,0,0,0,8,9,0,0,0,0,0,0,0,2,2,0,0,18,3],
 		[3,11,0,0,0,0,12,12,12,12,11,0,0,0,0,5,5,0,0,0,3],
-		[3,14,0,0,0,0,10,13,13,13,11,0,0,0,0,0,0,0,0,0,3],
-		[3,0,0,0,0,0,0,0,0,10,13,0,0,0,0,0,0,0,0,0,3],
+		[3,14,0,0,0,0,10,13,13,13,11,0,0,0,0,0,0,0,0,19,3],
+		[3,0,0,0,0,0,0,0,0,10,13,0,0,0,0,0,0,0,0,20,3],
 		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ];
 
@@ -33,6 +33,11 @@ function preload() {
 	game.load.spritesheet('incinerateur','assets/incinerateur.png',64,64);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
+	game.load.image('benneverre','assets/benneverre.png');
+	game.load.image('bennemetal','assets/bennemetal.png');
+	game.load.image('benneplastique','assets/benneplastique.png');
+	game.load.image('bennepneu','assets/bennepneu.png');
+	game.load.image('bennecarton','assets/bennecarton.png');
 }
 function create() {
 game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -166,6 +171,26 @@ for(let j = 0; j < matrice.length; j++){
 				let tuile = platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
 				map[j][i] = new Arrive('arrive',i*64,j*64 - (90-64),object, [itemsId.Pneu, itemsId.Verre, itemsId.Metal, itemsId.Plastique, itemsId.Carton], 10000, false);
+			}else if(matrice[j][i] == 16){ // BENNE VERRE
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Benne('benneverre',i*64,j*64 - (84-64),object,'verre');
+			}else if(matrice[j][i] == 17){ // BENNE METAL
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Benne('bennemetal',i*64,j*64 - (84-64),object,'metal');
+			}else if(matrice[j][i] == 18){ // BENNE PLASTIQUE
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Benne('benneplastique',i*64,j*64 - (84-64),object,'plastique');
+			}else if(matrice[j][i] == 19){ // BENNE PNEU
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Benne('bennepneu',i*64,j*64 - (84-64),object,'pneu');
+			}else if(matrice[j][i] == 20){ // BENNE CARTON
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Benne('bennecarton',i*64,j*64 - (84-64),object,'carton');
 			}
 		}
 	}
