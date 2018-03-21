@@ -17,7 +17,8 @@ var game = {
 
 	preload : function() {
 
-		game.load.spritesheet('dude', 'assets/dude.png', 44, 68);
+		game.load.spritesheet('billy', 'assets/billy.png', 44, 68);
+		game.load.spritesheet('walle', 'assets/walle.png', 44, 68);
 		game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
 		game.load.spritesheet('items','assets/items.png', 56, 56);
 		game.load.spritesheet('itemsbubbles','assets/itemsbubbles.png', 28, 28);
@@ -201,8 +202,8 @@ var game = {
 			}
 
 
-			player1=new Player('dude',64*3+16,64*4,object,itemGui);
-			player2=new Player('dude',64*2+16,64*4,object,itemGui);
+			player1=new Player('billy',64*3+16,64*4,object,itemGui);
+			player2=new Player('walle',64*2+16,64*4,object,itemGui);
 			game.world.bringToTop(object);
 			game.world.bringToTop(itemGui);
 
