@@ -2,7 +2,7 @@
 var Menu = {
   preload : function(){
     Menu.load.audio('testmus','musics/testmus.mp3');//Musique du menu
-    Menu.load.spritesheet('title','assets/logo.png',136,74);
+    Menu.load.spritesheet('title','assets/logo.png',408,222);
     Menu.load.image('button1','assets/game.png');
     Menu.load.image('button2','assets/controls.png')
   },
@@ -14,7 +14,15 @@ var Menu = {
     else {
       musicMenu.play("",0,1,true);
     }
-    let banner = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY-68, 'title');
+	
+	var tab = Array(99);
+	for(let i = 0; i < 99; i++){
+		tab[i] = i;
+	}
+	
+    let banner = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY-152, 'title');
+	banner.animations.add('shiny', tab, 20, true);
+	banner.play('shiny');
     banner.anchor.setTo(0.5,0.5);
     banner.scale.setTo(1,1);
     let button = Menu.add.button(Menu.world.centerX, Menu.world.centerY, 'button1', goMenuGame,this,0,0,0);
