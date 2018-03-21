@@ -1,7 +1,5 @@
 
-Level1=function(menu){
-// Ici on doit charge le json et la map recup est matrice!!
-matrice = [
+var matrice = [
 		[3,3,3,3,3,4,3,3,4,4,3,3,3,3,3,3,3,3],
 		[3,0,1,1,1,0,0,0,0,0,7,0,7,2,2,1,1,3],
 		[3,0,0,0,0,0,2,2,2,0,0,0,0,0,0,0,0,3],
@@ -11,10 +9,10 @@ matrice = [
 		[3,0,0,0,0,0,0,6,0,0,0,5,5,0,0,0,0,3],
 		[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
 ];
+var game ={
+// Ici on doit charge le json et la map recup est matrice!!
 
-var game = new Phaser.Game(64*matrice[0].length, 64*matrice.length, Phaser.AUTO, '', { preload: preload, create: create, update: update });
-
-function preload() {
+preload : function() {
 
 	game.load.spritesheet('dude', 'assets/dude.png', 44, 68);
 	game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
@@ -27,8 +25,8 @@ function preload() {
 	game.load.spritesheet('etabli','assets/etabli.png',192,96);
 	game.load.image('ground','assets/beton.png');
 	game.load.image('table','assets/table.png');
-}
-function create() {
+},
+create : function() {
 game.physics.startSystem(Phaser.Physics.ARCADE);
 
 map = Array(matrice.length);
@@ -158,8 +156,8 @@ map[5][15].drop(itemsId.Pneu);
 map[5][16].drop(itemsId.Pneu);
 
 
-}
-function update() {
+},
+update : function() {
 
 	player1.update(game,Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3,platformsSolid,player2);
 	player2.update(game,Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.F,Phaser.Keyboard.G,platformsSolid,player1);
