@@ -7,6 +7,7 @@ var Menu = {
     Menu.load.spritesheet('controls','assets/controls.png',296,80);
   },
   create : function(){
+	jeu.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT; // SHOW_ALL pour eviter les etirements
     musicMenu = Menu.add.audio('testmus');
     if(musicMenu.pause()===true){
       musicMenu.resume();
