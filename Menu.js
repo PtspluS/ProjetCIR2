@@ -2,9 +2,9 @@
 var Menu = {
   preload : function(){
     Menu.load.audio('testmus','musics/testmus.mp3');//Musique du menu
-    Menu.load.image('title','assets/banner.png');
-    Menu.load.image('button1','assets/game.png');
-    Menu.load.image('button2','assets/controls.png')
+    Menu.load.spritesheet('title','assets/logo.png',408,222);
+    Menu.load.spritesheet('game','assets/game.png',172,80);
+    Menu.load.spritesheet('controls','assets/controls.png',296,80);
   },
   create : function(){
     musicMenu = Menu.add.audio('testmus');
@@ -14,12 +14,20 @@ var Menu = {
     else {
       musicMenu.play("",0,1,true);
     }
-    let banner = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY-128, 'title');
+	
+	var tab = Array(99);
+	for(let i = 0; i < 99; i++){
+		tab[i] = i;
+	}
+	
+    let banner = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY-152, 'title');
+	banner.animations.add('shiny', tab, 20, true);
+	banner.play('shiny');
     banner.anchor.setTo(0.5,0.5);
-    banner.scale.setTo(2,2);
-    let button = Menu.add.button(Menu.world.centerX, Menu.world.centerY, 'button1', goMenuGame,this,0,0,0);
+    banner.scale.setTo(1,1);
+    let button = Menu.add.button(Menu.world.centerX, Menu.world.centerY+20, 'game', goMenuGame,this,1,0,2);
     button.anchor.setTo(0.5,0.5);
-    let btt = Menu.add.button(Menu.world.centerX, Menu.world.centerY+64,'button2',goMenuOpt, this,0,0,0);
+    let btt = Menu.add.button(Menu.world.centerX, Menu.world.centerY+134,'controls',goMenuOpt, this,1,0,2);
     btt.anchor.setTo(0.5,0.5);
   }
 }
@@ -42,15 +50,14 @@ var Menu = {
 
 var MenuGame ={
   preload : function(){
-    MenuGame.load.image('title','assets/banner.png');
-    MenuGame.load.image('button','assets/go.png');
-    MenuGame.load.image('arrow','assets/arrow.png');
+    MenuGame.load.spritesheet('go','assets/go.png',104,80);
+    MenuGame.load.spritesheet('back','assets/backbutton.png',68,84);
   },
   create : function(){
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
-    let button = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+128, 'button', goGame, this,0,0,0);
+    let button = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+128, 'go', goGame, this,1,0,2);
     button.anchor.setTo(0.5,0.5);
-    let back = MenuGame.add.button(0,0,'arrow',returnMenu,this,0,0,0);
+    let back = MenuGame.add.button(0,0,'back',returnMenu,this,1,0,2);
   }
 }
 
