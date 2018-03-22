@@ -204,7 +204,7 @@ var game = {
 
 
 			player1=new Player('bob',64*3+16,64*4,object,itemGui);
-			player2=new Player('walle',64*2+16,64*4,object,itemGui);
+			player2=new Player('billy',64*2+16,64*4,object,itemGui);
 			game.world.bringToTop(object);
 			game.world.bringToTop(itemGui);
 
