@@ -62,7 +62,7 @@ var levels = [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
     ],
     items: [itemsId.Pneu,itemsId.Plastique],
-    itemsTime: 15000,
+    itemsTime: 10000,
     itemsPattern: false,
     spawnpoints: [[5,6],[6,6]],
     seauSpawnpoints: [[8,6],[9,6]],
@@ -96,7 +96,7 @@ var levels = [
 
   }
 ]
-var skins = [//permet de stocker tt les skins des persos 
+var skins = [//permet de stocker tt les skins des persos
   {
     name : 'bob',
     sprite : 'assets/bob.png',
