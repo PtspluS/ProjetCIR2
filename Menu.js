@@ -67,11 +67,24 @@ let rightMap = function(){
   mapName.text = levels[this.cursorMap].name;
   imgMap.image = levels[this.cursorMap].name;
 }
+let leftSkin = function(idPlayer){
+  if(this.idPlayer<=0){
+    this.('skinPlayer'+idPlayer) = skins.length-1;
+  }
+  else{
+    this.('skinPlayer'+idPlayer)--;
+  }
+  ('skinName'+idPlayer).text = skins[idplayer].name;
+}
+let rightSkin = function(idPlayer){
+  this.('skinPlayer'+idPlayer) = this.('skinPlayer'+idPlayer)%skins.length;
+  ('skinName'+idPlayer).text = skins[idplayer].name;
+}
 var MenuGame ={
   cursorMap : 0,
-  skin1:0,
-  skin2:0,
-  skin3:0,
+  skinPlayer1:0,
+  skinPlayer2:0,
+  skinPlayer3:0,
   preload : function(){
     MenuGame.load.spritesheet('go','assets/go.png',104,80);
     MenuGame.load.spritesheet('back','assets/backbutton.png',68,84);
@@ -86,18 +99,27 @@ var MenuGame ={
   },
   create : function(){
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
-    let button = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+128, 'go', goGame, this,1,0,2);
-    button.anchor.setTo(0.5,0.5);
-    let button2 = MenuGame.add.button(MenuGame.world.centerX-128,MenuGame.world.centerY+128,'leftArrow',leftMap,this,1,0,2);
-    button2.anchor.setTo(0.5,0.5);
-    let button3 = MenuGame.add.button(MenuGame.world.centerX+128,MenuGame.world.centerY+128,'rightArrow',rightMap,this,1,0,2);
-    button3.anchor.setTo(0.5,0.5);
-    let back = MenuGame.add.button(0,0,'back',returnMenu,this,1,0,2);
     imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
     imgMap.anchor.setTo(0.5,0.5);
-    mapName = MenuGame.add.text(MenuGame.world.centerX,MenuGame.world.centerY-128,levels[this.cursorMap].name);
+    sprite1 = MenuGame.add.sprite(MenuGame.world.centerX-0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer1].sprite);
+    sprite1.anchor.setTo(0.5,0.5);
+    sprite2 = MenuGame.add.sprite(MenuGame.world.centerX+0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer2].sprite);
+    sprite2.anchor.setTo(0.5,0.5);
+    sprite3 = MenuGame.add.sprite(MenuGame.world.centerX+0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer3].sprite);
+    sprite3.anchor.setTo(0.5,0.5);
+    let button = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', goGame, this,1,0,2);
+    button.anchor.setTo(0.5,0.5);
+    let button2 = MenuGame.add.button(MenuGame.world.centerX-128, MenuGame.world.centerY+imgMap.height/2+80,'leftArrow',leftMap,this,1,0,2);
+    button2.anchor.setTo(0.5,0.5);
+    let button3 = MenuGame.add.button(MenuGame.world.centerX+128, MenuGame.world.centerY+imgMap.height/2+80,'rightArrow',rightMap,this,1,0,2);
+    button3.anchor.setTo(0.5,0.5);
+    let back = MenuGame.add.button(0,0,'back',returnMenu,this,1,0,2);
+    mapName = MenuGame.add.text(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-10,levels[this.cursorMap].name);
     mapName.fill = 'white';
     mapName.anchor.setTo(0.5,0.5);
+    skinName1 = MenuGame.add.text(MenuGame.world.centerX-0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY-sprite1.height/2-10,skins[this.skinPlayer1].name);
+    skinName2 = MenuGame.add.text(MenuGame.world.centerX+0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY-sprite2.height/2-10,skins[this.skinPlayer2].name);
+    skinName1 = MenuGame.add.text(MenuGame.world.centerX+0.5*MenuGame.world.centerX,MenuGame.world.centerY+0.5*MenuGame.world.centerY-sprite3.height/2-10,skins[this.skinPlayer3].name);
   }
 }
 
