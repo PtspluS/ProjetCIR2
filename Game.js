@@ -20,6 +20,9 @@ var game = {
 		game.load.spritesheet('arrive','assets/arrive.png',64,90);
 		game.load.spritesheet('incinerateur','assets/incinerateur.png',64,64);
 		game.load.spritesheet('soufflerie','assets/soufflerie.png',64,90);
+		game.load.spritesheet('route','assets/route.png',128,64);
+		game.load.spritesheet('truck','assets/truck.png',128,204);
+		game.load.spritesheet('barriere','assets/barriere.png',128,80);
 		game.load.image('ground','assets/beton.png');
 		game.load.image('table','assets/table.png');
 		game.load.image('benneverre','assets/benneverre.png');
@@ -30,15 +33,14 @@ var game = {
 	},
 	create : function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		var level = levels[2];
+		var level = levels[0];
 
 		map = Creatmap(level);
 
 
 			player1=new Player('bob',64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
 			player2=new Player('billy',64*level.spawnpoints[1][0]+16,64*level.spawnpoints[1][1],object,itemGui);
-			game.world.bringToTop(object);
-			game.world.bringToTop(itemGui);
+			
 
 
 /*
