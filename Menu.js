@@ -105,7 +105,7 @@ var MenuOpt ={
   preload: function(){
     MenuOpt.load.image('title','assets/banner.png');
     MenuOpt.load.image('button3','assets/table.png');
-    MenuGame.load.spritesheet('back','assets/backbutton.png',68,84);
+    MenuOpt.load.spritesheet('back','assets/backbutton.png',68,84);
   },
   create : function(){
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
