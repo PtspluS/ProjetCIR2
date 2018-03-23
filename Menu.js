@@ -7,7 +7,7 @@ var Menu = {
     Menu.load.spritesheet('controls','assets/controls.png',296,80);
   },
   create : function(){
-	jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
+    jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
     musicMenu = Menu.add.audio('testmus');
     if(musicMenu.pause()===true){
       musicMenu.resume();
@@ -16,14 +16,14 @@ var Menu = {
       musicMenu.play("",0,1,true);
     }
 
-	var tab = Array(99);
-	for(let i = 0; i < 99; i++){
-		tab[i] = i;
-	}
+    var tab = Array(99);
+    for(let i = 0; i < 99; i++){
+      tab[i] = i;
+    }
 
     let banner = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY-152, 'title');
-	banner.animations.add('shiny', tab, 20, true);
-	banner.play('shiny');
+    banner.animations.add('shiny', tab, 20, true);
+    banner.play('shiny');
     banner.anchor.setTo(0.5,0.5);
     banner.scale.setTo(1,1);
     let btt1 = Menu.add.button(Menu.world.centerX, Menu.world.centerY+20, 'game', goMenuGame,this,1,0,2);
@@ -32,40 +32,46 @@ var Menu = {
     btt.anchor.setTo(0.5,0.5);
   }
 }
-  let goMenuGame =  function(){
-    musicMenu.pause();//met la musique en pause pour le changement de page
-    this.state.start('MenuGame');
+let goMenuGame =  function(){
+  musicMenu.pause();//met la musique en pause pour le changement de page
+  this.state.start('MenuGame');
+}
+let goMenuOpt = function(){
+  musicMenu.pause();//met la musique en pause pour le changement de page
+  this.state.start('MenuOpt');
+}
+let returnMenu = function(){
+  musicMenu.stop();//met la musique en pause pour le changement de page
+  this.state.start('Menu');
+}
+let goGame = function(){
+  musicMenu.stop();
+  game.id = this.cursorMap;
+  this.state.start('Game');
+}
+
+
+
+let leftMap = function(){
+  if(this.cursorMap<=0){
+    this.cursorMap = levels.length-1;
   }
-  let goMenuOpt = function(){
-    musicMenu.pause();//met la musique en pause pour le changement de page
-    this.state.start('MenuOpt');
+  else{
+    this.cursorMap--;
   }
-  let returnMenu = function(){
-    musicMenu.stop();//met la musique en pause pour le changement de page
-    this.state.start('Menu');
-  }
-  let goGame = function(){
-    musicMenu.stop();
-    game.id = this.cursorMap;
-    this.state.start('Game');
-  }
-  let leftMap = function(){
-    if(this.cursorMap<=0){
-      this.cursorMap = levels.length-1;
-    }
-    else{
-      this.cursorMap--;
-    }
-    //console.log(levels[this.cursorMap]);
-    //console.log(this.cursorMap);
-  }
-  let rightMap = function(){
-    this.cursorMap = (this.cursorMap+1)%levels.length;
-    //console.log(this.cursorMap);
-    //console.log(levels[this.cursorMap]);
-  }
+  mapName.text = levels[this.cursorMap].name;
+  imgMap.image = levels[this.cursorMap].name;
+}
+let rightMap = function(){
+  this.cursorMap = (this.cursorMap+1)%levels.length;
+  mapName.text = levels[this.cursorMap].name;
+  imgMap.image = levels[this.cursorMap].name;
+}
 var MenuGame ={
   cursorMap : 0,
+  skin1:0,
+  skin2:0,
+  skin3:0,
   preload : function(){
     MenuGame.load.spritesheet('go','assets/go.png',104,80);
     MenuGame.load.spritesheet('back','assets/backbutton.png',68,84);
@@ -75,8 +81,8 @@ var MenuGame ={
       MenuGame.load.image(levels[lvl].name,levels[lvl].imagePath);
     };
     for (let sk in skins) {//boucle de chargement de tt les skins
-			MenuGame.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
-		}
+      MenuGame.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
+    }
   },
   create : function(){
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
@@ -87,8 +93,11 @@ var MenuGame ={
     let button3 = MenuGame.add.button(MenuGame.world.centerX+128,MenuGame.world.centerY+128,'rightArrow',rightMap,this,1,0,2);
     button3.anchor.setTo(0.5,0.5);
     let back = MenuGame.add.button(0,0,'back',returnMenu,this,1,0,2);
-    let imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
+    imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
     imgMap.anchor.setTo(0.5,0.5);
+    mapName = MenuGame.add.text(MenuGame.world.centerX,MenuGame.world.centerY-128,levels[this.cursorMap].name);
+    mapName.fill = 'white';
+    mapName.anchor.setTo(0.5,0.5);
   }
 }
 
