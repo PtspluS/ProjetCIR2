@@ -47,3 +47,23 @@ var levels = [
 
   }
 ]
+var skins = [//permet de stocker tt les skins des persos 
+  {
+    name : 'bob',
+    sprite : 'assets/bob.png',
+    width : 44,
+    height : 68,
+  },
+  {
+    name : 'billy',
+    sprite : 'assets/billy.png',
+    width : 44,
+    height : 68,
+  },
+  {
+    name : 'walle',
+    sprite : 'assets/walle.png',
+    width : 44,
+    height : 68,
+  },
+]

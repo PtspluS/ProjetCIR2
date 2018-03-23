@@ -1,11 +1,12 @@
-
 var game = {
 
 	preload : function() {
-
-		game.load.spritesheet('billy', 'assets/billy.png', 44, 68);
-		game.load.spritesheet('walle', 'assets/walle.png', 44, 68);
-		game.load.spritesheet('bob', 'assets/bob.png', 44, 68);
+		for (let sk in skins) {//boucle de chargement de tt les skins
+			game.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
+		}
+		//game.load.spritesheet('billy', 'assets/billy.png', 44, 68);
+		//game.load.spritesheet('walle', 'assets/walle.png', 44, 68);
+		//game.load.spritesheet('bob', 'assets/bob.png', 44, 68);
 		game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
 		game.load.spritesheet('items','assets/items.png', 56, 56);
 		game.load.spritesheet('itemsbubbles','assets/itemsbubbles.png', 28, 28);
