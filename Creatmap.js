@@ -203,11 +203,33 @@
 			tuile.body.immovable = true;
 			map[j][i] = new Soufflerie('soufflerie',i*64,j*64 - (90-64),object,itemGui);
 			break;}
+			
+			case 22:{ // CAMION ET ROUTE // OBLIGE EN PREMIERE LIGNE DE MATRICE!!!!
+			let barrieres = [];
+			for(let y = 0; y < matrice.length; y++){
+				if(matrice[y][i] == 3 || matrice[y][i] == 4 || matrice[y][i+1] == 3 || matrice[y][i+1] == 4){
+					let tuile = platformsSolid.create(i*64, y*64, 'route');
+					tuile.body.immovable = true;
+					let barre = object.create(i*64, y*64 - 30, 'barriere');
+					barrieres.push(barre);
+				}else{
+					game.add.sprite(i*64, y*64, 'route');
+				}
+				map[y][i] = 0;
+				map[y][i+1] = 0;
+			}
+			map[0][i] = new Camion('truck',i*64,platformsSolid, barrieres);
+			break;}
 		  }
 		}
 	  }}
     for(let i =0;i<level.seauSpawnpoints.length;i++){
       map[level.seauSpawnpoints[i][1]][level.seauSpawnpoints[i][0]].drop(itemsId.Sceau);
     }
+	
+	game.world.bringToTop(platformsSolid);
+	game.world.bringToTop(object);
+	game.world.bringToTop(itemGui);
+	
 	  return map;
   }
