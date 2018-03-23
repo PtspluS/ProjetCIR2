@@ -86,8 +86,8 @@ var MenuGame ={
   },
   create : function(){
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
-    let button = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+128, 'go', goGame, this,1,0,2);
-    button.anchor.setTo(0.5,0.5);
+    let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+128, 'go', goGame, this,1,0,2);
+    button1.anchor.setTo(0.5,0.5);
     let button2 = MenuGame.add.button(MenuGame.world.centerX-128,MenuGame.world.centerY+128,'leftArrow',leftMap,this,1,0,2);
     button2.anchor.setTo(0.5,0.5);
     let button3 = MenuGame.add.button(MenuGame.world.centerX+128,MenuGame.world.centerY+128,'rightArrow',rightMap,this,1,0,2);
@@ -109,8 +109,8 @@ var MenuOpt ={
   },
   create : function(){
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
-    let button = MenuOpt.add.button(MenuOpt.world.centerX,MenuOpt.world.centerY, 'button3');
-    button.anchor.setTo(0.5,0.5);
+    let button1 = MenuOpt.add.button(MenuOpt.world.centerX,MenuOpt.world.centerY, 'button3');
+    button1.anchor.setTo(0.5,0.5);
     let back = MenuGame.add.button(0,0,'arrow',returnMenu,this,0,0,0);
   }
 }
