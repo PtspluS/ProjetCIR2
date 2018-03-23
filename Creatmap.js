@@ -207,7 +207,7 @@
 			case 22:{ // CAMION ET ROUTE // OBLIGE EN PREMIERE LIGNE DE MATRICE!!!!
 			let barrieres = [];
 			for(let y = 0; y < matrice.length; y++){
-				if(matrice[y][i] == 3 || matrice[y][i] == 4 || matrice[y][i+1] == 3 || matrice[y][i+1] == 4){
+				if(matrice[y][i] == 22 || matrice[y][i+1] == 22){
 					let tuile = platformsSolid.create(i*64, y*64, 'route');
 					tuile.body.immovable = true;
 					let barre = object.create(i*64, y*64 - 30, 'barriere');
