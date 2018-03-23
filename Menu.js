@@ -46,6 +46,7 @@ var Menu = {
   }
   let goGame = function(){
     musicMenu.stop();
+    game.id = this.cursorMap;
     this.state.start('Game');
   }
   let leftMap = function(){

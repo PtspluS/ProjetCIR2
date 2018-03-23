@@ -1,5 +1,5 @@
 var game = {
-
+	id :0,
 	preload : function() {
 		for (let sk in skins) {//boucle de chargement de tt les skins
 			game.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
@@ -34,16 +34,10 @@ var game = {
 	},
 	create : function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		var level = levels[0];
-
+		let level = levels[this.id];
 		map = Creatmap(level);
-
-
 			player1=new Player('bob',64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
 			player2=new Player('billy',64*level.spawnpoints[1][0]+16,64*level.spawnpoints[1][1],object,itemGui);
-			
-
-
 /*
 			map[1][13].drop(itemsId.Verre);
 			map[1][14].drop(itemsId.Verre);
@@ -60,7 +54,6 @@ var game = {
 			map[5][15].drop(itemsId.Pneu);
 			map[5][16].drop(itemsId.Pneu);
 */
-
 		},
 		update : function() {
 
