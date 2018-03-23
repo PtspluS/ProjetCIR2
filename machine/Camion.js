@@ -9,7 +9,7 @@ Camion = function(sprite, posx, groupe, barres){
 		this.barrieres[i].animations.add('baisse', [2,1,0], 3, false);
 	}
 	
-	setTimeout(() => {this.roule();} , 5000);
+	game.time.events.add(5000, () => {this.roule();} , this);
 }
 
 Camion.prototype.roule = function(){
@@ -17,14 +17,12 @@ Camion.prototype.roule = function(){
 		this.barrieres[i].play('leve');
 	}
 	this.camion.body.velocity.y = 150;
-	setTimeout(() => {
+	game.time.events.add(7000, () => {
 		this.camion.body.velocity.y = 0;
 		this.camion.y = -250;
 		for(let i = 0; i < this.barrieres.length; i++){
 			this.barrieres[i].play('baisse');
 		}
-		setTimeout(() => {this.roule();} , 5000);
-	} , 7000);
+		game.time.events.add(5000, () => {this.roule();} , this);
+	} , this);
 }
-
-//this.player.body.velocity.x = this.speed
