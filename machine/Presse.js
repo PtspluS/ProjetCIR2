@@ -65,7 +65,7 @@ Presse.prototype.typesort = function(itemId, itemend){
 	this.presse.play('actif');
 	this.stock = itemId;
 	this.item.frame = itemId;
-	setTimeout(() => {this.iswork(itemend);} , 4400);
+	game.time.events.add(4400, () => {this.iswork(itemend);} , this);
 	return;
 }
 

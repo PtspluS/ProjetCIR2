@@ -90,7 +90,7 @@ Compresseur.prototype.typesort = function(itemend){
 	this.item1.frame = 0;
 	this.item2.frame = 0;
 	this.item3.frame = 0;
-	setTimeout(() => {this.iswork(itemend);} , 1400);
+	game.time.events.add(1400, () => {this.iswork(itemend);} , this);
 	return;
 }
 
