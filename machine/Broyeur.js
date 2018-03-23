@@ -61,7 +61,7 @@ Broyeur.prototype.typesort=function(itemId,conteneur,weight,itemend,time){
   this.weight=weight;
   this.broyeur.animations.play('actif');
   this.work=true;
-  setTimeout(() => {this.iswork(itemend);} , time);
+  game.time.events.add(time, () => {this.iswork(itemend);} , this);
 }
 
 Broyeur.prototype.iswork=function(itemId){

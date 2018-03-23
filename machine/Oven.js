@@ -72,7 +72,7 @@ Oven.prototype.typesort=function(itemId,conteneur,weight,itemend,time){
   this.weight=weight;
   this.oven.animations.play('actif');
   this.cook=true;
-  setTimeout(() => {this.iscook(itemend);} , time);
+  game.time.events.add(time, () => {this.iscook(itemend);} , this);
 }
 
 

@@ -53,7 +53,7 @@ Soufflerie.prototype.typesort = function(itemId, itemend){
 	this.work = true;
 	this.souffle.play('actif');
 	this.stock = itemId;
-	setTimeout(() => {this.iswork(itemend);} , 4400);
+	game.time.events.add(4400, () => {this.iswork(itemend);} , this);
 	return;
 }
 

@@ -7,7 +7,7 @@ Arrive = function(sprite,posx,posy,groupe,tabEl,time,pattern){
 	this.pattern = pattern;
 	this.patnum = 0;
 	
-	setTimeout(() => {this.envoie();}, this.time);
+	game.time.events.add(this.time, () => {this.envoie();} , this);
 }
 
 Arrive.prototype.envoie = function(){
@@ -17,7 +17,7 @@ Arrive.prototype.envoie = function(){
 	}else{
 		infront.drop(this.pattern ? this.tab[this.patnum++ % this.tab.length] : this.tab[Math.floor(Math.random() * this.tab.length)]);
 	}
-	setTimeout(() => {this.envoie();}, this.time);
+	game.time.events.add(this.time, () => {this.envoie();} , this);
 }
 
 Arrive.prototype.interact = function(){

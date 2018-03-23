@@ -56,7 +56,7 @@ Conveyor.prototype.stabilize = function(incoming){
 		case 'down':
 			if(this.item.position.y != this.conveyor.position.y + 4){
 				this.item.position.y += 4;
-				setTimeout(() => {this.stabilize(incoming);}, 400);
+				game.time.events.add(400, () => {this.stabilize(incoming);} , this);
 			}else{
 				this.envoie();
 			}
@@ -64,7 +64,7 @@ Conveyor.prototype.stabilize = function(incoming){
 		case 'up':
 			if(this.item.position.y != this.conveyor.position.y + 4){
 				this.item.position.y -= 4;
-				setTimeout(() => {this.stabilize(incoming);}, 400);
+				game.time.events.add(400, () => {this.stabilize(incoming);} , this);
 			}else{
 				this.envoie();
 			}
@@ -72,7 +72,7 @@ Conveyor.prototype.stabilize = function(incoming){
 		case 'left':
 			if(this.item.position.x != this.conveyor.position.x + 4){
 				this.item.position.x -= 4;
-				setTimeout(() => {this.stabilize(incoming);}, 400);
+				game.time.events.add(400, () => {this.stabilize(incoming);} , this);
 			}else{
 				this.envoie();
 			}
@@ -80,7 +80,7 @@ Conveyor.prototype.stabilize = function(incoming){
 		case 'right':
 			if(this.item.position.x != this.conveyor.position.x + 4){
 				this.item.position.x += 4;
-				setTimeout(() => {this.stabilize(incoming);}, 400);
+				game.time.events.add(400, () => {this.stabilize(incoming);} , this);
 			}else{
 				this.envoie();
 			}
@@ -121,9 +121,9 @@ Conveyor.prototype.envoie = function(){
 		case 'up':
 			if(this.item.position.y != this.conveyor.position.y + 4 - 32 && infront.stock == 0 && this.stock != 0){
 				this.item.position.y -= 4;
-				setTimeout(() => {this.envoie();}, 400);
+				game.time.events.add(400, () => {this.envoie();} , this);
 			}else if(infront.stock != 0 && this.stock != 0){
-				setTimeout(() => {this.envoie();}, 400);
+				game.time.events.add(400, () => {this.envoie();} , this);
 			}else if(this.stock != 0){
 				if(infront.recup != undefined){
 					infront.recup(this.stock, this.sens);
@@ -140,9 +140,9 @@ Conveyor.prototype.envoie = function(){
 		case 'down':
 			if(this.item.position.y != this.conveyor.position.y + 4 + 32 && infront.stock == 0 && this.stock != 0){
 				this.item.position.y += 4;
-				setTimeout(() => {this.envoie();}, 400);
+				game.time.events.add(400, () => {this.envoie();} , this);
 			}else if(infront.stock != 0 && this.stock != 0){
-				setTimeout(() => {this.envoie();}, 400);
+				game.time.events.add(400, () => {this.envoie();} , this);
 			}else if(this.stock != 0){
 				if(infront.recup != undefined){
 					infront.recup(this.stock, this.sens);
@@ -159,9 +159,9 @@ Conveyor.prototype.envoie = function(){
 		case 'right':
 			if(this.item.position.x != this.conveyor.position.x + 4 + 32 && infront.stock == 0 && this.stock != 0){
 				this.item.position.x += 4;
-				setTimeout(() => {this.envoie();}, 400);
+				game.time.events.add(400, () => {this.envoie();} , this);
 			}else if(infront.stock != 0 && this.stock != 0){
-				setTimeout(() => {this.envoie();}, 400);
+				game.time.events.add(400, () => {this.envoie();} , this);
 			}else if(this.stock != 0){
 				if(infront.recup != undefined){
 					infront.recup(this.stock, this.sens);
@@ -178,9 +178,9 @@ Conveyor.prototype.envoie = function(){
 		case 'left':
 			if(this.item.position.x != this.conveyor.position.x + 4 - 32 && infront.stock == 0 && this.stock != 0){
 				this.item.position.x -= 4;
-				setTimeout(() => {this.envoie();}, 400);
+				game.time.events.add(400, () => {this.envoie();} , this);
 			}else if(infront.stock != 0 && this.stock != 0){
-				setTimeout(() => {this.envoie();}, 400);
+				game.time.events.add(400, () => {this.envoie();} , this);
 			}else if(this.stock != 0){
 				if(infront.recup != undefined){
 					infront.recup(this.stock, this.sens);

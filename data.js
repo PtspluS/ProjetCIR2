@@ -12,7 +12,7 @@ var levels = [
 			[3,0,0,0,0,0,0,0,0,10,13,0,0,0,0,0,0,0,0,20,3],
 			[3,0,0,0,0,0,0,0,0,10,13,0,0,0,0,0,0,0,0,20,3],
 			[3,0,0,0,0,0,0,0,0,10,13,0,0,0,0,0,0,0,0,20,3],
-			[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,22,22,3]
+			[3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,22,22,3,3]
 		],
 		items: [itemsId.Pneu, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau],
 		itemsTime: 10000,
@@ -62,7 +62,7 @@ var levels = [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
     ],
     items: [itemsId.Pneu,itemsId.Plastique],
-    itemsTime: 15000,
+    itemsTime: 10000,
     itemsPattern: false,
     spawnpoints: [[5,6],[6,6]],
     seauSpawnpoints: [[8,6],[9,6]],
@@ -96,7 +96,7 @@ var levels = [
 
   }
 ]
-var skins = [//permet de stocker tt les skins des persos 
+var skins = [//permet de stocker tt les skins des persos
   {
     name : 'bob',
     sprite : 'assets/bob.png',
