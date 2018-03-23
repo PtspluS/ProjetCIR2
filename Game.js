@@ -30,8 +30,8 @@ var game = {
 	},
 	create : function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		var level = levels[0];
-		
+		var level = levels[1];
+
 		map = Creatmap(level);
 
 

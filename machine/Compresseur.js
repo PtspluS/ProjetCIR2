@@ -37,7 +37,7 @@ Compresseur.prototype.interact = function(){
 }
 
 Compresseur.prototype.drop = function(itemId){
-	if((itemId != 0 && this.stockf != 0) || (itemId != 0 && itemId != this.stock1 && this.stock2 != 0 && this.stock3 != 0)){
+	if((itemId != 0 && this.stockf != 0) || (itemId != 0 && itemId != this.stock1 && this.stock2 != 0 && this.stock3 != 0)||this.work){
 		return itemId;
 	}else if(this.stockf != 0 && itemId == 0){
 		itemId = this.stockf;

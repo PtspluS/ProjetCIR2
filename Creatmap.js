@@ -1,7 +1,7 @@
  Creatmap= function(level){
-	 
+
 	var matrice = level.matrice;
-		 
+
 	var map = Array(matrice.length);
 	for(let i = 0; i < matrice.length; i++){
 	  map[i] = Array(matrice[0].length);
@@ -206,5 +206,8 @@
 		  }
 		}
 	  }}
+    for(let i =0;i<level.seauSpawnpoints.length;i++){
+      map[level.seauSpawnpoints[i][1]][level.seauSpawnpoints[i][0]].drop(itemsId.Sceau);
+    }
 	  return map;
   }
