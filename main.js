@@ -1,4 +1,4 @@
-var jeu = new Phaser.Game(64*21,  64*10, Phaser.AUTO, '');
+var jeu = new Phaser.Game(64*21,  64*12, Phaser.AUTO, '');
 //64*matrice[0].length,  64*matrice.length
 //Donne les différents menus
 jeu.state.add('Menu', Menu);

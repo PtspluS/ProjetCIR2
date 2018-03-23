@@ -7,7 +7,7 @@ var Menu = {
     Menu.load.spritesheet('controls','assets/controls.png',296,80);
   },
   create : function(){
-	jeu.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT; // SHOW_ALL pour eviter les etirements
+	jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
     musicMenu = Menu.add.audio('testmus');
     if(musicMenu.pause()===true){
       musicMenu.resume();
@@ -26,8 +26,8 @@ var Menu = {
 	banner.play('shiny');
     banner.anchor.setTo(0.5,0.5);
     banner.scale.setTo(1,1);
-    let button = Menu.add.button(Menu.world.centerX, Menu.world.centerY+20, 'game', goMenuGame,this,1,0,2);
-    button.anchor.setTo(0.5,0.5);
+    let btt1 = Menu.add.button(Menu.world.centerX, Menu.world.centerY+20, 'game', goMenuGame,this,1,0,2);
+    btt1.anchor.setTo(0.5,0.5);
     let btt = Menu.add.button(Menu.world.centerX, Menu.world.centerY+134,'controls',goMenuOpt, this,1,0,2);
     btt.anchor.setTo(0.5,0.5);
   }
