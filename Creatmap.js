@@ -89,7 +89,7 @@
 			tuile.body.immovable = true;
 			map[j][i] = 0;
 			let wall = object.create(i*64, j*64 - (74-64), 'wallposters');
-			wall.frame = Math.floor(Math.random() * 11);
+			wall.frame = Math.floor(Math.random() * 12);
 		  break;}
 
 
