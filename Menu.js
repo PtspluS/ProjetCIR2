@@ -47,6 +47,8 @@ let returnMenu = function(){
 let goGame = function(){
   musicMenu.stop();
   game.id = this.cursorMap;
+  game.skinP1 = this.skinPlayer1;
+  game.skinP2 = this.skinPlayer2;
   this.state.start('Game');
 }
 
@@ -67,24 +69,10 @@ let rightMap = function(){
   mapName.text = levels[this.cursorMap].name;
   imgMap.image = levels[this.cursorMap].name;
 }
-let leftSkin = function(idPlayer){
-  if(this.idPlayer<=0){
-    this.('skinPlayer'+idPlayer) = skins.length-1;
-  }
-  else{
-    this.('skinPlayer'+idPlayer)--;
-  }
-  ('skinName'+idPlayer).text = skins[idplayer].name;
-}
-let rightSkin = function(idPlayer){
-  this.('skinPlayer'+idPlayer) = this.('skinPlayer'+idPlayer)%skins.length;
-  ('skinName'+idPlayer).text = skins[idplayer].name;
-}
 var MenuGame ={
   cursorMap : 0,
   skinPlayer1:0,
   skinPlayer2:0,
-  skinPlayer3:0,
   preload : function(){
     MenuGame.load.spritesheet('go','assets/go.png',104,80);
     MenuGame.load.spritesheet('back','assets/backbutton.png',68,84);
@@ -101,14 +89,8 @@ var MenuGame ={
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
     imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
     imgMap.anchor.setTo(0.5,0.5);
-    sprite1 = MenuGame.add.sprite(MenuGame.world.centerX-0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer1].sprite);
-    sprite1.anchor.setTo(0.5,0.5);
-    sprite2 = MenuGame.add.sprite(MenuGame.world.centerX+0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer2].sprite);
-    sprite2.anchor.setTo(0.5,0.5);
-    sprite3 = MenuGame.add.sprite(MenuGame.world.centerX+0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer3].sprite);
-    sprite3.anchor.setTo(0.5,0.5);
-    let button = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', goGame, this,1,0,2);
-    button.anchor.setTo(0.5,0.5);
+    let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', goGame, this,1,0,2);
+    button1.anchor.setTo(0.5,0.5);
     let button2 = MenuGame.add.button(MenuGame.world.centerX-128, MenuGame.world.centerY+imgMap.height/2+80,'leftArrow',leftMap,this,1,0,2);
     button2.anchor.setTo(0.5,0.5);
     let button3 = MenuGame.add.button(MenuGame.world.centerX+128, MenuGame.world.centerY+imgMap.height/2+80,'rightArrow',rightMap,this,1,0,2);
@@ -117,10 +99,47 @@ var MenuGame ={
     mapName = MenuGame.add.text(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-10,levels[this.cursorMap].name);
     mapName.fill = 'white';
     mapName.anchor.setTo(0.5,0.5);
-    skinName1 = MenuGame.add.text(MenuGame.world.centerX-0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY-sprite1.height/2-10,skins[this.skinPlayer1].name);
-    skinName2 = MenuGame.add.text(MenuGame.world.centerX+0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY-sprite2.height/2-10,skins[this.skinPlayer2].name);
-    skinName1 = MenuGame.add.text(MenuGame.world.centerX+0.5*MenuGame.world.centerX,MenuGame.world.centerY+0.5*MenuGame.world.centerY-sprite3.height/2-10,skins[this.skinPlayer3].name);
-  }
+	
+	// Selection Perso 1
+    sprite1 = MenuGame.add.sprite(0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer1].name);
+    sprite1.anchor.setTo(0.5,0.5);
+	sprite1.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+	sprite1.play('turn');
+    let bp1 = MenuGame.add.button(0.5*MenuGame.world.centerX-128, 0.5*MenuGame.world.centerY-sprite1.height/2-10+80,'leftArrow',() => {
+			this.skinPlayer1 = (this.skinPlayer1 == 0 ? skins.length - 1 : this.skinPlayer1 - 1)
+			sprite1.loadTexture( skins[this.skinPlayer1].name, 0);
+			sprite1.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+			sprite1.play('turn');
+		},this,1,0,2);
+	bp1.anchor.setTo(0.5,0.5);
+    let bp2 = MenuGame.add.button(0.5*MenuGame.world.centerX+128, 0.5*MenuGame.world.centerY-sprite1.height/2-10+80,'rightArrow',() => {
+			this.skinPlayer1 = (this.skinPlayer1 == skins.length - 1 ? 0 : this.skinPlayer1 + 1)
+			sprite1.loadTexture( skins[this.skinPlayer1].name, 0);
+			sprite1.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+			sprite1.play('turn');
+		},this,1,0,2);
+	bp2.anchor.setTo(0.5,0.5);
+	
+	
+    sprite2 = MenuGame.add.sprite(1.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer2].name);
+    sprite2.anchor.setTo(0.5,0.5);
+	sprite2.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+	sprite2.play('turn');
+    let bpp1 = MenuGame.add.button(1.5*MenuGame.world.centerX-128, 0.5*MenuGame.world.centerY-sprite2.height/2-10+80,'leftArrow',() => {
+			this.skinPlayer2 = (this.skinPlayer2 == 0 ? skins.length - 1 : this.skinPlayer2 - 1)
+			sprite2.loadTexture( skins[this.skinPlayer2].name, 0);
+			sprite2.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+			sprite2.play('turn');
+		},this,1,0,2);
+    bpp1.anchor.setTo(0.5,0.5);
+    let bpp2 = MenuGame.add.button(1.5*MenuGame.world.centerX+128, 0.5*MenuGame.world.centerY-sprite2.height/2-10+80,'rightArrow',() => {
+			this.skinPlayer2 = (this.skinPlayer2 == skins.length - 1 ? 0 : this.skinPlayer2 + 1)
+			sprite2.loadTexture( skins[this.skinPlayer2].name, 0);
+			sprite2.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+			sprite2.play('turn');
+		},this,1,0,2);
+    bpp2.anchor.setTo(0.5,0.5);
+	}
 }
 
 var MenuOpt ={

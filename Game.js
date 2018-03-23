@@ -1,5 +1,7 @@
 var game = {
 	id :0,
+	skinP1 :0,
+	skinP2 :0,
 	preload : function() {
 		for (let sk in skins) {//boucle de chargement de tt les skins
 			game.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
@@ -36,8 +38,8 @@ var game = {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		let level = levels[this.id];
 		map = Creatmap(level);
-			player1=new Player('bob',64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
-			player2=new Player('billy',64*level.spawnpoints[1][0]+16,64*level.spawnpoints[1][1],object,itemGui);
+			player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
+			player2=new Player(skins[this.skinP2].name,64*level.spawnpoints[1][0]+16,64*level.spawnpoints[1][1],object,itemGui);
 /*
 			map[1][13].drop(itemsId.Verre);
 			map[1][14].drop(itemsId.Verre);
