@@ -48,12 +48,12 @@ var levels = [
 	tutoText: [
 		'Bon les gars v\'là le topo ... Je suis dans la merde ...',
     'Pour faire simple on m\'a chargé de monter un équipe pour traiter les déchets qui arrivent depuis la ville.',
-    'Le problème c\'est que la ville en produit trop et que toutes les équipes qui sont venu avant n\'ont pas réussi à gérer le problème',
+    'Le problème c\'est que la ville en produit trop et que toutes les équipes qui sont venu avant n\'ont pas réussi à gérer le problème.',
     'J\'ai dû toutes les virer ...',
     'Donc vous êtes ma dernière chance ... v\'là la chance.',
     'Pour commencer on va faire simple ...\ncar de toute façon vous avez raté tous les tests donc je peux rien vous demander de compliquer ...',
-    'On va commencer par le tri des pneux, ils y sont tous arrivés même Pierre.',
-    'Sur le tapis roulant il y a des pneux qui vont arriver\nchoppez les avant qu\'ils ne soient incinérés et mettez les dans le broyeur.',
+    'On va commencer par le tri des pneux, ils y sont tous arrivés.',
+    'Sur le tapis roulant il y a des pneux qui vont arriver, choppez les avant qu\'ils ne soient incinérés et mettez les dans le broyeur.',
     'Une fois broyez, mettez le tous dans le bac, il y en a qu\'un vous pouvez pas vous tromper ...\nVous avez des question ?',
     'De toute façon je m\'en fou allez GO !!!'
 	]
@@ -79,7 +79,18 @@ var levels = [
     seauSpawnpoints: [[8,6],[9,6]],
     imagePath: "/assets/levels/",
     name: "Level 2",
-	tutoText: []
+	tutoText: [
+    'Vous avez réussi à recycler des pneux, mais bon Pierre aussi donc vous avez rien fait de fou.',
+    'Là on me demande de tri... de vous faire trier des pneux et des bidons de plastique.',
+    'Pour les pneux vous savez comment faire pas besoin de vous réexpliquer.\nPour les bidons vu vos résultats aux tests je vais vous réexpliquer.',
+    'Un bidon ça se prend et ça se compresse !!! Pour compresser je vous ai mis une machine,\nvous voyez à quoi ressemble le broyeur ? Bah c\'est l\'autre machine.',
+    'Une fois compressé, vous pouvez enfin le broyer, puis comme pour les pneux vous jeter le tout dans le bac mais pas celui des pneux par pitié.',
+    'Oubliez pas non plus que le but du tri c\'est de pas mélanger.',
+    'Donc oubliez pas de laver les seaux dès qu\'ils doivent contenir autre chose que ce qu\'ils contenaient.',
+    'Pour laver les seaux, le faites pas dans les chiottes, j\'ai mis des bacs pour ça.',
+    'Par contre v\'là l\'huile de coude que vous devrez user pour laver les seaux, sinon vous pouvez attendre longtemps.',
+    'Toujours pas de question ?',
+  ]
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
