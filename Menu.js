@@ -44,13 +44,6 @@ let returnMenu = function(){
   musicMenu.stop();//met la musique en pause pour le changement de page
   this.state.start('Menu');
 }
-let goGame = function(){
-  musicMenu.stop();
-  game.id = this.cursorMap;
-  game.skinP1 = this.skinPlayer1;
-  game.skinP2 = this.skinPlayer2;
-  this.state.start('Game');
-}
 
 
 
@@ -89,12 +82,33 @@ var MenuGame ={
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
     imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
     imgMap.anchor.setTo(0.5,0.5);
-    let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', goGame, this,1,0,2);
+	
+	// Clique sur GO
+    let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', () => {
+		musicMenu.stop();
+		if(levels[this.cursorMap].tutoText.length < 1){
+			game.id = this.cursorMap;
+			game.skinP1 = this.skinPlayer1;
+			game.skinP2 = this.skinPlayer2;
+			this.state.start('Game');
+		}else{
+			Tuto.id = this.cursorMap;
+			Tuto.skinP1 = this.skinPlayer1;
+			Tuto.skinP2 = this.skinPlayer2;
+			this.state.start('Tuto');
+		}
+	}, this,1,0,2);
     button1.anchor.setTo(0.5,0.5);
+	
+	// Fleche Gauche
     let button2 = MenuGame.add.button(MenuGame.world.centerX-128, MenuGame.world.centerY+imgMap.height/2+80,'leftArrow',leftMap,this,1,0,2);
     button2.anchor.setTo(0.5,0.5);
+	
+	// Fleche Droite
     let button3 = MenuGame.add.button(MenuGame.world.centerX+128, MenuGame.world.centerY+imgMap.height/2+80,'rightArrow',rightMap,this,1,0,2);
     button3.anchor.setTo(0.5,0.5);
+	
+	// Retour
     let back = MenuGame.add.button(0,0,'back',returnMenu,this,1,0,2);
     mapName = MenuGame.add.text(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-10,levels[this.cursorMap].name);
     mapName.fill = 'white';

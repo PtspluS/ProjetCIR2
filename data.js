@@ -20,7 +20,8 @@ var levels = [
 		spawnpoints: [[3,4],[2,4]],
 		seauSpawnpoints: [],
 		imagePath: "/assets/levels/",
-		name: "Level test"
+		name: "Level test",
+		tutoText: []
   },
   {
     matrice: [
@@ -43,7 +44,11 @@ var levels = [
     spawnpoints: [[5,6],[6,6]],
     seauSpawnpoints: [[7,4],[12,7]],
     imagePath: "/assets/levels/",
-    name: "Level 1"
+    name: "Level 1",
+	tutoText: [
+		'Recycler des Pneux c\'est bien!',
+		'Bon, on va quand meme faire ce qu\'on pneu...'
+	]
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -65,7 +70,8 @@ var levels = [
     spawnpoints: [[5,6],[6,6]],
     seauSpawnpoints: [[8,6],[9,6]],
     imagePath: "/assets/levels/",
-    name: "Level 2"
+    name: "Level 2",
+	tutoText: []
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -87,7 +93,8 @@ var levels = [
     spawnpoints: [[5,6],[6,6]],
     seauSpawnpoints: [[4,7]],
     imagePath: "/assets/levels/",
-    name: "Level 3"
+    name: "Level 3",
+	tutoText: []
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -109,9 +116,11 @@ var levels = [
     spawnpoints: [[7,5],[13,5]],
     seauSpawnpoints: [[10,4],[10,7]],
     imagePath: "/assets/levels/",
-    name: "Level Coop - 1"
+    name: "Level Coop - 1",
+	tutoText: []
   }
-]
+];
+
 var skins = [//permet de stocker tt les skins des persos
   {
     name : 'billy',
@@ -129,4 +138,4 @@ var skins = [//permet de stocker tt les skins des persos
     width : 44,
     height : 68,
   },
-]
+];
