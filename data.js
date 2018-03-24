@@ -113,7 +113,15 @@ var levels = [
     seauSpawnpoints: [[4,7]],
     imagePath: "/assets/levels/",
     name: "Level 3",
-	tutoText: []
+	tutoText: [
+    'Maintenant va falloir créer de la valeur à ce que vous faites car sinon vous servez à rien.',
+    'C\'est bien beau de broyer des trucs mais maintenant va falloir créer, bande de larv...\neuh laver.',
+    'Ouai c\'est ça, va falloir laver des trucs et tout. V\'là le plan, il va y avoir du carton qui va arriver.',
+    'Faut me compresser ça, puis me le laver dans les bacs comme d\'habitude, commencez pas à inventer des trucs, vous êtes pas encore assez qualifiés.',
+    'Après une fois que c\'est lavé, faut me foutre ça dans la presse. Vous récupérerez les plaques et les mettrez dans le bon bac.',
+    'Par contre j\'ai vu que la dernière fois vous saviez pas mettre plusieurs objets dans le compresseur. Donc soit vous êtes cons, soit vous ..., non vous êtes juste cons.',
+    'Donc merci de pas oublier sinon on va perdre du temps et moi ... euh nous ... de l\'argent.'
+  ]
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -136,7 +144,13 @@ var levels = [
     seauSpawnpoints: [[10,4],[10,7]],
     imagePath: "/assets/levels/",
     name: "Level Coop - 1",
-	tutoText: []
+	tutoText: [
+    'Salut, je remplace Big Boss ... mais si Big Boss ... un grand blond ... voilà, fort sympatique ... ah non.',
+    'Bref, il est pas en état de vous aider ... hum, il a pas assumé la bière d\'hier.\nBon ok, les bières.',
+    'Ici ça va être un peu plus complex, vous allez être séparés.\nVa falloir bosser ensemble vu que vous pouvez pas accéder à toutes les machines.',
+    'Donc soit vous utilisez les tables soit vous avez assez confiance dans votre camarade pour qu\'il récupère l\'objet avant l\'incinérateur.'
+    'En résumé vous allez galérer, ça va être chaud mais c\'est un bon moyen de voir si vous savez bien communiquer.'
+  ]
   }
 ];
 
