@@ -1,6 +1,5 @@
 Camion = function(sprite, posx, groupe, barres){
 	this.camion = groupe.create(posx,-250,sprite);
-	game.physics.arcade.enable(this.camion);
 	this.camion.body.immovable = true;
 	
 	this.barrieres = barres;
@@ -10,6 +9,14 @@ Camion = function(sprite, posx, groupe, barres){
 	}
 	
 	game.time.events.add(5000, () => {this.roule();} , this);
+}
+
+Camion.prototype.interact = function(){
+	return;
+}
+
+Camion.prototype.drop = function(itemId){
+	return itemId;
 }
 
 Camion.prototype.roule = function(){
