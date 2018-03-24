@@ -154,7 +154,8 @@ Player.prototype.wait=function(){
 }
 
 Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,otherplayer){
-
+  var hitPlayer = game.physics.arcade.collide(this.player,otherplayer.player);
+  
   this.item.x = this.player.x - 6;
   this.item.y = this.player.y - 36;
 
@@ -214,7 +215,6 @@ if(game.input.keyboard.isDown(cursorinteract) && this.interactActive == false &&
   this.interactActive = false;
 }
 
-  var hitPlayer = game.physics.arcade.collide(this.player,otherplayer.player);
   var hitPlatform = game.physics.arcade.collide(this.player,platforms);
 }
 

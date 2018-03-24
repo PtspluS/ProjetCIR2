@@ -72,7 +72,7 @@ let rightMap = function(){
 var MenuGame ={
   cursorMap : 0,
   skinPlayer1:0,
-  skinPlayer2:0,
+  skinPlayer2:1,
   preload : function(){
     MenuGame.load.spritesheet('go','assets/go.png',104,80);
     MenuGame.load.spritesheet('back','assets/backbutton.png',68,84);
