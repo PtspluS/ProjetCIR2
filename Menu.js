@@ -103,6 +103,7 @@ var MenuGame ={
 	// Selection Perso 1
     sprite1 = MenuGame.add.sprite(0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer1].name);
     sprite1.anchor.setTo(0.5,0.5);
+	sprite1.scale.setTo(2,2);
 	sprite1.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
 	sprite1.play('turn');
     let bp1 = MenuGame.add.button(0.5*MenuGame.world.centerX-128, 0.5*MenuGame.world.centerY-sprite1.height/2-10+80,'leftArrow',() => {
@@ -123,6 +124,7 @@ var MenuGame ={
 	
     sprite2 = MenuGame.add.sprite(1.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer2].name);
     sprite2.anchor.setTo(0.5,0.5);
+	sprite2.scale.setTo(2,2);
 	sprite2.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
 	sprite2.play('turn');
     let bpp1 = MenuGame.add.button(1.5*MenuGame.world.centerX-128, 0.5*MenuGame.world.centerY-sprite2.height/2-10+80,'leftArrow',() => {
