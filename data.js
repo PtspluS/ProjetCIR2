@@ -46,8 +46,16 @@ var levels = [
     imagePath: "/assets/levels/",
     name: "Level 1",
 	tutoText: [
-		'Recycler des Pneux c\'est bien!',
-		'Bon, on va quand meme faire ce qu\'on pneu...'
+		'Bon les gars v\'là le topo ... Je suis dans la merde ...',
+    'Pour faire simple on m\'a chargé de monter un équipe pour traiter les déchets qui arrivent depuis la ville.',
+    'Le problème c\'est que la ville en produit trop et que toutes les équipes qui sont venu avant n\'ont pas réussi à gérer le problème',
+    'J\'ai dû toutes les virer ...',
+    'Donc vous êtes ma dernière chance ... v\'là la chance.',
+    'Pour commencer on va faire simple ...\ncar de toute façon vous avez raté tous les tests donc je peux rien vous demander de compliquer ...',
+    'On va commencer par le tri des pneux, ils y sont tous arrivés même Pierre.',
+    'Sur le tapis roulant il y a des pneux qui vont arriver\nchoppez les avant qu\'ils ne soient incinérés et mettez les dans le broyeur.',
+    'Une fois broyez, mettez le tous dans le bac, il y en a qu\'un vous pouvez pas vous tromper ...\nVous avez des question ?',
+    'De toute façon je m\'en fou allez GO !!!'
 	]
   },{
     matrice: [
