@@ -160,13 +160,14 @@ var MenuGame ={
 
 var MenuOpt ={
   preload: function(){
-    MenuOpt.load.image('button3','assets/table.png');
+    MenuOpt.load.image('button1','assets/table.png');
     MenuOpt.load.spritesheet('back','assets/backbutton.png',68,84);
   },
   create : function(){
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
-    let button1 = MenuOpt.add.button(MenuOpt.world.centerX,MenuOpt.world.centerY, 'button3');
+    let button1 = MenuOpt.add.button(MenuOpt.world.centerX,MenuOpt.world.centerY, 'button1');
     button1.anchor.setTo(0.5,0.5);
+    
     let back = MenuOpt.add.button(0,0,'back',returnMenu,this,1,0,2);
   }
 }
