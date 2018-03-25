@@ -148,7 +148,7 @@ var levels = [
     'Salut, je remplace Big Boss ... mais si Big Boss ... un grand blond ... voilà, fort sympatique ... ah non.',
     'Bref, il est pas en état de vous aider ... hum, il a pas assumé la bière d\'hier.\nBon ok, les bières.',
     'Ici ça va être un peu plus complex, vous allez être séparés.\nVa falloir bosser ensemble vu que vous pouvez pas accéder à toutes les machines.',
-    'Donc soit vous utilisez les tables soit vous avez assez confiance dans votre camarade pour qu\'il récupère l\'objet avant l\'incinérateur.'
+    'Donc soit vous utilisez les tables soit vous avez assez confiance dans votre camarade pour qu\'il récupère l\'objet avant l\'incinérateur.',
     'En résumé vous allez galérer, ça va être chaud mais c\'est un bon moyen de voir si vous savez bien communiquer.'
   ]
   }
