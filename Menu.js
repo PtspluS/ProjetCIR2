@@ -122,7 +122,7 @@ var MenuGame ={
     sprite1.play('turn');
     let bp1 = MenuGame.add.button(0.5*MenuGame.world.centerX-128, 0.5*MenuGame.world.centerY-sprite1.height/2-10+80,'leftArrow',() => {
       this.skinPlayer1 = (this.skinPlayer1 == 0 ? skins.length - 1 : this.skinPlayer1 - 1)
-      sprite1.loadTexture( skins[this.skinPlayer1].name, 0);
+      sprite1.loadTexture(skins[this.skinPlayer1].name, 0);
       sprite1.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
       sprite1.play('turn');
     },this,1,0,2);
