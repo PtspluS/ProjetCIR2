@@ -122,7 +122,33 @@ var levels = [
     'Par contre j\'ai vu que la dernière fois vous saviez pas mettre plusieurs objets dans le compresseur. Donc soit vous êtes cons, soit vous ..., non vous êtes juste cons.',
     'Donc merci de pas oublier sinon on va perdre du temps et moi ... euh nous ... de l\'argent.'
   ]
-  },{
+},{
+    matrice: [
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1, 3, 3, 3, 4, 3, 4, 3, 3, 3, 4, 3, 4, 3, 3, 3,-1,-1,-1],
+      [-1,-1,-1, 3, 1, 1, 0,17, 0, 0, 0,20, 0, 0, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 9, 3,-1,-1,-1],
+      [-1,-1,-1, 3, 0, 0, 0, 0, 0,15, 0, 0, 0, 0, 0, 0, 9, 3,-1,-1,-1],
+      [-1,-1,-1, 3, 0, 6, 0, 0, 0,11, 0, 0, 8, 8, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3, 0, 0, 0, 0, 0,11, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3, 0, 2, 2, 0, 0,12,12,12,12,12,12,12,14, 3,-1,-1,-1],
+      [-1,-1,-1, 3, 3, 3, 4, 3, 4, 3, 3, 3, 4, 3, 4, 3, 3, 3,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+    ],
+    items: [itemsId.Metal,itemsId.Carton],
+    itemsTime: 10000,
+    itemsPattern: false,
+    spawnpoints: [[4,5],[14,4]],
+    seauSpawnpoints: [[13,4],[5,8]],
+    imagePath: "/assets/levels/",
+    name: "Level 4",
+	tutoText: [
+
+  ]
+  }
+  ,{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1,-1,-1, 3, 3, 3, 4, 3, 4, 3, 3, 3, 4, 3, 4, 3, 3, 3,-1,-1,-1],
@@ -152,6 +178,8 @@ var levels = [
     'En résumé vous allez galérer, ça va être chaud mais c\'est un bon moyen de voir si vous savez communiquer.'
   ]
   }
+
+
 ];
 
 var skins = [//permet de stocker tt les skins des persos
