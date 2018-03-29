@@ -2,15 +2,12 @@ var game = {
 	id :0,
 	skinP1 :0,
 	skinP2 :0,
-	controlP1 : [Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3],
+	controlP1 : [Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3,Phaser.Keyboard.ENTER],
 	controlP2 : [Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.F,Phaser.Keyboard.G],
 	preload : function() {
 		for (let sk in skins) {//boucle de chargement de tout les skins
 			game.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
 		}
-		//game.load.spritesheet('billy', 'assets/billy.png', 44, 68);
-		//game.load.spritesheet('walle', 'assets/walle.png', 44, 68);
-		//game.load.spritesheet('bob', 'assets/bob.png', 44, 68);
 		game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
 		game.load.spritesheet('items','assets/items.png', 56, 56);
 		game.load.spritesheet('itemsbubbles','assets/itemsbubbles.png', 28, 28);
@@ -35,35 +32,27 @@ var game = {
 		game.load.image('benneplastique','assets/benneplastique.png');
 		game.load.image('bennepneu','assets/bennepneu.png');
 		game.load.image('bennecarton','assets/bennecarton.png');
+		//for menu in Game
+		game.load.spritesheet('pauseBp','assets/go.png',104,80);
 	},
 	create : function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		let level = levels[this.id];
 		map = Creatmap(level);
-			player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
-			player2=new Player(skins[this.skinP2].name,64* level.spawnpoints[1][0] +16,64*level.spawnpoints[1][1],object,itemGui);
-/*
-			map[1][13].drop(itemsId.Verre);
-			map[1][14].drop(itemsId.Verre);
-			map[3][2].drop(itemsId.Sceau);
-			map[2][6].drop(itemsId.Metal);
-			map[2][7].drop(itemsId.Sceau);
-			map[2][8].drop(itemsId.Metal);
-			map[3][6].drop(itemsId.Metal);
-			map[3][7].drop(itemsId.Pneu);
-			map[3][8].drop(itemsId.Sceau);
-			map[3][10].drop(itemsId.Carton);
-			map[3][11].drop(itemsId.Plastique);
-			map[3][12].drop(itemsId.Plastique);
-			map[5][15].drop(itemsId.Pneu);
-			map[5][16].drop(itemsId.Pneu);
-*/
+		player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
+		player2=new Player(skins[this.skinP2].name,64* level.spawnpoints[1][0] +16,64*level.spawnpoints[1][1],object,itemGui);
+
+		//menu ingame
+		var keyPause = game.input.keyboard.addKey(this.controlP1[6]);
+		keyPause.onDown.add(()=>{
+			jeu.paused ? jeu.paused = false : jeu.paused = true;
+			this.state.start('Menu')
+			},this);
 		},
 		update : function() {
 			player2.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player1);
 			player1.update(this.controlP2[0],this.controlP2[1],this.controlP2[2],this.controlP2[3],this.controlP2[4],this.controlP2[5],platformsSolid,player2);
 			object.sort('y', Phaser.Group.SORT_ASCENDING);
-
 		}
 
 	}
