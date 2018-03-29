@@ -8,9 +8,6 @@ var game = {
 		for (let sk in skins) {//boucle de chargement de tout les skins
 			game.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
 		}
-		//game.load.spritesheet('billy', 'assets/billy.png', 44, 68);
-		//game.load.spritesheet('walle', 'assets/walle.png', 44, 68);
-		//game.load.spritesheet('bob', 'assets/bob.png', 44, 68);
 		game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
 		game.load.spritesheet('items','assets/items.png', 56, 56);
 		game.load.spritesheet('itemsbubbles','assets/itemsbubbles.png', 28, 28);
@@ -49,6 +46,7 @@ var game = {
 		var keyPause = game.input.keyboard.addKey(this.controlP1[6]);
 		keyPause.onDown.add(()=>{
 			jeu.paused ? jeu.paused = false : jeu.paused = true;
+			this.state.start('Menu')
 			},this);
 		},
 		update : function() {
