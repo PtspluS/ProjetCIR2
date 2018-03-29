@@ -2,7 +2,7 @@ var game = {
 	id :0,
 	skinP1 :0,
 	skinP2 :0,
-	controlP1 : [Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3],
+	controlP1 : [Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3,Phaser.Keyboard.ENTER],
 	controlP2 : [Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.F,Phaser.Keyboard.G],
 	preload : function() {
 		for (let sk in skins) {//boucle de chargement de tout les skins
@@ -44,9 +44,9 @@ var game = {
 		map = Creatmap(level);
 		player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
 		player2=new Player(skins[this.skinP2].name,64* level.spawnpoints[1][0] +16,64*level.spawnpoints[1][1],object,itemGui);
-		
+
 		//menu ingame
-		var keyPause = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+		var keyPause = game.input.keyboard.addKey(this.controlP1[6]);
 		keyPause.onDown.add(()=>{
 			jeu.paused ? jeu.paused = false : jeu.paused = true;
 			},this);
