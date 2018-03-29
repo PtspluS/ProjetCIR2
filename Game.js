@@ -42,18 +42,19 @@ var game = {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 		let level = levels[this.id];
 		map = Creatmap(level);
-			player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
-			player2=new Player(skins[this.skinP2].name,64* level.spawnpoints[1][0] +16,64*level.spawnpoints[1][1],object,itemGui);
+		player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
+		player2=new Player(skins[this.skinP2].name,64* level.spawnpoints[1][0] +16,64*level.spawnpoints[1][1],object,itemGui);
+		
 		//menu ingame
-			let pauseBp = game.add.button(0,0,'pauseBp',()=>{
-				jeu.paused ? jeu.paused = false : jeu.paused = true;
-			},this, 1, 0, 2);
+		var keyPause = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+		keyPause.onDown.add(()=>{
+			jeu.paused ? jeu.paused = false : jeu.paused = true;
+			},this);
 		},
 		update : function() {
 			player2.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player1);
 			player1.update(this.controlP2[0],this.controlP2[1],this.controlP2[2],this.controlP2[3],this.controlP2[4],this.controlP2[5],platformsSolid,player2);
 			object.sort('y', Phaser.Group.SORT_ASCENDING);
-
 		}
 
 	}
