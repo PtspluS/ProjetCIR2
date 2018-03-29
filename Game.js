@@ -35,6 +35,8 @@ var game = {
 		game.load.image('benneplastique','assets/benneplastique.png');
 		game.load.image('bennepneu','assets/bennepneu.png');
 		game.load.image('bennecarton','assets/bennecarton.png');
+		//for menu in Game
+		game.load.spritesheet('pauseBp','assets/go.png',104,80);
 	},
 	create : function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -42,22 +44,10 @@ var game = {
 		map = Creatmap(level);
 			player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
 			player2=new Player(skins[this.skinP2].name,64* level.spawnpoints[1][0] +16,64*level.spawnpoints[1][1],object,itemGui);
-/*
-			map[1][13].drop(itemsId.Verre);
-			map[1][14].drop(itemsId.Verre);
-			map[3][2].drop(itemsId.Sceau);
-			map[2][6].drop(itemsId.Metal);
-			map[2][7].drop(itemsId.Sceau);
-			map[2][8].drop(itemsId.Metal);
-			map[3][6].drop(itemsId.Metal);
-			map[3][7].drop(itemsId.Pneu);
-			map[3][8].drop(itemsId.Sceau);
-			map[3][10].drop(itemsId.Carton);
-			map[3][11].drop(itemsId.Plastique);
-			map[3][12].drop(itemsId.Plastique);
-			map[5][15].drop(itemsId.Pneu);
-			map[5][16].drop(itemsId.Pneu);
-*/
+		//menu ingame
+			let pauseBp = game.add.button(0,0,'pauseBp',()=>{
+				jeu.paused ? jeu.paused = false : jeu.paused = true;
+			},this, 1, 0, 2);
 		},
 		update : function() {
 			player2.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player1);
