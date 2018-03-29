@@ -167,7 +167,7 @@ var MenuOpt ={
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
     let button1 = MenuOpt.add.button(MenuOpt.world.centerX,MenuOpt.world.centerY, 'button1');
     button1.anchor.setTo(0.5,0.5);
-    
+
     let back = MenuOpt.add.button(0,0,'back',returnMenu,this,1,0,2);
   }
 }
