@@ -25,7 +25,7 @@ var Tuto ={
 	},
 	preload : function(){
 		Tuto.load.spritesheet('martintuto','assets/martintuto.png',140,340);
-		Tuto.load.spritesheet('back','assets/backbutton.png',68,84);
+		Tuto.load.spritesheet('skip','assets/buttons/skip.png',196,80);
 	},
 	create : function(){
 		this.textCursor = 0;
@@ -39,14 +39,13 @@ var Tuto ={
 		texte.fill = 'white';
 		
 		
-		var skipButton = Tuto.add.button(1200,640,'back',() => {
+		var skipButton = Tuto.add.button(1200,640,'skip',() => {
 			game.id = this.id;
 			game.skinP1 = this.skinP1;
 			game.skinP2 = this.skinP2;
 			this.state.start('Game');
 		},this,1,0,2);
 		skipButton.anchor.setTo(0.5,0.5);
-		skipButton.scale.setTo(-1,1);
 		
 		
 		Tuto.input.onDown.add(() => {this.next(texte);}, this);

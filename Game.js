@@ -37,8 +37,8 @@ var game = {
 		
 		//Sprites Pause
 		game.load.spritesheet('help','assets/help.png', 397, 60);
-		game.load.spritesheet('game','assets/game.png',172,80);
-		game.load.spritesheet('controls','assets/controls.png',296,80);
+		game.load.spritesheet('resume','assets/buttons/resume.png',236,80);
+		game.load.spritesheet('menu','assets/buttons/menu.png',168,80);
 	},
 	create : function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -90,7 +90,7 @@ var game = {
 				}
 				
 				// Boutons
-				var pauseResume = game.add.button(200, 200, 'game', () => {
+				var pauseResume = game.add.button(200, 200, 'resume', () => {
 					// Destruction des elements de la pause
 					pauseGroup.removeAll(true,true);
 					
@@ -99,7 +99,7 @@ var game = {
 				pauseResume.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseResume);
 				
-				var pauseMenu = game.add.button(200, 400, 'controls', () => {
+				var pauseMenu = game.add.button(200, 400, 'menu', () => {
 					// Retour au menu
 					jeu.paused = false;
 					this.state.start('Menu');

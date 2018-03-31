@@ -3,8 +3,8 @@ var Menu = {
   preload : function(){
     Menu.load.audio('testmus','musics/testmus.mp3');//Musique du menu
     Menu.load.spritesheet('title','assets/logo.png',408,222);
-    Menu.load.spritesheet('game','assets/game.png',172,80);
-    Menu.load.spritesheet('controls','assets/controls.png',296,80);
+    Menu.load.spritesheet('game','assets/buttons/game.png',172,80);
+    Menu.load.spritesheet('controls','assets/buttons/controls.png',296,80);
   },
   create : function(){
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
@@ -67,10 +67,10 @@ var MenuGame ={
   skinPlayer1:0,
   skinPlayer2:1,
   preload : function(){
-    MenuGame.load.spritesheet('go','assets/go.png',104,80);
-    MenuGame.load.spritesheet('back','assets/backbutton.png',68,84);
-    MenuGame.load.spritesheet('leftArrow', 'assets/leftbutton.png',74,76);
-    MenuGame.load.spritesheet('rightArrow','assets/rightbutton.png',74,76);
+    MenuGame.load.spritesheet('go','assets/buttons/go.png',104,80);
+    MenuGame.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
+    MenuGame.load.spritesheet('leftArrow', 'assets/buttons/leftbutton.png',74,76);
+    MenuGame.load.spritesheet('rightArrow','assets/buttons/rightbutton.png',74,76);
     for (let lvl in levels) {//boucle de chargement de tt les lvl
       MenuGame.load.image(levels[lvl].name,levels[lvl].imagePath);
     };
@@ -161,7 +161,7 @@ var MenuGame ={
 var MenuOpt ={
   preload: function(){
     MenuOpt.load.image('button1','assets/table.png');
-    MenuOpt.load.spritesheet('back','assets/backbutton.png',68,84);
+    MenuOpt.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
   },
   create : function(){
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
