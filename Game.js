@@ -4,6 +4,16 @@ var game = {
 	skinP2 :0,
 	controlP1 : [Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3],
 	controlP2 : [Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.F,Phaser.Keyboard.G],
+	cameraShake: function(count) {
+		this.camera.x+= Math.floor(Math.random() * (20 + 1)) - 10;
+		this.camera.y+= Math.floor(Math.random() * (20 + 1)) - 10;
+		if(count < 10){
+			game.time.events.add(10, () => {this.cameraShake(count+1); } , this);
+		}else{
+			this.camera.x = 0;
+			this.camera.y = 0;
+		}
+    },
 	preload : function() {
 		for (let sk in skins) {//boucle de chargement de tout les skins
 			game.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
@@ -41,7 +51,13 @@ var game = {
 		game.load.spritesheet('menu','assets/buttons/menu.png',168,80);
 	},
 	create : function() {
+		// Lancement de la physique Arcade
 		game.physics.startSystem(Phaser.Physics.ARCADE);
+		
+		// Bordures de la scene
+		game.world.setBounds(-10, -10, jeu.width + 10, jeu.height + 10);
+
+		// Creation de la map
 		let level = levels[this.id];
 		map = Creatmap(level);
 		player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
@@ -54,7 +70,6 @@ var game = {
 			if(jeu.paused){
 				// Destruction des elements de la pause
 				pauseGroup.removeAll(true,true);
-				
 				jeu.paused = false;
 			} else {
 				// Fond Gris
@@ -93,7 +108,6 @@ var game = {
 				var pauseResume = game.add.button(200, 200, 'resume', () => {
 					// Destruction des elements de la pause
 					pauseGroup.removeAll(true,true);
-					
 					jeu.paused = false;
 				},this,1,0,2);
 				pauseResume.anchor.setTo(0.5,0.5);
@@ -110,7 +124,7 @@ var game = {
 				jeu.paused = true;
 			}
 		},this);
-			
+		// FIN PAUSE
 	},
 	update : function() {
 		player2.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player1);

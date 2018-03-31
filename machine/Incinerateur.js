@@ -11,6 +11,7 @@ Incinerateur.prototype.interact = function(){
 
 Incinerateur.prototype.drop = function(itemId){
 	if(itemId != 0){
+		game.cameraShake(0);
 		return 0;
 	}
 	// En cas de possible erreur, on retourne l'objet passe en argument

@@ -8,6 +8,7 @@ var Menu = {
   },
   create : function(){
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
+
     musicMenu = Menu.add.audio('testmus');
     if(musicMenu.pause()===true){
       musicMenu.resume();
