@@ -25,8 +25,11 @@ var Tuto ={
 	},
 	preload : function(){
 		Tuto.load.spritesheet('martintuto','assets/martintuto.png',140,340);
+		Tuto.load.spritesheet('back','assets/backbutton.png',68,84);
 	},
 	create : function(){
+		this.textCursor = 0;
+		this.charCursor = 0;
 		
 		var texte = MenuGame.add.text(MenuGame.world.centerX, 0.7 * MenuGame.world.centerY,"",{ 
 			align: "left",
@@ -34,6 +37,17 @@ var Tuto ={
 			wordWrapWidth: 600
 		});
 		texte.fill = 'white';
+		
+		
+		var skipButton = Tuto.add.button(1200,640,'back',() => {
+			game.id = this.id;
+			game.skinP1 = this.skinP1;
+			game.skinP2 = this.skinP2;
+			this.state.start('Game');
+		},this,1,0,2);
+		skipButton.anchor.setTo(0.5,0.5);
+		skipButton.scale.setTo(-1,1);
+		
 		
 		Tuto.input.onDown.add(() => {this.next(texte);}, this);
 		var tutoGuy = Tuto.add.image(0.5 * MenuGame.world.centerX, MenuGame.world.centerY,'martintuto')

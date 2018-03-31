@@ -2,12 +2,14 @@ var game = {
 	id :0,
 	skinP1 :0,
 	skinP2 :0,
-	controlP1 : [Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3,Phaser.Keyboard.ENTER],
+	controlP1 : [Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3],
 	controlP2 : [Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.F,Phaser.Keyboard.G],
 	preload : function() {
 		for (let sk in skins) {//boucle de chargement de tout les skins
 			game.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
 		}
+		
+		// Sprites du jeu
 		game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
 		game.load.spritesheet('items','assets/items.png', 56, 56);
 		game.load.spritesheet('itemsbubbles','assets/itemsbubbles.png', 28, 28);
@@ -32,8 +34,11 @@ var game = {
 		game.load.image('benneplastique','assets/benneplastique.png');
 		game.load.image('bennepneu','assets/bennepneu.png');
 		game.load.image('bennecarton','assets/bennecarton.png');
-		//for menu in Game
-		game.load.spritesheet('pauseBp','assets/go.png',104,80);
+		
+		//Sprites Pause
+		game.load.spritesheet('help','assets/help.png', 397, 60);
+		game.load.spritesheet('game','assets/game.png',172,80);
+		game.load.spritesheet('controls','assets/controls.png',296,80);
 	},
 	create : function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -42,17 +47,74 @@ var game = {
 		player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
 		player2=new Player(skins[this.skinP2].name,64* level.spawnpoints[1][0] +16,64*level.spawnpoints[1][1],object,itemGui);
 
-		//menu ingame
-		var keyPause = game.input.keyboard.addKey(this.controlP1[6]);
+		// PAUSE
+		var pauseGroup = game.add.group();
+		var keyPause = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		keyPause.onDown.add(()=>{
-			jeu.paused ? jeu.paused = false : jeu.paused = true;
-			this.state.start('Menu')
-			},this);
-		},
-		update : function() {
-			player2.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player1);
-			player1.update(this.controlP2[0],this.controlP2[1],this.controlP2[2],this.controlP2[3],this.controlP2[4],this.controlP2[5],platformsSolid,player2);
-			object.sort('y', Phaser.Group.SORT_ASCENDING);
-		}
-
+			if(jeu.paused){
+				// Destruction des elements de la pause
+				pauseGroup.removeAll(true,true);
+				
+				jeu.paused = false;
+			} else {
+				// Fond Gris
+				var pauseRect = game.add.graphics(0, 0);
+				pauseRect.beginFill(0x222222);
+				pauseRect.drawRect(0, 0, 1344, 768)
+				pauseRect.alpha = 0.8;
+				pauseGroup.add(pauseRect);
+				
+				// Aides
+				var pauseHelps = []; 
+				pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+				pauseHelps[pauseHelps.length - 1].frame = 5;
+				if(levels[this.id].items.indexOf(itemsId.Metal) != -1){
+					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 0;
+				}
+				if(levels[this.id].items.indexOf(itemsId.Carton) != -1){
+					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 1;
+				}
+				if(levels[this.id].items.indexOf(itemsId.Pneu) != -1){
+					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 2;
+				}
+				if(levels[this.id].items.indexOf(itemsId.Plastique) != -1){
+					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 3;
+				}
+				if(levels[this.id].items.indexOf(itemsId.Verre) != -1){
+					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 4;
+				}
+				
+				// Boutons
+				var pauseResume = game.add.button(200, 200, 'game', () => {
+					// Destruction des elements de la pause
+					pauseGroup.removeAll(true,true);
+					
+					jeu.paused = false;
+				},this,1,0,2);
+				pauseResume.anchor.setTo(0.5,0.5);
+				pauseGroup.add(pauseResume);
+				
+				var pauseMenu = game.add.button(200, 400, 'controls', () => {
+					// Retour au menu
+					jeu.paused = false;
+					this.state.start('Menu');
+				},this,1,0,2);
+				pauseMenu.anchor.setTo(0.5,0.5);
+				pauseGroup.add(pauseMenu);
+				
+				jeu.paused = true;
+			}
+		},this);
+			
+	},
+	update : function() {
+		player2.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player1);
+		player1.update(this.controlP2[0],this.controlP2[1],this.controlP2[2],this.controlP2[3],this.controlP2[4],this.controlP2[5],platformsSolid,player2);
+		object.sort('y', Phaser.Group.SORT_ASCENDING);
 	}
+}

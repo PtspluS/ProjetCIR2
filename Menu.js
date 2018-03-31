@@ -1,4 +1,4 @@
-//Menu générale
+//Menu
 var Menu = {
   preload : function(){
     Menu.load.audio('testmus','musics/testmus.mp3');//Musique du menu

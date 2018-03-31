@@ -45,7 +45,8 @@ var levels = [
     seauSpawnpoints: [[7,4],[12,7]],
     imagePath: "/assets/levels/",
     name: "Level 1",
-	tutoText: [
+	tutoText: ["3","2","1"]
+	/*[
 		'Bon les gars v\'là le topo ... Je suis dans la merde ...',
     'Pour faire simple on m\'a chargé de monter un équipe pour traiter les déchets qui arrivent depuis la ville.',
     'Le problème c\'est que la ville en produit trop et que toutes les équipes qui sont venu avant n\'ont pas réussi à gérer le problème.',
@@ -56,7 +57,7 @@ var levels = [
     'Sur le tapis roulant il y a des pneux qui vont arriver, choppez les avant qu\'ils ne soient incinérés et mettez les dans le broyeur.',
     'Une fois broyez, mettez le tous dans le bac, il y en a qu\'un vous pouvez pas vous tromper ...\nVous avez des question ?',
     'De toute façon je m\'en fou allez GO !!!'
-	]
+	]*/
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
