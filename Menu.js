@@ -87,6 +87,12 @@ var MenuGame ={
     // Clique sur GO
     let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', () => {
       musicMenu.stop();
+	  for(let i = 0; i < 6; i++){
+		  game.controlP1[i] = () => {return game.input.keyboard.isDown(MenuOpt.P1KeyCodes[i+1]);};
+	  }
+	  for(let i = 0; i < 6; i++){
+		  game.controlP2[i] = () => {return game.input.keyboard.isDown(MenuOpt.P2KeyCodes[i+1]);};
+	  }
       if(levels[this.cursorMap].tutoText.length < 1){
         game.id = this.cursorMap;
         game.skinP1 = this.skinPlayer1;
@@ -160,7 +166,101 @@ var MenuGame ={
 }
 
 var MenuOpt ={
-	keyWait: function(idPlayer, idKey){ // Id du player a changer puis l'id de sa touche a changer
+	nbPlayers : 2,
+	P1KeyCodes : [
+		false,
+		Phaser.Keyboard.Z,
+		Phaser.Keyboard.S,
+		Phaser.Keyboard.Q,
+		Phaser.Keyboard.D,
+		Phaser.Keyboard.F,
+		Phaser.Keyboard.G
+	],
+	P2KeyCodes : [
+		false,
+		Phaser.Keyboard.UP,
+		Phaser.Keyboard.DOWN,
+		Phaser.Keyboard.LEFT,
+		Phaser.Keyboard.RIGHT,
+		Phaser.Keyboard.NUMPAD_2,
+		Phaser.Keyboard.NUMPAD_3
+	],
+	P3KeyCodes : [
+		false,
+		NaN,
+		NaN,
+		NaN,
+		NaN,
+		NaN,
+		NaN
+	],
+	P4KeyCodes : [
+		false,
+		NaN,
+		NaN,
+		NaN,
+		NaN,
+		NaN,
+		NaN
+	],
+	keyFromKeyCode: function(keyCode){
+		// Pour les lettres et nombres, le keycode est déja présent
+		if((keyCode >= 65 && keyCode <= 90) || (keyCode >= 48 && keyCode <= 57)){
+			return String.fromCharCode(keyCode);
+		}
+		// Touches Pave Numerique
+		if(keyCode >= 96 && keyCode <= 105){
+			return 'PAD_' + (keyCode - 96);
+		}
+		// Autres touches speciales
+		switch(keyCode){
+			case NaN:
+				return 'NA';
+			case 37:
+				return 'Left';
+			case 38:
+				return 'Up';
+			case 39:
+				return 'Right';
+			case 40:
+				return 'Down';
+			case 32:
+				return 'Space';
+			case 188:
+				return ',';
+			case 59:
+				return ';';
+			case 58:
+				return ':';
+			case 161:
+				return '!';
+			case 165:
+				return '%';
+			case 170:
+				return '*';
+			case 160:
+				return '^';
+			case 164:
+				return '$';
+			case 107:
+				return 'PAD_+';
+			case 109:
+				return 'PAD_-';
+			case 110:
+				return 'PAD_.';
+			case 106:
+				return 'PAD_*';
+			case 17:
+				return 'CTRL';
+			case 16:
+				return 'SHIFT';
+			case 9:
+				return 'TAB';
+		}
+		// Si nous ne l'avons pas trouve
+		return 'N/A'; // Non attribue
+	},
+	keyWait: function(idPlayer, idKey, keytext){ // Id du player a changer puis l'id de sa touche a changer
 		// Fond Gris
 		var pauseRect = MenuOpt.add.graphics(0, 0);
 		pauseRect.beginFill(0x222222);
@@ -170,14 +270,23 @@ var MenuOpt ={
 		pauseRect.input.priorityID = 1;
 		
 		MenuOpt.input.keyboard.addCallbacks(this, (eleme) => {
+			let keyClicked = this.keyFromKeyCode(eleme.keyCode);
+			alert(eleme.keyCode);
 			switch(idPlayer){
 				case 1:
-					game.controlP1[idKey] = () => {return game.input.keyboard.isDown(eleme.keyCode);};
+					this.P1KeyCodes[idKey + 1] = (keyClicked != 'N/A') ? eleme.keyCode : NaN;
 					break;
 				case 2:
-					game.controlP2[idKey] = () => {return game.input.keyboard.isDown(eleme.keyCode);};
+					this.P2KeyCodes[idKey + 1] = (keyClicked != 'N/A') ? eleme.keyCode : NaN;
+					break;
+				case 3:
+					this.P3KeyCodes[idKey + 1] = (keyClicked != 'N/A') ? eleme.keyCode : NaN;
+					break;
+				case 4:
+					this.P4KeyCodes[idKey + 1] = (keyClicked != 'N/A') ? eleme.keyCode : NaN;
 					break;
 			}
+			keytext.text = keyClicked;
 			MenuOpt.input.keyboard.addCallbacks(this, () => {return;}, null, null);
 			pauseRect.destroy();
 		}, null, null);
@@ -194,17 +303,21 @@ var MenuOpt ={
 		MenuOpt.load.image('player2','assets/buttons/player2.png',104,92);
 		MenuOpt.load.image('player3','assets/buttons/player3.png',104,92);
 		MenuOpt.load.image('player4','assets/buttons/player4.png',104,92);
+		
+		MenuOpt.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
     },
     create : function(){
 		musicMenu.resume();//relance la musique là ou elle s'était arrêtée
 		
 		// Creations des boutons de controle
 		let buttonsNames = ['pbup', 'pbdown', 'pbleft', 'pbright', 'pbgrab', 'pbaction'];
-		for(let i = 0; i < 2; i++){
+		let playersMenuControls = [this.P1KeyCodes, this.P2KeyCodes, this.P3KeyCodes, this.P4KeyCodes];
+		for(let i = 0; i < 4; i++){
 			let banner = Menu.add.sprite(120 + 320 * i, 70, 'player' + (i + 1));
 			for(let j = 0; j < buttonsNames.length; j++){
-				let buttonP_0 = MenuOpt.add.button(80 + 320 * i, 200 + 80 * j, buttonsNames[j],() => {
-					this.keyWait(i + 1,j);
+				let keyText = MenuOpt.add.bitmapText(230 + 330 * i, 210 + 80 * j, 'font', this.keyFromKeyCode(playersMenuControls[i][j+1]), 48);
+				let buttonP_0 = MenuOpt.add.button(50 + 330 * i, 200 + 80 * j, buttonsNames[j],() => {
+					this.keyWait(i + 1, j, keyText);
 				},this,1,0,2);
 			}
 		}
