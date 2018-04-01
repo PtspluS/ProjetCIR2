@@ -1,8 +1,6 @@
 // Tutoriel
 var Tuto ={
 	id : 0,
-	skinP1 : 0,
-	skinP2 : 0,
 	textCursor: 0,
 	charCursor: 0,
 	next : function(texte){
@@ -11,8 +9,6 @@ var Tuto ={
 			this.textCursor++;
 			if(this.textCursor == levels[this.id].tutoText.length){
 				game.id = this.id;
-				game.skinP1 = this.skinP1;
-				game.skinP2 = this.skinP2;
 				this.state.start('Game');
 				return;
 			}
@@ -41,8 +37,6 @@ var Tuto ={
 		
 		var skipButton = Tuto.add.button(1200,640,'skip',() => {
 			game.id = this.id;
-			game.skinP1 = this.skinP1;
-			game.skinP2 = this.skinP2;
 			this.state.start('Game');
 		},this,1,0,2);
 		skipButton.anchor.setTo(0.5,0.5);

@@ -154,7 +154,10 @@ Player.prototype.wait=function(){
 }
 
 Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,otherplayer){
-  var hitPlayer = game.physics.arcade.collide(this.player,otherplayer.player);
+	for(let i = 0; i < otherplayer.length; i++){
+		var hitPlayer = game.physics.arcade.collide(this.player,otherplayer[i].player);
+		
+	}
   
   this.item.x = this.player.x - 6;
   this.item.y = this.player.y - 36;

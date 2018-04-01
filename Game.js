@@ -2,6 +2,9 @@ var game = {
 	id : 0,
 	skinP1 : 0,
 	skinP2 : 0,
+	skinP3 : 0,
+	skinP4 : 0,
+	nbPlayers : 2,
 	score : 0,
 	chrono : 0,
 	chronomax : 2*60,
@@ -20,6 +23,22 @@ var game = {
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.RIGHT);},
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.NUMPAD_2);},
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.NUMPAD_3);}
+	],
+	controlP3 : [
+		() => {return game.input.keyboard.isDown(NaN);},
+		() => {return game.input.keyboard.isDown(NaN);},
+		() => {return game.input.keyboard.isDown(NaN);},
+		() => {return game.input.keyboard.isDown(NaN);},
+		() => {return game.input.keyboard.isDown(NaN);},
+		() => {return game.input.keyboard.isDown(NaN);}
+	],
+	controlP4 : [
+		() => {return game.input.keyboard.isDown(NaN);},
+		() => {return game.input.keyboard.isDown(NaN);},
+		() => {return game.input.keyboard.isDown(NaN);},
+		() => {return game.input.keyboard.isDown(NaN);},
+		() => {return game.input.keyboard.isDown(NaN);},
+		() => {return game.input.keyboard.isDown(NaN);}
 	],
 	cameraShake: function(count) {
 		this.camera.x+= Math.floor(Math.random() * (20 + 1)) - 10;
@@ -84,14 +103,17 @@ var game = {
 		// Creation de la map
 		let level = levels[this.id];
 		map = Creatmap(level);
-		player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
-		player2=new Player(skins[this.skinP2].name,64* level.spawnpoints[1][0] +16,64*level.spawnpoints[1][1],object,itemGui);
+		players = [];
+		playersskins = [this.skinP1, this.skinP2, this.skinP3, this.skinP4];
+		for(let i = 0; i < this.nbPlayers; i++){
+			players.push(new Player(skins[playersskins[i]].name,64* level.spawnpoints[i][0] +16,64*level.spawnpoints[i][1],object,itemGui))
+		}
 
-			//Creation du timer
-			Mytimer=new MyTimer(120);
+		//Creation du timer
+		Mytimer=new MyTimer(120);
 
-			//Creation d un score
-			Score= new MyScore();
+		//Creation d un score
+		Score= new MyScore();
 
 		// PAUSE
 		var pauseGroup = game.add.group();
@@ -172,11 +194,11 @@ var game = {
 		// FIN PAUSE
 	},
 	update : function() {
-		player1.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player2);
-		player2.update(this.controlP2[0],this.controlP2[1],this.controlP2[2],this.controlP2[3],this.controlP2[4],this.controlP2[5],platformsSolid,player1);
+		let playersControls = [this.controlP1, this.controlP2, this.controlP3, this.controlP4];
+		for(let i = 0; i < this.nbPlayers; i++){
+			players[i].update(playersControls[i][0],playersControls[i][1],playersControls[i][2],playersControls[i][3],playersControls[i][4],playersControls[i][5],platformsSolid,players);
+		}
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 		Mytimer.updatetimer();
-
-
 	}
 }

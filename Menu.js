@@ -66,12 +66,19 @@ let rightMap = function(){
 var MenuGame ={
   cursorMap : 0,
   skinPlayer1:0,
-  skinPlayer2:1,
+  skinPlayer2:0,
+  skinPlayer3:0,
+  skinPlayer4:0,
   preload : function(){
     MenuGame.load.spritesheet('go','assets/buttons/go.png',104,80);
     MenuGame.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
     MenuGame.load.spritesheet('leftArrow', 'assets/buttons/leftbutton.png',74,76);
     MenuGame.load.spritesheet('rightArrow','assets/buttons/rightbutton.png',74,76);
+	MenuGame.load.image('player1','assets/buttons/player1.png',104,92);
+	MenuGame.load.image('player2','assets/buttons/player2.png',104,92);
+	MenuGame.load.image('player3','assets/buttons/player3.png',104,92);
+	MenuGame.load.image('player4','assets/buttons/player4.png',104,92);
+		
     for (let lvl in levels) {//boucle de chargement de tt les lvl
       MenuGame.load.image(levels[lvl].name,levels[lvl].imagePath);
     };
@@ -93,15 +100,28 @@ var MenuGame ={
 	  for(let i = 0; i < 6; i++){
 		  game.controlP2[i] = () => {return game.input.keyboard.isDown(MenuOpt.P2KeyCodes[i+1]);};
 	  }
+	  for(let i = 0; i < 6; i++){
+		  game.controlP3[i] = () => {return game.input.keyboard.isDown(MenuOpt.P3KeyCodes[i+1]);};
+	  }
+	  for(let i = 0; i < 6; i++){
+		  game.controlP4[i] = () => {return game.input.keyboard.isDown(MenuOpt.P4KeyCodes[i+1]);};
+	  }
       if(levels[this.cursorMap].tutoText.length < 1){
         game.id = this.cursorMap;
         game.skinP1 = this.skinPlayer1;
         game.skinP2 = this.skinPlayer2;
+        game.skinP3 = this.skinPlayer3;
+        game.skinP4 = this.skinPlayer4;
+        game.nbPlayers = MenuOpt.nbPlayers;
         this.state.start('Game');
       }else{
         Tuto.id = this.cursorMap;
-        Tuto.skinP1 = this.skinPlayer1;
-        Tuto.skinP2 = this.skinPlayer2;
+        game.id = this.cursorMap;
+        game.skinP1 = this.skinPlayer1;
+        game.skinP2 = this.skinPlayer2;
+        game.skinP3 = this.skinPlayer3;
+        game.skinP4 = this.skinPlayer4;
+        game.nbPlayers = MenuOpt.nbPlayers;
         this.state.start('Tuto');
       }
     }, this,1,0,2);
@@ -121,47 +141,37 @@ var MenuGame ={
     mapName.fill = 'white';
     mapName.anchor.setTo(0.5,0.5);
 
-    // Selection Perso 1a
-    sprite1 = MenuGame.add.sprite(0.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer1].name);
-    sprite1.anchor.setTo(0.5,0.5);
-    sprite1.scale.setTo(2,2);
-    sprite1.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
-    sprite1.play('turn');
-    let bp1 = MenuGame.add.button(0.5*MenuGame.world.centerX-128, 0.5*MenuGame.world.centerY-sprite1.height/2-10+80,'leftArrow',() => {
-      this.skinPlayer1 = (this.skinPlayer1 == 0 ? skins.length - 1 : this.skinPlayer1 - 1)
-      sprite1.loadTexture(skins[this.skinPlayer1].name, 0);
-      sprite1.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
-      sprite1.play('turn');
-    },this,1,0,2);
-    bp1.anchor.setTo(0.5,0.5);
-    let bp2 = MenuGame.add.button(0.5*MenuGame.world.centerX+128, 0.5*MenuGame.world.centerY-sprite1.height/2-10+80,'rightArrow',() => {
-      this.skinPlayer1 = (this.skinPlayer1 == skins.length - 1 ? 0 : this.skinPlayer1 + 1)
-      sprite1.loadTexture( skins[this.skinPlayer1].name, 0);
-      sprite1.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
-      sprite1.play('turn');
-    },this,1,0,2);
-    bp2.anchor.setTo(0.5,0.5);
-
-
-    sprite2 = MenuGame.add.sprite(1.5*MenuGame.world.centerX,MenuGame.world.centerY-0.5*MenuGame.world.centerY,skins[this.skinPlayer2].name);
-    sprite2.anchor.setTo(0.5,0.5);
-    sprite2.scale.setTo(2,2);
-    sprite2.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
-    sprite2.play('turn');
-    let bpp1 = MenuGame.add.button(1.5*MenuGame.world.centerX-128, 0.5*MenuGame.world.centerY-sprite2.height/2-10+80,'leftArrow',() => {
-      this.skinPlayer2 = (this.skinPlayer2 == 0 ? skins.length - 1 : this.skinPlayer2 - 1)
-      sprite2.loadTexture( skins[this.skinPlayer2].name, 0);
-      sprite2.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
-      sprite2.play('turn');
-    },this,1,0,2);
-    bpp1.anchor.setTo(0.5,0.5);
-    let bpp2 = MenuGame.add.button(1.5*MenuGame.world.centerX+128, 0.5*MenuGame.world.centerY-sprite2.height/2-10+80,'rightArrow',() => {
-      this.skinPlayer2 = (this.skinPlayer2 == skins.length - 1 ? 0 : this.skinPlayer2 + 1)
-      sprite2.loadTexture( skins[this.skinPlayer2].name, 0);
-      sprite2.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
-      sprite2.play('turn');
-    },this,1,0,2);
-    bpp2.anchor.setTo(0.5,0.5);
+    // Selection Personnages
+	let playersskins = [this.skinPlayer1, this.skinPlayer2, this.skinPlayer3, this.skinPlayer4]
+		
+	for(let i = 0; i < MenuOpt.nbPlayers; i++){ // J 1 - 4
+		// Skin en rotation
+		let spriteChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX, MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY,skins[playersskins[0]].name);
+		spriteChar.anchor.setTo(0.5,0.5);
+		spriteChar.scale.setTo(2,2);
+		spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+		spriteChar.play('turn');
+		
+		// Logo du joueur
+		let playerlogo = MenuGame.add.sprite(spriteChar.position.x, spriteChar.position.y-128, 'player' + (i + 1));
+		playerlogo.anchor.setTo(0.5,0.5);
+		
+		// Boutons pour changer le skin
+		let bp1 = MenuGame.add.button(spriteChar.position.x-128, spriteChar.position.y,'leftArrow',() => {
+			playersskins[i] = (playersskins[i] == 0 ? skins.length - 1 : playersskins[i] - 1)
+			spriteChar.loadTexture(skins[playersskins[i]].name, 0);
+			spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+			spriteChar.play('turn');
+		},this,1,0,2);
+		bp1.anchor.setTo(0.5,0.5);
+		let bp2 = MenuGame.add.button(spriteChar.position.x+128, spriteChar.position.y,'rightArrow',() => {
+			playersskins[i] = (playersskins[i] == skins.length - 1 ? 0 : playersskins[i] + 1)
+			spriteChar.loadTexture( skins[playersskins[i]].name, 0);
+			spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+			spriteChar.play('turn');
+		},this,1,0,2);
+		bp2.anchor.setTo(0.5,0.5);
+	}
   }
 }
 
