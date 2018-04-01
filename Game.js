@@ -35,8 +35,8 @@ var game = {
 		game.load.spritesheet('incinerateur','assets/incinerateur.png',64,64);
 		game.load.spritesheet('soufflerie','assets/soufflerie.png',64,90);
 		game.load.spritesheet('route','assets/route.png',128,64);
-		game.load.spritesheet('truck','assets/truck.png',128,204);
 		game.load.spritesheet('barriere','assets/barriere.png',128,80);
+		game.load.image('truck','assets/truck.png');
 		game.load.image('ground','assets/beton.png');
 		game.load.image('table','assets/table.png');
 		game.load.image('benneverre','assets/benneverre.png');
