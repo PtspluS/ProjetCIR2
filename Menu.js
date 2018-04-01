@@ -291,6 +291,23 @@ var MenuOpt ={
 			pauseRect.destroy();
 		}, null, null);
 	},
+	createPlayerColumn: function(groupe, id){
+		let buttonsNames = ['pbup', 'pbdown', 'pbleft', 'pbright', 'pbgrab', 'pbaction'];
+		let playersMenuControls = [this.P1KeyCodes, this.P2KeyCodes, this.P3KeyCodes, this.P4KeyCodes];
+		
+		let playerlogo = MenuOpt.add.sprite(120 + 320 * id, 130, 'player' + (id + 1));
+		groupe.add(playerlogo);
+		
+		// Creations des boutons de controle
+		for(let j = 0; j < buttonsNames.length; j++){
+			let keyText = MenuOpt.add.bitmapText(230 + 330 * id, 270 + 80 * j, 'font', this.keyFromKeyCode(playersMenuControls[id][j+1]), 48);
+			let buttonP_0 = MenuOpt.add.button(50 + 330 * id, 260 + 80 * j, buttonsNames[j],() => {
+				this.keyWait(id + 1, j, keyText);
+			},this,1,0,2);
+			groupe.add(keyText);
+			groupe.add(buttonP_0);
+		}
+	},
     preload: function(){
 		MenuOpt.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
 		MenuOpt.load.spritesheet('pbup','assets/buttons/pbup.png',174,60);
@@ -299,6 +316,8 @@ var MenuOpt ={
 		MenuOpt.load.spritesheet('pbright','assets/buttons/pbright.png',174,60);
 		MenuOpt.load.spritesheet('pbgrab','assets/buttons/pbgrab.png',174,60);
 		MenuOpt.load.spritesheet('pbaction','assets/buttons/pbaction.png',174,60);
+		MenuOpt.load.spritesheet('leftArrow', 'assets/buttons/leftbutton.png',74,76);
+		MenuOpt.load.spritesheet('rightArrow','assets/buttons/rightbutton.png',74,76);
 		MenuOpt.load.image('player1','assets/buttons/player1.png',104,92);
 		MenuOpt.load.image('player2','assets/buttons/player2.png',104,92);
 		MenuOpt.load.image('player3','assets/buttons/player3.png',104,92);
@@ -309,18 +328,35 @@ var MenuOpt ={
     create : function(){
 		musicMenu.resume();//relance la musique là ou elle s'était arrêtée
 		
-		// Creations des boutons de controle
-		let buttonsNames = ['pbup', 'pbdown', 'pbleft', 'pbright', 'pbgrab', 'pbaction'];
-		let playersMenuControls = [this.P1KeyCodes, this.P2KeyCodes, this.P3KeyCodes, this.P4KeyCodes];
-		for(let i = 0; i < 4; i++){
-			let banner = Menu.add.sprite(120 + 320 * i, 70, 'player' + (i + 1));
-			for(let j = 0; j < buttonsNames.length; j++){
-				let keyText = MenuOpt.add.bitmapText(230 + 330 * i, 210 + 80 * j, 'font', this.keyFromKeyCode(playersMenuControls[i][j+1]), 48);
-				let buttonP_0 = MenuOpt.add.button(50 + 330 * i, 200 + 80 * j, buttonsNames[j],() => {
-					this.keyWait(i + 1, j, keyText);
-				},this,1,0,2);
-			}
+		
+		var playersGroups = [MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group()];
+		
+		for(let i = 0; i < this.nbPlayers; i++){
+			this.createPlayerColumn(playersGroups[i], i);
 		}
+		
+		let textnbplayers = MenuOpt.add.bitmapText(MenuOpt.world.centerX, 70, 'font', 'Players: ' + this.nbPlayers, 64);
+		textnbplayers.anchor.setTo(0.5,0.5)
+		
+		// Fleche Gauche
+		let lessPlayers = MenuOpt.add.button(MenuOpt.world.centerX-240, 70,'leftArrow',() => {
+			if(this.nbPlayers > 1){
+				this.nbPlayers--;
+				textnbplayers.text = 'Players: ' + this.nbPlayers;
+				playersGroups[this.nbPlayers].removeAll(true,true);
+			}
+		},this,1,0,2);
+		lessPlayers.anchor.setTo(0.5,0.5);
+
+		// Fleche Droite
+		let morePlayers = MenuOpt.add.button(MenuOpt.world.centerX+240, 70,'rightArrow',() => {
+			if(this.nbPlayers < 4){
+				this.nbPlayers++;
+				textnbplayers.text = 'Players: ' + this.nbPlayers;
+				this.createPlayerColumn(playersGroups[this.nbPlayers - 1], this.nbPlayers - 1);
+			}
+		},this,1,0,2);
+		morePlayers.anchor.setTo(0.5,0.5);
 
 		let back = MenuOpt.add.button(0,0,'back',returnMenu,this,1,0,2);
     }
