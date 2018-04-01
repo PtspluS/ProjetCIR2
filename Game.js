@@ -70,15 +70,6 @@ var game = {
 		 score=0;//score
 	},
 	create : function() {
-		timemax=2*60;
-	time=0;
-		//creation du score
-		 timer = game.time.create(false);//timer
-		 timer.loop(1000,f=>{time++;}, this);
-		  timer.start();
-		 scoretext = game.add.bitmapText(0, 0, 'font', 'Score:'+score, 64);
-		 timertext = game.add.bitmapText(21*64, 0, 'font', 'Time '+(timemax/60)+':'+(timemax%60), 64);
-		 timertext.anchor.x=1;
 		// Lancement de la physique Arcade
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -91,6 +82,17 @@ var game = {
 		player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
 		player2=new Player(skins[this.skinP2].name,64* level.spawnpoints[1][0] +16,64*level.spawnpoints[1][1],object,itemGui);
 
+		
+		timemax=1*60;
+		time=0;
+		//creation du score
+		timer = game.time.create(false);//timer
+		timer.loop(1000,f=>{time++;}, this);
+		timer.start();
+		scoretext = game.add.bitmapText(0, 0, 'font', 'Score:'+score, 64);
+		timertext = game.add.bitmapText(21*64, 0, 'font', 'Time '+(timemax/60)+':'+(timemax%60), 64);
+		timertext.anchor.x=1;
+		
 		// PAUSE
 		var pauseGroup = game.add.group();
 		var keyPause = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -156,7 +158,7 @@ var game = {
 				pauseResume.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseResume);
 				
-				var pauseMenu = game.add.button(200, 400, 'menu', () => {
+				var pauseMenu = game.add.button(300, 450, 'menu', () => {
 					// Retour au menu
 					jeu.paused = false;
 					this.state.start('Menu');
