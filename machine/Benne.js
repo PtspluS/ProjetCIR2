@@ -4,6 +4,24 @@ Benne = function(sprite,posx,posy,groupe,type){
 	this.weight=0;
 	this.stock = 0;
 	this.type = type;
+this.posx=posx+10;
+this.posy=posy+10;
+	this.scoretext = game.add.bitmapText(this.posx,this.posy, 'font', '', 30);
+	game.physics.arcade.enable([ this.scoretext ]);
+
+}
+Benne.prototype.addscore=function(value){
+	game.world.bringToTop(this.scoretext);
+this.scoretext.text='+'+value;
+this.scoretext.body.velocity.y=-50;
+game.time.events.add(1000, () => {Score.updatescore(value);
+this.scoretext.x=this.posx;
+this.scoretext.y=this.posy;
+this.scoretext.body.velocity.y=0;
+this.scoretext.text='';
+},this);
+
+
 }
 
 Benne.prototype.interact = function(){
@@ -17,17 +35,17 @@ Benne.prototype.drop=function(itemId){
 				switch(itemId){
 					case itemsId.PlaqueMetal1:
 						this.weight += 1;
-						Score.updatescore(40);
+						this.addscore(40);
 						return 0;
 						break;
 					case itemsId.PlaqueMetal2:
 						this.weight += 2;
-						Score.updatescore(80);
+						this.addscore(80);
 						return 0;
 						break;
 					case itemsId.PlaqueMetal3:
 						this.weight += 3;
-						Score.updatescore(120);
+						this.addscore(120);
 						return 0;
 						break;
 				}
@@ -36,17 +54,17 @@ Benne.prototype.drop=function(itemId){
 				switch(itemId){
 					case itemsId.SceauPlastique1:
 						this.weight += 1;
-						Score.updatescore(20);
+						this.addscore(20);
 						return itemsId.SceauPlastique0;
 						break;
 					case itemsId.SceauPlastique2:
 						this.weight += 2;
-						Score.updatescore(40);
+						this.addscore(40);
 						return itemsId.SceauPlastique0;
 						break;
 					case itemsId.SceauPlastique3:
 						this.weight += 3;
-						Score.updatescore(60);
+						this.addscore(60);
 						return itemsId.SceauPlastique0;
 						break;
 				}
@@ -55,17 +73,17 @@ Benne.prototype.drop=function(itemId){
 				switch(itemId){
 					case itemsId.BouteilleVerre1:
 						this.weight += 1;
-							Score.updatescore(50);
+							this.addscore(50);
 						return 0;
 						break;
 					case itemsId.BouteilleVerre2:
 						this.weight += 2;
-						Score.updatescore(100);
+						this.addscore(100);
 						return 0;
 						break;
 					case itemsId.BouteilleVerre3:
 						this.weight += 3;
-						Score.updatescore(150);
+						this.addscore(150);
 						return 0;
 						break;
 				}
@@ -74,17 +92,17 @@ Benne.prototype.drop=function(itemId){
 				switch(itemId){
 					case itemsId.SceauPneu1:
 						this.weight += 1;
-						Score.updatescore(10);
+						this.addscore(10);
 						return itemsId.SceauPneu0;
 						break;
 					case itemsId.SceauPneu2:
 						this.weight += 2;
-						Score.updatescore(20);
+						this.addscore(20);
 						return itemsId.SceauPneu0;
 						break;
 					case itemsId.SceauPneu3:
 						this.weight += 3;
-						Score.updatescore(30);
+						this.addscore(30);
 						return itemsId.SceauPneu0;
 						break;
 				}
@@ -93,17 +111,17 @@ Benne.prototype.drop=function(itemId){
 				switch(itemId){
 					case itemsId.PlaqueCarton1:
 						this.weight += 1;
-						Score.updatescore(30);
+						this.addscore(30);
 						return 0;
 						break;
 					case itemsId.PlaqueCarton2:
 						this.weight += 2;
-						Score.updatescore(60);
+						this.addscore(60);
 						return 0;
 						break;
 					case itemsId.PlaqueCarton3:
 						this.weight += 3;
-						Score.updatescore(90);
+						this.addscore(90);
 						return 0;
 						break;
 				}
