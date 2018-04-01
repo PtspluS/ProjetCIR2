@@ -183,15 +183,31 @@ var MenuOpt ={
 		}, null, null);
 	},
     preload: function(){
-		MenuOpt.load.image('button1','assets/table.png');
 		MenuOpt.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
+		MenuOpt.load.spritesheet('pbup','assets/buttons/pbup.png',174,60);
+		MenuOpt.load.spritesheet('pbdown','assets/buttons/pbdown.png',174,60);
+		MenuOpt.load.spritesheet('pbleft','assets/buttons/pbleft.png',174,60);
+		MenuOpt.load.spritesheet('pbright','assets/buttons/pbright.png',174,60);
+		MenuOpt.load.spritesheet('pbgrab','assets/buttons/pbgrab.png',174,60);
+		MenuOpt.load.spritesheet('pbaction','assets/buttons/pbaction.png',174,60);
+		MenuOpt.load.image('player1','assets/buttons/player1.png',104,92);
+		MenuOpt.load.image('player2','assets/buttons/player2.png',104,92);
+		MenuOpt.load.image('player3','assets/buttons/player3.png',104,92);
+		MenuOpt.load.image('player4','assets/buttons/player4.png',104,92);
     },
     create : function(){
 		musicMenu.resume();//relance la musique là ou elle s'était arrêtée
-		let buttonP1_0 = MenuOpt.add.button(MenuOpt.world.centerX,MenuOpt.world.centerY, 'back',() => {
-			this.keyWait(1,0);
-		},this,1,0,2);
-		buttonP1_0.anchor.setTo(0.5,0.5);
+		
+		// Creations des boutons de controle
+		let buttonsNames = ['pbup', 'pbdown', 'pbleft', 'pbright', 'pbgrab', 'pbaction'];
+		for(let i = 0; i < 2; i++){
+			let banner = Menu.add.sprite(120 + 320 * i, 70, 'player' + (i + 1));
+			for(let j = 0; j < buttonsNames.length; j++){
+				let buttonP_0 = MenuOpt.add.button(80 + 320 * i, 200 + 80 * j, buttonsNames[j],() => {
+					this.keyWait(i + 1,j);
+				},this,1,0,2);
+			}
+		}
 
 		let back = MenuOpt.add.button(0,0,'back',returnMenu,this,1,0,2);
     }

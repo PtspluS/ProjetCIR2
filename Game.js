@@ -1,7 +1,10 @@
 var game = {
-	id :0,
-	skinP1 :0,
-	skinP2 :0,
+	id : 0,
+	skinP1 : 0,
+	skinP2 : 0,
+	score : 0,
+	chrono : 0,
+	chronomax : 2*60,
 	controlP1 : [
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.Z);},
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.S);},
@@ -154,8 +157,8 @@ var game = {
 				},this,1,0,2);
 				pauseResume.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseResume);
-
-				var pauseMenu = game.add.button(200, 400, 'menu', () => {
+				
+				var pauseMenu = game.add.button(300, 450, 'menu', () => {
 					// Retour au menu
 					jeu.paused = false;
 					this.state.start('Menu');
