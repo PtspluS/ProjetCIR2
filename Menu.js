@@ -7,6 +7,12 @@ var Menu = {
     Menu.load.spritesheet('controls','assets/buttons/controls.png',296,80);
   },
   create : function(){
+	  
+	  pad1 = Menu.input.gamepad.pad1;
+	  Menu.input.gamepad.start();
+	  alert(Menu.input.gamepad.supported && Menu.input.gamepad.active);
+	  alert(pad1.connected);
+	
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
 
     musicMenu = Menu.add.audio('testmus');
@@ -65,10 +71,7 @@ let rightMap = function(){
 }
 var MenuGame ={
   cursorMap : 0,
-  skinPlayer1:0,
-  skinPlayer2:0,
-  skinPlayer3:0,
-  skinPlayer4:0,
+  playersskins : [0, 0, 0, 0],
   preload : function(){
     MenuGame.load.spritesheet('go','assets/buttons/go.png',104,80);
     MenuGame.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
@@ -108,19 +111,13 @@ var MenuGame ={
 	  }
       if(levels[this.cursorMap].tutoText.length < 1){
         game.id = this.cursorMap;
-        game.skinP1 = this.skinPlayer1;
-        game.skinP2 = this.skinPlayer2;
-        game.skinP3 = this.skinPlayer3;
-        game.skinP4 = this.skinPlayer4;
+        game.playersskins = this.playersskins;
         game.nbPlayers = MenuOpt.nbPlayers;
         this.state.start('Game');
       }else{
         Tuto.id = this.cursorMap;
         game.id = this.cursorMap;
-        game.skinP1 = this.skinPlayer1;
-        game.skinP2 = this.skinPlayer2;
-        game.skinP3 = this.skinPlayer3;
-        game.skinP4 = this.skinPlayer4;
+        game.playersskins = this.playersskins;
         game.nbPlayers = MenuOpt.nbPlayers;
         this.state.start('Tuto');
       }
@@ -142,11 +139,9 @@ var MenuGame ={
     mapName.anchor.setTo(0.5,0.5);
 
     // Selection Personnages
-	let playersskins = [this.skinPlayer1, this.skinPlayer2, this.skinPlayer3, this.skinPlayer4]
-		
 	for(let i = 0; i < MenuOpt.nbPlayers; i++){ // J 1 - 4
 		// Skin en rotation
-		let spriteChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX, MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY,skins[playersskins[0]].name);
+		let spriteChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX, MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY,skins[this.playersskins[i]].name);
 		spriteChar.anchor.setTo(0.5,0.5);
 		spriteChar.scale.setTo(2,2);
 		spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
@@ -158,15 +153,15 @@ var MenuGame ={
 		
 		// Boutons pour changer le skin
 		let bp1 = MenuGame.add.button(spriteChar.position.x-128, spriteChar.position.y,'leftArrow',() => {
-			playersskins[i] = (playersskins[i] == 0 ? skins.length - 1 : playersskins[i] - 1)
-			spriteChar.loadTexture(skins[playersskins[i]].name, 0);
+			this.playersskins[i] = (this.playersskins[i] == 0 ? skins.length - 1 : this.playersskins[i] - 1)
+			spriteChar.loadTexture(skins[this.playersskins[i]].name, 0);
 			spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
 			spriteChar.play('turn');
 		},this,1,0,2);
 		bp1.anchor.setTo(0.5,0.5);
 		let bp2 = MenuGame.add.button(spriteChar.position.x+128, spriteChar.position.y,'rightArrow',() => {
-			playersskins[i] = (playersskins[i] == skins.length - 1 ? 0 : playersskins[i] + 1)
-			spriteChar.loadTexture( skins[playersskins[i]].name, 0);
+			this.playersskins[i] = (this.playersskins[i] == skins.length - 1 ? 0 : this.playersskins[i] + 1)
+			spriteChar.loadTexture( skins[this.playersskins[i]].name, 0);
 			spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
 			spriteChar.play('turn');
 		},this,1,0,2);
@@ -304,9 +299,18 @@ var MenuOpt ={
 	createPlayerColumn: function(groupe, id){
 		let buttonsNames = ['pbup', 'pbdown', 'pbleft', 'pbright', 'pbgrab', 'pbaction'];
 		let playersMenuControls = [this.P1KeyCodes, this.P2KeyCodes, this.P3KeyCodes, this.P4KeyCodes];
+		let activePad = [MenuOpt.input.gamepad.pad1, MenuOpt.input.gamepad.pad2, MenuOpt.input.gamepad.pad3, MenuOpt.input.gamepad.pad4]
 		
 		let playerlogo = MenuOpt.add.sprite(120 + 320 * id, 130, 'player' + (id + 1));
 		groupe.add(playerlogo);
+		let buttonGamePad = MenuOpt.add.button(240 + 320 * id, 130, 'gamepad',() => {
+			alert(activePad[id].connected);
+			if(MenuOpt.input.gamepad.supported && MenuOpt.input.gamepad.active && activePad[id].connected) {
+				playersMenuControls[id][0] = !playersMenuControls[id][0];
+				buttonGamePad.setFrames(playersMenuControls[id][0] ? 2 : 1,playersMenuControls[id][0] ? 2 : 0, playersMenuControls[id][0] ? 1: 2);
+			}
+		},this,playersMenuControls[id][0] ? 2 : 1,playersMenuControls[id][0] ? 2 : 0, playersMenuControls[id][0] ? 1 : 2);
+		groupe.add(buttonGamePad);
 		
 		// Creations des boutons de controle
 		for(let j = 0; j < buttonsNames.length; j++){
@@ -328,6 +332,7 @@ var MenuOpt ={
 		MenuOpt.load.spritesheet('pbaction','assets/buttons/pbaction.png',174,60);
 		MenuOpt.load.spritesheet('leftArrow', 'assets/buttons/leftbutton.png',74,76);
 		MenuOpt.load.spritesheet('rightArrow','assets/buttons/rightbutton.png',74,76);
+		MenuOpt.load.spritesheet('gamepad','assets/buttons/gamepad.png',104,92);
 		MenuOpt.load.image('player1','assets/buttons/player1.png',104,92);
 		MenuOpt.load.image('player2','assets/buttons/player2.png',104,92);
 		MenuOpt.load.image('player3','assets/buttons/player3.png',104,92);
@@ -337,8 +342,7 @@ var MenuOpt ={
     },
     create : function(){
 		musicMenu.resume();//relance la musique là ou elle s'était arrêtée
-		
-		
+	
 		var playersGroups = [MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group()];
 		
 		for(let i = 0; i < this.nbPlayers; i++){

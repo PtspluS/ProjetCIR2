@@ -1,9 +1,6 @@
 var game = {
 	id : 0,
-	skinP1 : 0,
-	skinP2 : 0,
-	skinP3 : 0,
-	skinP4 : 0,
+	playersskins : [0, 0, 0, 0],
 	nbPlayers : 2,
 	score : 0,
 	chrono : 0,
@@ -104,9 +101,8 @@ var game = {
 		let level = levels[this.id];
 		map = Creatmap(level);
 		players = [];
-		playersskins = [this.skinP1, this.skinP2, this.skinP3, this.skinP4];
 		for(let i = 0; i < this.nbPlayers; i++){
-			players.push(new Player(skins[playersskins[i]].name,64* level.spawnpoints[i][0] +16,64*level.spawnpoints[i][1],object,itemGui))
+			players.push(new Player(skins[this.playersskins[i]].name,64* level.spawnpoints[i][0] +10,64*level.spawnpoints[i][1]-4,object,itemGui))
 		}
 
 		//Creation du timer
