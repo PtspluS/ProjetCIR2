@@ -161,35 +161,35 @@ Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,curs
 
   this.player.body.velocity.x = 0;
   this.player.body.velocity.y = 0;
-  if (game.input.keyboard.isDown(cursorright) && game.input.keyboard.isDown(cursordown))
+  if (cursorright() && cursordown())
   {
     this.downright();
   }
-  else if (game.input.keyboard.isDown(cursorright) && game.input.keyboard.isDown(cursorup))
+  else if (cursorright() && cursorup())
   {
       this.upright();
   }
-  else if (game.input.keyboard.isDown(cursorleft) && game.input.keyboard.isDown(cursordown))
+  else if (cursorleft() && cursordown())
   {
     this.downleft();
   }
-else if (game.input.keyboard.isDown(cursorleft) && game.input.keyboard.isDown(cursorup))
+else if (cursorleft() && cursorup())
   {
   this.upleft();
   }
-else if (game.input.keyboard.isDown(cursordown))
+else if (cursordown())
   {
   this.down();
   }
-else if (game.input.keyboard.isDown(cursorright))
+else if (cursorright())
   {
   this.right();
   }
-else if (game.input.keyboard.isDown(cursorup))
+else if (cursorup())
   {
   this.up();
   }
-else if (game.input.keyboard.isDown(cursorleft))
+else if (cursorleft())
   {
   this.left();
 }
@@ -197,19 +197,19 @@ else{
   this.wait();
 }
 
-if(game.input.keyboard.isDown(cursordrop) && this.dropActive == false){
+if(cursordrop() && this.dropActive == false){
  this.drop();
  this.dropActive = true;
-}else if(game.input.keyboard.isDown(cursordrop)){
+}else if(cursordrop()){
   this.dropActive = true;
 }else {
   this.dropActive = false;
 }
 
-if(game.input.keyboard.isDown(cursorinteract) && this.interactActive == false && this.carry == 0){
+if(cursorinteract() && this.interactActive == false && this.carry == 0){
  this.interact();
  this.interactActive = true;
-}else if(game.input.keyboard.isDown(cursorinteract)){
+}else if(cursorinteract()){
   this.interactActive = true;
 }else {
   this.interactActive = false;

@@ -2,8 +2,22 @@ var game = {
 	id :0,
 	skinP1 :0,
 	skinP2 :0,
-	controlP1 : [Phaser.Keyboard.UP,Phaser.Keyboard.DOWN,Phaser.Keyboard.LEFT,Phaser.Keyboard.RIGHT,Phaser.Keyboard.NUMPAD_2,Phaser.Keyboard.NUMPAD_3],
-	controlP2 : [Phaser.Keyboard.Z,Phaser.Keyboard.S,Phaser.Keyboard.Q,Phaser.Keyboard.D,Phaser.Keyboard.F,Phaser.Keyboard.G],
+	controlP1 : [
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.UP);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.DOWN);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.LEFT);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.RIGHT);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.NUMPAD_2);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.NUMPAD_3);}
+	],
+	controlP2 : [
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.Z);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.S);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.Q);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.D);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.F);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.G);}
+	],
 	cameraShake: function(count) {
 		this.camera.x+= Math.floor(Math.random() * (20 + 1)) - 10;
 		this.camera.y+= Math.floor(Math.random() * (20 + 1)) - 10;
@@ -49,6 +63,7 @@ var game = {
 		game.load.spritesheet('help','assets/help.png', 397, 60);
 		game.load.spritesheet('resume','assets/buttons/resume.png',236,80);
 		game.load.spritesheet('menu','assets/buttons/menu.png',168,80);
+		game.load.spritesheet('helpbutton','assets/buttons/helpbutton.png',204,80);
 	},
 	create : function() {
 		// Lancement de la physique Arcade
@@ -83,29 +98,44 @@ var game = {
 				var pauseHelps = []; 
 				pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 				pauseHelps[pauseHelps.length - 1].frame = 5;
+				pauseHelps[pauseHelps.length - 1].alpha = 0;
 				if(levels[this.id].items.indexOf(itemsId.Metal) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 0;
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Carton) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 1;
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Pneu) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 2;
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Plastique) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 3;
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Verre) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 4;
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				
 				// Boutons
-				var pauseResume = game.add.button(200, 200, 'resume', () => {
+				var pauseHelpb = game.add.button(900, 100, 'helpbutton', () => {
+					// Affiche / enleve les aides
+					for(let i = 0; i < pauseHelps.length; i++){
+						pauseHelps[i].alpha = (pauseHelps[i].alpha + 1) % 2;
+					}
+				},this,1,0,2);
+				pauseHelpb.anchor.setTo(0.5,0.5);
+				pauseGroup.add(pauseHelpb);
+				
+				var pauseResume = game.add.button(300, 300, 'resume', () => {
 					// Destruction des elements de la pause
 					pauseGroup.removeAll(true,true);
 					jeu.paused = false;
@@ -113,7 +143,7 @@ var game = {
 				pauseResume.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseResume);
 				
-				var pauseMenu = game.add.button(200, 400, 'menu', () => {
+				var pauseMenu = game.add.button(300, 500, 'menu', () => {
 					// Retour au menu
 					jeu.paused = false;
 					this.state.start('Menu');
@@ -127,7 +157,7 @@ var game = {
 		// FIN PAUSE
 	},
 	update : function() {
-		player2.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player1);
+	player2.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player1);
 		player1.update(this.controlP2[0],this.controlP2[1],this.controlP2[2],this.controlP2[3],this.controlP2[4],this.controlP2[5],platformsSolid,player2);
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 	}
