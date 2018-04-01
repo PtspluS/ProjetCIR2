@@ -66,19 +66,12 @@ var game = {
 		game.load.spritesheet('helpbutton','assets/buttons/helpbutton.png',204,80);
 
 		 game.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
+		 game.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
 
-		 score=0;//score
+
 	},
 	create : function() {
-		timemax=2*60;
-	time=0;
-		//creation du score
-		 timer = game.time.create(false);//timer
-		 timer.loop(1000,f=>{time++;}, this);
-		  timer.start();
-		 scoretext = game.add.bitmapText(0, 0, 'font', 'Score:'+score, 64);
-		 timertext = game.add.bitmapText(21*64, 0, 'font', 'Time '+(timemax/60)+':'+(timemax%60), 64);
-		 timertext.anchor.x=1;
+
 		// Lancement de la physique Arcade
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -90,6 +83,12 @@ var game = {
 		map = Creatmap(level);
 		player1=new Player(skins[this.skinP1].name,64* level.spawnpoints[0][0] +16,64*level.spawnpoints[0][1],object,itemGui);
 		player2=new Player(skins[this.skinP2].name,64* level.spawnpoints[1][0] +16,64*level.spawnpoints[1][1],object,itemGui);
+
+			//Creation du timer
+			Mytimer=new MyTimer(120);
+
+			//Creation d un score
+			Score= new MyScore();
 
 		// PAUSE
 		var pauseGroup = game.add.group();
@@ -147,7 +146,7 @@ var game = {
 				},this,1,0,2);
 				pauseHelpb.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseHelpb);
-				
+
 				var pauseResume = game.add.button(300, 300, 'resume', () => {
 					// Destruction des elements de la pause
 					pauseGroup.removeAll(true,true);
@@ -155,7 +154,7 @@ var game = {
 				},this,1,0,2);
 				pauseResume.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseResume);
-				
+
 				var pauseMenu = game.add.button(200, 400, 'menu', () => {
 					// Retour au menu
 					jeu.paused = false;
@@ -173,6 +172,8 @@ var game = {
 		player1.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player2);
 		player2.update(this.controlP2[0],this.controlP2[1],this.controlP2[2],this.controlP2[3],this.controlP2[4],this.controlP2[5],platformsSolid,player1);
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
-		timertext.text ='Time '+(Math.floor((timemax-time)/60))+':'+((timemax-time)%60);
+		Mytimer.updatetimer();
+
+
 	}
 }
