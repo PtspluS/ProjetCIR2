@@ -160,15 +160,37 @@ var MenuGame ={
 }
 
 var MenuOpt ={
-  preload: function(){
-    MenuOpt.load.image('button1','assets/table.png');
-    MenuOpt.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
-  },
-  create : function(){
-    musicMenu.resume();//relance la musique là ou elle s'était arrêtée
-    let button1 = MenuOpt.add.button(MenuOpt.world.centerX,MenuOpt.world.centerY, 'button1');
-    button1.anchor.setTo(0.5,0.5);
+	keyWait: function(idPlayer, idKey){ // Id du player a changer puis l'id de sa touche a changer
+		// Fond Gris
+		var pauseRect = MenuOpt.add.graphics(0, 0);
+		pauseRect.beginFill(0x222222);
+		pauseRect.drawRect(0, 0, 1344, 768)
+		pauseRect.alpha = 0.8;
+		
+		MenuOpt.input.keyboard.addCallbacks(this, (eleme) => {
+			switch(idPlayer){
+				case 1:
+					game.controlP1[idKey] = () => {return game.input.keyboard.isDown(eleme.keyCode);};
+					break;
+				case 2:
+					game.controlP2[idKey] = () => {return game.input.keyboard.isDown(eleme.keyCode);};
+					break;
+			}
+			MenuOpt.input.keyboard.addCallbacks(this, () => {return;}, null, null);
+			pauseRect.destroy();
+		}, null, null);
+	},
+    preload: function(){
+		MenuOpt.load.image('button1','assets/table.png');
+		MenuOpt.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
+    },
+    create : function(){
+		musicMenu.resume();//relance la musique là ou elle s'était arrêtée
+		let buttonP1_0 = MenuOpt.add.button(MenuOpt.world.centerX,MenuOpt.world.centerY, 'back',() => {
+			this.keyWait(1,0);
+		},this,1,0,2);
+		buttonP1_0.anchor.setTo(0.5,0.5);
 
-    let back = MenuOpt.add.button(0,0,'back',returnMenu,this,1,0,2);
-  }
+		let back = MenuOpt.add.button(0,0,'back',returnMenu,this,1,0,2);
+    }
 }

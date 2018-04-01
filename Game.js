@@ -3,20 +3,20 @@ var game = {
 	skinP1 :0,
 	skinP2 :0,
 	controlP1 : [
-		() => {return game.input.keyboard.isDown(Phaser.Keyboard.UP);},
-		() => {return game.input.keyboard.isDown(Phaser.Keyboard.DOWN);},
-		() => {return game.input.keyboard.isDown(Phaser.Keyboard.LEFT);},
-		() => {return game.input.keyboard.isDown(Phaser.Keyboard.RIGHT);},
-		() => {return game.input.keyboard.isDown(Phaser.Keyboard.NUMPAD_2);},
-		() => {return game.input.keyboard.isDown(Phaser.Keyboard.NUMPAD_3);}
-	],
-	controlP2 : [
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.Z);},
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.S);},
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.Q);},
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.D);},
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.F);},
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.G);}
+	],
+	controlP2 : [
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.UP);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.DOWN);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.LEFT);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.RIGHT);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.NUMPAD_2);},
+		() => {return game.input.keyboard.isDown(Phaser.Keyboard.NUMPAD_3);}
 	],
 	cameraShake: function(count) {
 		this.camera.x+= Math.floor(Math.random() * (20 + 1)) - 10;
@@ -157,8 +157,8 @@ var game = {
 		// FIN PAUSE
 	},
 	update : function() {
-	player2.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player1);
-		player1.update(this.controlP2[0],this.controlP2[1],this.controlP2[2],this.controlP2[3],this.controlP2[4],this.controlP2[5],platformsSolid,player2);
+		player1.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player2);
+		player2.update(this.controlP2[0],this.controlP2[1],this.controlP2[2],this.controlP2[3],this.controlP2[4],this.controlP2[5],platformsSolid,player1);
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 	}
 }
