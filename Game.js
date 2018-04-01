@@ -32,7 +32,7 @@ var game = {
 		for (let sk in skins) {//boucle de chargement de tout les skins
 			game.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
 		}
-		
+
 		// Sprites du jeu
 		game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
 		game.load.spritesheet('items','assets/items.png', 56, 56);
@@ -58,17 +58,30 @@ var game = {
 		game.load.image('benneplastique','assets/benneplastique.png');
 		game.load.image('bennepneu','assets/bennepneu.png');
 		game.load.image('bennecarton','assets/bennecarton.png');
-		
+
 		//Sprites Pause
 		game.load.spritesheet('help','assets/help.png', 397, 60);
 		game.load.spritesheet('resume','assets/buttons/resume.png',236,80);
 		game.load.spritesheet('menu','assets/buttons/menu.png',168,80);
 		game.load.spritesheet('helpbutton','assets/buttons/helpbutton.png',204,80);
+
+		 game.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
+
+		 score=0;//score
 	},
 	create : function() {
+		timemax=2*60;
+	time=0;
+		//creation du score
+		 timer = game.time.create(false);//timer
+		 timer.loop(1000,f=>{time++;}, this);
+		  timer.start();
+		 scoretext = game.add.bitmapText(0, 0, 'font', 'Score:'+score, 64);
+		 timertext = game.add.bitmapText(21*64, 0, 'font', 'Time '+(timemax/60)+':'+(timemax%60), 64);
+		 timertext.anchor.x=1;
 		// Lancement de la physique Arcade
 		game.physics.startSystem(Phaser.Physics.ARCADE);
-		
+
 		// Bordures de la scene
 		game.world.setBounds(-10, -10, jeu.width + 10, jeu.height + 10);
 
@@ -93,9 +106,9 @@ var game = {
 				pauseRect.drawRect(0, 0, 1344, 768)
 				pauseRect.alpha = 0.8;
 				pauseGroup.add(pauseRect);
-				
+
 				// Aides
-				var pauseHelps = []; 
+				var pauseHelps = [];
 				pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 				pauseHelps[pauseHelps.length - 1].frame = 5;
 				pauseHelps[pauseHelps.length - 1].alpha = 0;
@@ -124,7 +137,7 @@ var game = {
 					pauseHelps[pauseHelps.length - 1].frame = 4;
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
-				
+
 				// Boutons
 				var pauseHelpb = game.add.button(900, 100, 'helpbutton', () => {
 					// Affiche / enleve les aides
@@ -143,14 +156,14 @@ var game = {
 				pauseResume.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseResume);
 				
-				var pauseMenu = game.add.button(300, 500, 'menu', () => {
+				var pauseMenu = game.add.button(200, 400, 'menu', () => {
 					// Retour au menu
 					jeu.paused = false;
 					this.state.start('Menu');
 				},this,1,0,2);
 				pauseMenu.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseMenu);
-				
+
 				jeu.paused = true;
 			}
 		},this);
@@ -160,5 +173,6 @@ var game = {
 		player1.update(this.controlP1[0],this.controlP1[1],this.controlP1[2],this.controlP1[3],this.controlP1[4],this.controlP1[5],platformsSolid,player2);
 		player2.update(this.controlP2[0],this.controlP2[1],this.controlP2[2],this.controlP2[3],this.controlP2[4],this.controlP2[5],platformsSolid,player1);
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
+		timertext.text ='Time '+(Math.floor((timemax-time)/60))+':'+((timemax-time)%60);
 	}
 }
