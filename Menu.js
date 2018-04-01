@@ -166,6 +166,8 @@ var MenuOpt ={
 		pauseRect.beginFill(0x222222);
 		pauseRect.drawRect(0, 0, 1344, 768)
 		pauseRect.alpha = 0.8;
+		pauseRect.inputEnabled = true;
+		pauseRect.input.priorityID = 1;
 		
 		MenuOpt.input.keyboard.addCallbacks(this, (eleme) => {
 			switch(idPlayer){
