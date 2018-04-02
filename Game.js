@@ -212,7 +212,7 @@ var game = {
 		mytimer.updatetimer();
 		if(mytimer.valuetime == mytimer.timemax){
 
-			if(MyScore>=levels[this.id].score*this.nbPlayers/1.618){
+			if(MyScore.score>=levels[this.id].score*this.nbPlayers/1.618){
 				this.state.start('MenuGame');
 				MenuGame.cursorMap = this.id+1;
 			}
