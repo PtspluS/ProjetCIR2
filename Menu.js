@@ -7,7 +7,7 @@ var Menu = {
     Menu.load.spritesheet('controls','assets/buttons/controls.png',296,80);
   },
   create : function(){
-	
+
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
 	jeu.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT; // Rempli toute la fenetre (etirement minime en fullscreen)
 
@@ -58,11 +58,13 @@ let leftMap = function(){
     this.cursorMap--;
   }
   mapName.text = levels[this.cursorMap].name;
+  //mapName.text = MenuGame.add.bitmapText(21*64, 0, 'font',levels[this.cursorMap].name , 64);
   imgMap.image = levels[this.cursorMap].name;
 }
 let rightMap = function(){
   this.cursorMap = (this.cursorMap+1)%levels.length;
   mapName.text = levels[this.cursorMap].name;
+  //mapName.text = MenuGame.add.bitmapText(21*64, 0, 'font',levels[this.cursorMap].name , 64);
   imgMap.image = levels[this.cursorMap].name;
 }
 var MenuGame ={
@@ -84,6 +86,7 @@ var MenuGame ={
     for (let sk in skins) {//boucle de chargement de tt les skins
       MenuGame.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
     }
+    MenuGame.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
   },
   create : function(){
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
@@ -130,9 +133,9 @@ var MenuGame ={
 
     // Retour
     let back = MenuGame.add.button(20,20,'back',returnMenu,this,1,0,2);
-	
-    mapName = MenuGame.add.text(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-10,levels[this.cursorMap].name);
-    mapName.fill = 'white';
+
+    //mapName = MenuGame.add.text(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-10,levels[this.cursorMap].name);
+    mapName = MenuGame.add.bitmapText(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-30, 'font',levels[this.cursorMap].name, 64);
     mapName.anchor.setTo(0.5,0.5);
 
     // Selection Personnages
@@ -270,10 +273,10 @@ var MenuOpt ={
 		pauseRect.alpha = 0.8;
 		pauseRect.inputEnabled = true; // Permet d'eviter de cliquer sur les boutons derriere
 		pauseRect.input.priorityID = 1; // " de meme
-		
+
 		var pressKeyText = MenuOpt.add.bitmapText(MenuOpt.world.centerX, MenuOpt.world.centerY, 'font', 'Press a Key to assign', 64);
 		pressKeyText.anchor.setTo(0.5,0.5);
-		
+
 		MenuOpt.input.keyboard.addCallbacks(this, (eleme) => {
 			let keyClicked = this.keyFromKeyCode(eleme.keyCode);
 			switch(idPlayer){
@@ -300,7 +303,7 @@ var MenuOpt ={
 		let buttonsNames = ['pbup', 'pbdown', 'pbleft', 'pbright', 'pbgrab', 'pbaction'];
 		let playersMenuControls = [this.P1KeyCodes, this.P2KeyCodes, this.P3KeyCodes, this.P4KeyCodes];
 		let activePad = [MenuOpt.input.gamepad.pad1, MenuOpt.input.gamepad.pad2, MenuOpt.input.gamepad.pad3, MenuOpt.input.gamepad.pad4]
-		
+
 		let playerlogo = MenuOpt.add.sprite(120 + 320 * id, 130, 'player' + (id + 1));
 		groupe.add(playerlogo);
 		let buttonGamePad = MenuOpt.add.button(240 + 320 * id, 130, 'gamepad',() => {
@@ -310,7 +313,7 @@ var MenuOpt ={
 			}
 		},this,playersMenuControls[id][0] ? 2 : 1,playersMenuControls[id][0] ? 2 : 0, playersMenuControls[id][0] ? 1 : 2);
 		groupe.add(buttonGamePad);
-		
+
 		// Creations des boutons de controle
 		for(let j = 0; j < buttonsNames.length; j++){
 			let keyText = MenuOpt.add.bitmapText(230 + 330 * id, 270 + 80 * j, 'font', this.keyFromKeyCode(playersMenuControls[id][j+1]), 48);
@@ -337,21 +340,21 @@ var MenuOpt ={
 		MenuOpt.load.image('player2','assets/buttons/player2.png',104,92);
 		MenuOpt.load.image('player3','assets/buttons/player3.png',104,92);
 		MenuOpt.load.image('player4','assets/buttons/player4.png',104,92);
-		
+
 		MenuOpt.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
     },
     create : function(){
 		musicMenu.resume();//relance la musique là ou elle s'était arrêtée
-	
+
 		var playersGroups = [MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group()];
-		
+
 		for(let i = 0; i < this.nbPlayers; i++){
 			this.createPlayerColumn(playersGroups[i], i);
 		}
-		
+
 		let textnbplayers = MenuOpt.add.bitmapText(MenuOpt.world.centerX, 70, 'font', 'Players: ' + this.nbPlayers, 64);
 		textnbplayers.anchor.setTo(0.5,0.5)
-		
+
 		// Fleche Gauche
 		let lessPlayers = MenuOpt.add.button(MenuOpt.world.centerX-240, 70,'leftArrow',() => {
 			if(this.nbPlayers > 1){
@@ -371,7 +374,7 @@ var MenuOpt ={
 			}
 		},this,1,0,2);
 		morePlayers.anchor.setTo(0.5,0.5);
-		
+
 		// Bouton Fullscreen
 		let goFullscreen = MenuOpt.add.button(MenuOpt.world.width-104, 20,'fullscreen',() => {
 			if (jeu.scale.isFullScreen){
@@ -385,4 +388,3 @@ var MenuOpt ={
 		let back = MenuOpt.add.button(20,20,'back',returnMenu,this,1,0,2);
     }
  }
-
