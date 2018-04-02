@@ -96,18 +96,42 @@ var MenuGame ={
     // Clique sur GO
     let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', () => {
       musicMenu.stop();
-      for(let i = 0; i < 6; i++){
-        game.controlP1[i] = () => {return game.input.keyboard.isDown(MenuOpt.P1KeyCodes[i+1]);};
-      }
-      for(let i = 0; i < 6; i++){
-        game.controlP2[i] = () => {return game.input.keyboard.isDown(MenuOpt.P2KeyCodes[i+1]);};
-      }
-      for(let i = 0; i < 6; i++){
-        game.controlP3[i] = () => {return game.input.keyboard.isDown(MenuOpt.P3KeyCodes[i+1]);};
-      }
-      for(let i = 0; i < 6; i++){
-        game.controlP4[i] = () => {return game.input.keyboard.isDown(MenuOpt.P4KeyCodes[i+1]);};
-      }
+	  if(MenuOpt.P1KeyCodes[0]){
+		  for(let i = 0; i < 6; i++){
+			game.controlP1[i] = () => {return game.input.gamepad.pad1.isDown(MenuOpt.GamePadKeyCodes[i]);};
+		  }
+	  }else{
+		  for(let i = 0; i < 6; i++){
+			game.controlP1[i] = () => {return game.input.keyboard.isDown(MenuOpt.P1KeyCodes[i+1]);};
+		  }
+	  }
+	  if(MenuOpt.P2KeyCodes[0]){
+		  for(let i = 0; i < 6; i++){
+			game.controlP2[i] = () => {return game.input.gamepad.pad2.isDown(MenuOpt.GamePadKeyCodes[i]);};
+		  }
+	  }else{
+		  for(let i = 0; i < 6; i++){
+			game.controlP2[i] = () => {return game.input.keyboard.isDown(MenuOpt.P2KeyCodes[i+1]);};
+		  }
+	  }
+	  if(MenuOpt.P3KeyCodes[0]){
+		  for(let i = 0; i < 6; i++){
+			game.controlP3[i] = () => {return game.input.gamepad.pad3.isDown(MenuOpt.GamePadKeyCodes[i]);};
+		  }
+	  }else{
+		  for(let i = 0; i < 6; i++){
+			game.controlP3[i] = () => {return game.input.keyboard.isDown(MenuOpt.P3KeyCodes[i+1]);};
+		  }
+	  }
+	  if(MenuOpt.P4KeyCodes[0]){
+		  for(let i = 0; i < 6; i++){
+			game.controlP4[i] = () => {return game.input.gamepad.pad4.isDown(MenuOpt.GamePadKeyCodes[i]);};
+		  }
+	  }else{
+		  for(let i = 0; i < 6; i++){
+			game.controlP4[i] = () => {return game.input.keyboard.isDown(MenuOpt.P4KeyCodes[i+1]);};
+		  }
+	  }
       if(levels[this.cursorMap].tutoText.length < 1){
         game.id = this.cursorMap;
         game.playersskins = this.playersskins;
@@ -172,6 +196,14 @@ var MenuGame ={
 
 var MenuOpt ={
 	nbPlayers : 2,
+	GamePadKeyCodes : [
+		Phaser.Gamepad.XBOX360_DPAD_UP,
+		Phaser.Gamepad.XBOX360_DPAD_DOWN,
+		Phaser.Gamepad.XBOX360_DPAD_LEFT,
+		Phaser.Gamepad.XBOX360_DPAD_RIGHT,
+		Phaser.Gamepad.XBOX360_A,
+		Phaser.Gamepad.XBOX360_X
+	],
 	P1KeyCodes : [
 		false,
 		Phaser.Keyboard.Z,
