@@ -106,7 +106,7 @@ var game = {
 		}
 
 		//Creation du timer
-		Mytimer=new MyTimer(120);
+		mytimer = new MyTimer(level.chrono);
 
 		//Creation d un score
 		Score= new MyScore();
@@ -195,6 +195,6 @@ var game = {
 			players[i].update(playersControls[i][0],playersControls[i][1],playersControls[i][2],playersControls[i][3],playersControls[i][4],playersControls[i][5],platformsSolid,players);
 		}
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
-		Mytimer.updatetimer();
+		mytimer.updatetimer();
 	}
 }

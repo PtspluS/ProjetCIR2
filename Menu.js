@@ -7,13 +7,9 @@ var Menu = {
     Menu.load.spritesheet('controls','assets/buttons/controls.png',296,80);
   },
   create : function(){
-	  
-	  pad1 = Menu.input.gamepad.pad1;
-	  Menu.input.gamepad.start();
-	  alert(Menu.input.gamepad.supported && Menu.input.gamepad.active);
-	  alert(pad1.connected);
 	
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
+	jeu.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT; // Rempli toute la fenetre (etirement minime en fullscreen)
 
     musicMenu = Menu.add.audio('testmus');
     if(musicMenu.pause()===true){
@@ -133,7 +129,8 @@ var MenuGame ={
     button3.anchor.setTo(0.5,0.5);
 
     // Retour
-    let back = MenuGame.add.button(0,0,'back',returnMenu,this,1,0,2);
+    let back = MenuGame.add.button(20,20,'back',returnMenu,this,1,0,2);
+	
     mapName = MenuGame.add.text(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-10,levels[this.cursorMap].name);
     mapName.fill = 'white';
     mapName.anchor.setTo(0.5,0.5);
@@ -271,12 +268,14 @@ var MenuOpt ={
 		pauseRect.beginFill(0x222222);
 		pauseRect.drawRect(0, 0, 1344, 768)
 		pauseRect.alpha = 0.8;
-		pauseRect.inputEnabled = true;
-		pauseRect.input.priorityID = 1;
+		pauseRect.inputEnabled = true; // Permet d'eviter de cliquer sur les boutons derriere
+		pauseRect.input.priorityID = 1; // " de meme
+		
+		var pressKeyText = MenuOpt.add.bitmapText(MenuOpt.world.centerX, MenuOpt.world.centerY, 'font', 'Press a Key to assign', 64);
+		pressKeyText.anchor.setTo(0.5,0.5);
 		
 		MenuOpt.input.keyboard.addCallbacks(this, (eleme) => {
 			let keyClicked = this.keyFromKeyCode(eleme.keyCode);
-			alert(eleme.keyCode);
 			switch(idPlayer){
 				case 1:
 					this.P1KeyCodes[idKey + 1] = (keyClicked != 'N/A') ? eleme.keyCode : NaN;
@@ -293,6 +292,7 @@ var MenuOpt ={
 			}
 			keytext.text = keyClicked;
 			MenuOpt.input.keyboard.addCallbacks(this, () => {return;}, null, null);
+			pressKeyText.destroy();
 			pauseRect.destroy();
 		}, null, null);
 	},
@@ -304,7 +304,6 @@ var MenuOpt ={
 		let playerlogo = MenuOpt.add.sprite(120 + 320 * id, 130, 'player' + (id + 1));
 		groupe.add(playerlogo);
 		let buttonGamePad = MenuOpt.add.button(240 + 320 * id, 130, 'gamepad',() => {
-			alert(activePad[id].connected);
 			if(MenuOpt.input.gamepad.supported && MenuOpt.input.gamepad.active && activePad[id].connected) {
 				playersMenuControls[id][0] = !playersMenuControls[id][0];
 				buttonGamePad.setFrames(playersMenuControls[id][0] ? 2 : 1,playersMenuControls[id][0] ? 2 : 0, playersMenuControls[id][0] ? 1: 2);
@@ -333,6 +332,7 @@ var MenuOpt ={
 		MenuOpt.load.spritesheet('leftArrow', 'assets/buttons/leftbutton.png',74,76);
 		MenuOpt.load.spritesheet('rightArrow','assets/buttons/rightbutton.png',74,76);
 		MenuOpt.load.spritesheet('gamepad','assets/buttons/gamepad.png',104,92);
+		MenuOpt.load.spritesheet('fullscreen','assets/buttons/fullscreen.png',84,92);
 		MenuOpt.load.image('player1','assets/buttons/player1.png',104,92);
 		MenuOpt.load.image('player2','assets/buttons/player2.png',104,92);
 		MenuOpt.load.image('player3','assets/buttons/player3.png',104,92);
@@ -371,7 +371,17 @@ var MenuOpt ={
 			}
 		},this,1,0,2);
 		morePlayers.anchor.setTo(0.5,0.5);
+		
+		// Bouton Fullscreen
+		let goFullscreen = MenuOpt.add.button(MenuOpt.world.width-104, 20,'fullscreen',() => {
+			if (jeu.scale.isFullScreen){
+				jeu.scale.stopFullScreen();
+			} else {
+				jeu.scale.startFullScreen(false);
+			}
+		},this,1,0,2);
 
-		let back = MenuOpt.add.button(0,0,'back',returnMenu,this,1,0,2);
+		// Bouton retour Menu
+		let back = MenuOpt.add.button(20,20,'back',returnMenu,this,1,0,2);
     }
 }
