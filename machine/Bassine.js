@@ -10,6 +10,7 @@ Bassine = function(sprite,posx,posy,groupe,itemgroupe){
 	this.item = itemgroupe.create(this.bassine.x + 18, this.bassine.y + 34, 'itemsbubbles');
 	this.item.frame = 0;
 
+this.bassinesound = game.add.audio('bassinesound');
 }
 
 Bassine.prototype.interact = function(){
@@ -17,6 +18,7 @@ Bassine.prototype.interact = function(){
 		this.bassine.animations.stop();
 		this.bassine.play('actif');
 		this.working++;
+  this.bassinesound.play();
 	}else if (this.work){
 		this.working++;
 		if(this.working >= 10){
@@ -50,15 +52,15 @@ Bassine.prototype.drop = function(itemId){
 				this.typesort(itemId, itemsId.Sceau);
 				return 0;
 				break;
-				
+
 			case itemsId.BlockCarton1:
 				this.typesort(itemId, itemsId.PateCarton1);
 				return 0;
-				
+
 			case itemsId.BlockCarton2:
 				this.typesort(itemId, itemsId.PateCarton2);
 				return 0;
-				
+
 			case itemsId.BlockCarton3:
 				this.typesort(itemId, itemsId.PateCarton3);
 				return 0;

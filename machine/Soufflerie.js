@@ -9,6 +9,8 @@ Soufflerie = function(sprite,posx,posy,groupe,itemgroupe){
 	this.item = itemgroupe.create(this.souffle.x + 18, this.souffle.y + 60, 'itemsbubbles');
 	this.item.frame = 0;
 
+    this.souffleriesound = game.add.audio('souffleriesound');
+
 }
 
 Soufflerie.prototype.interact = function(){
@@ -53,6 +55,7 @@ Soufflerie.prototype.typesort = function(itemId, itemend){
 	this.work = true;
 	this.souffle.play('actif');
 	this.stock = itemId;
+  this.souffleriesound.play();
 	game.time.events.add(4400, () => {this.iswork(itemend);} , this);
 	return;
 }

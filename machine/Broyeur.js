@@ -1,5 +1,5 @@
 Broyeur = function(sprite,posx,posy,groupe,itemgroupe){
-	this.broyeur = groupe.create(posx,posy,sprite);
+		this.broyeur = groupe.create(posx,posy,sprite);
 	this.broyeur.animations.add('actif', [0, 1], 10, true);
 	this.stock = 0;
   this.work=false;
@@ -8,6 +8,8 @@ this.weight=0;
 
 	this.item = itemgroupe.create(this.broyeur.x + 18, this.broyeur.y + 10, 'itemsbubbles');
 	this.item.frame = 0;
+	this.broyeursound = game.add.audio('broyeursound');
+
 }
 
 Broyeur.prototype.interact = function(){
@@ -61,6 +63,7 @@ Broyeur.prototype.typesort=function(itemId,conteneur,weight,itemend,time){
   this.weight=weight;
   this.broyeur.animations.play('actif');
   this.work=true;
+	this.broyeursound.play();
   game.time.events.add(time, () => {this.iswork(itemend);} , this);
 }
 

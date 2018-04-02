@@ -16,7 +16,7 @@ Compresseur = function(sprite,posx,posy,groupe,itemgroupe){
 	this.itemf = itemgroupe.create(this.compresseur.x + 100, this.compresseur.y + 14, 'itemsbubbles');
 	this.itemf.frame = 0;
 	this.stockf = 0;
-
+		this.compresseurrsound = game.add.audio('compresseursound');
 }
 
 Compresseur.prototype.interact = function(){
@@ -90,6 +90,7 @@ Compresseur.prototype.typesort = function(itemend){
 	this.item1.frame = 0;
 	this.item2.frame = 0;
 	this.item3.frame = 0;
+  this.compresseurrsound.play();
 	game.time.events.add(1400, () => {this.iswork(itemend);} , this);
 	return;
 }

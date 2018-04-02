@@ -7,6 +7,8 @@ Incinerateur = function(sprite,posx,posy,groupe){
 	this.posy=posy+10;
 	this.scoretext = game.add.bitmapText(this.posx,this.posy, 'fontred', '', 30);
 		game.physics.arcade.enable([ this.scoretext ]);
+
+			this.incinerateursound = game.add.audio('incinerateursound');
 }
 
 Incinerateur.prototype.addscore=function(value){
@@ -31,6 +33,7 @@ Incinerateur.prototype.drop = function(itemId){
 	if(itemId != 0){
 		game.cameraShake(0);
 	this.addscore(-100);
+	this.incinerateursound.play();
 		return 0;
 	}
 	// En cas de possible erreur, on retourne l'objet passe en argument

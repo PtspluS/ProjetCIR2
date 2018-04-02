@@ -87,6 +87,16 @@ var game = {
 
 		game.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
 		game.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
+
+		//Sound
+		game.load.audio('broyeursound', 'Sound/broyeur.mp3');
+		game.load.audio('ovensound', 'Sound/oven.mp3');
+		game.load.audio('pressesound', 'Sound/presse.mp3');
+		game.load.audio('souffleriesound', 'Sound/soufflerie.mp3');
+		game.load.audio('incinerateursound', 'Sound/incinerateur.mp3');
+			game.load.audio('compresseursound', 'Sound/compresseur.mp3');
+		game.load.audio('bassinesound', 'Sound/bassine.mp3');
+
 	},
 	create : function() {
 
@@ -201,8 +211,8 @@ var game = {
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 		mytimer.updatetimer();
 		if(mytimer.valuetime == mytimer.timemax){
-			
-			if(MyScore>=levels[this.id].score*this.nbPlayers/1.618){
+
+			if(Score.score>=levels[this.id].score*this.nbPlayers/1.618){
 				this.state.start('MenuGame');
 				MenuGame.cursorMap = this.id+1;
 			}
