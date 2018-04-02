@@ -49,7 +49,7 @@ var levels = [
     imagePath: "/assets/levels/",
     name: "Level 1",
     //tutoText: ["3","2","1"]
-    [
+    tutoText:[
     'Bon les gars v\'là le topo ... Je suis dans la merde ...',
     'Pour faire simple on m\'a chargé de monter un équipe pour traiter les déchets qui arrivent depuis la ville.',
     'Le problème c\'est que la ville en produit trop et que toutes les équipes qui sont venu avant n\'ont pas réussi à gérer le problème.',
