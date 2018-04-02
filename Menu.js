@@ -159,7 +159,7 @@ var MenuGame ={
     let back = MenuGame.add.button(20,20,'back',returnMenu,this,1,0,2);
 
     //mapName = MenuGame.add.text(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-10,levels[this.cursorMap].name);
-    mapName = MenuGame.add.bitmapText(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-30, 'font',levels[this.cursorMap].name, 64);
+    mapName = MenuGame.add.bitmapText(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-30, 'font',levels[this.cursorMap].name, 42);
     mapName.anchor.setTo(0.5,0.5);
 
     // Selection Personnages
