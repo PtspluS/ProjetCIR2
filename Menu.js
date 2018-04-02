@@ -73,11 +73,11 @@ var MenuGame ={
     MenuGame.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
     MenuGame.load.spritesheet('leftArrow', 'assets/buttons/leftbutton.png',74,76);
     MenuGame.load.spritesheet('rightArrow','assets/buttons/rightbutton.png',74,76);
-	MenuGame.load.image('player1','assets/buttons/player1.png',104,92);
-	MenuGame.load.image('player2','assets/buttons/player2.png',104,92);
-	MenuGame.load.image('player3','assets/buttons/player3.png',104,92);
-	MenuGame.load.image('player4','assets/buttons/player4.png',104,92);
-		
+    MenuGame.load.image('player1','assets/buttons/player1.png',104,92);
+    MenuGame.load.image('player2','assets/buttons/player2.png',104,92);
+    MenuGame.load.image('player3','assets/buttons/player3.png',104,92);
+    MenuGame.load.image('player4','assets/buttons/player4.png',104,92);
+
     for (let lvl in levels) {//boucle de chargement de tt les lvl
       MenuGame.load.image(levels[lvl].name,levels[lvl].imagePath);
     };
@@ -93,18 +93,18 @@ var MenuGame ={
     // Clique sur GO
     let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', () => {
       musicMenu.stop();
-	  for(let i = 0; i < 6; i++){
-		  game.controlP1[i] = () => {return game.input.keyboard.isDown(MenuOpt.P1KeyCodes[i+1]);};
-	  }
-	  for(let i = 0; i < 6; i++){
-		  game.controlP2[i] = () => {return game.input.keyboard.isDown(MenuOpt.P2KeyCodes[i+1]);};
-	  }
-	  for(let i = 0; i < 6; i++){
-		  game.controlP3[i] = () => {return game.input.keyboard.isDown(MenuOpt.P3KeyCodes[i+1]);};
-	  }
-	  for(let i = 0; i < 6; i++){
-		  game.controlP4[i] = () => {return game.input.keyboard.isDown(MenuOpt.P4KeyCodes[i+1]);};
-	  }
+      for(let i = 0; i < 6; i++){
+        game.controlP1[i] = () => {return game.input.keyboard.isDown(MenuOpt.P1KeyCodes[i+1]);};
+      }
+      for(let i = 0; i < 6; i++){
+        game.controlP2[i] = () => {return game.input.keyboard.isDown(MenuOpt.P2KeyCodes[i+1]);};
+      }
+      for(let i = 0; i < 6; i++){
+        game.controlP3[i] = () => {return game.input.keyboard.isDown(MenuOpt.P3KeyCodes[i+1]);};
+      }
+      for(let i = 0; i < 6; i++){
+        game.controlP4[i] = () => {return game.input.keyboard.isDown(MenuOpt.P4KeyCodes[i+1]);};
+      }
       if(levels[this.cursorMap].tutoText.length < 1){
         game.id = this.cursorMap;
         game.playersskins = this.playersskins;
@@ -136,34 +136,34 @@ var MenuGame ={
     mapName.anchor.setTo(0.5,0.5);
 
     // Selection Personnages
-	for(let i = 0; i < MenuOpt.nbPlayers; i++){ // J 1 - 4
-		// Skin en rotation
-		let spriteChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX, MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY,skins[this.playersskins[i]].name);
-		spriteChar.anchor.setTo(0.5,0.5);
-		spriteChar.scale.setTo(2,2);
-		spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
-		spriteChar.play('turn');
-		
-		// Logo du joueur
-		let playerlogo = MenuGame.add.sprite(spriteChar.position.x, spriteChar.position.y-128, 'player' + (i + 1));
-		playerlogo.anchor.setTo(0.5,0.5);
-		
-		// Boutons pour changer le skin
-		let bp1 = MenuGame.add.button(spriteChar.position.x-128, spriteChar.position.y,'leftArrow',() => {
-			this.playersskins[i] = (this.playersskins[i] == 0 ? skins.length - 1 : this.playersskins[i] - 1)
-			spriteChar.loadTexture(skins[this.playersskins[i]].name, 0);
-			spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
-			spriteChar.play('turn');
-		},this,1,0,2);
-		bp1.anchor.setTo(0.5,0.5);
-		let bp2 = MenuGame.add.button(spriteChar.position.x+128, spriteChar.position.y,'rightArrow',() => {
-			this.playersskins[i] = (this.playersskins[i] == skins.length - 1 ? 0 : this.playersskins[i] + 1)
-			spriteChar.loadTexture( skins[this.playersskins[i]].name, 0);
-			spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
-			spriteChar.play('turn');
-		},this,1,0,2);
-		bp2.anchor.setTo(0.5,0.5);
-	}
+    for(let i = 0; i < MenuOpt.nbPlayers; i++){ // J 1 - 4
+      // Skin en rotation
+      let spriteChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX, MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY,skins[this.playersskins[i]].name);
+      spriteChar.anchor.setTo(0.5,0.5);
+      spriteChar.scale.setTo(2,2);
+      spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+      spriteChar.play('turn');
+
+      // Logo du joueur
+      let playerlogo = MenuGame.add.sprite(spriteChar.position.x, spriteChar.position.y-128, 'player' + (i + 1));
+      playerlogo.anchor.setTo(0.5,0.5);
+
+      // Boutons pour changer le skin
+      let bp1 = MenuGame.add.button(spriteChar.position.x-128, spriteChar.position.y,'leftArrow',() => {
+        this.playersskins[i] = (this.playersskins[i] == 0 ? skins.length - 1 : this.playersskins[i] - 1)
+        spriteChar.loadTexture(skins[this.playersskins[i]].name, 0);
+        spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+        spriteChar.play('turn');
+      },this,1,0,2);
+      bp1.anchor.setTo(0.5,0.5);
+      let bp2 = MenuGame.add.button(spriteChar.position.x+128, spriteChar.position.y,'rightArrow',() => {
+        this.playersskins[i] = (this.playersskins[i] == skins.length - 1 ? 0 : this.playersskins[i] + 1)
+        spriteChar.loadTexture( skins[this.playersskins[i]].name, 0);
+        spriteChar.animations.add('turn',[0,4,8,12,16,20,24,28], 8, true);
+        spriteChar.play('turn');
+      },this,1,0,2);
+      bp2.anchor.setTo(0.5,0.5);
+    }
   }
 }
 
@@ -384,4 +384,69 @@ var MenuOpt ={
 		// Bouton retour Menu
 		let back = MenuOpt.add.button(20,20,'back',returnMenu,this,1,0,2);
     }
+  },this,playersMenuControls[id][0] ? 2 : 1,playersMenuControls[id][0] ? 2 : 0, playersMenuControls[id][0] ? 1 : 2);
+  groupe.add(buttonGamePad);
+
+  // Creations des boutons de controle
+  for(let j = 0; j < buttonsNames.length; j++){
+    let keyText = MenuOpt.add.bitmapText(230 + 330 * id, 270 + 80 * j, 'font', this.keyFromKeyCode(playersMenuControls[id][j+1]), 48);
+    let buttonP_0 = MenuOpt.add.button(50 + 330 * id, 260 + 80 * j, buttonsNames[j],() => {
+      this.keyWait(id + 1, j, keyText);
+    },this,1,0,2);
+    groupe.add(keyText);
+    groupe.add(buttonP_0);
+  }
+},
+preload: function(){
+  MenuOpt.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
+  MenuOpt.load.spritesheet('pbup','assets/buttons/pbup.png',174,60);
+  MenuOpt.load.spritesheet('pbdown','assets/buttons/pbdown.png',174,60);
+  MenuOpt.load.spritesheet('pbleft','assets/buttons/pbleft.png',174,60);
+  MenuOpt.load.spritesheet('pbright','assets/buttons/pbright.png',174,60);
+  MenuOpt.load.spritesheet('pbgrab','assets/buttons/pbgrab.png',174,60);
+  MenuOpt.load.spritesheet('pbaction','assets/buttons/pbaction.png',174,60);
+  MenuOpt.load.spritesheet('leftArrow', 'assets/buttons/leftbutton.png',74,76);
+  MenuOpt.load.spritesheet('rightArrow','assets/buttons/rightbutton.png',74,76);
+  MenuOpt.load.spritesheet('gamepad','assets/buttons/gamepad.png',104,92);
+  MenuOpt.load.image('player1','assets/buttons/player1.png',104,92);
+  MenuOpt.load.image('player2','assets/buttons/player2.png',104,92);
+  MenuOpt.load.image('player3','assets/buttons/player3.png',104,92);
+  MenuOpt.load.image('player4','assets/buttons/player4.png',104,92);
+
+  MenuOpt.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
+},
+create : function(){
+  musicMenu.resume();//relance la musique là ou elle s'était arrêtée
+
+  let playersGroups = [MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group()];
+
+  for(let i = 0; i < this.nbPlayers; i++){
+    this.createPlayerColumn(playersGroups[i], i);
+  }
+
+  let textnbplayers = MenuOpt.add.bitmapText(MenuOpt.world.centerX, 70, 'font', 'Players: ' + this.nbPlayers, 64);
+  textnbplayers.anchor.setTo(0.5,0.5)
+
+  // Fleche Gauche
+  let lessPlayers = MenuOpt.add.button(MenuOpt.world.centerX-240, 70,'leftArrow',() => {
+    if(this.nbPlayers > 1){
+      this.nbPlayers--;
+      textnbplayers.text = 'Players: ' + this.nbPlayers;
+      playersGroups[this.nbPlayers].removeAll(true,true);
+    }
+  },this,1,0,2);
+  lessPlayers.anchor.setTo(0.5,0.5);
+
+  // Fleche Droite
+  let morePlayers = MenuOpt.add.button(MenuOpt.world.centerX+240, 70,'rightArrow',() => {
+    if(this.nbPlayers < 4){
+      this.nbPlayers++;
+      textnbplayers.text = 'Players: ' + this.nbPlayers;
+      this.createPlayerColumn(playersGroups[this.nbPlayers - 1], this.nbPlayers - 1);
+    }
+  },this,1,0,2);
+  morePlayers.anchor.setTo(0.5,0.5);
+
+  let back = MenuOpt.add.button(0,0,'back',returnMenu,this,1,0,2);
+}
 }
