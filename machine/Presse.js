@@ -9,6 +9,8 @@ Presse = function(sprite,posx,posy,groupe,itemgroupe){
 	this.item = itemgroupe.create(this.presse.x + 18, this.presse.y + 70, 'itemsbubbles');
 	this.item.frame = 0;
 
+  this.pressesound = game.add.audio('pressesound');
+
 }
 
 Presse.prototype.interact = function(){
@@ -29,27 +31,27 @@ Presse.prototype.drop=function(itemId){
 				this.typesort(itemsId.PateCarton1, itemsId.PlaqueCarton1);
 				return 0;
 				break;
-				
+
 			case itemsId.PateCarton2:
 				this.typesort(itemsId.PateCarton2, itemsId.PlaqueCarton2);
 				return 0;
 				break;
-				
+
 			case itemsId.PateCarton3:
 				this.typesort(itemsId.PateCarton3, itemsId.PlaqueCarton3);
 				return 0;
 				break;
-				
+
 			case itemsId.SceauMetal1:
 				this.typesort(itemsId.SceauMetal1, itemsId.PlaqueMetal1);
 				return itemsId.SceauMetal0;
 				break;
-				
+
 			case itemsId.SceauMetal2:
 				this.typesort(itemsId.SceauMetal2, itemsId.PlaqueMetal2);
 				return itemsId.SceauMetal0;
 				break;
-				
+
 			case itemsId.SceauMetal3:
 				this.typesort(itemsId.SceauMetal3, itemsId.PlaqueMetal3);
 				return itemsId.SceauMetal0;
@@ -65,6 +67,7 @@ Presse.prototype.typesort = function(itemId, itemend){
 	this.presse.play('actif');
 	this.stock = itemId;
 	this.item.frame = itemId;
+    this.pressesound.play();
 	game.time.events.add(4400, () => {this.iswork(itemend);} , this);
 	return;
 }

@@ -10,6 +10,8 @@ this.weight=0;
 	this.item = itemgroupe.create(this.oven.x + 2, this.oven.y + 2, 'itemsbubbles');
 	this.item.frame = 0;
 
+  this.ovensound = game.add.audio('ovensound');
+
 }
 
 Oven.prototype.interact = function(){
@@ -72,6 +74,7 @@ Oven.prototype.typesort=function(itemId,conteneur,weight,itemend,time){
   this.weight=weight;
   this.oven.animations.play('actif');
   this.cook=true;
+  this.ovensound.play();
   game.time.events.add(time, () => {this.iscook(itemend);} , this);
 }
 
