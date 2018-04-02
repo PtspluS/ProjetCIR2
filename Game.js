@@ -85,10 +85,8 @@ var game = {
 		game.load.spritesheet('menu','assets/buttons/menu.png',168,80);
 		game.load.spritesheet('helpbutton','assets/buttons/helpbutton.png',204,80);
 
-		 game.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
-		 game.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
-
-
+		game.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
+		game.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
 	},
 	create : function() {
 
@@ -169,9 +167,9 @@ var game = {
 				pauseHelpb.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseHelpb);
 
-				let banner = game.add.sprite(300,100,'title');//banniere pour le menu de pause
-		    banner.anchor.setTo(0.5,0.5);
-		    banner.scale.setTo(0.75,0.75);
+				var banner = game.add.sprite(300,100,'title');//banniere pour le menu de pause
+				banner.anchor.setTo(0.5,0.5);
+				banner.scale.setTo(0.75,0.75);
 				pauseGroup.add(banner);
 
 				var pauseResume = game.add.button(300, 300, 'resume', () => {
