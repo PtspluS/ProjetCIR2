@@ -53,6 +53,7 @@ var game = {
 		}
 
 		// Sprites du jeu
+		game.load.spritesheet('title','assets/logo.png',408,222);
 		game.load.spritesheet('oven','assets/ovenanimation.png',64,94)
 		game.load.spritesheet('items','assets/items.png', 56, 56);
 		game.load.spritesheet('itemsbubbles','assets/itemsbubbles.png', 28, 28);
@@ -168,6 +169,11 @@ var game = {
 				pauseHelpb.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseHelpb);
 
+				let banner = game.add.sprite(300,100,'title');//banniere pour le menu de pause
+		    banner.anchor.setTo(0.5,0.5);
+		    banner.scale.setTo(0.75,0.75);
+				pauseGroup.add(banner);
+
 				var pauseResume = game.add.button(300, 300, 'resume', () => {
 					// Destruction des elements de la pause
 					pauseGroup.removeAll(true,true);
@@ -175,7 +181,7 @@ var game = {
 				},this,1,0,2);
 				pauseResume.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseResume);
-				
+
 				var pauseMenu = game.add.button(300, 450, 'menu', () => {
 					// Retour au menu
 					jeu.paused = false;
