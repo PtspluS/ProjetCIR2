@@ -84,6 +84,7 @@ var game = {
 		game.load.spritesheet('resume','assets/buttons/resume.png',236,80);
 		game.load.spritesheet('menu','assets/buttons/menu.png',168,80);
 		game.load.spritesheet('helpbutton','assets/buttons/helpbutton.png',204,80);
+		game.load.spritesheet('fullscreen','assets/buttons/fullscreen.png',84,92);
 
 		game.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
 		game.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
@@ -168,7 +169,7 @@ var game = {
 				}
 
 				// Boutons
-				var pauseHelpb = game.add.button(900, 100, 'helpbutton', () => {
+				let pauseHelpb = game.add.button(900, 100, 'helpbutton', () => {
 					// Affiche / enleve les aides
 					for(let i = 0; i < pauseHelps.length; i++){
 						pauseHelps[i].alpha = (pauseHelps[i].alpha + 1) % 2;
@@ -177,12 +178,27 @@ var game = {
 				pauseHelpb.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseHelpb);
 
-				var banner = game.add.sprite(300,100,'title');//banniere pour le menu de pause
+				let banner = game.add.button(300,100,'title',()=>{
+						let mapName = game.add.bitmapText(500,50,'font','Map : '+levels[MenuGame.cursorMap].name,30);
+						let timerInfo = game.add.bitmapText(500,100,'font','Time : '+Math.floor((mytimer.timemax-mytimer.valuetime)/60)+':'+((mytimer.timemax-mytimer.valuetime)%60),30);
+						pauseGroup.add(mapName);
+						pauseGroup.add(timerInfo);
+				});//banniere pour le menu de pause
 				banner.anchor.setTo(0.5,0.5);
 				banner.scale.setTo(0.75,0.75);
 				pauseGroup.add(banner);
 
-				var pauseResume = game.add.button(300, 300, 'resume', () => {
+				// Bouton Fullscreen
+				let goFullscreen = game.add.button(game.world.width-104, 20,'fullscreen',() => {
+					if (jeu.scale.isFullScreen){
+						jeu.scale.stopFullScreen();
+					} else {
+						jeu.scale.startFullScreen(false);
+					}
+				},this,1,0,2);
+				pauseGroup.add(goFullscreen);
+
+				let pauseResume = game.add.button(300, 300, 'resume', () => {
 					// Destruction des elements de la pause
 					pauseGroup.removeAll(true,true);
 					jeu.paused = false;
@@ -190,7 +206,7 @@ var game = {
 				pauseResume.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseResume);
 
-				var pauseMenu = game.add.button(300, 450, 'menu', () => {
+				let pauseMenu = game.add.button(300, 450, 'menu', () => {
 					// Retour au menu
 					jeu.paused = false;
 					this.state.start('Menu');
@@ -211,7 +227,7 @@ var game = {
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 		mytimer.updatetimer();
 		if(mytimer.valuetime == mytimer.timemax){
-			
+
 			if(Score.score>=levels[this.id].score*this.nbPlayers/1.618){
 				this.state.start('MenuGame');
 				MenuGame.cursorMap = this.id+1;
