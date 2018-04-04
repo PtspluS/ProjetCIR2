@@ -43,7 +43,7 @@ var levels = [
     itemsTime: 10000,
     itemsPattern: false,
     chrono: 180,
-    score : 500,//score pour un joueur
+    score : 50,//score pour un joueur
     spawnpoints: [[5,6],[7,6],[9,6],[11,7]],
     seauSpawnpoints: [[7,4],[12,7]],
     imagePath: "/assets/levels/",
@@ -80,7 +80,7 @@ var levels = [
   itemsTime: 10000,
   itemsPattern: false,
   chrono: 180,
-  score : 500,
+  score : 150,
   spawnpoints: [[5,6],[12,5],[7,6],[14,5]],
   seauSpawnpoints: [[8,6],[9,6]],
   imagePath: "/assets/levels/",
@@ -116,7 +116,7 @@ var levels = [
   itemsTime: 10000,
   itemsPattern: false,
   chrono: 180,
-  score : 500,
+  score : 200,
   spawnpoints: [[5,6],[13,6],[9,6],[15,6]],
   seauSpawnpoints: [],
   imagePath: "/assets/levels/",
@@ -231,6 +231,11 @@ var skins = [//permet de stocker tout les skins des persos
   },{
     name : 'walle',
     sprite : 'assets/walle.png',
+    width : 44,
+    height : 68,
+  },{
+    name : 'ghostbuster',
+    sprite : 'assets/ghostbuster.png',
     width : 44,
     height : 68,
   },

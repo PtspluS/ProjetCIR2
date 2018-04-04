@@ -377,7 +377,7 @@ var MenuOpt ={
     },
     create : function(){
 		musicMenu.resume();//relance la musique là ou elle s'était arrêtée
-		
+
 		MenuOpt.input.gamepad.start();
 
 		var playersGroups = [MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group()];

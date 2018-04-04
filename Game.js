@@ -211,7 +211,7 @@ var game = {
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 		mytimer.updatetimer();
 		if(mytimer.valuetime == mytimer.timemax){
-
+			
 			if(Score.score>=levels[this.id].score*this.nbPlayers/1.618){
 				this.state.start('MenuGame');
 				MenuGame.cursorMap = this.id+1;
