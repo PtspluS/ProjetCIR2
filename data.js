@@ -239,4 +239,10 @@ var skins = [//permet de stocker tout les skins des persos
     width : 44,
     height : 68,
   },
+  },{
+    name : 'hazman',
+    sprite : 'assets/hazman.png',
+    width : 44,
+    height : 68,
+  }
 ];
