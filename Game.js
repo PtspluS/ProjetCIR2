@@ -179,10 +179,12 @@ var game = {
 				pauseGroup.add(pauseHelpb);
 
 				let banner = game.add.button(300,100,'title',()=>{
-						let mapName = game.add.bitmapText(500,50,'font','Map : '+levels[MenuGame.cursorMap].name,30);
-						let timerInfo = game.add.bitmapText(500,100,'font','Time : '+Math.floor((mytimer.timemax-mytimer.valuetime)/60)+':'+((mytimer.timemax-mytimer.valuetime)%60),30);
+						let mapName = game.add.bitmapText(500,30,'font','Map : '+levels[MenuGame.cursorMap].name,30);
+						let timerInfo = game.add.bitmapText(500,80,'font','Time : '+Math.floor((mytimer.timemax-mytimer.valuetime)/60)+':'+((mytimer.timemax-mytimer.valuetime)%60),30);
+						let score = game.add.bitmapText(500,130,'font','Score : '+Score.score);
 						pauseGroup.add(mapName);
 						pauseGroup.add(timerInfo);
+						pauseGroup.add(score);
 				});//banniere pour le menu de pause
 				banner.anchor.setTo(0.5,0.5);
 				banner.scale.setTo(0.75,0.75);
