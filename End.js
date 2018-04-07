@@ -1,7 +1,8 @@
 var end = {
-  equationResult : 0,
+  equationResult : 0.42,
   preload : function(){
     end.load.audio('endMusic','musics/endMusic.mp3');
+    end.load.audio('easterEgg','musics/eminem.mp3');
     end.load.spritesheet('title','assets/logo.png',408,222);
     for (let sk in skins) {//boucle de chargement de tt les skins
       end.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
@@ -10,7 +11,9 @@ var end = {
     end.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
   },
   create : function(){
-    let musicEnd = end.add.audio('endMusic');
+    if (levels[MenuGame.cursorMap].score*0.42==this.equationResult) {var musicEnd = end.add.audio('easterEgg');}
+    else {var musicEnd = end.add.audio('endMusic');}
+    //let musicEnd = end.add.audio('endMusic');
     musicEnd.play('',0,1,true);
 
     var tab = Array(99);

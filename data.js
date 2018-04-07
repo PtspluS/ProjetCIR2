@@ -19,6 +19,7 @@ var levels = [
     itemsPattern: false,
     tpsTr : 5,//temps de traitement moyen d'un déchet
     chrono: 1,
+    score : 1,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
     seauSpawnpoints: [],
     imagePath: "/assets/levels/",
