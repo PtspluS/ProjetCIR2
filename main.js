@@ -7,6 +7,8 @@ jeu.state.add('MenuOpt', MenuOpt);
 jeu.state.add('Tuto', Tuto);
 //Donne la fenetre de jeu
 jeu.state.add('Game', game);
+//Donne la fenetre de fin
+jeu.state.add('End',end);
 
 //On commence au Menu générale
 jeu.state.start('Menu');

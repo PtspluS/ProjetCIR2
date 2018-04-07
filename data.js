@@ -17,12 +17,14 @@ var levels = [
     items: [itemsId.Pneu, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau],
     itemsTime: 10000,
     itemsPattern: false,
-    chrono: 3600,
+    tpsTr : 5,//temps de traitement moyen d'un déchet
+    chrono: 1,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
     seauSpawnpoints: [],
     imagePath: "/assets/levels/",
     name: "Level test",
-    tutoText: []
+    tutoText: [],
+    tips : 'Le caca des poules c\'est caca',
   },
   {
     matrice: [
@@ -42,6 +44,7 @@ var levels = [
     items: [itemsId.Pneu,itemsId.Pneu,itemsId.Pneu,itemsId.Pneu],
     itemsTime: 10000,
     itemsPattern: false,
+    tpsTr : 5,//temps de traitement moyen d'un déchet
     chrono: 180,
     score : 50,//score pour un joueur
     spawnpoints: [[5,6],[7,6],[9,6],[11,7]],
@@ -79,6 +82,7 @@ var levels = [
   items: [itemsId.Pneu,itemsId.Plastique],
   itemsTime: 10000,
   itemsPattern: false,
+  tpsTr : 5,//temps de traitement moyen d'un déchet
   chrono: 180,
   score : 150,
   spawnpoints: [[5,6],[12,5],[7,6],[14,5]],
@@ -115,6 +119,7 @@ var levels = [
   items: [itemsId.Carton],
   itemsTime: 10000,
   itemsPattern: false,
+  tpsTr : 5,//temps de traitement moyen d'un déchet
   chrono: 180,
   score : 200,
   spawnpoints: [[5,6],[13,6],[9,6],[15,6]],
@@ -148,6 +153,7 @@ var levels = [
   items: [itemsId.Metal,itemsId.Carton],
   itemsTime: 10000,
   itemsPattern: false,
+  tpsTr : 5,//temps de traitement moyen d'un déchet
   chrono: 180,
   score : 500,
   spawnpoints: [[4,5],[14,6],[7,5],[11,6]],
@@ -173,6 +179,7 @@ var levels = [
   items: [itemsId.Verre],
   itemsTime: 10000,
   itemsPattern: false,
+  tpsTr : 5,//temps de traitement moyen d'un déchet
   chrono: 180,
   score : 500,
   spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
@@ -199,6 +206,7 @@ var levels = [
   items: [itemsId.Metal, itemsId.Plastique],
   itemsTime: 10000,
   itemsPattern: false,
+  tpsTr : 5,//temps de traitement moyen d'un déchet
   chrono: 180,
   score : 500,
   spawnpoints: [[6,5],[14,5],[8,5],[12,5]],

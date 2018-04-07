@@ -37,87 +37,87 @@ Player=function(sprite,posx,posy,groupe,itemgroupe){
 }
 //deplacement du player en diagonale basdroite
 Player.prototype.downright=function(){
-  this.player.body.velocity.x = (this.speed/2)+20;
-  this.player.body.velocity.y = (this.speed/2)+20;
-  if(this.carry == 0){
+	this.player.body.velocity.x = (this.speed/2)+20;
+	this.player.body.velocity.y = (this.speed/2)+20;
+	if(this.carry == 0){
 		this.player.animations.play('downright');
-  }else{
+	}else{
 		this.player.animations.play('adownright');
-  }
-  this.direction='downright';
+	}
+	this.direction='downright';
 }
 //deplacement du player en diagonale hautdroite
 Player.prototype.upright=function(){
-  this.player.body.velocity.x = (this.speed/2)+20;
-  this.player.body.velocity.y = -((this.speed/2)+20);
-  if(this.carry == 0){
+	this.player.body.velocity.x = (this.speed/2)+20;
+	this.player.body.velocity.y = -((this.speed/2)+20);
+	if(this.carry == 0){
 		this.player.animations.play('upright');
-  }else{
+	}else{
 		this.player.animations.play('aupright');
-  }
-  this.direction='upright';
+	}
+	this.direction='upright';
 }
 //deplacement du player en diagonale basgauche
 Player.prototype.downleft=function(){
-  this.player.body.velocity.x = -((this.speed/2)+20);
-  this.player.body.velocity.y = (this.speed/2)+20;
-  if(this.carry == 0){
+	this.player.body.velocity.x = -((this.speed/2)+20);
+	this.player.body.velocity.y = (this.speed/2)+20;
+	if(this.carry == 0){
 		this.player.animations.play('downleft');
-  }else{
+	}else{
 		this.player.animations.play('adownleft');
-  }
-  this.direction='downleft';
+	}
+	this.direction='downleft';
 }
 //deplacement du player en diagonale hautgauche
 Player.prototype.upleft=function(){
-  this.player.body.velocity.x = -((this.speed/2)+20);
-  this.player.body.velocity.y = -((this.speed/2)+20);
-  if(this.carry == 0){
+	this.player.body.velocity.x = -((this.speed/2)+20);
+	this.player.body.velocity.y = -((this.speed/2)+20);
+	if(this.carry == 0){
 		this.player.animations.play('upleft');
-  }else{
+	}else{
 		this.player.animations.play('aupleft');
-  }
-  this.direction='upleft';
+	}
+	this.direction='upleft';
 }
 //deplacement du player en bas
 Player.prototype.down=function(){
-  this.player.body.velocity.y = this.speed;
-  if(this.carry == 0){
+	this.player.body.velocity.y = this.speed;
+	if(this.carry == 0){
 		this.player.animations.play('down');
-  }else{
+	}else{
 		this.player.animations.play('adown');
-  }
-  this.direction='down';
+	}
+	this.direction='down';
 }
 //deplacement du player en bas
 Player.prototype.up=function(){
-  this.player.body.velocity.y = -this.speed;
-  if(this.carry == 0){
+	this.player.body.velocity.y = -this.speed;
+	if(this.carry == 0){
 		this.player.animations.play('up');
-  }else{
+	}else{
 		this.player.animations.play('aup');
-  }
-  this.direction='up';
+	}
+	this.direction='up';
 }
 //deplacement du player a droite
 Player.prototype.right=function(){
-  this.player.body.velocity.x = this.speed;
-  if(this.carry == 0){
+	this.player.body.velocity.x = this.speed;
+	if(this.carry == 0){
 		this.player.animations.play('right');
-  }else{
+	}else{
 		this.player.animations.play('aright');
-  }
-  this.direction='right';
+	}
+	this.direction='right';
 }
 //deplacement du player a gauche
 Player.prototype.left=function(){
-  this.player.body.velocity.x = -this.speed;
-  if(this.carry == 0){
+	this.player.body.velocity.x = -this.speed;
+	if(this.carry == 0){
 		this.player.animations.play('left');
-  }else{
+	}else{
 		this.player.animations.play('aleft');
-  }
-  this.direction='left';
+	}
+	this.direction='left';
 }
 //action du joueur
 Player.prototype.wait=function(){
@@ -125,138 +125,138 @@ Player.prototype.wait=function(){
 	if(this.carry != 0){
 		port = 32;
 	}
-  switch(this.direction){
-    case "downright":
-    this.player.frame = 4 + port;
-    break;
-    case "downleft":
-    this.player.frame = 28 + port;
-    break;
-    case "upright":
-    this.player.frame = 12 + port;
-    break;
-    case "upleft":
-    this.player.frame = 20 + port;
-    break;
-    case "up":
-    this.player.frame = 16 + port;
-    break;
-    case "down":
-    this.player.frame = 0 + port;
-    break;
-    case "left":
-    this.player.frame = 24 + port;
-    break;
-    case "right":
-    this.player.frame = 8 + port;
-    break;
-  }
+	switch(this.direction){
+		case "downright":
+		this.player.frame = 4 + port;
+		break;
+		case "downleft":
+		this.player.frame = 28 + port;
+		break;
+		case "upright":
+		this.player.frame = 12 + port;
+		break;
+		case "upleft":
+		this.player.frame = 20 + port;
+		break;
+		case "up":
+		this.player.frame = 16 + port;
+		break;
+		case "down":
+		this.player.frame = 0 + port;
+		break;
+		case "left":
+		this.player.frame = 24 + port;
+		break;
+		case "right":
+		this.player.frame = 8 + port;
+		break;
+	}
 }
 
 Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,otherplayer){
 	for(let i = 0; i < otherplayer.length; i++){
 		var hitPlayer = game.physics.arcade.collide(this.player,otherplayer[i].player);
-		
+
 	}
-  
-  this.item.x = this.player.x - 6;
-  this.item.y = this.player.y - 36;
 
-  this.player.body.velocity.x = 0;
-  this.player.body.velocity.y = 0;
-  if (cursorright() && cursordown())
-  {
-    this.downright();
-  }
-  else if (cursorright() && cursorup())
-  {
-      this.upright();
-  }
-  else if (cursorleft() && cursordown())
-  {
-    this.downleft();
-  }
-else if (cursorleft() && cursorup())
-  {
-  this.upleft();
-  }
-else if (cursordown())
-  {
-  this.down();
-  }
-else if (cursorright())
-  {
-  this.right();
-  }
-else if (cursorup())
-  {
-  this.up();
-  }
-else if (cursorleft())
-  {
-  this.left();
-}
-else{
-  this.wait();
-}
+	this.item.x = this.player.x - 6;
+	this.item.y = this.player.y - 36;
 
-if(cursordrop() && this.dropActive == false){
- this.drop();
- this.dropActive = true;
-}else if(cursordrop()){
-  this.dropActive = true;
-}else {
-  this.dropActive = false;
-}
+	this.player.body.velocity.x = 0;
+	this.player.body.velocity.y = 0;
+	if (cursorright() && cursordown())
+	{
+		this.downright();
+	}
+	else if (cursorright() && cursorup())
+	{
+		this.upright();
+	}
+	else if (cursorleft() && cursordown())
+	{
+		this.downleft();
+	}
+	else if (cursorleft() && cursorup())
+	{
+		this.upleft();
+	}
+	else if (cursordown())
+	{
+		this.down();
+	}
+	else if (cursorright())
+	{
+		this.right();
+	}
+	else if (cursorup())
+	{
+		this.up();
+	}
+	else if (cursorleft())
+	{
+		this.left();
+	}
+	else{
+		this.wait();
+	}
 
-if(cursorinteract() && this.interactActive == false && this.carry == 0){
- this.interact();
- this.interactActive = true;
-}else if(cursorinteract()){
-  this.interactActive = true;
-}else {
-  this.interactActive = false;
-}
+	if(cursordrop() && this.dropActive == false){
+		this.drop();
+		this.dropActive = true;
+	}else if(cursordrop()){
+		this.dropActive = true;
+	}else {
+		this.dropActive = false;
+	}
 
-  var hitPlatform = game.physics.arcade.collide(this.player,platforms);
+	if(cursorinteract() && this.interactActive == false && this.carry == 0){
+		this.interact();
+		this.interactActive = true;
+	}else if(cursorinteract()){
+		this.interactActive = true;
+	}else {
+		this.interactActive = false;
+	}
+
+	var hitPlatform = game.physics.arcade.collide(this.player,platforms);
 }
 
 Player.prototype.checkfront=function(){
-  var x=0;
-  var y=0;
+	var x=0;
+	var y=0;
 
-  switch(this.direction){
-    case "downright":
+	switch(this.direction){
+		case "downright":
 
-    x=1;
-    y=1;
-    break;
-    case "downleft":
-    x=-1;
-    y=1;
-    break;
-    case "upright":
-    x=1;
-    y=-1;
-    break;
-    case "upleft":
-    x=-1;
-    y=-1;
-    break;
-    case "up":
+		x=1;
+		y=1;
+		break;
+		case "downleft":
+		x=-1;
+		y=1;
+		break;
+		case "upright":
+		x=1;
+		y=-1;
+		break;
+		case "upleft":
+		x=-1;
+		y=-1;
+		break;
+		case "up":
 
-   y=-1;
-    break;
-    case "down":
-    y=1;
-    break;
-    case "left":
-    x=-1;
-    break;
-    case "right":
-  x=+1;
-    break;
-  }
+		y=-1;
+		break;
+		case "down":
+		y=1;
+		break;
+		case "left":
+		x=-1;
+		break;
+		case "right":
+		x=+1;
+		break;
+	}
 	if(Math.round(parseInt((this.player.y+32)/64))+y < 0 || Math.round(parseInt((this.player.y+32)/64))+y >= map.length || Math.round(parseInt((this.player.x+22)/64))+x < 0 || Math.round(parseInt((this.player.x+22)/64))+x >= map[0].length){
 		return 0;
 	}
