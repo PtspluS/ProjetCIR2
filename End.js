@@ -93,6 +93,8 @@ var end = {
 		tip.fill = 'white';
     let go = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'go',()=>{
       this.state.start('MenuGame');
+      musicEnd.stop();
+      musicMenu.play('',0,1,true);
     },this,1,0,2);
     go.anchor.setTo(0.5,0.5);
   },
