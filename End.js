@@ -77,5 +77,11 @@ var end = {
     },this);
     let Grade = end.add.bitmapText(end.world.width-400, posY+40*indication.length+60,'font','Grade : ',42);
     Grade.anchor.setTo(0.5,0.5);
+    let tip = end.add.text(0, 0.7 * end.world.centerY,levels[MenuGame.cursorMap].tips,{
+			align: "left",
+			wordWrap: true,
+			wordWrapWidth: 800
+		});
+		tip.fill = 'white';
   },
 };
