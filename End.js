@@ -1,5 +1,6 @@
 var end = {
-  equationResult : 2,
+  score : 0,
+  equationResult : 0,//donne le nombre de point que peut raporter un joueur sur la levels[MenuGame.cursorMap] au max
   preload : function(){
     end.load.audio('endMusic','musics/endMusic.mp3');
     end.load.audio('easterEgg','musics/eminem.mp3');
@@ -12,6 +13,7 @@ var end = {
     end.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
   },
   create : function(){
+    this.equationResult = Math.floor(this.score.score*levels[MenuGame.cursorMap].chrono)/(levels[MenuGame.cursorMap].tpsTr*MenuOpt.nbPlayers*10);
     if (levels[MenuGame.cursorMap].score*0.42==this.equationResult) {var musicEnd = end.add.audio('easterEgg');}
     else {var musicEnd = end.add.audio('endMusic');}
     //let musicEnd = end.add.audio('endMusic');
@@ -28,16 +30,16 @@ var end = {
     banner.anchor.setTo(0.5,0.5);
     banner.scale.setTo(0.6,0.6);
     //affichage du recap de partie et de la note
-    let indication = ['Player : '+MenuOpt.nbPlayers,'Time : '+Math.floor(mytimer.timemax/60)+':'+mytimer.timemax%60,'Score : '+this.equationResult];//tableau contenant toutes les infos à afficher pour résumer la partie
-    let Score = end.add.bitmapText(end.world.width-500, 200,'font', 'The Result :', 56);
-    let message = end.add.bitmapText(end.world.width-450, 200+Score.height+40*indication.length+100,'fontred','',60);
-    let posY = 200+Score.height;
+    let indication = ['Player : '+MenuOpt.nbPlayers,'Time : '+Math.floor(mytimer.timemax/60)+':'+mytimer.timemax%60,'Score : '+this.score.score,'Money : '+this.equationResult+'$'];//tableau contenant toutes les infos à afficher pour résumer la partie
+    let Result = end.add.bitmapText(end.world.width-500, 200,'font', 'The Result :', 56);
+    let message = end.add.bitmapText(end.world.width-450, 200+Result.height+40*indication.length+100,'fontred','',60);
+    let posY = 200+Result.height;
     let iteration = 0;
     end.time.events.repeat(Phaser.Timer.SECOND * 1.5,indication.length+1,()=>{
-        let txt = end.add.bitmapText(end.world.width-500+Score.width/2,posY+=40,'font',indication[iteration++],30);
+        let txt = end.add.bitmapText(end.world.width-500+Result.width/2,posY+=40,'font',indication[iteration++],30);
         txt.anchor.setTo(0.5,0.5);
         if(iteration==indication.length){
-          let GradeL = end.add.bitmapText(end.world.width-300, 200+Score.height+40*indication.length+60,'fontred','',60);
+          let GradeL = end.add.bitmapText(end.world.width-300, 200+Result.height+40*indication.length+60,'fontred','',60);
           GradeL.anchor.setTo(0.5,0.5);
           //choix du grade
           if(this.equationResult>=2*levels[MenuGame.cursorMap].score){
@@ -85,6 +87,8 @@ var end = {
     },this);
     let Grade = end.add.bitmapText(end.world.width-400, posY+40*indication.length+60,'font','Grade : ',42);
     Grade.anchor.setTo(0.5,0.5);
+    let tips = end.add.bitmapText(end.world.centerX-200,200,'font','TIPS : ',60);
+    tips.anchor.setTo(0.5,0.5);
     let tip = end.add.text(0, 0.7 * end.world.centerY,levels[MenuGame.cursorMap].tips,{
 			align: "left",
 			wordWrap: true,

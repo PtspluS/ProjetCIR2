@@ -119,7 +119,7 @@ var game = {
 		mytimer = new MyTimer(level.chrono);
 
 		//Creation d un score
-		Score= new MyScore();
+		this.score = new MyScore();
 
 		// PAUSE
 		var pauseGroup = game.add.group();
@@ -181,7 +181,7 @@ var game = {
 				let banner = game.add.button(300,100,'title',()=>{
 						let mapName = game.add.bitmapText(500,30,'font','Map : '+levels[MenuGame.cursorMap].name,30);
 						let timerInfo = game.add.bitmapText(500,80,'font','Time : '+Math.floor((mytimer.timemax-mytimer.valuetime)/60)+':'+((mytimer.timemax-mytimer.valuetime)%60),30);
-						let score = game.add.bitmapText(500,130,'font','Score : '+Score.score);
+						let score = game.add.bitmapText(500,130,'font','Score : '+this.score.score);
 						pauseGroup.add(mapName);
 						pauseGroup.add(timerInfo);
 						pauseGroup.add(score);
@@ -229,6 +229,7 @@ var game = {
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 		mytimer.updatetimer();
 		if(mytimer.valuetime == mytimer.timemax){
+			end.score = this.score;
 			this.state.start('End');
 		}
 	}

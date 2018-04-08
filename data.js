@@ -46,7 +46,7 @@ var levels = [
     itemsTime: 10000,
     itemsPattern: false,
     tpsTr : 5,//temps de traitement moyen d'un déchet
-    chrono: 180,
+    chrono: 80,
     score : 50,//score pour un joueur
     spawnpoints: [[5,6],[7,6],[9,6],[11,7]],
     seauSpawnpoints: [[7,4],[12,7]],

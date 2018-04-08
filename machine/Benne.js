@@ -14,7 +14,7 @@ Benne.prototype.addscore=function(value){
 	game.world.bringToTop(this.scoretext);
 	this.scoretext.text='+'+value;
 	this.scoretext.body.velocity.y=-50;
-	game.time.events.add(1000, () => {Score.updatescore(value);
+	game.time.events.add(1000, () => {game.score.updatescore(value);
 		this.scoretext.x=this.posx;
 		this.scoretext.y=this.posy;
 		this.scoretext.body.velocity.y=0;
