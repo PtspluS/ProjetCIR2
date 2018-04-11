@@ -1,22 +1,23 @@
 Conveyor = function(sprite,posx,posy,groupe,itemgroupe,sens){
 	this.conveyor = groupe.create(posx,posy,sprite);
 	this.stock = 0;
+	this.speed=50;
 	this.sens = sens;
 	switch(sens){
 		case 'up':
-			this.conveyor.animations.add('actif', [ 0, 1, 2, 3], 2, true);
+			this.conveyor.animations.add('actif', [ 0, 1, 2, 3], 500/this.speed, true);
 			this.frame0 = 0;
 			break;
 		case 'down':
-			this.conveyor.animations.add('actif', [ 4, 5, 6, 7], 2, true);
+			this.conveyor.animations.add('actif', [ 4, 5, 6, 7],  500/this.speed, true);
 			this.frame0 = 4;
 			break;
 		case 'right':
-			this.conveyor.animations.add('actif', [ 8, 9, 10, 11], 2, true);
+			this.conveyor.animations.add('actif', [ 8, 9, 10, 11],  500/this.speed, true);
 			this.frame0 = 8;
 			break;
 		case 'left':
-			this.conveyor.animations.add('actif', [ 12, 13, 14, 15], 2, true);
+			this.conveyor.animations.add('actif', [ 12, 13, 14, 15],  500/this.speed, true);
 			this.frame0 = 12;
 			break;
 	}
@@ -56,7 +57,7 @@ Conveyor.prototype.stabilize = function(incoming){
 		case 'down':
 			if(this.item.position.y != this.conveyor.position.y + 4){
 				this.item.position.y += 4;
-				game.time.events.add(400, () => {this.stabilize(incoming);} , this);
+				game.time.events.add(this.speed, () => {this.stabilize(incoming);} , this);
 			}else{
 				this.envoie();
 			}
@@ -64,7 +65,7 @@ Conveyor.prototype.stabilize = function(incoming){
 		case 'up':
 			if(this.item.position.y != this.conveyor.position.y + 4){
 				this.item.position.y -= 4;
-				game.time.events.add(400, () => {this.stabilize(incoming);} , this);
+				game.time.events.add(this.speed, () => {this.stabilize(incoming);} , this);
 			}else{
 				this.envoie();
 			}
@@ -72,7 +73,7 @@ Conveyor.prototype.stabilize = function(incoming){
 		case 'left':
 			if(this.item.position.x != this.conveyor.position.x + 4){
 				this.item.position.x -= 4;
-				game.time.events.add(400, () => {this.stabilize(incoming);} , this);
+				game.time.events.add(this.speed, () => {this.stabilize(incoming);} , this);
 			}else{
 				this.envoie();
 			}
@@ -80,7 +81,7 @@ Conveyor.prototype.stabilize = function(incoming){
 		case 'right':
 			if(this.item.position.x != this.conveyor.position.x + 4){
 				this.item.position.x += 4;
-				game.time.events.add(400, () => {this.stabilize(incoming);} , this);
+				game.time.events.add(this.speed, () => {this.stabilize(incoming);} , this);
 			}else{
 				this.envoie();
 			}
@@ -121,9 +122,9 @@ Conveyor.prototype.envoie = function(){
 		case 'up':
 			if(this.item.position.y != this.conveyor.position.y + 4 - 32 && infront.stock == 0 && this.stock != 0){
 				this.item.position.y -= 4;
-				game.time.events.add(400, () => {this.envoie();} , this);
+				game.time.events.add(this.speed, () => {this.envoie();} , this);
 			}else if(infront.stock != 0 && this.stock != 0){
-				game.time.events.add(400, () => {this.envoie();} , this);
+				game.time.events.add(this.speed, () => {this.envoie();} , this);
 			}else if(this.stock != 0){
 				if(infront.recup != undefined){
 					infront.recup(this.stock, this.sens);
@@ -140,9 +141,9 @@ Conveyor.prototype.envoie = function(){
 		case 'down':
 			if(this.item.position.y != this.conveyor.position.y + 4 + 32 && infront.stock == 0 && this.stock != 0){
 				this.item.position.y += 4;
-				game.time.events.add(400, () => {this.envoie();} , this);
+				game.time.events.add(this.speed, () => {this.envoie();} , this);
 			}else if(infront.stock != 0 && this.stock != 0){
-				game.time.events.add(400, () => {this.envoie();} , this);
+				game.time.events.add(this.speed, () => {this.envoie();} , this);
 			}else if(this.stock != 0){
 				if(infront.recup != undefined){
 					infront.recup(this.stock, this.sens);
@@ -159,9 +160,9 @@ Conveyor.prototype.envoie = function(){
 		case 'right':
 			if(this.item.position.x != this.conveyor.position.x + 4 + 32 && infront.stock == 0 && this.stock != 0){
 				this.item.position.x += 4;
-				game.time.events.add(400, () => {this.envoie();} , this);
+				game.time.events.add(this.speed, () => {this.envoie();} , this);
 			}else if(infront.stock != 0 && this.stock != 0){
-				game.time.events.add(400, () => {this.envoie();} , this);
+				game.time.events.add(this.speed, () => {this.envoie();} , this);
 			}else if(this.stock != 0){
 				if(infront.recup != undefined){
 					infront.recup(this.stock, this.sens);
@@ -178,9 +179,9 @@ Conveyor.prototype.envoie = function(){
 		case 'left':
 			if(this.item.position.x != this.conveyor.position.x + 4 - 32 && infront.stock == 0 && this.stock != 0){
 				this.item.position.x -= 4;
-				game.time.events.add(400, () => {this.envoie();} , this);
+				game.time.events.add(this.speed, () => {this.envoie();} , this);
 			}else if(infront.stock != 0 && this.stock != 0){
-				game.time.events.add(400, () => {this.envoie();} , this);
+				game.time.events.add(this.speed, () => {this.envoie();} , this);
 			}else if(this.stock != 0){
 				if(infront.recup != undefined){
 					infront.recup(this.stock, this.sens);

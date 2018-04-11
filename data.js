@@ -15,10 +15,10 @@ var levels = [
       [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,22,22, 3, 3,22,22, 3, 3]
     ],
     items: [itemsId.Pneu, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau],
-    itemsTime: 10000,
+    itemsTime: 1500,
     itemsPattern: false,
     tpsTr : 5,//temps de traitement moyen d'un déchet
-    chrono: 1,
+    chrono: 100000,
     score : 1,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
     seauSpawnpoints: [],
@@ -221,6 +221,33 @@ var levels = [
     'Donc soit vous utilisez les tables soit vous avez assez confiance dans votre camarade pour qu\'il récupère l\'objet avant l\'incinérateur.',
     'En résumé vous allez galérer, ça va être chaud mais c\'est un bon moyen de voir si vous savez communiquer.'
   ]
+},
+{
+  matrice: [
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3,-1],
+    [-1, 3,15, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,15, 3,-1],
+    [-1, 3,11, 7, 0, 0,17,16, 3, 1, 1, 1, 3,16,17, 7, 0, 0,11, 3,-1],
+    [-1, 3,11, 0, 0, 0, 0, 0, 3, 1, 0, 1, 3, 0, 0, 0, 0, 0,11, 3,-1],
+    [-1, 3,11, 0, 0, 0, 0, 0, 3, 1, 0, 1, 3, 0, 0, 0, 0, 0,11, 3,-1],
+    [-1, 3,11, 0, 6, 0, 0, 0, 3, 3, 0, 3, 3, 0, 0, 6, 0, 0,11, 3,-1],
+    [-1, 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,11, 3,-1],
+    [-1, 3,14, 0,21, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8,21, 0,14, 3,-1],
+    [-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+  ],
+  items:[itemsId.Metal,itemsId.Verre] ,
+  itemsTime: 9000,
+  itemsPattern: false,
+  tpsTr : 5,//temps de traitement moyen d'un déchet
+  chrono: 180,
+  score : 500,
+  spawnpoints: [[4,5],[14,4],[7,6],[12,6]],
+  seauSpawnpoints: [[3,3],[15,3]],
+  imagePath: "/assets/levels/",
+  name: "Fondrie",
+  tutoText: []
 }
 
 
