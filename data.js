@@ -18,6 +18,7 @@ var levels = [
     itemsTime: 1500,
     itemsPattern: false,
     tpsTr : 5,//temps de traitement moyen d'un déchet
+    itemSpeed : 50,
     chrono: 1,
     score : 1000,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
@@ -46,6 +47,7 @@ var levels = [
     itemsTime: 10000,
     itemsPattern: false,
     tpsTr : 5,//temps de traitement moyen d'un déchet
+    itemSpeed : 120,
     chrono: 80,
     score : 50,//score pour un joueur
     spawnpoints: [[5,6],[7,6],[9,6],[11,7]],
@@ -82,6 +84,7 @@ var levels = [
   items: [itemsId.Pneu,itemsId.Plastique],
   itemsTime: 10000,
   itemsPattern: false,
+  itemSpeed : 120,
   tpsTr : 5,//temps de traitement moyen d'un déchet
   chrono: 180,
   score : 150,
@@ -119,6 +122,7 @@ var levels = [
   items: [itemsId.Carton],
   itemsTime: 10000,
   itemsPattern: false,
+  itemSpeed : 120,
   tpsTr : 5,//temps de traitement moyen d'un déchet
   chrono: 180,
   score : 200,
@@ -154,6 +158,7 @@ var levels = [
   itemsTime: 10000,
   itemsPattern: false,
   tpsTr : 5,//temps de traitement moyen d'un déchet
+  itemSpeed : 120,
   chrono: 180,
   score : 500,
   spawnpoints: [[4,5],[14,6],[7,5],[11,6]],
@@ -180,6 +185,7 @@ var levels = [
   itemsTime: 10000,
   itemsPattern: false,
   tpsTr : 5,//temps de traitement moyen d'un déchet
+  itemSpeed : 120,
   chrono: 180,
   score : 500,
   spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
@@ -206,7 +212,8 @@ var levels = [
   items: [itemsId.Metal, itemsId.Plastique],
   itemsTime: 10000,
   itemsPattern: false,
-  tpsTr : 5,//temps de traitement moyen d'un déchet
+  tpsTr : 5,//temps de traitement moyen d'un déchet,
+  itemSpeed : 50,
   chrono: 180,
   score : 500,
   spawnpoints: [[6,5],[14,5],[8,5],[12,5]],
@@ -231,7 +238,7 @@ var levels = [
     [-1, 3,11, 0, 0, 0, 0, 0, 3, 1, 0, 1, 3, 0, 0, 0, 0, 0,11, 3,-1],
     [-1, 3,11, 0, 6, 0, 0, 0, 3, 3, 0, 3, 3, 0, 0, 6, 0, 0,11, 3,-1],
     [-1, 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,11, 3,-1],
-    [-1, 3,14, 0,21, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8,21, 0,14, 3,-1],
+    [-1, 3,14, 0,21, 8, 0, 0, 0, 0, 9, 0, 0, 0, 0, 8,21, 0,14, 3,-1],
     [-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1],
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
@@ -240,6 +247,7 @@ var levels = [
   itemsTime: 9000,
   itemsPattern: false,
   tpsTr : 5,//temps de traitement moyen d'un déchet
+  itemSpeed : 50,
   chrono: 180,
   score : 500,
   spawnpoints: [[4,5],[14,4],[7,6],[12,6]],
