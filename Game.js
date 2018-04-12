@@ -128,13 +128,14 @@ var game = {
 		var pauseGroup = game.add.group();
 		var keyPause = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		keyPause.onDown.add(()=>{
-			document.body.style.cursor = 'default';
 			if(jeu.paused){
 				// Destruction des elements de la pause
 				pauseGroup.removeAll(true,true);
+				document.body.style.cursor = 'none';
 				jeu.paused = false;
 			} else {
 				// Fond Gris
+				document.body.style.cursor = 'default';
 				var pauseRect = game.add.graphics(0, 0);
 				pauseRect.beginFill(0x222222);
 				pauseRect.drawRect(0, 0, 1344, 768)
