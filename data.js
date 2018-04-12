@@ -18,8 +18,13 @@ var levels = [
     itemsTime: 1500,
     itemsPattern: false,
     tpsTr : 5,//temps de traitement moyen d'un déchet
+<<<<<<< Updated upstream
     chrono: 100000,
     score : 1,
+=======
+    chrono: 1,
+    score : 1000,
+>>>>>>> Stashed changes
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
     seauSpawnpoints: [],
     imagePath: "/assets/levels/",
@@ -52,7 +57,6 @@ var levels = [
     seauSpawnpoints: [[7,4],[12,7]],
     imagePath: "/assets/levels/",
     name: "Level 1",
-    //tutoText: ["3","2","1"]
     tutoText:[
     'Bon les gars v\'là le topo ... Je suis dans la merde ...',
     'Pour faire simple on m\'a chargé de monter un équipe pour traiter les déchets qui arrivent depuis la ville.',
