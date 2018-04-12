@@ -115,6 +115,9 @@ var game = {
 			players.push(new Player(skins[this.playersskins[i]].name,64* level.spawnpoints[i][0] +10,64*level.spawnpoints[i][1]-4,object,itemGui))
 		}
 
+		//enleve le cursor
+		document.body.style.cursor = 'none';
+
 		//Creation du timer
 		mytimer = new MyTimer(level.chrono);
 
@@ -125,6 +128,7 @@ var game = {
 		var pauseGroup = game.add.group();
 		var keyPause = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 		keyPause.onDown.add(()=>{
+			document.body.style.cursor = 'default';
 			if(jeu.paused){
 				// Destruction des elements de la pause
 				pauseGroup.removeAll(true,true);
@@ -230,6 +234,7 @@ var game = {
 		mytimer.updatetimer();
 		if(mytimer.valuetime == mytimer.timemax){
 			end.score = this.score;
+			document.body.style.cursor = 'default';
 			this.state.start('End');
 		}
 	}

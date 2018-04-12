@@ -18,13 +18,8 @@ var levels = [
     itemsTime: 1500,
     itemsPattern: false,
     tpsTr : 5,//temps de traitement moyen d'un déchet
-<<<<<<< Updated upstream
-    chrono: 100000,
-    score : 1,
-=======
     chrono: 1,
     score : 1000,
->>>>>>> Stashed changes
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
     seauSpawnpoints: [],
     imagePath: "/assets/levels/",

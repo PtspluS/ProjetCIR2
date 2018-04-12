@@ -96,6 +96,7 @@ var MenuGame ={
     // Clique sur GO
     let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', () => {
       musicMenu.stop();
+      //document.body.style.cursor = 'progress';
       if(MenuOpt.P1KeyCodes[0]){
         for(let i = 0; i < 6; i++){
           game.controlP1[i] = () => {return game.input.gamepad.pad1.isDown(MenuOpt.GamePadKeyCodes[i]);};
