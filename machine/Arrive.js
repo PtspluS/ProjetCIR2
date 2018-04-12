@@ -1,12 +1,12 @@
 Arrive = function(sprite,posx,posy,groupe,tabEl,time,pattern){
 	this.arrive = groupe.create(posx,posy,sprite);
-	this.arrive.animations.add('actif', [ 0, 1, 2, 3], 2, true);
+	this.arrive.animations.add('actif', [ 0, 1, 2, 3], 500/levels[MenuGame.cursorMap].itemSpeed, true);
 	this.arrive.play('actif');
 	this.tab = tabEl;
 	this.time = time;
 	this.pattern = pattern;
 	this.patnum = 0;
-	
+
 	game.time.events.add(this.time, () => {this.envoie();} , this);
 }
 
