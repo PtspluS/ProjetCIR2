@@ -65,7 +65,8 @@ var levels = [
     'Sur le tapis roulant il y a des pneux qui vont arriver, choppez les avant qu\'ils ne soient incinérés et mettez les dans le broyeur.',
     'Une fois broyez, mettez le tous dans le bac, il y en a qu\'un vous pouvez pas vous tromper ...\nVous avez des question ?',
     'De toute façon je m\'en fou allez GO !!!'
-  ]
+  ],
+  tips : "Lorsque vous jouez sur un terrain synthétique, vous jouez sur des pneux recyclés.",
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -103,7 +104,8 @@ var levels = [
     'Pour laver les seaux, le faites pas dans les chiottes, j\'ai mis des bacs pour ça.',
     'Par contre v\'là l\'huile de coude que vous devrez user pour laver les seaux, sinon vous pouvez attendre longtemps.',
     'Toujours pas de question ?',
-  ]
+  ],
+  tips : "Avec 7 bidons on peut réaliser un siège bébé pour les sales gosses."
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -138,7 +140,8 @@ var levels = [
     'Après une fois que c\'est lavé, faut me foutre ça dans la presse. Vous récupérerez les plaques et les mettrez dans le bon bac.',
     'Par contre j\'ai vu que la dernière fois vous saviez pas mettre plusieurs objets dans le compresseur. Donc soit vous êtes cons, soit vous ..., non vous êtes juste cons.',
     'Donc merci de pas oublier sinon on va perdre du temps et moi ... euh nous ... de l\'argent.'
-  ]
+  ],
+  tips : "Le carton c'est comme les chats, ça a plusieurs vies, et en plus ça griffe pas. Donc go adopter du carton."
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -165,7 +168,8 @@ var levels = [
   seauSpawnpoints: [[13,4],[5,8]],
   imagePath: "/assets/levels/",
   name: "Level 4",
-  tutoText: []
+  tutoText: [],
+  tips : "Avec ce que vous venez de faire vous pouvez offrir un cadeau à une gamin.\nLe fer pour un vélo et le carton pour l'emballage ... un cadeau hyper utile et écolo",
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -192,7 +196,8 @@ var levels = [
   seauSpawnpoints: [[4,8],[16,8]],
   imagePath: "/assets/levels/",
   name: "Level 5",
-  tutoText: []
+  tutoText: [],
+  tips : "Le verre c'est comme les diamants, c'est éternel, une bouteille recyclée à le même cycle de vie qu'une bouteille qui vient d'être crée et on ne peut pas voir la différence.",
 }
 ,{
   matrice: [
@@ -283,7 +288,8 @@ var levels = [
   name: "Fordisme",
   tutoText: [
     'Niveau pour 4 joueurs'
-  ]
+  ],
+  tips : "Le recyclage est une industrie à part entière et on peut y appliquer les même techniques de travails que dans une usine de production.",
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
