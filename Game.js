@@ -119,7 +119,7 @@ var game = {
 		document.body.style.cursor = 'none';
 
 		//Creation du timer
-		mytimer = new MyTimer(level.chrono);
+		this.mytimer = new MyTimer(level.chrono);
 
 		//Creation d un score
 		this.score = new MyScore();
@@ -232,8 +232,8 @@ var game = {
 			players[i].update(playersControls[i][0],playersControls[i][1],playersControls[i][2],playersControls[i][3],playersControls[i][4],playersControls[i][5],platformsSolid,players);
 		}
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
-		mytimer.updatetimer();
-		if(mytimer.valuetime == mytimer.timemax){
+		this.mytimer.updatetimer();
+		if(this.mytimer.valuetime == this.mytimer.timemax){
 			end.score = this.score;
 			document.body.style.cursor = 'default';
 			this.state.start('End');
