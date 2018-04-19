@@ -1,0 +1,36 @@
+DESCRIPTION
+Une version tri selectif et recyclage de Overcooked programme en javascript avec le moteur Phaser
+
+MASTER
+X - Menu principal et selection des niveaux
+X - Personnage pouvant interragir, se mouvoir dans 8 directions et porter/poser/deposer des objets
+X - Differentes machines avec des fonctions tout aussi differentes
+  * Presse
+  * Etabli
+  * Four
+  * Broyeur
+  * Evier
+  * Soufflerie
+X - Differents objets a trie, ayant chacun une methode differente de recyclage
+  * Carton
+  * Plastique
+  * Metaux
+  * Biomasse
+  * Verre
+X - Messages de sensibilisation au tri et au recyclage (Fin et debut de niveaux, utiles sur les tutoriels)
+X - Minimum de 5 niveaux
+
+SUPPLEMENTS
+X - Possibilite d'endommager les machines
+X - Utiliser des outils (extincteur, boite a outils, balai, etc...)
+X - 2 joueurs ou plus
+X - Maximum de textures originales
+
+IDEES
+X - Niveau nucleaire
+X - Sol glissant
+X - Chariot Elevateur mouvant
+X - Power Ups
+X - Wall-E
+X - Camions
+X - Eau ou vide faisant despawn
