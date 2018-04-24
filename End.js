@@ -1,5 +1,5 @@
 var end = {
-  score : 0,
+  musicEnd : 0,
   equationResult : 0,//donne le nombre de point que peut raporter un joueur sur la levels[MenuGame.cursorMap] au max
   preload : function(){
     end.load.audio('endMusic','musics/endMusic.mp3');
@@ -13,11 +13,11 @@ var end = {
     end.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
   },
   create : function(){
-    this.equationResult = Math.floor(this.score.score*levels[MenuGame.cursorMap].chrono)/(levels[MenuGame.cursorMap].tpsTr*MenuOpt.nbPlayers*10);
-    if (levels[MenuGame.cursorMap].score*0.42==this.equationResult) {var musicEnd = end.add.audio('easterEgg');}
-    else {var musicEnd = end.add.audio('endMusic');}
+    this.equationResult = game.polution * (Math.floor(game.score.score*levels[MenuGame.cursorMap].chrono)/(levels[MenuGame.cursorMap].tpsTr*MenuOpt.nbPlayers*100));
+    if (levels[MenuGame.cursorMap].score*0.42==this.equationResult) {this.musicEnd = end.add.audio('easterEgg');}
+    else {this.musicEnd = end.add.audio('endMusic');}
     //let musicEnd = end.add.audio('endMusic');
-    musicEnd.play('',0,1,true);
+    this.musicEnd.play('',0,1,true);
 
     var tab = Array(99);
     for(let i = 0; i < 99; i++){
@@ -30,7 +30,7 @@ var end = {
     banner.anchor.setTo(0.5,0.5);
     banner.scale.setTo(0.6,0.6);
     //affichage du recap de partie et de la note
-    let indication = ['Player : '+MenuOpt.nbPlayers,'Time : '+Math.floor(levels[MenuGame.cursorMap].chrono/60)+':'+levels[MenuGame.cursorMap].chrono%60,'Money : '+this.score.score +'$','Score : '+this.equationResult];//tableau contenant toutes les infos à afficher pour résumer la partie
+    let indication = ['Player : '+MenuOpt.nbPlayers,'Time : '+Math.floor(levels[MenuGame.cursorMap].chrono/60)+':'+levels[MenuGame.cursorMap].chrono%60,'Polution : '+game.polution,'Money : '+game.score.score +'$','Score : '+this.equationResult];//tableau contenant toutes les infos à afficher pour résumer la partie
     let Result = end.add.bitmapText(end.world.width-500, 200,'font', 'The Result :', 56);
     let message = end.add.bitmapText(end.world.width-450, 200+Result.height+40*indication.length+100,'fontred','',60);
     let posY = 200+Result.height;
@@ -97,7 +97,7 @@ var end = {
 		tip.fill = 'white';
     let go = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'go',()=>{
       this.state.start('MenuGame');
-      musicEnd.stop();
+      this.musicEnd.stop();
       musicMenu.play('',0,1,true);
     },this,1,0,2);
     go.anchor.setTo(0.5,0.5);

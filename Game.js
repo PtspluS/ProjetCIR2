@@ -1,10 +1,12 @@
 var game = {
+	polution : 1,
 	id : 0,
 	playersskins : [0, 0, 0, 0],
 	nbPlayers : 2,
 	score : 0,
 	chrono : 0,
 	chronomax : 2*60,
+	musicGame : 0,
 	controlP1 : [
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.Z);},
 		() => {return game.input.keyboard.isDown(Phaser.Keyboard.S);},
@@ -101,15 +103,15 @@ var game = {
 
 	},
 	create : function() {
-
+		this.musicGame = Menu.add.audio('musicGame');
+		this.musicGame.play("",0,0.4,true);
 		// Lancement de la physique Arcade
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
 		// Bordures de la scene
 		game.world.setBounds(-10, -10, jeu.width + 10, jeu.height + 10);
 
-		this.musicGame = Menu.add.audio('musicGame');
-		this.musicGame.play("",100,0.5,true);
+		this.polution = levels[MenuGame.cursorMap].polution;
 
 		// Creation de la map
 		let level = levels[this.id];
@@ -220,6 +222,7 @@ var game = {
 				let pauseMenu = game.add.button(300, 450, 'menu', () => {
 					// Retour au menu
 					jeu.paused = false;
+					this.musicGame.stop();
 					this.state.start('Menu');
 				},this,1,0,2);
 				pauseMenu.anchor.setTo(0.5,0.5);
@@ -237,10 +240,9 @@ var game = {
 		}
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 		this.mytimer.updatetimer();
-		if(this.mytimer.valuetime == this.mytimer.timemax){
-			end.score = this.score;
+		if(this.mytimer.valuetime == this.mytimer.timemax || this.polution == 0){
 			document.body.style.cursor = 'default';
-			this.musicGame.pause();
+			this.musicGame.stop();
 			this.state.start('End');
 		}
 	}
