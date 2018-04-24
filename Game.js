@@ -97,6 +97,7 @@ var game = {
 		game.load.audio('incinerateursound', 'Sound/incinerateur.mp3');
 			game.load.audio('compresseursound', 'Sound/compresseur.mp3');
 		game.load.audio('bassinesound', 'Sound/bassine.mp3');
+		 game.load.audio('musicGame','musics/Indystopia.mp3')
 
 	},
 	create : function() {
@@ -106,6 +107,9 @@ var game = {
 
 		// Bordures de la scene
 		game.world.setBounds(-10, -10, jeu.width + 10, jeu.height + 10);
+
+		this.musicGame = Menu.add.audio('musicGame');
+		this.musicGame.play("",100,0.5,true);
 
 		// Creation de la map
 		let level = levels[this.id];
@@ -236,6 +240,7 @@ var game = {
 		if(this.mytimer.valuetime == this.mytimer.timemax){
 			end.score = this.score;
 			document.body.style.cursor = 'default';
+			this.musicGame.pause();
 			this.state.start('End');
 		}
 	}

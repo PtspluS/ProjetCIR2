@@ -30,7 +30,7 @@ var end = {
     banner.anchor.setTo(0.5,0.5);
     banner.scale.setTo(0.6,0.6);
     //affichage du recap de partie et de la note
-    let indication = ['Player : '+MenuOpt.nbPlayers,'Time : '+Math.floor(mytimer.timemax/60)+':'+mytimer.timemax%60,'Money : '+this.score.score +'$','Score : '+this.equationResult];//tableau contenant toutes les infos à afficher pour résumer la partie
+    let indication = ['Player : '+MenuOpt.nbPlayers,'Time : '+Math.floor(levels[MenuGame.cursorMap].chrono/60)+':'+levels[MenuGame.cursorMap].chrono%60,'Money : '+this.score.score +'$','Score : '+this.equationResult];//tableau contenant toutes les infos à afficher pour résumer la partie
     let Result = end.add.bitmapText(end.world.width-500, 200,'font', 'The Result :', 56);
     let message = end.add.bitmapText(end.world.width-450, 200+Result.height+40*indication.length+100,'fontred','',60);
     let posY = 200+Result.height;

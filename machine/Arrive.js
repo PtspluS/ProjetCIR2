@@ -16,9 +16,9 @@ Arrive = function(sprite,posx,posy,groupe,tabEl,time,pattern){
 
 Arrive.prototype.envoie = function(){
 	var infront = map[Math.round(parseInt((this.arrive.y + 26)/64))+1][Math.round(parseInt((this.arrive.x)/64))];
-	console.log('a');
+
 if(infront.drop(this.pattern ? this.tab[this.patnum++ % this.tab.length] : this.tab[Math.floor(Math.random() * this.tab.length)])!=0){
-	console.log('ai');
+	
 	this.addscore(-100);
 };
 
