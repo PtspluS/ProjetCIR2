@@ -55,16 +55,15 @@ var levels = [
     imagePath: "/assets/levels/",
     name: "Level 1",
     tutoText:[
-    'Bon les gars v\'là le topo ... Je suis dans la merde ...',
-    'Pour faire simple on m\'a chargé de monter un équipe pour traiter les déchets qui arrivent depuis la ville.',
-    'Le problème c\'est que la ville en produit trop et que toutes les équipes qui sont venu avant n\'ont pas réussi à gérer le problème.',
-    'J\'ai dû toutes les virer ...',
-    'Donc vous êtes ma dernière chance ... v\'là la chance.',
-    'Pour commencer on va faire simple ...\ncar de toute façon vous avez raté tous les tests donc je peux rien vous demander de compliquer ...',
-    'On va commencer par le tri des pneux, ils y sont tous arrivés.',
-    'Sur le tapis roulant il y a des pneux qui vont arriver, choppez les avant qu\'ils ne soient incinérés et mettez les dans le broyeur.',
-    'Une fois broyez, mettez le tous dans le bac, il y en a qu\'un vous pouvez pas vous tromper ...\nVous avez des question ?',
-    'De toute façon je m\'en fou allez GO !!!'
+    'Bonjour les gars. Donc c\'est vous la nouvelle equipe de recyclage ?\nPour continuer les instructions cliquez dans le vide.\nSi je vous soule cliquez sur \"SKIP\". ',
+    'Ok pour faire simple on doit traiter les déchets qui arrivent depuis la ville. On va commencer par le tri des pneux.',
+    'Les Pneu arrivent sur le tapis roulant, attrapez les avant qu\'ils ne soient incinérés et mettez les dans le broyeur.#2#',
+    'Le Pneu broyé (appelé broyat) doit etre ramassé avec un seau et vidé dans le contenaire correspondant, le gris. On peut mettre 3 doses de broyats dans 1 seul seau.',
+    'Le Pneu broyé peut servire de combustible pour des entreprise, pour entretenir les terrains de foot synthétique ou une fois fondu il sert comme revêtement sur les terrain de jeu pour enfants. ',
+    'En cas de probleme appuyez sur ENTRE pour mettre pause et regarder l\'aide'
+
+
+
   ],
   tips : "Lorsque vous jouez sur un terrain synthétique, vous jouez sur des pneux recyclés.",
 },{
@@ -94,16 +93,13 @@ var levels = [
   imagePath: "/assets/levels/",
   name: "Level 2",
   tutoText: [
-    'Vous avez réussi à recycler des pneux, mais bon Pierre aussi donc vous avez rien fait de fou.',
-    'Là on me demande de tri... de vous faire trier des pneux et des bidons de plastique.',
-    'Pour les pneux vous savez comment faire pas besoin de vous réexpliquer.\nPour les bidons vu vos résultats aux tests je vais vous réexpliquer.',
-    'Un bidon ça se prend et ça se compresse !!! Pour compresser je vous ai mis une machine,\nvous voyez à quoi ressemble le broyeur ? Bah c\'est l\'autre machine.',
-    'Une fois compressé, vous pouvez enfin le broyer, puis comme pour les pneux vous jeter le tout dans le bac mais pas celui des pneux par pitié.',
-    'Oubliez pas non plus que le but du tri c\'est de pas mélanger.',
-    'Donc oubliez pas de laver les seaux dès qu\'ils doivent contenir autre chose que ce qu\'ils contenaient.',
-    'Pour laver les seaux, le faites pas dans les chiottes, j\'ai mis des bacs pour ça.',
-    'Par contre v\'là l\'huile de coude que vous devrez user pour laver les seaux, sinon vous pouvez attendre longtemps.',
-    'Toujours pas de question ?',
+    'Dans cette usine vous devrez faire le trie de pneux et de bidons de plastique.',
+    'Pour les pneux vous savez comment faire pas besoin de vous réexpliquer.\nJe vous remet ça comme même #2#',
+    'Le plastique doit d\'abord etre compressé.\nPour ce faire il faut mettre le plastique dans le compresseur. On peut mettre jusqu\'à 3 objets dans un compresseur.\nIl faut ensuite l\'activer grace au bouton d\'action',
+    'Une fois compressé, vous devez le broyer, puis comme pour les pneux vous jeter dans le bac correspondant, le jaune.#3#"',
+    'Oubliez pas non plus que le but du tri c\'est de pas mélanger.\nIl faut donc laver les seaux si vous souhaitez transporter du plastique aprés avoir transporté des Pneu.',
+    'Pour laver les seaux, il faut aller a une bassine, deposer le seau à l\'interieure, puis laver le sceau en appuyant plusieur fois sur la touche action.#5#',
+    'Le Plastique ainsi recyclé peut etre fondu en fibre de plastique pour faire des polaires, ou en bouteille, ou encore en d\'autre objet en plastique',
   ],
   tips : "Avec 7 bidons on peut réaliser un siège bébé pour les sales gosses."
 },{
@@ -133,13 +129,10 @@ var levels = [
   imagePath: "/assets/levels/",
   name: "Level 3",
   tutoText: [
-    'Maintenant va falloir créer de la valeur à ce que vous faites car sinon vous servez à rien.',
-    'C\'est bien beau de broyer des trucs mais maintenant va falloir créer, bande de larv...\neuh laver.',
-    'Ouai c\'est ça, va falloir laver des trucs et tout. V\'là le plan, il va y avoir du carton qui va arriver.',
-    'Faut me compresser ça, puis me le laver dans les bacs comme d\'habitude, commencez pas à inventer des trucs, vous êtes pas encore assez qualifiés.',
-    'Après une fois que c\'est lavé, faut me foutre ça dans la presse. Vous récupérerez les plaques et les mettrez dans le bon bac.',
-    'Par contre j\'ai vu que la dernière fois vous saviez pas mettre plusieurs objets dans le compresseur. Donc soit vous êtes cons, soit vous ..., non vous êtes juste cons.',
-    'Donc merci de pas oublier sinon on va perdre du temps et moi ... euh nous ... de l\'argent.'
+    'Passons maintenant aux cartons',
+    'Le carton doit etre compressé puis doit etre transformé en pâte à papier dans la bassine. Ce sont les même commande que pour laver un seau',
+    'La pâte doit etre ensuite pressé ce qui donnera de nouvelles feuilles de carton à deposer dans le bac bleu.#1#'
+
   ],
   tips : "Le carton c'est comme les chats, ça a plusieurs vies, et en plus ça griffe pas. Donc go adopter du carton."
 },{
@@ -168,7 +161,13 @@ var levels = [
   seauSpawnpoints: [[13,4],[5,8]],
   imagePath: "/assets/levels/",
   name: "Level 4",
-  tutoText: [],
+  tutoText: [
+'En plus du carton vous devrez recycler des canettes metaliques.',
+'Les canettes doivent etre compressé puis fondu. Il faut ensuite récuprer le metal en fusion avec un seau et le mettre dans une presse.#0#',
+'Les plaques de metal ainsi obtenu sont envoyé à d\'autre usine ou elle serons refondu pour refaire des canettes ou de la carroserie'
+
+
+  ],
   tips : "Avec ce que vous venez de faire vous pouvez offrir un cadeau à une gamin.\nLe fer pour un vélo et le carton pour l'emballage ... un cadeau hyper utile et écolo",
 },{
   matrice: [
@@ -196,7 +195,12 @@ var levels = [
   seauSpawnpoints: [[4,8],[16,8]],
   imagePath: "/assets/levels/",
   name: "Level 5",
-  tutoText: [],
+  tutoText: [
+'Maintenant le Verre',
+'Le verre doit etre broyé sur un etablie. Pour ce faire il faut qu\'il y ait sur l\'etablie un seau et une bouteille et appuyez sur la touche action.#4#',
+'Le broyat doit etre ensuite fondu, puis il faut amener le verre fondu dans la soufflerie.#4#',
+'La machine souffle de nouvelles bouteilles qu\'il faut deposer dans le bac verre.'
+  ],
   tips : "Le verre c'est comme les diamants, c'est éternel, une bouteille recyclée à le même cycle de vie qu'une bouteille qui vient d'être crée et on ne peut pas voir la différence.",
 }
 ,{
