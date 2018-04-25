@@ -17,7 +17,6 @@ var levels = [
     items: [itemsId.Pneu, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau],
     itemsTime: 1500,
     itemsPattern: false,
-    tpsTr : 5,//temps de traitement moyen d'un déchet
     itemSpeed : 50,
     chrono: 10,
     score : 1000,
@@ -47,7 +46,6 @@ var levels = [
     items: [itemsId.Pneu,itemsId.Pneu,itemsId.Pneu,itemsId.Pneu],
     itemsTime: 10000,
     itemsPattern: false,
-    tpsTr : 5,//temps de traitement moyen d'un déchet
     itemSpeed : 120,
     chrono: 80,
     score : 50,//score pour un joueur
@@ -87,7 +85,6 @@ var levels = [
   itemsTime: 10000,
   itemsPattern: false,
   itemSpeed : 120,
-  tpsTr : 5,//temps de traitement moyen d'un déchet
   chrono: 180,
   score : 150,
   polution : 10,
@@ -124,7 +121,6 @@ var levels = [
   itemsTime: 10000,
   itemsPattern: false,
   itemSpeed : 120,
-  tpsTr : 5,//temps de traitement moyen d'un déchet
   chrono: 180,
   score : 200,
   polution : 10,
@@ -157,7 +153,6 @@ var levels = [
   items: [itemsId.Metal,itemsId.Carton],
   itemsTime: 10000,
   itemsPattern: false,
-  tpsTr : 5,//temps de traitement moyen d'un déchet
   itemSpeed : 120,
   chrono: 180,
   score : 500,
@@ -192,7 +187,6 @@ var levels = [
   items: [itemsId.Verre],
   itemsTime: 10000,
   itemsPattern: false,
-  tpsTr : 5,//temps de traitement moyen d'un déchet
   itemSpeed : 120,
   chrono: 180,
   score : 500,
@@ -227,7 +221,6 @@ var levels = [
   items: [itemsId.Metal, itemsId.Plastique],
   itemsTime: 10000,
   itemsPattern: false,
-  tpsTr : 5,//temps de traitement moyen d'un déchet,
   itemSpeed : 50,
   chrono: 180,
   score : 500,
@@ -262,7 +255,6 @@ var levels = [
   items:[itemsId.Metal,itemsId.Verre] ,
   itemsTime: 9000,
   itemsPattern: false,
-  tpsTr : 5,//temps de traitement moyen d'un déchet
   itemSpeed : 80,
   chrono: 180,
   score : 500,
@@ -290,7 +282,6 @@ var levels = [
   items: [itemsId.Carton,itemsId.Plastique,itemsId.Pneu],
   itemsTime: 5000,
   itemsPattern: false,
-  tpsTr : 5,//temps de traitement moyen d'un déchet,
   itemSpeed : 50,
   chrono: 180,
   score : 500,
@@ -321,7 +312,6 @@ var levels = [
   items: [itemsId.Verre,itemsId.Plastique,itemsId.Carton],
   itemsTime: 8000,
   itemsPattern: false,
-  tpsTr : 5,//temps de traitement moyen d'un déchet,
   itemSpeed : 70,
   chrono: 180,
   score : 500,
@@ -352,7 +342,6 @@ var levels = [
   items: [itemsId.Metal,itemsId.Carton],
   itemsTime: 8000,
   itemsPattern: false,
-  tpsTr : 5,//temps de traitement moyen d'un déchet,
   itemSpeed : 70,
   chrono: 180,
   score : 500,

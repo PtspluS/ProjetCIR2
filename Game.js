@@ -130,6 +130,9 @@ var game = {
 		//Creation d un score
 		this.score = new MyScore();
 
+		//creation de la Pollution
+		this.polution = new PolutionObject(this.polution);
+
 		// PAUSE
 		var pauseGroup = game.add.group();
 		var keyPause = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -191,11 +194,13 @@ var game = {
 
 				let banner = game.add.button(300,100,'title',()=>{
 						let mapName = game.add.bitmapText(500,30,'font','Map : '+levels[MenuGame.cursorMap].name,30);
-						let timerInfo = game.add.bitmapText(500,80,'font','Time : '+Math.floor((mytimer.timemax-mytimer.valuetime)/60)+':'+((mytimer.timemax-mytimer.valuetime)%60),30);
-						let score = game.add.bitmapText(500,130,'font','Money : '+this.score.score+'$');
+						let timerInfo = game.add.bitmapText(500,60,'font','Time : '+Math.floor((mytimer.timemax-mytimer.valuetime)/60)+':'+((mytimer.timemax-mytimer.valuetime)%60),30);
+						let score = game.add.bitmapText(500,90,'font','Money : '+this.score.score+'$');
+						let polution = game.add.bitmapText(500,120,'font','Pollution :'+this.polution);
 						pauseGroup.add(mapName);
 						pauseGroup.add(timerInfo);
 						pauseGroup.add(score);
+						pauseGroup.add(polution);
 				});//banniere pour le menu de pause
 				banner.anchor.setTo(0.5,0.5);
 				banner.scale.setTo(0.75,0.75);
