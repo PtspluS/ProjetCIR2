@@ -187,7 +187,7 @@ var levels = [/*
   polution : 10,
   spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
   seauSpawnpoints: [[4,8],[16,8]],
-  imagePath: "assets/miniMap/level.PNG",
+  imagePath: "assets/miniMap/level5.PNG",
   name: "Level 5",
   tutoText: [
 'Maintenant le Verre',
@@ -221,7 +221,7 @@ var levels = [/*
   polution : 10,
   spawnpoints: [[6,5],[14,5],[8,5],[12,5]],
   seauSpawnpoints: [[10,4],[10,7]],
-  imagePath: "assets/miniMap/level.PNG",
+  imagePath: "assets/miniMap/levelCoop1.PNG",
   name: "Level Coop - 1",
   tutoText: [
     'Salut, je remplace Big Boss ... mais si Big Boss ... un grand blond ... voilà, fort sympatique ... ah non.',
@@ -255,7 +255,7 @@ var levels = [/*
   polution : 10,
   spawnpoints: [[4,5],[14,4],[7,6],[13,6]],
   seauSpawnpoints: [[3,3],[15,3],[6,8]],
-  imagePath: "assets/miniMap/level.PNG",
+  imagePath: "assets/miniMap/fondrie.PNG",
   name: "Fondrie",
   tutoText: []
 },{
@@ -282,7 +282,7 @@ var levels = [/*
   polution : 10,
   spawnpoints: [[4,6],[7,5],[11,5],[16,5]],
   seauSpawnpoints: [[11,8],[12,8]],
-  imagePath: "assets/miniMap/level.PNG",
+  imagePath: "assets/miniMap/fordisme.PNG",
   name: "Fordisme",
   tutoText: [
     'Niveau pour 4 joueurs'
@@ -312,8 +312,8 @@ var levels = [/*
   polution : 10,
   spawnpoints: [[4,7],[15,8],[3,3],[16,3]],
   seauSpawnpoints: [[5,2],[6,2],[17,9]],
-  imagePath: "assets/miniMap/level.PNG",
-  name: "teletravail",
+  imagePath: "assets/miniMap/teletravail.PNG",
+  name: "Teletravail",
   tutoText: [
     'NIVEAU A 4 JOUEUR IMPERATIVEMENT'
   ]
@@ -342,7 +342,7 @@ var levels = [/*
   polution : 10,
   spawnpoints: [[5,7],[14,7],[5,4],[14,4]],
   seauSpawnpoints: [[15,7],[15,8]],
-  imagePath: "assets/miniMap/level.PNG",
+  imagePath: "assets/miniMap/rond.PNG",
   name: "Rond-point",
   tutoText: [
     ''
