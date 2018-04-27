@@ -104,7 +104,7 @@ var game = {
 	},
 	create : function() {
 		this.musicGame = Menu.add.audio('musicGame');
-		this.musicGame.play("",0,0.4,true);
+		this.musicGame.play("",0,0.5,true);
 		// Lancement de la physique Arcade
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 

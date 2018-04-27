@@ -1,4 +1,4 @@
-var levels = [
+var levels = [/*
   {
     matrice: [
       [ 3,15, 3, 3, 3, 4, 3, 3, 4, 4, 3, 3, 3,22,22, 3, 3,22,22, 3, 3],
@@ -23,11 +23,11 @@ var levels = [
     polution : 10,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
     seauSpawnpoints: [],
-    imagePath: "/assets/levels/",
+    imagePath: "assets/miniMap/level1.PNG",
     name: "Level test",
     tutoText: [],
     tips : "Vous savez, moi je ne crois pas qu\’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd\’hui avec vous, je dirais que c\’est d\’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée... Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l’interlocuteur en face je dirais, le miroir qui vous aide à avancer.",
-  },
+  },*/
   {
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -52,7 +52,7 @@ var levels = [
     polution : 10,
     spawnpoints: [[5,6],[7,6],[9,6],[11,7]],
     seauSpawnpoints: [[7,4],[12,7]],
-    imagePath: "/assets/levels/",
+    imagePath: "assets/miniMap/level1.PNG",
     name: "Level 1",
     tutoText:[
     'Bonjour les gars. Donc c\'est vous la nouvelle equipe de recyclage ?\nPour continuer les instructions cliquez dans le vide.\nSi je vous soule cliquez sur \"SKIP\". ',
@@ -61,9 +61,6 @@ var levels = [
     'Le Pneu broyé (appelé broyat) doit etre ramassé avec un seau et vidé dans le contenaire correspondant, le gris. On peut mettre 3 doses de broyats dans 1 seul seau.',
     'Le Pneu broyé peut servire de combustible pour des entreprise, pour entretenir les terrains de foot synthétique ou une fois fondu il sert comme revêtement sur les terrain de jeu pour enfants. ',
     'En cas de probleme appuyez sur ENTRE pour mettre pause et regarder l\'aide'
-
-
-
   ],
   tips : "Lorsque vous jouez sur un terrain synthétique, vous jouez sur des pneux recyclés.",
 },{
@@ -90,7 +87,7 @@ var levels = [
   polution : 10,
   spawnpoints: [[5,6],[12,5],[7,6],[14,5]],
   seauSpawnpoints: [[8,6],[9,6]],
-  imagePath: "/assets/levels/",
+  imagePath: "assets/miniMap/level2.PNG",
   name: "Level 2",
   tutoText: [
     'Dans cette usine vous devrez faire le trie de pneux et de bidons de plastique.',
@@ -126,13 +123,12 @@ var levels = [
   polution : 10,
   spawnpoints: [[5,6],[13,6],[9,6],[15,6]],
   seauSpawnpoints: [],
-  imagePath: "/assets/levels/",
+  imagePath: "assets/miniMap/level3.PNG",
   name: "Level 3",
   tutoText: [
     'Passons maintenant aux cartons',
     'Le carton doit etre compressé puis doit etre transformé en pâte à papier dans la bassine. Ce sont les même commande que pour laver un seau',
     'La pâte doit etre ensuite pressé ce qui donnera de nouvelles feuilles de carton à deposer dans le bac bleu.#1#'
-
   ],
   tips : "Le carton c'est comme les chats, ça a plusieurs vies, et en plus ça griffe pas. Donc go adopter du carton."
 },{
@@ -159,14 +155,12 @@ var levels = [
   polution : 10,
   spawnpoints: [[4,5],[14,6],[7,5],[11,6]],
   seauSpawnpoints: [[13,4],[5,8]],
-  imagePath: "/assets/levels/",
+  imagePath: "assets/miniMap/level4.PNG",
   name: "Level 4",
   tutoText: [
 'En plus du carton vous devrez recycler des canettes metaliques.',
 'Les canettes doivent etre compressé puis fondu. Il faut ensuite récuprer le metal en fusion avec un seau et le mettre dans une presse.#0#',
 'Les plaques de metal ainsi obtenu sont envoyé à d\'autre usine ou elle serons refondu pour refaire des canettes ou de la carroserie'
-
-
   ],
   tips : "Avec ce que vous venez de faire vous pouvez offrir un cadeau à une gamin.\nLe fer pour un vélo et le carton pour l'emballage ... un cadeau hyper utile et écolo",
 },{
@@ -193,7 +187,7 @@ var levels = [
   polution : 10,
   spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
   seauSpawnpoints: [[4,8],[16,8]],
-  imagePath: "/assets/levels/",
+  imagePath: "assets/miniMap/level.PNG",
   name: "Level 5",
   tutoText: [
 'Maintenant le Verre',
@@ -227,7 +221,7 @@ var levels = [
   polution : 10,
   spawnpoints: [[6,5],[14,5],[8,5],[12,5]],
   seauSpawnpoints: [[10,4],[10,7]],
-  imagePath: "/assets/levels/",
+  imagePath: "assets/miniMap/level.PNG",
   name: "Level Coop - 1",
   tutoText: [
     'Salut, je remplace Big Boss ... mais si Big Boss ... un grand blond ... voilà, fort sympatique ... ah non.',
@@ -261,7 +255,7 @@ var levels = [
   polution : 10,
   spawnpoints: [[4,5],[14,4],[7,6],[13,6]],
   seauSpawnpoints: [[3,3],[15,3],[6,8]],
-  imagePath: "/assets/levels/",
+  imagePath: "assets/miniMap/level.PNG",
   name: "Fondrie",
   tutoText: []
 },{
@@ -288,7 +282,7 @@ var levels = [
   polution : 10,
   spawnpoints: [[4,6],[7,5],[11,5],[16,5]],
   seauSpawnpoints: [[11,8],[12,8]],
-  imagePath: "/assets/levels/",
+  imagePath: "assets/miniMap/level.PNG",
   name: "Fordisme",
   tutoText: [
     'Niveau pour 4 joueurs'
@@ -318,7 +312,7 @@ var levels = [
   polution : 10,
   spawnpoints: [[4,7],[15,8],[3,3],[16,3]],
   seauSpawnpoints: [[5,2],[6,2],[17,9]],
-  imagePath: "/assets/levels/",
+  imagePath: "assets/miniMap/level.PNG",
   name: "teletravail",
   tutoText: [
     'NIVEAU A 4 JOUEUR IMPERATIVEMENT'
@@ -348,7 +342,7 @@ var levels = [
   polution : 10,
   spawnpoints: [[5,7],[14,7],[5,4],[14,4]],
   seauSpawnpoints: [[15,7],[15,8]],
-  imagePath: "/assets/levels/",
+  imagePath: "assets/miniMap/level.PNG",
   name: "Rond-point",
   tutoText: [
     ''
@@ -361,32 +355,32 @@ var levels = [
 var skins = [//permet de stocker tout les skins des persos
   {
     name : 'billy',
-    sprite : 'assets/billy.png',
+    sprite : 'assets/billy.PNG',
     width : 44,
     height : 68,
   },{
     name : 'bob',
-    sprite : 'assets/bob.png',
+    sprite : 'assets/bob.PNG',
     width : 44,
     height : 68,
   },{
     name : 'walle',
-    sprite : 'assets/walle.png',
+    sprite : 'assets/walle.PNG',
     width : 44,
     height : 68,
   },{
     name : 'ghostbuster',
-    sprite : 'assets/ghostbuster.png',
+    sprite : 'assets/ghostbuster.PNG',
     width : 44,
     height : 68,
   },{
     name : 'hazman',
-    sprite : 'assets/hazman.png',
+    sprite : 'assets/hazman.PNG',
     width : 44,
     height : 68,
   },{
     name : 'janine',
-    sprite : 'assets/dude2x2.png',
+    sprite : 'assets/dude2x2.PNG',
     width :44,
     height : 68,
   }

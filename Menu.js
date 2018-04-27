@@ -58,14 +58,14 @@ let leftMap = function(){
     this.cursorMap--;
   }
   mapName.text = levels[this.cursorMap].name;
-  //mapName.text = MenuGame.add.bitmapText(21*64, 0, 'font',levels[this.cursorMap].name , 64);
-  imgMap.image = levels[this.cursorMap].name;
+  imgMap.loadTexture(levels[this.cursorMap].name,0);
+  mapName.y = MenuGame.world.centerY-imgMap.height/2-30;
 }
 let rightMap = function(){
   this.cursorMap = (this.cursorMap+1)%levels.length;
   mapName.text = levels[this.cursorMap].name;
-  //mapName.text = MenuGame.add.bitmapText(21*64, 0, 'font',levels[this.cursorMap].name , 64);
-  imgMap.image = levels[this.cursorMap].name;
+  imgMap.loadTexture(levels[this.cursorMap].name,0);
+  mapName.y = MenuGame.world.centerY-imgMap.height/2-30;
 }
 var MenuGame ={
   cursorMap : 0,
@@ -92,6 +92,7 @@ var MenuGame ={
     musicMenu.resume();//relance la musique là ou elle s'était arrêtée
     imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
     imgMap.anchor.setTo(0.5,0.5);
+    imgMap.scale.setTo(0.3,0.3);
 
     // Clique sur GO
     let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', () => {
@@ -159,8 +160,7 @@ var MenuGame ={
     // Retour
     let back = MenuGame.add.button(20,20,'back',returnMenu,this,1,0,2);
 
-    //mapName = MenuGame.add.text(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-10,levels[this.cursorMap].name);
-    mapName = MenuGame.add.bitmapText(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height/2-30, 'font',levels[this.cursorMap].name, 42);
+    mapName = MenuGame.add.bitmapText(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height, 'font',levels[this.cursorMap].name, 42);
     mapName.anchor.setTo(0.5,0.5);
 
     // Selection Personnages
