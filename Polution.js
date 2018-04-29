@@ -4,6 +4,11 @@ PolutionObject = function(){
 }
 
 PolutionObject.prototype.updatePolution = function(val){
-  this.polution += val;
+    this.polution += val;
+  if(this.polution<3){
+    this.polutionText.font ='fontred';
+  }
+
+
   this.polutionText.text = 'Pollution : '+this.polution;
 }

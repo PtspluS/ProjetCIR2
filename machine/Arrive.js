@@ -1,6 +1,6 @@
 Arrive = function(sprite,posx,posy,groupe,tabEl,time,pattern){
 	this.arrive = groupe.create(posx,posy,sprite);
-	this.arrive.animations.add('actif', [ 0, 1, 2, 3], 500/levels[MenuGame.cursorMap].itemSpeed, true);
+	this.arrive.animations.add('actif', [ 0, 1, 2, 3], 500/(levels[MenuGame.cursorMap].itemSpeed*2/MenuOpt.nbPlayers), true);
 	this.arrive.play('actif');
 	this.tab = tabEl;
 	this.time = time;
@@ -18,7 +18,7 @@ Arrive.prototype.envoie = function(){
 	var infront = map[Math.round(parseInt((this.arrive.y + 26)/64))+1][Math.round(parseInt((this.arrive.x)/64))];
 
 if(infront.drop(this.pattern ? this.tab[this.patnum++ % this.tab.length] : this.tab[Math.floor(Math.random() * this.tab.length)])!=0){
-	
+
 	this.addscore(-100);
 };
 
@@ -26,11 +26,11 @@ if(infront.drop(this.pattern ? this.tab[this.patnum++ % this.tab.length] : this.
 	game.time.events.add(this.time, () => {this.envoie();} , this);
 }
 
-Arrive.prototype.addscore=function(value){
+Arrive.prototype.addscore=function(){
 	game.world.bringToTop(this.scoretext);
-this.scoretext.text=value;
+this.scoretext.text=-1;
 this.scoretext.body.velocity.y=-50;
-game.time.events.add(1000, () => {game.score.updatescore(value);
+game.time.events.add(1000, () => {	game.polution.updatePolution(-1);
 this.scoretext.x=this.posx;
 this.scoretext.y=this.posy;
 this.scoretext.body.velocity.y=0;

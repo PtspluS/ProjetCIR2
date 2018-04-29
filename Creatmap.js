@@ -165,7 +165,7 @@
 		  case 15: {// ARRIVE
 			let tuile = platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
-			map[j][i] = new Arrive('arrive',i*64,j*64 - (90-64),object, level.items, level.itemsTime, level.itemsPattern);
+			map[j][i] = new Arrive('arrive',i*64,j*64 - (90-64),object, level.items, level.itemsTime*2/MenuOpt.nbPlayers, level.itemsPattern);
 		break;}
 
 	  case 16:{ // BENNE VERRE
@@ -203,7 +203,7 @@
 			tuile.body.immovable = true;
 			map[j][i] = new Soufflerie('soufflerie',i*64,j*64 - (90-64),object,itemGui);
 			break;}
-			
+
 			case 22:{ // CAMION ET ROUTE // OBLIGE EN PREMIERE LIGNE DE MATRICE!!!!
 			let barrieres = [];
 			for(let y = 0; y < matrice.length; y++){
@@ -226,10 +226,10 @@
     for(let i =0;i<level.seauSpawnpoints.length;i++){
       map[level.seauSpawnpoints[i][1]][level.seauSpawnpoints[i][0]].drop(itemsId.Sceau);
     }
-	
+
 	game.world.bringToTop(platformsSolid);
 	game.world.bringToTop(object);
 	game.world.bringToTop(itemGui);
-	
+
 	  return map;
   }

@@ -10,12 +10,12 @@ Incinerateur = function(sprite,posx,posy,groupe){
 	this.incinerateursound = game.add.audio('incinerateursound');
 }
 
-Incinerateur.prototype.addscore=function(value){
+Incinerateur.prototype.addscore=function(){
 	game.world.bringToTop(this.scoretext);
-	this.scoretext.text=value;
+	this.scoretext.text=-1;
 	this.scoretext.body.velocity.y=-50;
 	game.time.events.add(1000, () => {
-		game.score.updatescore(value);
+
 		game.polution.updatePolution(-1);
 		this.scoretext.x=this.posx;
 		this.scoretext.y=this.posy;
