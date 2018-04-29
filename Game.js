@@ -159,30 +159,36 @@ var game = {
 				var pauseHelps = [];
 				pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 				pauseHelps[pauseHelps.length - 1].frame = 5;
+				pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 				pauseHelps[pauseHelps.length - 1].alpha = 0;
 				if(levels[this.id].items.indexOf(itemsId.Metal) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 0;
+						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Carton) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 1;
+						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Pneu) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 2;
+						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Plastique) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 3;
+						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Verre) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 4;
+						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 
@@ -194,6 +200,7 @@ var game = {
 					}
 				},this,1,0,2);
 				pauseHelpb.anchor.setTo(0.5,0.5);
+
 				pauseGroup.add(pauseHelpb);
 
 				let banner = game.add.button(300,100,'title',()=>{
