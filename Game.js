@@ -103,10 +103,10 @@ var game = {
 
 	},
 	create : function() {
-		if (levels[MenuGame.cursorMap].itemsTime = -1){
+	/*	if (levels[MenuGame.cursorMap].itemsTime = -1){
 			levels[MenuGame.cursorMap].itemsTime = 10000 - (MenuOpt.nbPlayers*1500);
 			levels[MenuGame.cursorMap].itemSpeed = 100 / (MenuOpt.nbPlayers*1.3);
-		}
+		}*/
 		this.musicGame = Menu.add.audio('musicGame');
 		this.musicGame.play("",0,0.7,true);
 		// Lancement de la physique Arcade

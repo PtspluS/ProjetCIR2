@@ -13,22 +13,13 @@ var Menu = {
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
     jeu.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT; // Rempli toute la fenetre (etirement minime en fullscreen)
 
-
-    //console.log(this.musicMenu.isPlaying);
-    if(this.musicMenu==undefined){
+if(this.musicMenu==undefined){
       this.musicMenu = Menu.add.audio('musicMenu');
     }
-    if(this.musicMenu.isPlaying==true){
-    //  musicMenu.resume();
-
-    }
-    else {
-
-
+    if(this.musicMenu.isPlaying!=true){
       this.musicMenu.play("",0,0.6,true);
     }
-
-    var tab = Array(99);
+        var tab = Array(99);
     for(let i = 0; i < 99; i++){
       tab[i] = i;
     }
@@ -45,16 +36,12 @@ var Menu = {
   }
 }
 let goMenuGame =  function(){
-  //musicMenu.pause();//met la musique en pause pour le changement de page
-  this.state.start('MenuGame');
+    this.state.start('MenuGame');
 }
 let goMenuOpt = function(){
-  //musicMenu.pause();//met la musique en pause pour le changement de page
   this.state.start('MenuOpt');
 }
 let returnMenu = function(){
-
-  //musicMenu.stop();//met la musique en pause pour le changement de page
   this.state.start('Menu');
 }
 
@@ -99,7 +86,6 @@ var MenuGame ={
     MenuGame.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
   },
   create : function(){
-    //musicMenu.resume();//relance la musique là ou elle s'était arrêtée
     imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
     imgMap.anchor.setTo(0.5,0.5);
     imgMap.scale.setTo(0.3,0.3);

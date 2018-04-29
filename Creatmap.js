@@ -165,7 +165,7 @@
 		  case 15: {// ARRIVE
 			let tuile = platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
-			map[j][i] = new Arrive('arrive',i*64,j*64 - (90-64),object, level.items, level.itemsTime*2/MenuOpt.nbPlayers, level.itemsPattern);
+			map[j][i] = new Arrive('arrive',i*64,j*64 - (90-64),object, level.items, level.itemsTime-((MenuOpt.nbPlayers-2)*1000), level.itemsPattern);
 		break;}
 
 	  case 16:{ // BENNE VERRE
