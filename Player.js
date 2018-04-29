@@ -155,6 +155,7 @@ Player.prototype.wait=function(){
 
 Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,otherplayer){
 	for(let i = 0; i < otherplayer.length; i++){
+		var hitPlatform = game.physics.arcade.collide(otherplayer[i].player,platforms);
 		var hitPlayer = game.physics.arcade.collide(this.player,otherplayer[i].player);
 
 	}
@@ -218,7 +219,7 @@ Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,curs
 		this.interactActive = false;
 	}
 
-	var hitPlatform = game.physics.arcade.collide(this.player,platforms);
+
 }
 
 Player.prototype.checkfront=function(){
