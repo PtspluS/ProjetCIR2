@@ -1,4 +1,6 @@
 //Menu
+
+
 var Menu = {
   preload : function(){
     Menu.load.audio('musicMenu','musics/musicMenu.mp3');//Musique du menu
@@ -11,12 +13,19 @@ var Menu = {
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
     jeu.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT; // Rempli toute la fenetre (etirement minime en fullscreen)
 
-    musicMenu = Menu.add.audio('musicMenu');
-    if(musicMenu.pause()===true){
-      musicMenu.resume();
+
+    //console.log(this.musicMenu.isPlaying);
+    if(this.musicMenu==undefined){
+      this.musicMenu = Menu.add.audio('musicMenu');
+    }
+    if(this.musicMenu.isPlaying==true){
+    //  musicMenu.resume();
+
     }
     else {
-      musicMenu.play("",0,1,true);
+
+
+      this.musicMenu.play("",0,0.6,true);
     }
 
     var tab = Array(99);
@@ -36,15 +45,16 @@ var Menu = {
   }
 }
 let goMenuGame =  function(){
-  musicMenu.pause();//met la musique en pause pour le changement de page
+  //musicMenu.pause();//met la musique en pause pour le changement de page
   this.state.start('MenuGame');
 }
 let goMenuOpt = function(){
-  musicMenu.pause();//met la musique en pause pour le changement de page
+  //musicMenu.pause();//met la musique en pause pour le changement de page
   this.state.start('MenuOpt');
 }
 let returnMenu = function(){
-  musicMenu.stop();//met la musique en pause pour le changement de page
+
+  //musicMenu.stop();//met la musique en pause pour le changement de page
   this.state.start('Menu');
 }
 
@@ -89,14 +99,14 @@ var MenuGame ={
     MenuGame.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
   },
   create : function(){
-    musicMenu.resume();//relance la musique là ou elle s'était arrêtée
+    //musicMenu.resume();//relance la musique là ou elle s'était arrêtée
     imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
     imgMap.anchor.setTo(0.5,0.5);
     imgMap.scale.setTo(0.3,0.3);
 
     // Clique sur GO
     let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', () => {
-      musicMenu.stop();
+      Menu.musicMenu.stop();
       //document.body.style.cursor = 'progress';
       if(MenuOpt.P1KeyCodes[0]){
         for(let i = 0; i < 6; i++){
@@ -377,7 +387,7 @@ preload: function(){
   MenuOpt.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
 },
 create : function(){
-  musicMenu.resume();//relance la musique là ou elle s'était arrêtée
+  //musicMenu.resume();//relance la musique là ou elle s'était arrêtée
 
   MenuOpt.input.gamepad.start();
 

@@ -35,17 +35,17 @@ Benne.prototype.drop=function(itemId){
 			switch(itemId){
 				case itemsId.PlaqueMetal1:
 				this.weight += 1;
-				this.addscore(40);
+				this.addscore(30);
 				return 0;
 				break;
 				case itemsId.PlaqueMetal2:
 				this.weight += 2;
-				this.addscore(90);
+				this.addscore(60);
 				return 0;
 				break;
 				case itemsId.PlaqueMetal3:
 				this.weight += 3;
-				this.addscore(150);
+				this.addscore(120);
 				return 0;
 				break;
 			}
@@ -73,17 +73,17 @@ Benne.prototype.drop=function(itemId){
 			switch(itemId){
 				case itemsId.BouteilleVerre1:
 				this.weight += 1;
-				this.addscore(50);
+				this.addscore(30);
 				return 0;
 				break;
 				case itemsId.BouteilleVerre2:
 				this.weight += 2;
-				this.addscore(110);
+				this.addscore(60);
 				return 0;
 				break;
 				case itemsId.BouteilleVerre3:
 				this.weight += 3;
-				this.addscore(180);
+				this.addscore(120);
 				return 0;
 				break;
 			}
@@ -116,7 +116,7 @@ Benne.prototype.drop=function(itemId){
 				break;
 				case itemsId.PlaqueCarton2:
 				this.weight += 2;
-				this.addscore(70);
+				this.addscore(60);
 				return 0;
 				break;
 				case itemsId.PlaqueCarton3:
