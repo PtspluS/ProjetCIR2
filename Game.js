@@ -48,7 +48,7 @@ var game = {
 			this.camera.x = 0;
 			this.camera.y = 0;
 		}
-    },
+	},
 	preload : function() {
 		for (let sk in skins) {//boucle de chargement de tout les skins
 			game.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
@@ -97,21 +97,28 @@ var game = {
 		game.load.audio('pressesound', 'Sound/presse.mp3');
 		game.load.audio('souffleriesound', 'Sound/soufflerie.mp3');
 		game.load.audio('incinerateursound', 'Sound/incinerateur.mp3');
-			game.load.audio('compresseursound', 'Sound/compresseur.mp3');
+		game.load.audio('compresseursound', 'Sound/compresseur.mp3');
 		game.load.audio('bassinesound', 'Sound/bassine.mp3');
-		 game.load.audio('musicGame','musics/Indystopia.mp3')
+		game.load.audio('musicGame','musics/Indystopia.mp3')
 
 	},
 	create : function() {
+		if (levels[MenuGame.cursorMap].itemsTime = -1){
+			levels[MenuGame.cursorMap].itemsTime = 10000 - (MenuOpt.nbPlayers*1500);
+			levels[MenuGame.cursorMap].itemSpeed = 100 / (MenuOpt.nbPlayers*1.3);
+		}
 		this.musicGame = Menu.add.audio('musicGame');
-		this.musicGame.play("",0,0.5,true);
+		this.musicGame.play("",0,0.7,true);
 		// Lancement de la physique Arcade
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
 		// Bordures de la scene
 		game.world.setBounds(-10, -10, jeu.width + 10, jeu.height + 10);
 
+		//creation de la Pollution
 		this.polution = levels[MenuGame.cursorMap].polution;
+		this.polution = new PolutionObject(this.polution);
+		this.polution.z = 0;
 
 		// Creation de la map
 		let level = levels[this.id];
@@ -129,9 +136,6 @@ var game = {
 
 		//Creation d un score
 		this.score = new MyScore();
-
-		//creation de la Pollution
-		this.polution = new PolutionObject(this.polution);
 
 		// PAUSE
 		var pauseGroup = game.add.group();
@@ -193,14 +197,14 @@ var game = {
 				pauseGroup.add(pauseHelpb);
 
 				let banner = game.add.button(300,100,'title',()=>{
-						let mapName = game.add.bitmapText(500,30,'font','Map : '+levels[MenuGame.cursorMap].name,30);
-						let timerInfo = game.add.bitmapText(500,60,'font','Time : '+Math.floor((mytimer.timemax-mytimer.valuetime)/60)+':'+((mytimer.timemax-mytimer.valuetime)%60),30);
-						let score = game.add.bitmapText(500,90,'font','Money : '+this.score.score+'$');
-						let polution = game.add.bitmapText(500,120,'font','Pollution :'+this.polution);
-						pauseGroup.add(mapName);
-						pauseGroup.add(timerInfo);
-						pauseGroup.add(score);
-						pauseGroup.add(polution);
+					let mapName = game.add.bitmapText(500,30,'font','Map : '+levels[MenuGame.cursorMap].name,30);
+					let timerInfo = game.add.bitmapText(500,60,'font','Time : '+Math.floor((this.mytimer.timemax-this.mytimer.valuetime)/60)+':'+((this.mytimer.timemax-this.mytimer.valuetime)%60),30);
+					let score = game.add.bitmapText(500,90,'font','Money : '+this.score.score+'$');
+					let polution = game.add.bitmapText(500,120,'font','Pollution :'+this.polution.polution);
+					pauseGroup.add(mapName);
+					pauseGroup.add(timerInfo);
+					pauseGroup.add(score);
+					pauseGroup.add(polution);
 				});//banniere pour le menu de pause
 				banner.anchor.setTo(0.5,0.5);
 				banner.scale.setTo(0.75,0.75);
