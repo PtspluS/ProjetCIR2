@@ -13,7 +13,7 @@ var end = {
     end.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
   },
   create : function(){
-    this.equationResult = game.polution.polution * (Math.floor((game.score.score*levels[MenuGame.cursorMap].itemSpeed)/(MenuOpt.nbPlayers/levels[MenuGame.cursorMap].chrono)));//polution*score par joueur par seconde
+    this.equationResult = game.polution.polution * (Math.floor((game.score.score*levels[MenuGame.cursorMap].itemSpeed)/(MenuOpt.nbPlayers*levels[MenuGame.cursorMap].chrono)));//polution*score par joueur par seconde
     if (levels[MenuGame.cursorMap].score*0.42==this.equationResult) {this.musicEnd = end.add.audio('easterEgg');}
     else {this.musicEnd = end.add.audio('endMusic');}
     //let musicEnd = end.add.audio('endMusic');

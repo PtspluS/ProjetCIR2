@@ -44,11 +44,11 @@ var levels = [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
     ],
     items: [itemsId.Pneu,itemsId.Pneu,itemsId.Pneu,itemsId.Pneu],
-    itemsTime: 10000,
+    itemsTime: -1,//-1 pour assignation auto
     itemsPattern: false,
     itemSpeed : 120,
     chrono: 80,
-    score : 50,//score pour un joueur
+    score : 150,//score a atteindre
     polution : 10,
     spawnpoints: [[5,6],[7,6],[9,6],[11,7]],
     seauSpawnpoints: [[7,4],[12,7]],
@@ -79,7 +79,7 @@ var levels = [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
   ],
   items: [itemsId.Pneu,itemsId.Plastique],
-  itemsTime: 10000,
+  itemsTime: -1,
   itemsPattern: false,
   itemSpeed : 120,
   chrono: 180,
@@ -115,7 +115,7 @@ var levels = [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
   ],
   items: [itemsId.Carton],
-  itemsTime: 10000,
+  itemsTime: -1,
   itemsPattern: false,
   itemSpeed : 120,
   chrono: 180,
@@ -147,7 +147,7 @@ var levels = [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
   ],
   items: [itemsId.Metal,itemsId.Carton],
-  itemsTime: 10000,
+  itemsTime: -1,
   itemsPattern: false,
   itemSpeed : 120,
   chrono: 180,
@@ -179,7 +179,7 @@ var levels = [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
   ],
   items: [itemsId.Verre],
-  itemsTime: 10000,
+  itemsTime: -1,
   itemsPattern: false,
   itemSpeed : 120,
   chrono: 180,
@@ -213,7 +213,7 @@ var levels = [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
   ],
   items: [itemsId.Metal, itemsId.Plastique],
-  itemsTime: 10000,
+  itemsTime: -1,
   itemsPattern: false,
   itemSpeed : 50,
   chrono: 180,
@@ -247,7 +247,7 @@ var levels = [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
   ],
   items:[itemsId.Metal,itemsId.Verre] ,
-  itemsTime: 9000,
+  itemsTime: 11000,
   itemsPattern: false,
   itemSpeed : 80,
   chrono: 180,
