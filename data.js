@@ -53,7 +53,7 @@ var levels = [
     spawnpoints: [[5,6],[7,6],[9,6],[11,7]],
     seauSpawnpoints: [[7,4],[12,7]],
     imagePath: "assets/miniMap/level1.PNG",
-    name: "Premier pas",
+    name: "Tutoriel 1",
     tutoText:[
     'Bonjour les gars. Donc c\'est vous la nouvelle equipe de recyclage ?\nPour continuer les instructions cliquez dans le vide.\nSi je vous soule cliquez sur \"SKIP\". ',
     'Ok pour faire simple on doit traiter les déchets qui arrivent depuis la ville. On va commencer par le tri des pneux.',
@@ -88,7 +88,7 @@ var levels = [
   spawnpoints: [[5,6],[12,5],[7,6],[14,5]],
   seauSpawnpoints: [[8,6],[9,6]],
   imagePath: "assets/miniMap/level2.PNG",
-  name: "Deuxieme pas",
+  name: "Tutoriel 2",
   tutoText: [
     'Dans cette usine vous devrez faire le trie de pneux et de bidons de plastique.',
     'Pour les pneux vous savez comment faire pas besoin de vous réexpliquer.\nJe vous remet ça comme même #2#',
@@ -124,7 +124,7 @@ var levels = [
   spawnpoints: [[5,6],[13,6],[9,6],[15,6]],
   seauSpawnpoints: [],
   imagePath: "assets/miniMap/level3.PNG",
-  name: "Les bases",
+  name: "Tutoriel 3",
   tutoText: [
     'Passons maintenant aux cartons',
     'Le carton doit etre compressé puis doit etre transformé en pâte à papier dans la bassine. Ce sont les même commande que pour laver un seau',
@@ -156,7 +156,7 @@ var levels = [
   spawnpoints: [[4,5],[14,6],[7,5],[11,6]],
   seauSpawnpoints: [[13,4],[5,8]],
   imagePath: "assets/miniMap/level4.PNG",
-  name: "Les bases bis",
+  name: "Tutoriel 4",
   tutoText: [
 'En plus du carton vous devrez recycler des canettes metaliques.',
 'Les canettes doivent etre compressé puis fondu. Il faut ensuite récuprer le metal en fusion avec un seau et le mettre dans une presse.#0#',
@@ -188,7 +188,7 @@ var levels = [
   spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
   seauSpawnpoints: [[4,8],[16,8]],
   imagePath: "assets/miniMap/level5.PNG",
-  name: "vert vers verre",
+  name: "Tutoriel 5",
   tutoText: [
 'Maintenant le Verre',
 'Le verre doit etre broyé sur un etablie. Pour ce faire il faut qu\'il y ait sur l\'etablie un seau et une bouteille et appuyez sur la touche action.#4#',
@@ -257,7 +257,7 @@ var levels = [
   seauSpawnpoints: [[3,3],[15,3],[6,8]],
   imagePath: "assets/miniMap/fondrie.PNG",
   name: "Fondrie",
-  tutoText: []
+  tutoText: ["Du verre des canettes et un gros four."]
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -285,7 +285,8 @@ var levels = [
   imagePath: "assets/miniMap/fordisme.PNG",
   name: "Fordisme",
   tutoText: [
-    'Niveau pour 4 joueurs'
+    'Niveau conseillé 4 joueurs',
+    'Chacun a sa place sur la chaine et si chacun fait son travail ils n\'y aura pas de probleme.'
   ],
   tips : "Le recyclage est une industrie à part entière et on peut y appliquer les même techniques de travails que dans une usine de production.",
 },{
@@ -315,7 +316,8 @@ var levels = [
   imagePath: "assets/miniMap/teletravail.PNG",
   name: "Teletravail",
   tutoText: [
-    'NIVEAU A 4 JOUEUR IMPERATIVEMENT'
+    'Niveau pour joueur',
+    'Vous travaillerez de loin'
   ]
 }
 ,{
@@ -345,7 +347,7 @@ var levels = [
   imagePath: "assets/miniMap/rond.PNG",
   name: "Rond-point",
   tutoText: [
-    ''
+    'Impossible de doubler dans un rond point'
   ]
 },{
   matrice: [
@@ -374,7 +376,7 @@ var levels = [
   imagePath: "assets/miniMap/Un par un.PNG",
   name: "Un par un",
   tutoText: [
-    ''
+    'Tout est dans le titre'
   ]
 },{
   matrice: [
@@ -395,15 +397,15 @@ var levels = [
   itemsTime: 9000,
   itemsPattern: false,
   itemSpeed : 100,
-  chrono: 180,
+  chrono: 240,
   score : 500,
   polution : 10,
   spawnpoints: [[5,7],[10,7],[7,3],[16,3]],
   seauSpawnpoints: [[4,6],[18,4]],
   imagePath: "assets/miniMap/Machine.PNG",
   name: "Machine a laver",
-  tutoText: [
-    ''
+  tutoText: ["On a plus beaucoup de seau ici.\nVous allez devoir frotter les amis :P"
+
   ]
 }
 
