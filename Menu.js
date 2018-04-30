@@ -2,24 +2,75 @@
 
 
 var Menu = {
+	moreJunk : function(groupe){
+		var junk = groupe.create(-28, Math.floor(Math.random() * 768), 'items');
+		junk.scale.x = 2;
+		junk.scale.y = 2;
+		junk.anchor.setTo(0.5, 0.5);
+		Menu.physics.arcade.enable(junk);
+		// rotation
+		junk.angle = Math.floor(Math.random() * 360);
+		Menu.add.tween(junk).to( { angle: Math.floor(Math.random() * 270) + 90 }, 8000, Phaser.Easing.Linear.None, true);
+		// Disparition
+		Menu.add.tween(junk.scale).to( { x: 0, y: 0 }, 8000, Phaser.Easing.Linear.None, true);
+		junk.enableBody = true;
+		switch(Math.floor(Math.random() * 5)){
+			case 0:
+				junk.frame = itemsId.Carton;
+				break;
+			case 1:
+				junk.frame = itemsId.Pneu;
+				break;
+			case 2:
+				junk.frame = itemsId.Plastique;
+				break;
+			case 3:
+				junk.frame = itemsId.Verre;
+				break;
+			case 4:
+				junk.frame = itemsId.Metal;
+				break;
+			default:
+				junk.frame = itemsId.Pneu;
+		}
+		junk.body.velocity.x = Math.floor(Math.random() * 120) + 40;
+		junk.body.velocity.y = Math.floor(Math.random() * 150) - 70;
+		
+		Menu.time.events.add(8000, () => {junk.destroy();} , this); // Destruction
+		
+		Menu.time.events.add(Math.floor(Math.random() * 2000) + 500, () => {this.moreJunk(groupe);} , this);
+	},
   preload : function(){
     Menu.load.audio('musicMenu','musics/musicMenu.mp3');//Musique du menu
     Menu.load.spritesheet('title','assets/logo.png',408,222);
     Menu.load.spritesheet('game','assets/buttons/game.png',172,80);
     Menu.load.spritesheet('controls','assets/buttons/controls.png',296,80);
+    Menu.load.spritesheet('background','assets/backgroundplanet.png',1344,768);
+	Menu.load.spritesheet('items','assets/items.png', 56, 56);
   },
   create : function(){
 
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
     jeu.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT; // Rempli toute la fenetre (etirement minime en fullscreen)
 
+	// Fond d'ecran
+	let fond = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY, 'background')
+    fond.anchor.setTo(0.5,0.5);
+    fond.animations.add('life', [0,1], 1, true);
+    fond.play('life');
+	let dechets = Menu.add.group();
+	
+	Menu.time.events.add(Math.floor(Math.random() * 4000) + 1000, () => {this.moreJunk(dechets);} , this);
+	
 if(this.musicMenu==undefined){
       this.musicMenu = Menu.add.audio('musicMenu');
     }
     if(this.musicMenu.isPlaying!=true){
       this.musicMenu.play("",0,0.6,true);
     }
-        var tab = Array(99);
+       
+	// tableau stockant l'ordre d'animation de la banniere
+	var tab = Array(99);
     for(let i = 0; i < 99; i++){
       tab[i] = i;
     }
