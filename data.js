@@ -14,11 +14,11 @@ var levels = [
       [ 3, 0, 0, 0, 1, 8, 9, 21, 16, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0,20, 3],
       [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,22,22, 3, 3,22,22, 3, 3]
     ],
-    items: [itemsId.Pneu, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau],
-    itemsTime: 1000000,
-    itemsPattern: false,
-    itemSpeed : 50,
-    chrono: 1,
+    items: [itemsId.Pneu, itemsId.Poubelle, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau, itemsId.Poubelle],
+    itemsTime: 10000,
+    itemsPattern: true,
+    itemSpeed : 100,
+    chrono: 3600,
     score : 1000,
     polution : 10,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
@@ -26,7 +26,7 @@ var levels = [
     imagePath: "assets/miniMap/Troll.PNG",
     name: "Level test",
     tutoText: [],
-    tips : "Vous savez, moi je ne crois pas qu\’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd\’hui avec vous, je dirais que c\’est d\’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée... Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l’interlocuteur en face je dirais, le miroir qui vous aide à avancer.",
+    tips : "Vous savez que ce niveau est là pour le debug hein?",
   },
   {
     matrice: [
