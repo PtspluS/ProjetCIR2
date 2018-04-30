@@ -408,6 +408,7 @@ createPlayerColumn: function(groupe, id){
   }
 },
 preload: function(){
+  MenuOpt.load.spritesheet('background','assets/backgroundtiled.png',1344,768);
   MenuOpt.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
   MenuOpt.load.spritesheet('pbup','assets/buttons/pbup.png',174,60);
   MenuOpt.load.spritesheet('pbdown','assets/buttons/pbdown.png',174,60);
@@ -427,9 +428,13 @@ preload: function(){
   MenuOpt.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
 },
 create : function(){
-  //musicMenu.resume();//relance la musique là ou elle s'était arrêtée
 
   MenuOpt.input.gamepad.start();
+  
+  
+  // Fond d'ecran
+  let fond = MenuOpt.add.sprite(MenuOpt.world.centerX, MenuOpt.world.centerY, 'background')
+  fond.anchor.setTo(0.5,0.5);
 
   var playersGroups = [MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group()];
 
