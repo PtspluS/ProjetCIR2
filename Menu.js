@@ -57,7 +57,7 @@ var Menu = {
     jeu.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT; // Rempli toute la fenetre (etirement minime en fullscreen)
 
 	// Fond d'ecran
-	let fond = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY, 'background')
+	let fond = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY, 'background');
     fond.anchor.setTo(0.5,0.5);
     fond.animations.add('life', [0,1], 1, true);
     fond.play('life');
@@ -127,6 +127,9 @@ var MenuGame ={
     MenuGame.load.image('player2','assets/buttons/player2.png',104,92);
     MenuGame.load.image('player3','assets/buttons/player3.png',104,92);
     MenuGame.load.image('player4','assets/buttons/player4.png',104,92);
+    MenuGame.load.image('background','assets/backgroundselection.png',1344,768);
+    MenuGame.load.image('case','assets/case.png',376,276);
+    MenuGame.load.image('casemap','assets/casemap.png',380,516);
 
     for (let lvl in levels) {//boucle de chargement de tt les lvl
       MenuGame.load.image(levels[lvl].name,levels[lvl].imagePath);
@@ -137,6 +140,13 @@ var MenuGame ={
     MenuGame.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
   },
   create : function(){
+	  
+	// Fond d'ecran
+	let fond = MenuGame.add.sprite(MenuGame.world.centerX, MenuGame.world.centerY, 'background');
+	fond.anchor.setTo(0.5,0.5);
+	let casemap = MenuGame.add.sprite(MenuGame.world.centerX, MenuGame.world.centerY + 10, 'casemap');
+	casemap.anchor.setTo(0.5,0.5);
+	  
     imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
     imgMap.anchor.setTo(0.5,0.5);
     imgMap.scale.setTo(0.3,0.3);
@@ -200,7 +210,7 @@ var MenuGame ={
     mapName.anchor.setTo(0.5,0.5);
 
     // Fleche Gauche
-    let button2 = MenuGame.add.button(MenuGame.world.centerX-128, MenuGame.world.centerY + 200,'leftArrow',() => { this.leftMap(mapName);},this,1,0,2);
+    let button2 = MenuGame.add.button(MenuGame.world.centerX-128, MenuGame.world.centerY + 200,'leftArrow',() => { this.leftmap(mapName);},this,1,0,2);
     button2.anchor.setTo(0.5,0.5);
 
     // Fleche Droite
@@ -208,10 +218,14 @@ var MenuGame ={
     button3.anchor.setTo(0.5,0.5);
 
     // Retour
-    let back = MenuGame.add.button(20,20,'back',returnMenu,this,1,0,2);
+    let back = MenuGame.add.button(16,18,'back',returnMenu,this,1,0,2);
 
     // Selection Personnages
     for(let i = 0; i < MenuOpt.nbPlayers; i++){ // J 1 - 4
+	  // Case du personnage
+	  let caseChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX + ((i % 2)*2 - 1), MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY - 50,'case');
+      caseChar.anchor.setTo(0.5,0.5);
+	
       // Skin en rotation
       let spriteChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX, MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY,skins[this.playersskins[i]].name);
       spriteChar.anchor.setTo(0.5,0.5);
@@ -431,7 +445,7 @@ create : function(){
   
   
   // Fond d'ecran
-  let fond = MenuOpt.add.sprite(MenuOpt.world.centerX, MenuOpt.world.centerY, 'background')
+  let fond = MenuOpt.add.sprite(MenuOpt.world.centerX, MenuOpt.world.centerY, 'background');
   fond.anchor.setTo(0.5,0.5);
 
   var playersGroups = [MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group()];
