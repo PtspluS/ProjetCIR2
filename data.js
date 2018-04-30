@@ -401,7 +401,7 @@ var levels = [
   spawnpoints: [[5,7],[10,7],[7,3],[16,3]],
   seauSpawnpoints: [[4,6],[18,4]],
   imagePath: "assets/miniMap/Machine.PNG",
-  name: "Machine à laver",
+  name: "Machine a laver",
   tutoText: [
     ''
   ]
