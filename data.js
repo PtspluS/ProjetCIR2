@@ -440,7 +440,7 @@ var skins = [//permet de stocker tout les skins des persos
     height : 68,
   },{
     name : 'janine',
-    sprite : 'assets/dude2x2.PNG',
+    sprite : 'assets/janine.PNG',
     width :44,
     height : 68,
   }
