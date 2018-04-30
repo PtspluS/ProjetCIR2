@@ -14,7 +14,7 @@ var Menu = {
 		// Disparition
 		Menu.add.tween(junk.scale).to( { x: 0, y: 0 }, 8000, Phaser.Easing.Linear.None, true);
 		junk.enableBody = true;
-		switch(Math.floor(Math.random() * 5)){
+		switch(Math.floor(Math.random() * 6)){
 			case 0:
 				junk.frame = itemsId.Carton;
 				break;
@@ -30,8 +30,11 @@ var Menu = {
 			case 4:
 				junk.frame = itemsId.Metal;
 				break;
+			case 5:
+				junk.frame = itemsId.Poubelle;
+				break;
 			default:
-				junk.frame = itemsId.Pneu;
+				junk.frame = itemsId.Poubelle;
 		}
 		junk.body.velocity.x = Math.floor(Math.random() * 120) + 40;
 		junk.body.velocity.y = Math.floor(Math.random() * 150) - 70;
