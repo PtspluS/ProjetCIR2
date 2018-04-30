@@ -14,11 +14,11 @@ var levels = [
       [ 3, 0, 0, 0, 1, 8, 9, 21, 16, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0,20, 3],
       [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,22,22, 3, 3,22,22, 3, 3]
     ],
-    items: [itemsId.Pneu, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau],
-    itemsTime: 1000000,
-    itemsPattern: false,
-    itemSpeed : 50,
-    chrono: 1,
+    items: [itemsId.Pneu, itemsId.Poubelle, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau, itemsId.Poubelle],
+    itemsTime: 10000,
+    itemsPattern: true,
+    itemSpeed : 100,
+    chrono: 3600,
     score : 1000,
     polution : 10,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
@@ -26,7 +26,7 @@ var levels = [
     imagePath: "assets/miniMap/Troll.PNG",
     name: "Level test",
     tutoText: [],
-    tips : "Vous savez, moi je ne crois pas qu\’il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd\’hui avec vous, je dirais que c\’est d\’abord des rencontres. Des gens qui m’ont tendu la main, peut-être à un moment où je ne pouvais pas, où j’étais seul chez moi. Et c’est assez curieux de se dire que les hasards, les rencontres forgent une destinée... Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l’interlocuteur en face je dirais, le miroir qui vous aide à avancer.",
+    tips : "Vous savez que ce niveau est là pour le debug hein?",
   },
   {
     matrice: [
@@ -53,7 +53,7 @@ var levels = [
     spawnpoints: [[5,6],[7,6],[9,6],[11,7]],
     seauSpawnpoints: [[7,4],[12,7]],
     imagePath: "assets/miniMap/level1.PNG",
-    name: "Level 1",
+    name: "Tutoriel 1",
     tutoText:[
     'Bonjour les gars. Donc c\'est vous la nouvelle equipe de recyclage ?\nPour continuer les instructions cliquez dans le vide.\nSi je vous soule cliquez sur \"SKIP\". ',
     'Ok pour faire simple on doit traiter les déchets qui arrivent depuis la ville. On va commencer par le tri des pneux.',
@@ -88,7 +88,7 @@ var levels = [
   spawnpoints: [[5,6],[12,5],[7,6],[14,5]],
   seauSpawnpoints: [[8,6],[9,6]],
   imagePath: "assets/miniMap/level2.PNG",
-  name: "Level 2",
+  name: "Tutoriel 2",
   tutoText: [
     'Dans cette usine vous devrez faire le trie de pneux et de bidons de plastique.',
     'Pour les pneux vous savez comment faire pas besoin de vous réexpliquer.\nJe vous remet ça comme même #2#',
@@ -124,7 +124,7 @@ var levels = [
   spawnpoints: [[5,6],[13,6],[9,6],[15,6]],
   seauSpawnpoints: [],
   imagePath: "assets/miniMap/level3.PNG",
-  name: "Level 3",
+  name: "Tutoriel 3",
   tutoText: [
     'Passons maintenant aux cartons',
     'Le carton doit etre compressé puis doit etre transformé en pâte à papier dans la bassine. Ce sont les même commande que pour laver un seau',
@@ -156,7 +156,7 @@ var levels = [
   spawnpoints: [[4,5],[14,6],[7,5],[11,6]],
   seauSpawnpoints: [[13,4],[5,8]],
   imagePath: "assets/miniMap/level4.PNG",
-  name: "Level 4",
+  name: "Tutoriel 4",
   tutoText: [
 'En plus du carton vous devrez recycler des canettes metaliques.',
 'Les canettes doivent etre compressé puis fondu. Il faut ensuite récuprer le metal en fusion avec un seau et le mettre dans une presse.#0#',
@@ -188,12 +188,44 @@ var levels = [
   spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
   seauSpawnpoints: [[4,8],[16,8]],
   imagePath: "assets/miniMap/level5.PNG",
-  name: "Level 5",
+  name: "Tutoriel 5",
   tutoText: [
 'Maintenant le Verre',
 'Le verre doit etre broyé sur un etablie. Pour ce faire il faut qu\'il y ait sur l\'etablie un seau et une bouteille et appuyez sur la touche action.#4#',
 'Le broyat doit etre ensuite fondu, puis il faut amener le verre fondu dans la soufflerie.#4#',
 'La machine souffle de nouvelles bouteilles qu\'il faut deposer dans le bac verre.'
+  ],
+  tips : "Le verre c'est comme les diamants, c'est éternel, une bouteille recyclée à le même cycle de vie qu'une bouteille qui vient d'être crée et on ne peut pas voir la différence.",
+},{
+  matrice: [
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1, 3,15, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1,-1],
+    [-1,-1,-1, 3,12,12,12,12,12,12,12,12,14, 0,17,18, 2, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 7, 0, 0, 0, 0, 7, 0, 0, 0, 1, 1, 0, 0, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 9, 0, 6, 0, 6, 0, 0, 0, 0, 5, 5, 0, 2, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+  ],
+  items: [itemsId.Poubelle,itemsId.Poubelle,itemsId.Poubelle,itemsId.Poubelle,itemsId.Plastique,itemsId.Metal],
+  itemsTime: 8000,
+  itemsPattern: false,
+  itemSpeed : 140,
+  chrono: 180,
+  score : 500,
+  polution : 10,
+  spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
+  seauSpawnpoints: [[16,8],[16,7]],
+  imagePath: "assets/miniMap/level6.PNG",
+  name: "Tutoriel 6",
+  tutoText: [
+'Les gens ne trie pas toujours bien leur dechet. On peut donc avoir des sacs poubelles avec des dechets inconnue à l\'interieur',
+'Pour ouvrire un sac poubelle il faut l\'emener sur un etablie vide et appuyer sur la touche action.#6# ',
+'Il peut y avoir de 1 à 3 dechets dans un sac poubelle.',
   ],
   tips : "Le verre c'est comme les diamants, c'est éternel, une bouteille recyclée à le même cycle de vie qu'une bouteille qui vient d'être crée et on ne peut pas voir la différence.",
 }
@@ -222,7 +254,7 @@ var levels = [
   spawnpoints: [[6,5],[14,5],[8,5],[12,5]],
   seauSpawnpoints: [[10,4],[10,7]],
   imagePath: "assets/miniMap/levelCoop1.PNG",
-  name: "Level Coop - 1",
+  name: "Fait la passe",
   tutoText: [
     'Salut, je remplace Big Boss ... mais si Big Boss ... un grand blond ... voilà, fort sympatique ... ah non.',
     'Bref, il est pas en état de vous aider ... hum, il a pas assumé la bière d\'hier.\nBon ok, les bières.',
@@ -257,7 +289,7 @@ var levels = [
   seauSpawnpoints: [[3,3],[15,3],[6,8]],
   imagePath: "assets/miniMap/fondrie.PNG",
   name: "Fondrie",
-  tutoText: []
+  tutoText: ["Du verre des canettes et un gros four."]
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -285,7 +317,8 @@ var levels = [
   imagePath: "assets/miniMap/fordisme.PNG",
   name: "Fordisme",
   tutoText: [
-    'Niveau pour 4 joueurs'
+    'Niveau conseillé 4 joueurs',
+    'Chacun a sa place sur la chaine et si chacun fait son travail ils n\'y aura pas de probleme.'
   ],
   tips : "Le recyclage est une industrie à part entière et on peut y appliquer les même techniques de travail que dans une usine de production.",
 },{
@@ -315,7 +348,8 @@ var levels = [
   imagePath: "assets/miniMap/teletravail.PNG",
   name: "Teletravail",
   tutoText: [
-    'NIVEAU A 4 JOUEUR IMPERATIVEMENT'
+    'Niveau pour joueur',
+    'Vous travaillerez de loin'
   ]
 }
 ,{
@@ -345,7 +379,7 @@ var levels = [
   imagePath: "assets/miniMap/rond.PNG",
   name: "Rond-point",
   tutoText: [
-    ''
+    'Impossible de doubler dans un rond point'
   ]
 },{
   matrice: [
@@ -371,10 +405,39 @@ var levels = [
   polution : 10,
   spawnpoints: [[8,8],[13,6],[8,6],[13,8]],
   seauSpawnpoints: [[6,3],[15,3],[15,9],[8,9]],
-  imagePath: "",
-  name: "crash test",
+  imagePath: "assets/miniMap/Un par un.PNG",
+  name: "Un par un",
   tutoText: [
-    ''
+    'Tout est dans le titre'
+  ]
+},{
+  matrice: [
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 4, 3, 3, 4, 3, 3, 3,-1],
+    [-1, 3, 1, 1, 1, 0, 8, 8,21,21, 0, 0, 0, 0, 0, 0, 0,19,18, 3,-1],
+    [-1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9, 9, 0, 0, 0, 0, 0, 3,-1],
+    [-1, 3,16, 0, 2, 2, 0, 0, 0, 0, 0, 9, 9, 9, 0, 0, 0, 0, 2, 3,-1],
+    [-1, 3,17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,-1],
+    [-1, 3, 0, 0, 7, 0, 0, 0, 6, 0, 0, 6, 0, 0, 0, 5, 5, 5, 0, 3,-1],
+    [-1, 3,15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,-1],
+    [-1, 3,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,14, 3,-1],
+    [-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+  ],
+  items: [itemsId.Plastique,itemsId.Verre,itemsId.Metal,itemsId.Pneu,itemsId.Plastique,itemsId.Verre,itemsId.Metal],
+  itemsTime: 9000,
+  itemsPattern: false,
+  itemSpeed : 100,
+  chrono: 240,
+  score : 500,
+  polution : 10,
+  spawnpoints: [[5,7],[10,7],[7,3],[16,3]],
+  seauSpawnpoints: [[4,6],[18,4]],
+  imagePath: "assets/miniMap/Machine.PNG",
+  name: "Machine a laver",
+  tutoText: ["On a plus beaucoup de seau ici.\nVous allez devoir frotter les amis :P"
+
   ]
 }
 
@@ -409,7 +472,7 @@ var skins = [//permet de stocker tout les skins des persos
     height : 68,
   },{
     name : 'janine',
-    sprite : 'assets/dude2x2.PNG',
+    sprite : 'assets/janine.PNG',
     width :44,
     height : 68,
   }

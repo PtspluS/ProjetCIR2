@@ -46,5 +46,5 @@ var itemsId = Object.freeze({
   PateCarton1:36,
   PateCarton2:37,
   PateCarton3:38,
-
+  Poubelle:48
 });

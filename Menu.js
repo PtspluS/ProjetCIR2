@@ -2,24 +2,78 @@
 
 
 var Menu = {
+	moreJunk : function(groupe){
+		var junk = groupe.create(-28, Math.floor(Math.random() * 768), 'items');
+		junk.scale.x = 2;
+		junk.scale.y = 2;
+		junk.anchor.setTo(0.5, 0.5);
+		Menu.physics.arcade.enable(junk);
+		// rotation
+		junk.angle = Math.floor(Math.random() * 360);
+		Menu.add.tween(junk).to( { angle: Math.floor(Math.random() * 270) + 90 }, 8000, Phaser.Easing.Linear.None, true);
+		// Disparition
+		Menu.add.tween(junk.scale).to( { x: 0, y: 0 }, 8000, Phaser.Easing.Linear.None, true);
+		junk.enableBody = true;
+		switch(Math.floor(Math.random() * 6)){
+			case 0:
+				junk.frame = itemsId.Carton;
+				break;
+			case 1:
+				junk.frame = itemsId.Pneu;
+				break;
+			case 2:
+				junk.frame = itemsId.Plastique;
+				break;
+			case 3:
+				junk.frame = itemsId.Verre;
+				break;
+			case 4:
+				junk.frame = itemsId.Metal;
+				break;
+			case 5:
+				junk.frame = itemsId.Poubelle;
+				break;
+			default:
+				junk.frame = itemsId.Poubelle;
+		}
+		junk.body.velocity.x = Math.floor(Math.random() * 120) + 40;
+		junk.body.velocity.y = Math.floor(Math.random() * 150) - 70;
+		
+		Menu.time.events.add(8000, () => {junk.destroy();} , this); // Destruction
+		
+		Menu.time.events.add(Math.floor(Math.random() * 2000) + 500, () => {this.moreJunk(groupe);} , this);
+	},
   preload : function(){
     Menu.load.audio('musicMenu','musics/musicMenu.mp3');//Musique du menu
     Menu.load.spritesheet('title','assets/logo.png',408,222);
     Menu.load.spritesheet('game','assets/buttons/game.png',172,80);
     Menu.load.spritesheet('controls','assets/buttons/controls.png',296,80);
+    Menu.load.spritesheet('background','assets/backgroundplanet.png',1344,768);
+	Menu.load.spritesheet('items','assets/items.png', 56, 56);
   },
   create : function(){
 
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
     jeu.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT; // Rempli toute la fenetre (etirement minime en fullscreen)
 
+	// Fond d'ecran
+	let fond = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY, 'background');
+    fond.anchor.setTo(0.5,0.5);
+    fond.animations.add('life', [0,1], 1, true);
+    fond.play('life');
+	let dechets = Menu.add.group();
+	
+	Menu.time.events.add(Math.floor(Math.random() * 4000) + 1000, () => {this.moreJunk(dechets);} , this);
+	
 if(this.musicMenu==undefined){
       this.musicMenu = Menu.add.audio('musicMenu');
     }
     if(this.musicMenu.isPlaying!=true){
       this.musicMenu.play("",0,0.6,true);
     }
-        var tab = Array(99);
+       
+	// tableau stockant l'ordre d'animation de la banniere
+	var tab = Array(99);
     for(let i = 0; i < 99; i++){
       tab[i] = i;
     }
@@ -45,28 +99,25 @@ let returnMenu = function(){
   this.state.start('Menu');
 }
 
-
-
-let leftMap = function(){
-  if(this.cursorMap<=0){
-    this.cursorMap = levels.length-1;
-  }
-  else{
-    this.cursorMap--;
-  }
-  mapName.text = levels[this.cursorMap].name;
-  imgMap.loadTexture(levels[this.cursorMap].name,0);
-  mapName.y = MenuGame.world.centerY-imgMap.height/2-30;
-}
-let rightMap = function(){
-  this.cursorMap = (this.cursorMap+1)%levels.length;
-  mapName.text = levels[this.cursorMap].name;
-  imgMap.loadTexture(levels[this.cursorMap].name,0);
-  mapName.y = MenuGame.world.centerY-imgMap.height/2-30;
-}
+// Menu de selection
 var MenuGame ={
   cursorMap : 0,
   playersskins : [0, 1, 2, 3],
+  leftmap : function(mapName){
+	if(this.cursorMap<=0){
+		this.cursorMap = levels.length-1;
+	}
+	else{
+		this.cursorMap--;
+	}
+	mapName.text = levels[this.cursorMap].name;
+	imgMap.loadTexture(levels[this.cursorMap].name,0);
+  },
+  rightmap : function(mapName){
+	this.cursorMap = (this.cursorMap+1)%levels.length;
+	mapName.text = levels[this.cursorMap].name;
+	imgMap.loadTexture(levels[this.cursorMap].name,0);
+  },
   preload : function(){
     MenuGame.load.spritesheet('go','assets/buttons/go.png',104,80);
     MenuGame.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
@@ -76,6 +127,9 @@ var MenuGame ={
     MenuGame.load.image('player2','assets/buttons/player2.png',104,92);
     MenuGame.load.image('player3','assets/buttons/player3.png',104,92);
     MenuGame.load.image('player4','assets/buttons/player4.png',104,92);
+    MenuGame.load.image('background','assets/backgroundselection.png',1344,768);
+    MenuGame.load.image('case','assets/case.png',376,276);
+    MenuGame.load.image('casemap','assets/casemap.png',380,516);
 
     for (let lvl in levels) {//boucle de chargement de tt les lvl
       MenuGame.load.image(levels[lvl].name,levels[lvl].imagePath);
@@ -86,12 +140,19 @@ var MenuGame ={
     MenuGame.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
   },
   create : function(){
+	  
+	// Fond d'ecran
+	let fond = MenuGame.add.sprite(MenuGame.world.centerX, MenuGame.world.centerY, 'background');
+	fond.anchor.setTo(0.5,0.5);
+	let casemap = MenuGame.add.sprite(MenuGame.world.centerX, MenuGame.world.centerY + 10, 'casemap');
+	casemap.anchor.setTo(0.5,0.5);
+	  
     imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
     imgMap.anchor.setTo(0.5,0.5);
     imgMap.scale.setTo(0.3,0.3);
 
     // Clique sur GO
-    let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', () => {
+    let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY + 200, 'go', () => {
       Menu.musicMenu.stop();
       //document.body.style.cursor = 'progress';
       if(MenuOpt.P1KeyCodes[0]){
@@ -145,22 +206,26 @@ var MenuGame ={
     }, this,1,0,2);
     button1.anchor.setTo(0.5,0.5);
 
+    let mapName = MenuGame.add.bitmapText(MenuGame.world.centerX, MenuGame.world.centerY - 200, 'font',levels[this.cursorMap].name, 42);
+    mapName.anchor.setTo(0.5,0.5);
+
     // Fleche Gauche
-    let button2 = MenuGame.add.button(MenuGame.world.centerX-128, MenuGame.world.centerY+imgMap.height/2+80,'leftArrow',leftMap,this,1,0,2);
+    let button2 = MenuGame.add.button(MenuGame.world.centerX-128, MenuGame.world.centerY + 200,'leftArrow',() => { this.leftmap(mapName);},this,1,0,2);
     button2.anchor.setTo(0.5,0.5);
 
     // Fleche Droite
-    let button3 = MenuGame.add.button(MenuGame.world.centerX+128, MenuGame.world.centerY+imgMap.height/2+80,'rightArrow',rightMap,this,1,0,2);
+    let button3 = MenuGame.add.button(MenuGame.world.centerX+128, MenuGame.world.centerY + 200,'rightArrow',() => { this.rightmap(mapName);},this,1,0,2);
     button3.anchor.setTo(0.5,0.5);
 
     // Retour
-    let back = MenuGame.add.button(20,20,'back',returnMenu,this,1,0,2);
-
-    mapName = MenuGame.add.bitmapText(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height, 'font',levels[this.cursorMap].name, 42);
-    mapName.anchor.setTo(0.5,0.5);
+    let back = MenuGame.add.button(16,18,'back',returnMenu,this,1,0,2);
 
     // Selection Personnages
     for(let i = 0; i < MenuOpt.nbPlayers; i++){ // J 1 - 4
+	  // Case du personnage
+	  let caseChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX + ((i % 2)*2 - 1), MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY - 50,'case');
+      caseChar.anchor.setTo(0.5,0.5);
+	
       // Skin en rotation
       let spriteChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX, MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY,skins[this.playersskins[i]].name);
       spriteChar.anchor.setTo(0.5,0.5);
@@ -191,6 +256,7 @@ var MenuGame ={
   }
 }
 
+// Menu des options
 var MenuOpt ={
   nbPlayers : 2,
   GamePadKeyCodes : [
@@ -354,6 +420,7 @@ createPlayerColumn: function(groupe, id){
   }
 },
 preload: function(){
+  MenuOpt.load.spritesheet('background','assets/backgroundtiled.png',1344,768);
   MenuOpt.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
   MenuOpt.load.spritesheet('pbup','assets/buttons/pbup.png',174,60);
   MenuOpt.load.spritesheet('pbdown','assets/buttons/pbdown.png',174,60);
@@ -373,9 +440,13 @@ preload: function(){
   MenuOpt.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
 },
 create : function(){
-  //musicMenu.resume();//relance la musique là ou elle s'était arrêtée
 
   MenuOpt.input.gamepad.start();
+  
+  
+  // Fond d'ecran
+  let fond = MenuOpt.add.sprite(MenuOpt.world.centerX, MenuOpt.world.centerY, 'background');
+  fond.anchor.setTo(0.5,0.5);
 
   var playersGroups = [MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group()];
 

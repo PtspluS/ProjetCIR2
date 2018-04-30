@@ -115,7 +115,7 @@
 			tuile.body.immovable = true;
 			tuile2.body.immovable = true;
 			tuile3.body.immovable = true;
-			map[j][i] = new Etabli('etabli',i*64,j*64 - (96-64),object,itemGui);;
+			map[j][i] = new Etabli('etabli',i*64,j*64 - (96-64),level.items,object,itemGui);;
 			map[j][i+1] = map[j][i].table2;
 			map[j][i+2] = map[j][i].table3;
 			break;}
@@ -124,9 +124,9 @@
 			let tuile = platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
 			map[j][i] = new Presse('presse',i*64,j*64 - (108-64),object,itemGui);
-		break;}
+		    break;}
 
-	  case 9:{ // BASSINE
+		  case 9:{ // BASSINE
 			let tuile = platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
 			map[j][i] = new Bassine('bassine',i*64,j*64 - (82-64),object,itemGui);
@@ -166,9 +166,9 @@
 			let tuile = platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
 			map[j][i] = new Arrive('arrive',i*64,j*64 - (90-64),object, level.items, level.itemsTime-((MenuOpt.nbPlayers-2)*1000), level.itemsPattern);
-		break;}
+			break;}
 
-	  case 16:{ // BENNE VERRE
+	      case 16:{ // BENNE VERRE
 			let tuile = platformsSolid.create(i*64, j*64, 'ground');
 			tuile.body.immovable = true;
 			map[j][i] = new Benne('benneverre',i*64,j*64 - (84-64),object,'verre');
