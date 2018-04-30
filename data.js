@@ -287,7 +287,7 @@ var levels = [
   tutoText: [
     'Niveau pour 4 joueurs'
   ],
-  tips : "Le recyclage est une industrie à part entière et on peut y appliquer les même techniques de travails que dans une usine de production.",
+  tips : "Le recyclage est une industrie à part entière et on peut y appliquer les même techniques de travail que dans une usine de production.",
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
