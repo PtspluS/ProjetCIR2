@@ -196,6 +196,38 @@ var levels = [
 'La machine souffle de nouvelles bouteilles qu\'il faut deposer dans le bac verre.'
   ],
   tips : "Le verre c'est comme les diamants, c'est éternel, une bouteille recyclée à le même cycle de vie qu'une bouteille qui vient d'être crée et on ne peut pas voir la différence.",
+},{
+  matrice: [
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1, 3,15, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1,-1],
+    [-1,-1,-1, 3,12,12,12,12,12,12,12,12,14, 0,17,18, 2, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 7, 0, 0, 0, 0, 7, 0, 0, 0, 1, 1, 0, 0, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 9, 0, 6, 0, 6, 0, 0, 0, 0, 5, 5, 0, 2, 3,-1,-1,-1],
+    [-1,-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+  ],
+  items: [itemsId.Poubelle,itemsId.Poubelle,itemsId.Poubelle,itemsId.Poubelle,itemsId.Plastique,itemsId.Metal],
+  itemsTime: 8000,
+  itemsPattern: false,
+  itemSpeed : 140,
+  chrono: 180,
+  score : 500,
+  polution : 10,
+  spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
+  seauSpawnpoints: [[16,8],[16,7]],
+  imagePath: "assets/miniMap/level6.PNG",
+  name: "Tutoriel 6",
+  tutoText: [
+'Les gens ne trie pas toujours bien leur dechet. On peut donc avoir des sacs poubelles avec des dechets inconnue à l\'interieur',
+'Pour ouvrire un sac poubelle il faut l\'emener sur un etablie vide et appuyer sur la touche action.#6# ',
+'Il peut y avoir de 1 à 3 dechets dans un sac poubelle.',
+  ],
+  tips : "Le verre c'est comme les diamants, c'est éternel, une bouteille recyclée à le même cycle de vie qu'une bouteille qui vient d'être crée et on ne peut pas voir la différence.",
 }
 ,{
   matrice: [
