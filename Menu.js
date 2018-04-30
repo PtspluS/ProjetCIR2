@@ -99,28 +99,25 @@ let returnMenu = function(){
   this.state.start('Menu');
 }
 
-
-
-let leftMap = function(){
-  if(this.cursorMap<=0){
-    this.cursorMap = levels.length-1;
-  }
-  else{
-    this.cursorMap--;
-  }
-  mapName.text = levels[this.cursorMap].name;
-  imgMap.loadTexture(levels[this.cursorMap].name,0);
-  mapName.y = MenuGame.world.centerY-imgMap.height/2-30;
-}
-let rightMap = function(){
-  this.cursorMap = (this.cursorMap+1)%levels.length;
-  mapName.text = levels[this.cursorMap].name;
-  imgMap.loadTexture(levels[this.cursorMap].name,0);
-  mapName.y = MenuGame.world.centerY-imgMap.height/2-30;
-}
+// Menu de selection
 var MenuGame ={
   cursorMap : 0,
   playersskins : [0, 1, 2, 3],
+  leftmap : function(mapName){
+	if(this.cursorMap<=0){
+		this.cursorMap = levels.length-1;
+	}
+	else{
+		this.cursorMap--;
+	}
+	mapName.text = levels[this.cursorMap].name;
+	imgMap.loadTexture(levels[this.cursorMap].name,0);
+  },
+  rightmap : function(mapName){
+	this.cursorMap = (this.cursorMap+1)%levels.length;
+	mapName.text = levels[this.cursorMap].name;
+	imgMap.loadTexture(levels[this.cursorMap].name,0);
+  },
   preload : function(){
     MenuGame.load.spritesheet('go','assets/buttons/go.png',104,80);
     MenuGame.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
@@ -145,7 +142,7 @@ var MenuGame ={
     imgMap.scale.setTo(0.3,0.3);
 
     // Clique sur GO
-    let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY+imgMap.height/2+80, 'go', () => {
+    let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY + 200, 'go', () => {
       Menu.musicMenu.stop();
       //document.body.style.cursor = 'progress';
       if(MenuOpt.P1KeyCodes[0]){
@@ -199,19 +196,19 @@ var MenuGame ={
     }, this,1,0,2);
     button1.anchor.setTo(0.5,0.5);
 
+    let mapName = MenuGame.add.bitmapText(MenuGame.world.centerX, MenuGame.world.centerY - 200, 'font',levels[this.cursorMap].name, 42);
+    mapName.anchor.setTo(0.5,0.5);
+
     // Fleche Gauche
-    let button2 = MenuGame.add.button(MenuGame.world.centerX-128, MenuGame.world.centerY+imgMap.height/2+80,'leftArrow',leftMap,this,1,0,2);
+    let button2 = MenuGame.add.button(MenuGame.world.centerX-128, MenuGame.world.centerY + 200,'leftArrow',() => { this.leftMap(mapName);},this,1,0,2);
     button2.anchor.setTo(0.5,0.5);
 
     // Fleche Droite
-    let button3 = MenuGame.add.button(MenuGame.world.centerX+128, MenuGame.world.centerY+imgMap.height/2+80,'rightArrow',rightMap,this,1,0,2);
+    let button3 = MenuGame.add.button(MenuGame.world.centerX+128, MenuGame.world.centerY + 200,'rightArrow',() => { this.rightmap(mapName);},this,1,0,2);
     button3.anchor.setTo(0.5,0.5);
 
     // Retour
     let back = MenuGame.add.button(20,20,'back',returnMenu,this,1,0,2);
-
-    mapName = MenuGame.add.bitmapText(MenuGame.world.centerX, MenuGame.world.centerY-imgMap.height, 'font',levels[this.cursorMap].name, 42);
-    mapName.anchor.setTo(0.5,0.5);
 
     // Selection Personnages
     for(let i = 0; i < MenuOpt.nbPlayers; i++){ // J 1 - 4
@@ -245,6 +242,7 @@ var MenuGame ={
   }
 }
 
+// Menu des options
 var MenuOpt ={
   nbPlayers : 2,
   GamePadKeyCodes : [
