@@ -53,7 +53,7 @@ var levels = [
     spawnpoints: [[5,6],[7,6],[9,6],[11,7]],
     seauSpawnpoints: [[7,4],[12,7]],
     imagePath: "assets/miniMap/level1.PNG",
-    name: "Level 1",
+    name: "Premier pas",
     tutoText:[
     'Bonjour les gars. Donc c\'est vous la nouvelle equipe de recyclage ?\nPour continuer les instructions cliquez dans le vide.\nSi je vous soule cliquez sur \"SKIP\". ',
     'Ok pour faire simple on doit traiter les déchets qui arrivent depuis la ville. On va commencer par le tri des pneux.',
@@ -88,7 +88,7 @@ var levels = [
   spawnpoints: [[5,6],[12,5],[7,6],[14,5]],
   seauSpawnpoints: [[8,6],[9,6]],
   imagePath: "assets/miniMap/level2.PNG",
-  name: "Level 2",
+  name: "Deuxieme pas",
   tutoText: [
     'Dans cette usine vous devrez faire le trie de pneux et de bidons de plastique.',
     'Pour les pneux vous savez comment faire pas besoin de vous réexpliquer.\nJe vous remet ça comme même #2#',
@@ -124,7 +124,7 @@ var levels = [
   spawnpoints: [[5,6],[13,6],[9,6],[15,6]],
   seauSpawnpoints: [],
   imagePath: "assets/miniMap/level3.PNG",
-  name: "Level 3",
+  name: "Les bases",
   tutoText: [
     'Passons maintenant aux cartons',
     'Le carton doit etre compressé puis doit etre transformé en pâte à papier dans la bassine. Ce sont les même commande que pour laver un seau',
@@ -156,7 +156,7 @@ var levels = [
   spawnpoints: [[4,5],[14,6],[7,5],[11,6]],
   seauSpawnpoints: [[13,4],[5,8]],
   imagePath: "assets/miniMap/level4.PNG",
-  name: "Level 4",
+  name: "Les bases bis",
   tutoText: [
 'En plus du carton vous devrez recycler des canettes metaliques.',
 'Les canettes doivent etre compressé puis fondu. Il faut ensuite récuprer le metal en fusion avec un seau et le mettre dans une presse.#0#',
@@ -188,7 +188,7 @@ var levels = [
   spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
   seauSpawnpoints: [[4,8],[16,8]],
   imagePath: "assets/miniMap/level5.PNG",
-  name: "Level 5",
+  name: "vert vers verre",
   tutoText: [
 'Maintenant le Verre',
 'Le verre doit etre broyé sur un etablie. Pour ce faire il faut qu\'il y ait sur l\'etablie un seau et une bouteille et appuyez sur la touche action.#4#',
@@ -222,7 +222,7 @@ var levels = [
   spawnpoints: [[6,5],[14,5],[8,5],[12,5]],
   seauSpawnpoints: [[10,4],[10,7]],
   imagePath: "assets/miniMap/levelCoop1.PNG",
-  name: "Level Coop - 1",
+  name: "Fait la passe",
   tutoText: [
     'Salut, je remplace Big Boss ... mais si Big Boss ... un grand blond ... voilà, fort sympatique ... ah non.',
     'Bref, il est pas en état de vous aider ... hum, il a pas assumé la bière d\'hier.\nBon ok, les bières.',
@@ -372,7 +372,7 @@ var levels = [
   spawnpoints: [[8,8],[13,6],[8,6],[13,8]],
   seauSpawnpoints: [[6,3],[15,3],[15,9],[8,9]],
   imagePath: "",
-  name: "crash test",
+  name: "Un par un",
   tutoText: [
     ''
   ]
