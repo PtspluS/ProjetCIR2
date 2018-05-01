@@ -129,7 +129,7 @@ var levels = [
     'Celui-ci doit etre compressé puis transformé en pâte à papier dans la bassine. Vous savez comment faire ces manipulations, le fonctionnement est le même que pour laver un seau.',
     'La pâte doit ensuite être pressée pour créer de nouvelles plaques de carton à deposer dans le bac bleu.#1#'
   ],
-  tips : "Le carton c'est comme les chats, ça a plusieurs vies, et en plus ça griffe pas. Donc pensez à l'adopter dans votre quotidien pour un envirronement plus sain!."
+  tips : "Le carton c'est comme les chats, ça a plusieurs vies, et en plus ça griffe pas. Donc pensez à l'adopter dans votre quotidien pour un environnement plus sain!."
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
