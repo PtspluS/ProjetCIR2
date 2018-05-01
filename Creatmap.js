@@ -10,6 +10,8 @@
 	// Groupes de sprites
 	platformsSolid = game.add.group();
 	platformsSolid.enableBody = true;
+	truckGroup=game.add.group();
+	truckGroup.enableBody = true;
 	object=game.add.group();
 	object.enableBody = true;
 	itemGui=game.add.group();
@@ -204,10 +206,10 @@
 			map[j][i] = new Soufflerie('soufflerie',i*64,j*64 - (90-64),object,itemGui);
 			break;}
 
-			case 22:{ // CAMION ET ROUTE // OBLIGE EN PREMIERE LIGNE DE MATRICE!!!!
+			case 22:{ // CAMION ET ROUTE // TOUJOURS EN PREMIERE LIGNE DE MATRICE!!!
 			let barrieres = [];
 			for(let y = 0; y < matrice.length; y++){
-				if(matrice[y][i] == 22 || matrice[y][i+1] == 22){
+				if(matrice[y][i] == 23 || matrice[y][i+1] == 23){ // 23 sur l'une des deux cases pour mettre une barriere
 					let tuile = platformsSolid.create(i*64, y*64, 'route');
 					tuile.body.immovable = true;
 					let barre = object.create(i*64, y*64 - 30, 'barriere');
@@ -218,7 +220,7 @@
 				map[y][i] = 0;
 				map[y][i+1] = 0;
 			}
-			map[0][i] = new Camion('truck',i*64,platformsSolid, barrieres);
+			map[0][i] = new Camion('truck',i*64,truckGroup, barrieres);
 			break;}
 		  }
 		}
@@ -228,6 +230,7 @@
     }
 
 	game.world.bringToTop(platformsSolid);
+	game.world.bringToTop(truckGroup);
 	game.world.bringToTop(object);
 	game.world.bringToTop(itemGui);
 

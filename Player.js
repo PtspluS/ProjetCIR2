@@ -1,4 +1,9 @@
 Player=function(sprite,posx,posy,groupe,itemgroupe){
+	// Stockage du spawnpoint
+	this.spawnx = posx;
+	this.spawny = posy;
+	
+	this.stun = false;
 	//constructeur du player
 	this.player = groupe.create(posx, posy,sprite);
 	game.physics.arcade.enable(this.player);
@@ -153,73 +158,88 @@ Player.prototype.wait=function(){
 	}
 }
 
-Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,otherplayer){
-	for(let i = 0; i < otherplayer.length; i++){
+Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,trucks,otherplayer){
+	for(let i = 0; i < otherplayer.length; i++){ // Eviter que les joueurs rentre dans les autres joueurs ou murs
 		var hitPlatform = game.physics.arcade.collide(otherplayer[i].player,platforms);
 		var hitPlayer = game.physics.arcade.collide(this.player,otherplayer[i].player);
-
 	}
-
+	
+	for(let i = 0; i < trucks.children.length; i++){ // Collisions avec les camions
+		let hitTruck = game.physics.arcade.collide(this.player,trucks.children[i]);
+		if(hitTruck && trucks.children[i].position.y + 128 < this.player.position.y){
+			this.stun = true;
+			this.player.position.x = this.spawnx;
+			this.player.position.y = this.spawny;
+			this.player.alpha = 0.2;
+			let stuntime = 3000; // Duree de la paralysie
+			game.add.tween(this.player).to( { alpha: 1 }, stuntime, Phaser.Easing.Linear.None, true);
+			game.time.events.add(3000, () => {this.stun = false;} , this);
+			
+			game.cameraShake(0);
+		}
+	}
+	
 	this.item.x = this.player.x - 6;
 	this.item.y = this.player.y - 36;
 
 	this.player.body.velocity.x = 0;
 	this.player.body.velocity.y = 0;
-	if (cursorright() && cursordown())
-	{
-		this.downright();
-	}
-	else if (cursorright() && cursorup())
-	{
-		this.upright();
-	}
-	else if (cursorleft() && cursordown())
-	{
-		this.downleft();
-	}
-	else if (cursorleft() && cursorup())
-	{
-		this.upleft();
-	}
-	else if (cursordown())
-	{
-		this.down();
-	}
-	else if (cursorright())
-	{
-		this.right();
-	}
-	else if (cursorup())
-	{
-		this.up();
-	}
-	else if (cursorleft())
-	{
-		this.left();
-	}
-	else{
-		this.wait();
-	}
+	
+	if(!this.stun){
+		if (cursorright() && cursordown())
+		{
+			this.downright();
+		}
+		else if (cursorright() && cursorup())
+		{
+			this.upright();
+		}
+		else if (cursorleft() && cursordown())
+		{
+			this.downleft();
+		}
+		else if (cursorleft() && cursorup())
+		{
+			this.upleft();
+		}
+		else if (cursordown())
+		{
+			this.down();
+		}
+		else if (cursorright())
+		{
+			this.right();
+		}
+		else if (cursorup())
+		{
+			this.up();
+		}
+		else if (cursorleft())
+		{
+			this.left();
+		}
+		else{
+			this.wait();
+		}
 
-	if(cursordrop() && this.dropActive == false){
-		this.drop();
-		this.dropActive = true;
-	}else if(cursordrop()){
-		this.dropActive = true;
-	}else {
-		this.dropActive = false;
+		if(cursordrop() && this.dropActive == false){
+			this.drop();
+			this.dropActive = true;
+		}else if(cursordrop()){
+			this.dropActive = true;
+		}else {
+			this.dropActive = false;
+		}
+
+		if(cursorinteract() && this.interactActive == false && this.carry == 0){
+			this.interact();
+			this.interactActive = true;
+		}else if(cursorinteract()){
+			this.interactActive = true;
+		}else {
+			this.interactActive = false;
+		}
 	}
-
-	if(cursorinteract() && this.interactActive == false && this.carry == 0){
-		this.interact();
-		this.interactActive = true;
-	}else if(cursorinteract()){
-		this.interactActive = true;
-	}else {
-		this.interactActive = false;
-	}
-
-
 }
 
 Player.prototype.checkfront=function(){

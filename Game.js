@@ -247,7 +247,7 @@ var game = {
 		document.body.style.cursor != 'none' ? document.body.style.cursor = 'none' : true;
 		let playersControls = [this.controlP1, this.controlP2, this.controlP3, this.controlP4];
 		for(let i = 0; i < this.nbPlayers; i++){
-			players[i].update(playersControls[i][0],playersControls[i][1],playersControls[i][2],playersControls[i][3],playersControls[i][4],playersControls[i][5],platformsSolid,players);
+			players[i].update(playersControls[i][0],playersControls[i][1],playersControls[i][2],playersControls[i][3],playersControls[i][4],playersControls[i][5],platformsSolid,truckGroup,players);
 		}
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 		this.mytimer.updatetimer();
