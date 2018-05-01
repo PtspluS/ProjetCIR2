@@ -1,6 +1,4 @@
 //Menu
-
-
 var Menu = {
 	moreJunk : function(groupe){
 		var junk = groupe.create(-28, Math.floor(Math.random() * 768), 'items');
@@ -38,9 +36,9 @@ var Menu = {
 		}
 		junk.body.velocity.x = Math.floor(Math.random() * 120) + 40;
 		junk.body.velocity.y = Math.floor(Math.random() * 150) - 70;
-		
+
 		Menu.time.events.add(8000, () => {junk.destroy();} , this); // Destruction
-		
+
 		Menu.time.events.add(Math.floor(Math.random() * 2000) + 500, () => {this.moreJunk(groupe);} , this);
 	},
   preload : function(){
@@ -55,7 +53,7 @@ var Menu = {
 
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
     jeu.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT; // Rempli toute la fenetre (etirement minime en fullscreen)
-	
+
 	// Bordures de la scene
 	Menu.world.setBounds(0, 0, jeu.width, jeu.height);
 
@@ -65,16 +63,16 @@ var Menu = {
     fond.animations.add('life', [0,1], 1, true);
     fond.play('life');
 	let dechets = Menu.add.group();
-	
+
 	Menu.time.events.add(Math.floor(Math.random() * 4000) + 1000, () => {this.moreJunk(dechets);} , this);
-	
+
 if(this.musicMenu==undefined){
       this.musicMenu = Menu.add.audio('musicMenu');
     }
     if(this.musicMenu.isPlaying!=true){
       this.musicMenu.play("",0,0.6,true);
     }
-       
+
 	// tableau stockant l'ordre d'animation de la banniere
 	var tab = Array(99);
     for(let i = 0; i < 99; i++){
@@ -145,16 +143,16 @@ var MenuGame ={
   create : function(){
 	// Bordures de la scene
 	MenuGame.world.setBounds(0, 0, jeu.width, jeu.height);
-	  
+
 	// Fond d'ecran
 	let fond = MenuGame.add.sprite(MenuGame.world.centerX, MenuGame.world.centerY, 'background');
 	fond.anchor.setTo(0.5,0.5);
 	let casemap = MenuGame.add.sprite(MenuGame.world.centerX, MenuGame.world.centerY + 10, 'casemap');
 	casemap.anchor.setTo(0.5,0.5);
-	  
+
     imgMap = MenuGame.add.image(MenuGame.world.centerX, MenuGame.world.centerY,levels[this.cursorMap].name)
     imgMap.anchor.setTo(0.5,0.5);
-    imgMap.scale.setTo(0.3,0.3);
+    imgMap.scale.setTo(0.35,0.35);
 
     // Clique sur GO
     let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY + 200, 'go', () => {
@@ -229,7 +227,7 @@ var MenuGame ={
 	  // Case du personnage
 	  let caseChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX + ((i % 2)*2 - 1), MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY - 50,'case');
       caseChar.anchor.setTo(0.5,0.5);
-	
+
       // Skin en rotation
       let spriteChar = MenuGame.add.sprite((((i % 2)*2 - 1)* 0.6 + 1)*MenuGame.world.centerX, MenuGame.world.centerY + (Math.round(i/2 - 0.1) - 0.5)*MenuGame.world.centerY,skins[this.playersskins[i]].name);
       spriteChar.anchor.setTo(0.5,0.5);
@@ -446,11 +444,11 @@ preload: function(){
 create : function(){
 
   MenuOpt.input.gamepad.start();
-  
-  
+
+
   // Bordures de la scene
   MenuOpt.world.setBounds(0, 0, jeu.width, jeu.height);
-  
+
   // Fond d'ecran
   let fond = MenuOpt.add.sprite(MenuOpt.world.centerX, MenuOpt.world.centerY, 'background');
   fond.anchor.setTo(0.5,0.5);

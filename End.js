@@ -89,7 +89,14 @@ var end = {
     Grade.anchor.setTo(0.5,0.5);
     let tips = end.add.bitmapText(end.world.centerX-200,200,'font','INFO : ',60);
     tips.anchor.setTo(0.5,0.5);
-    let tip = end.add.text(0, 0.7 * end.world.centerY,levels[MenuGame.cursorMap].tips,{
+    let info = '';
+    if(levels[MenuGame.cursorMap].tips){
+      info = levels[MenuGame.cursorMap].tips+'\n'+citations[Math.floor(Math.random()*citations.length)];
+    }
+    else {
+      info = citations[Math.floor(Math.random()*citations.length)];
+    }
+    let tip = end.add.text(0, 0.7 * end.world.centerY,info,{
 			align: "left",
 			wordWrap: true,
 			wordWrapWidth: 800

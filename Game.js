@@ -1,4 +1,5 @@
 var game = {
+	mod : 0,
 	polution : 1,
 	id : 0,
 	playersskins : [0, 0, 0, 0],
@@ -115,6 +116,11 @@ var game = {
 		// Bordures de la scene
 		game.world.setBounds(-10, -10, jeu.width + 10, jeu.height + 10);
 
+		//creation de la Pollution
+		this.polution = levels[MenuGame.cursorMap].polution;
+		this.polution = new PolutionObject(this.polution);
+		//this.polution.z = 0;
+
 		// Creation de la map
 		let level = levels[this.id];
 		map = Creatmap(level);
@@ -126,9 +132,6 @@ var game = {
 		//enleve le cursor
 		document.body.style.cursor = 'none';
 
-		//Creation de la Pollution
-		this.polution = new PolutionObject(levels[MenuGame.cursorMap].polution);
-		
 		//Creation du timer
 		this.mytimer = new MyTimer(level.chrono);
 
@@ -155,44 +158,32 @@ var game = {
 
 				// Aides
 				var pauseHelps = [];
-				pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 150), 'help'));
+				pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 				pauseHelps[pauseHelps.length - 1].frame = 5;
-				pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 				pauseHelps[pauseHelps.length - 1].alpha = 0;
 				if(levels[this.id].items.indexOf(itemsId.Metal) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 150), 'help'));
+					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 0;
-						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Carton) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 150), 'help'));
+					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 1;
-						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Pneu) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 150), 'help'));
+					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 2;
-						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Plastique) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 150), 'help'));
+					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 3;
-						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Verre) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 150), 'help'));
+					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 4;
-						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
-					pauseHelps[pauseHelps.length - 1].alpha = 0;
-				}
-				if(levels[this.id].items.indexOf(itemsId.Poubelle) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 150), 'help'));
-					pauseHelps[pauseHelps.length - 1].frame = 6;
-						pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 
@@ -204,7 +195,6 @@ var game = {
 					}
 				},this,1,0,2);
 				pauseHelpb.anchor.setTo(0.5,0.5);
-
 				pauseGroup.add(pauseHelpb);
 
 				let banner = game.add.button(300,100,'title',()=>{
@@ -254,6 +244,7 @@ var game = {
 		// FIN PAUSE
 	},
 	update : function() {
+		document.body.style.cursor != 'none' ? document.body.style.cursor = 'none' : true;
 		let playersControls = [this.controlP1, this.controlP2, this.controlP3, this.controlP4];
 		for(let i = 0; i < this.nbPlayers; i++){
 			players[i].update(playersControls[i][0],playersControls[i][1],playersControls[i][2],playersControls[i][3],playersControls[i][4],playersControls[i][5],platformsSolid,players);

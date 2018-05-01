@@ -158,7 +158,7 @@ var levels = [
   name: "Tutoriel 4",
   tutoText: [
 	'Aujourd\'hui, en plus du carton vous devrez recycler des canettes métalliques.',
-	'Les canettes doivent être à nouveau compressées puis fondues dans un four. Pour récupérer le métal en fusion il vous faudra être équipé d\un seau et enuite le verser dans une presse.#0#',
+	'Les canettes doivent être à nouveau compressées puis fondues dans un four. Pour récupérer le métal en fusion il vous faudra être équipé d\'un seau et enuite le verser dans une presse.#0#',
 	'Les plaques de metal ainsi obtenu sont envoyées à d\'autres usines ou elles seront refondues pour refaire des canettes ou de la carroserie.'
   ],
   tips : "Avec ce que vous venez de recycler vous pouvez offrir un cadeau à un enfant.\nLe métal pour construire un vélo et le carton pour l'emballage ... un cadeau utile et écolo!",
@@ -469,3 +469,14 @@ var skins = [//permet de stocker tout les skins des persos
     height : 68,
   }
 ];
+
+var citations = [
+  "'Les musées préservent notre passé;\nle recyclage préserve notre avenir.'\n Theodor Wiesengrund Adorno",
+  "'Il n'y a pas de passagers sur le vaisseau Terre. Nous sommes tous des membres de l'équipage.'\nMarshall McLuhan",
+  "'L'homme se doit d'être le gardien de la nature, non son propriétaire.'\nPhilippe St Marc",
+  "'Les problèmes du monde ne peuvent être résolus par des sceptiques ou des cyniques dont les horizons se limitent aux réalités évidentes. Nous avons besoin d'hommes capables d'imaginer ce qui n'a jamais existé.'\nJohn F. Kennedy",
+  "'Le coût de la protection du milieu naturel est beaucoup plus faible que le coût de sa reconstitution. La défense de la nature est rentable pour les nations.'\nPhilippe St Marc",
+  "'Nous n'héritons pas de la terre de nos parents, nous l'empruntons à nos enfants.'\nAntoine de Saint-Exupéry",
+  "'Le développement durable n'est ni une utopie ni même une contestation, mais la condition de survie de l'économie de marché.'\nLouis Schweitzer",
+
+]
