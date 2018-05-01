@@ -158,7 +158,7 @@ var levels = [
   name: "Tutoriel 4",
   tutoText: [
 	'Aujourd\'hui, en plus du carton vous devrez recycler des canettes métalliques.',
-	'Les canettes doivent être à nouveau compressées puis fondues dans un four. Pour récupérer le métal en fusion il vous faudra être équipé d\un seau et enuite le verser dans une presse.#0#',
+	'Les canettes doivent être à nouveau compressées puis fondues dans un four. Pour récupérer le métal en fusion il vous faudra être équipé d\'un seau et enuite le verser dans une presse.#0#',
 	'Les plaques de metal ainsi obtenu sont envoyées à d\'autres usines ou elles seront refondues pour refaire des canettes ou de la carroserie.'
   ],
   tips : "Avec ce que vous venez de recycler vous pouvez offrir un cadeau à un enfant.\nLe métal pour construire un vélo et le carton pour l'emballage ... un cadeau utile et écolo!",
