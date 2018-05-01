@@ -304,7 +304,7 @@ var levels = [
   ],
   items: [itemsId.Carton,itemsId.Plastique,itemsId.Pneu],
   itemsTime: 5000,
-  itemsPattern: false,
+  itemsPattern: true,
   itemSpeed : 50,
   chrono: 180,
   score : 500,
