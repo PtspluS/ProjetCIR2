@@ -55,6 +55,9 @@ var Menu = {
 
     jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
     jeu.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT; // Rempli toute la fenetre (etirement minime en fullscreen)
+	
+	// Bordures de la scene
+	Menu.world.setBounds(0, 0, jeu.width, jeu.height);
 
 	// Fond d'ecran
 	let fond = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY, 'background');
@@ -140,6 +143,8 @@ var MenuGame ={
     MenuGame.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
   },
   create : function(){
+	// Bordures de la scene
+	MenuGame.world.setBounds(0, 0, jeu.width, jeu.height);
 	  
 	// Fond d'ecran
 	let fond = MenuGame.add.sprite(MenuGame.world.centerX, MenuGame.world.centerY, 'background');
@@ -154,8 +159,7 @@ var MenuGame ={
     // Clique sur GO
     let button1 = MenuGame.add.button(MenuGame.world.centerX, MenuGame.world.centerY + 200, 'go', () => {
       Menu.musicMenu.stop();
-      //document.body.style.cursor = 'progress';
-      if(MenuOpt.P1KeyCodes[0]){
+      if(MenuOpt.P1KeyCodes[0]){ // Si joueur 1 est au Gamepad
         for(let i = 0; i < 6; i++){
           game.controlP1[i] = () => {return game.input.gamepad.pad1.isDown(MenuOpt.GamePadKeyCodes[i]);};
         }
@@ -164,7 +168,7 @@ var MenuGame ={
           game.controlP1[i] = () => {return game.input.keyboard.isDown(MenuOpt.P1KeyCodes[i+1]);};
         }
       }
-      if(MenuOpt.P2KeyCodes[0]){
+      if(MenuOpt.P2KeyCodes[0]){ // Si joueur 2 est au Gamepad
         for(let i = 0; i < 6; i++){
           game.controlP2[i] = () => {return game.input.gamepad.pad2.isDown(MenuOpt.GamePadKeyCodes[i]);};
         }
@@ -173,7 +177,7 @@ var MenuGame ={
           game.controlP2[i] = () => {return game.input.keyboard.isDown(MenuOpt.P2KeyCodes[i+1]);};
         }
       }
-      if(MenuOpt.P3KeyCodes[0]){
+      if(MenuOpt.P3KeyCodes[0]){ // Si joueur 3 est au Gamepad
         for(let i = 0; i < 6; i++){
           game.controlP3[i] = () => {return game.input.gamepad.pad3.isDown(MenuOpt.GamePadKeyCodes[i]);};
         }
@@ -182,7 +186,7 @@ var MenuGame ={
           game.controlP3[i] = () => {return game.input.keyboard.isDown(MenuOpt.P3KeyCodes[i+1]);};
         }
       }
-      if(MenuOpt.P4KeyCodes[0]){
+      if(MenuOpt.P4KeyCodes[0]){ // Si joueur 4 est au Gamepad
         for(let i = 0; i < 6; i++){
           game.controlP4[i] = () => {return game.input.gamepad.pad4.isDown(MenuOpt.GamePadKeyCodes[i]);};
         }
@@ -443,6 +447,9 @@ create : function(){
 
   MenuOpt.input.gamepad.start();
   
+  
+  // Bordures de la scene
+  MenuOpt.world.setBounds(0, 0, jeu.width, jeu.height);
   
   // Fond d'ecran
   let fond = MenuOpt.add.sprite(MenuOpt.world.centerX, MenuOpt.world.centerY, 'background');

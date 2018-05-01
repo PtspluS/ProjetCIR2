@@ -23,7 +23,7 @@ var levels = [
     polution : 10,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
     seauSpawnpoints: [],
-    imagePath: "assets/miniMap/Troll.PNG",
+    imagePath: "assets/miniMap/debugmap.png",
     name: "Level test",
     tutoText: [],
     tips : "Vous savez que ce niveau est là pour le debug hein?",
@@ -55,14 +55,13 @@ var levels = [
     imagePath: "assets/miniMap/level1.PNG",
     name: "Tutoriel 1",
     tutoText:[
-    'Bonjour les gars. Donc c\'est vous la nouvelle equipe de recyclage ?\nPour continuer les instructions cliquez dans le vide.\nSi je vous soule cliquez sur \"SKIP\". ',
-    'Ok pour faire simple on doit traiter les déchets qui arrivent depuis la ville. On va commencer par le tri des pneux.',
-    'Les Pneu arrivent sur le tapis roulant, attrapez les avant qu\'ils ne soient incinérés et mettez les dans le broyeur.#2#',
-    'Le Pneu broyé (appelé broyat) doit etre ramassé avec un seau et vidé dans le contenaire correspondant, le gris. On peut mettre 3 doses de broyats dans 1 seul seau.',
-    'Le Pneu broyé peut servire de combustible pour des entreprise, pour entretenir les terrains de foot synthétique ou une fois fondu il sert comme revêtement sur les terrain de jeu pour enfants. ',
-    'En cas de probleme appuyez sur ENTRE pour mettre pause et regarder l\'aide'
-  ],
-  tips : "Lorsque vous jouez sur un terrain synthétique, vous jouez sur des pneux recyclés.",
+    'Bonjour messieurs. Alors comme ça c\'est vous la nouvelle equipe de recyclage ?\nSi vous souhaitez que je saute les étapes afin de continuer les instructions, cliquez dans le vide.\nSi vous savez déja comment tout fonctionne, je ne vous retiens pas plus, vous pouvez cliquer sur \"SKIP\". ',
+    'Pour faire simple, nous devons traiter les déchets qui nous arrivent depuis la ville. Nous allons commencer par le tri des pneus.',
+    'Les pneus vont arriver sur le tapis roulant, attrapez les avant qu\'ils ne soient incinérés afin d\'éviter de polluer d\'avantage l\'atmosphère qu\'il ne l\'est déja et mettez les dans le broyeur.#2#',
+    'Le pneu broyé, appelé broyat, doit être ramassé avec un seau et vidé dans le conteneur correspondant: le gris. On peut mettre jusqu\'à 3 doses de broyats dans un seul seau.',
+    'En cas de probleme appuyez sur ENTREE pour mettre le jeu en pause et regarder l\'aide si vous ne vous souvenez plus comment on fait pour recycler!'
+	],
+	tips : 'Au final, ce que vous venez de recycler servira de combustible pour des entreprises, pour entretenir les terrains de foot synthétiques ou, le broyat une fois fondu, peut servir de revêtement sur les terrains de jeu pour enfants.'
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -90,13 +89,13 @@ var levels = [
   imagePath: "assets/miniMap/level2.PNG",
   name: "Tutoriel 2",
   tutoText: [
-    'Dans cette usine vous devrez faire le trie de pneux et de bidons de plastique.',
-    'Pour les pneux vous savez comment faire pas besoin de vous réexpliquer.\nJe vous remet ça comme même #2#',
-    'Le plastique doit d\'abord etre compressé.\nPour ce faire il faut mettre le plastique dans le compresseur. On peut mettre jusqu\'à 3 objets dans un compresseur.\nIl faut ensuite l\'activer grace au bouton d\'action',
-    'Une fois compressé, vous devez le broyer, puis comme pour les pneux vous jeter dans le bac correspondant, le jaune.#3#"',
-    'Oubliez pas non plus que le but du tri c\'est de pas mélanger.\nIl faut donc laver les seaux si vous souhaitez transporter du plastique aprés avoir transporté des Pneu.',
-    'Pour laver les seaux, il faut aller a une bassine, deposer le seau à l\'interieure, puis laver le sceau en appuyant plusieur fois sur la touche action.#5#',
-    'Le Plastique ainsi recyclé peut etre fondu en fibre de plastique pour faire des polaires, ou en bouteille, ou encore en d\'autre objet en plastique',
+    'Faites attention, vous allez maintenant être confronté à un problème fondamental: le tri! Dans cette usine vous allez devoir recyler à la fois des pneux et des bidons de plastique.',
+    'Pour les pneux vous savez déja comment cela fonctionne.\nJe vous fait quand même un petit rappel: #2#',
+    'Sinon, pour le plastique, vous devez premièrement le compresser.\nPour ce faire il faut mettre les déchets dans le compresseur. On peut mettre jusqu\'à 3 objets dans un compresseur, alors essayez de maximiser cette capacité pour rendre le travail plus facile.\nUne fois que vous souhaitez lancer la compression, activez la machine avec le bouton d\action.',
+    'Une fois compressé, vous devrez le broyer, puis comme pour les pneux vous déposerez les paillettes de plastique dans le bac correspondant: le jaune.#3#"',
+    'N\'Oubliez pas non plus que le but du tri c\'est de pas mélanger.\nVous devrez donc laver les seaux si vous souhaitez transporter du plastique après avoir transporté des broyats de pneu car ceux-ci seront sales.',
+    'Pour laver les seaux, il faut aller à une bassine, deposer le seau à l\'interieur, puis le laver en appuyant une dizaine de fois sur la touche d\'action.#5#',
+    'Le plastique ainsi recyclé sera fondu en fibres de plastique pour faire des polaires, ou en bouteilles, ou encore en de nouveaux objets en plastique',
   ],
   tips : "Avec 7 bidons on peut réaliser un siège bébé pour les sales gosses."
 },{
@@ -126,11 +125,11 @@ var levels = [
   imagePath: "assets/miniMap/level3.PNG",
   name: "Tutoriel 3",
   tutoText: [
-    'Passons maintenant aux cartons',
-    'Le carton doit etre compressé puis doit etre transformé en pâte à papier dans la bassine. Ce sont les même commande que pour laver un seau',
-    'La pâte doit etre ensuite pressé ce qui donnera de nouvelles feuilles de carton à deposer dans le bac bleu.#1#'
+    'Nous allons maintenant nous attaquer aux cartons.',
+    'Celui-ci doit etre compressé puis transformé en pâte à papier dans la bassine. Vous savez comment faire ces manipulations, le fonctionnement est le même que pour laver un seau.',
+    'La pâte doit ensuite être pressée pour créer de nouvelles plaques de carton à deposer dans le bac bleu.#1#'
   ],
-  tips : "Le carton c'est comme les chats, ça a plusieurs vies, et en plus ça griffe pas. Donc go adopter du carton."
+  tips : "Le carton c'est comme les chats, ça a plusieurs vies, et en plus ça griffe pas. Donc pensez à l'adopter dans votre quotidien pour un envirronement plus sain!."
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -158,11 +157,11 @@ var levels = [
   imagePath: "assets/miniMap/level4.PNG",
   name: "Tutoriel 4",
   tutoText: [
-'En plus du carton vous devrez recycler des canettes metaliques.',
-'Les canettes doivent etre compressé puis fondu. Il faut ensuite récuprer le metal en fusion avec un seau et le mettre dans une presse.#0#',
-'Les plaques de metal ainsi obtenu sont envoyé à d\'autre usine ou elle serons refondu pour refaire des canettes ou de la carroserie'
+	'Aujourd\'hui, en plus du carton vous devrez recycler des canettes métalliques.',
+	'Les canettes doivent être à nouveau compressées puis fondues dans un four. Pour récupérer le métal en fusion il vous faudra être équipé d\un seau et enuite le verser dans une presse.#0#',
+	'Les plaques de metal ainsi obtenu sont envoyées à d\'autres usines ou elles seront refondues pour refaire des canettes ou de la carroserie.'
   ],
-  tips : "Avec ce que vous venez de faire vous pouvez offrir un cadeau à une gamin.\nLe fer pour un vélo et le carton pour l'emballage ... un cadeau hyper utile et écolo",
+  tips : "Avec ce que vous venez de recycler vous pouvez offrir un cadeau à un enfant.\nLe métal pour construire un vélo et le carton pour l'emballage ... un cadeau utile et écolo!",
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -190,12 +189,12 @@ var levels = [
   imagePath: "assets/miniMap/level5.PNG",
   name: "Tutoriel 5",
   tutoText: [
-'Maintenant le Verre',
-'Le verre doit etre broyé sur un etablie. Pour ce faire il faut qu\'il y ait sur l\'etablie un seau et une bouteille et appuyez sur la touche action.#4#',
-'Le broyat doit etre ensuite fondu, puis il faut amener le verre fondu dans la soufflerie.#4#',
-'La machine souffle de nouvelles bouteilles qu\'il faut deposer dans le bac verre.'
+	'Enfin le dernier élément majeur du recyclage: le verre!',
+	'Si vous souhaitez le recycler, il vous faudra premièrement le réduire en morceau sur un établi. Pour ce faire, déposez un seau et les bouteilles sur l\établi et appuyez sur la touche action pour le briser.#4#',
+	'Le verre doit ensuite être fondu dans le four. Vous pourrez ensuite amener le verre fondu dans la soufflerie à l\'aide d\'un seau.#4#',
+	'La machine soufflera de nouvelles bouteilles qu\'il vous faudra déposer dans le bac à verre qui lui-même est vert.'
   ],
-  tips : "Le verre c'est comme les diamants, c'est éternel, une bouteille recyclée à le même cycle de vie qu'une bouteille qui vient d'être crée et on ne peut pas voir la différence.",
+  tips : "Le verre c'est comme les diamants, c'est éternel, une bouteille recyclée à le même cycle de vie qu'une bouteille qui vient d'être créée et on ne peut pas voir la différence.",
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -223,11 +222,11 @@ var levels = [
   imagePath: "assets/miniMap/level6.PNG",
   name: "Tutoriel 6",
   tutoText: [
-'Les gens ne trie pas toujours bien leur dechet. On peut donc avoir des sacs poubelles avec des dechets inconnue à l\'interieur',
-'Pour ouvrire un sac poubelle il faut l\'emener sur un etablie vide et appuyer sur la touche action.#6# ',
-'Il peut y avoir de 1 à 3 dechets dans un sac poubelle.',
+	'Les habitants ne trient pas toujours leurs dechets. En plus de ne pas être très propre, cela nous complexifie la tâche. Ici nous pourrons donc avoir des sacs poubelle avec des déchets inconnus à l\'interieur',
+	'Pour ouvrir un de ces sacs, emmenez-le sur un etabli complètement vide, vous ne souhaitez pas mélanger encore plus les nouveaux déchets avec ceux déjà présents, et appuyez sur la touche action.#6# ',
+	'Il peut y avoir de 1 à 3 dechets dans un sac poubelle alors faites attention!',
   ],
-  tips : "Le verre c'est comme les diamants, c'est éternel, une bouteille recyclée à le même cycle de vie qu'une bouteille qui vient d'être crée et on ne peut pas voir la différence.",
+  tips : "Tout le monde veut sauver la planète, mais personne veut descendre les poubelles.",
 }
 ,{
   matrice: [
@@ -256,11 +255,9 @@ var levels = [
   imagePath: "assets/miniMap/levelCoop1.PNG",
   name: "Fait la passe",
   tutoText: [
-    'Salut, je remplace Big Boss ... mais si Big Boss ... un grand blond ... voilà, fort sympatique ... ah non.',
-    'Bref, il est pas en état de vous aider ... hum, il a pas assumé la bière d\'hier.\nBon ok, les bières.',
-    'Ici ça va être un peu plus complex, vous allez être séparés.\nVa falloir bosser ensemble vu que vous pouvez pas accéder à toutes les machines.',
-    'Donc soit vous utilisez les tables soit vous avez assez confiance dans votre camarade pour qu\'il récupère l\'objet avant l\'incinérateur.',
-    'En résumé vous allez galérer, ça va être chaud mais c\'est un bon moyen de voir si vous savez communiquer.'
+    'J\'espère que vous formez une bonne équipe, ici vous ne pourrez pas travailler tout seul, ça va être un peu plus complexe, vous serez séparés et vous ne pourrez pas accéder à toutes les machines.',
+    'Soit vous utiliserez les tables soit vous avez assez confiance dans votre camarade pour qu\'il récupère l\'objet avant qu\'il soit jeté à l\'incinérateur.',
+    'Ca va être dur, mais c\'est un bon moyen de voir si vous savez communiquer.'
   ]
 },
 {
@@ -289,7 +286,7 @@ var levels = [
   seauSpawnpoints: [[3,3],[15,3],[6,8]],
   imagePath: "assets/miniMap/fondrie.PNG",
   name: "Fondrie",
-  tutoText: ["Du verre des canettes et un gros four."]
+  tutoText: []
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -317,8 +314,8 @@ var levels = [
   imagePath: "assets/miniMap/fordisme.PNG",
   name: "Fordisme",
   tutoText: [
-    'Niveau conseillé 4 joueurs',
-    'Chacun a sa place sur la chaine et si chacun fait son travail ils n\'y aura pas de probleme.'
+    'Ce niveau est conseillé pour 4 ouvriers.',
+    'Chacun a sa place sur la chaîne et si chacun fait bien son travail ils n\'y aura pas de problèmes.'
   ],
   tips : "Le recyclage est une industrie à part entière et on peut y appliquer les même techniques de travail que dans une usine de production.",
 },{
@@ -328,9 +325,9 @@ var levels = [
     [-1, 3,20, 1, 5, 2, 2, 0,13,13,13,13,13,13, 0,21, 0, 6, 0, 3,-1],
     [-1, 3, 0, 0, 0, 0, 0, 0,12,12,12,12,12,12, 0, 0, 0, 6, 0, 3,-1],
     [-1, 3, 3, 3,10,11, 3, 4, 3, 3, 3, 3, 4, 3,18, 2, 0, 0, 0, 3,-1],
-    [-1, 3,15, 3,10,11, 3, 0, 0, 0, 0, 0, 0, 3, 4, 3, 3,10,11, 3,-1],
-    [-1, 3,11,16,10,11, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,10,11, 3,-1],
-    [-1, 3,11, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 4,10,11, 3,-1],
+    [-1, 3,15, 3,10,11, 3,-1,-1,-1,-1,-1,-1, 3, 4, 3, 3,10,11, 3,-1],
+    [-1, 3,11,16,10,11, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3,10,11, 3,-1],
+    [-1, 3,11, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3,10,11, 3,-1],
     [-1, 3,11, 0, 0, 0, 0, 0,13,13,13,13,13,13, 0, 0, 0, 0, 0, 3,-1],
     [-1, 3,12,12,12,14, 8, 0,12,12,12,12,12,12, 0, 9, 7, 0, 0, 3,-1],
     [-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1],
@@ -348,8 +345,7 @@ var levels = [
   imagePath: "assets/miniMap/teletravail.PNG",
   name: "Teletravail",
   tutoText: [
-    'Niveau pour joueur',
-    'Vous travaillerez de loin'
+    'Vous avez besoin d\'être une équipe de 4 pour réussir dans cette usine, chacun à un poste et vous ne pouvez vous envoyer les objets qu\'avec des tapis roulants.'
   ]
 }
 ,{
@@ -359,8 +355,8 @@ var levels = [
     [-1,-1,-1, 3,14,13,13,13,13,13,13,13,17,20, 2, 2, 3,-1,-1,-1,-1],
     [-1,-1,-1, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 3,-1,-1,-1,-1],
     [-1,-1,-1, 3, 2, 0, 3, 4, 3, 3, 4, 3, 3, 3, 0, 8, 3,-1,-1,-1,-1],
-    [-1,-1,-1, 3, 2, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 2, 3,-1,-1,-1,-1],
-    [-1,-1,-1, 3, 2, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 2, 3,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 2, 0, 3,-1,-1,-1,-1,-1,-1, 3, 0, 2, 3,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 2, 0, 3,-1,-1,-1,-1,-1,-1, 3, 0, 2, 3,-1,-1,-1,-1],
     [-1,-1,-1, 3, 2, 0, 3, 3, 4, 3, 4, 3, 4, 3, 0, 2, 3,-1,-1,-1,-1],
     [-1,-1,-1, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3,-1,-1,-1,-1],
     [-1,-1,-1, 3, 2, 6, 0, 2, 2, 2, 2, 2, 2, 9, 1, 2, 3,-1,-1,-1,-1],
@@ -378,9 +374,7 @@ var levels = [
   seauSpawnpoints: [[15,7],[15,8]],
   imagePath: "assets/miniMap/rond.PNG",
   name: "Rond-point",
-  tutoText: [
-    'Impossible de doubler dans un rond point'
-  ]
+  tutoText: []
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -407,9 +401,7 @@ var levels = [
   seauSpawnpoints: [[6,3],[15,3],[15,9],[8,9]],
   imagePath: "assets/miniMap/Un par un.PNG",
   name: "Un par un",
-  tutoText: [
-    'Tout est dans le titre'
-  ]
+  tutoText: []
 },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -436,8 +428,8 @@ var levels = [
   seauSpawnpoints: [[4,6],[18,4]],
   imagePath: "assets/miniMap/Machine.PNG",
   name: "Machine a laver",
-  tutoText: ["On a plus beaucoup de seau ici.\nVous allez devoir frotter les amis :P"
-
+  tutoText: [
+	"On a plus beaucoup de seau ici.\nVous allez devoir frotter les amis!"
   ]
 }
 
