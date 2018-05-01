@@ -103,9 +103,24 @@ var end = {
 		});
 		tip.fill = 'white';
     let go = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'go',()=>{
+      Tuto.id++;
+        this.state.start('Tuto');
+      this.musicEnd.stop();
+
+    },this,1,0,2);
+    go.anchor.setTo(0.5,0.5);
+
+    let restart = end.add.button(end.world.width-750, posY+40*indication.length+162,'restart',()=>{
+      this.state.start('Game');
+      this.musicEnd.stop();
+
+    },this,1,0,2);
+    go.anchor.setTo(0.5,0.5);
+
+    let Menu = end.add.button(end.world.width-1010, posY+40*indication.length+162,'menu',()=>{
       this.state.start('MenuGame');
       this.musicEnd.stop();
-      Menu.musicMenu.play('',0,0.6,true);
+    //  Menu.musicMenu.play('',0,0.6,true);
     },this,1,0,2);
     go.anchor.setTo(0.5,0.5);
   },

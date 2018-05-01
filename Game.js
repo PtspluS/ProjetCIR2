@@ -85,6 +85,7 @@ var game = {
 		//Sprites Pause
 		game.load.spritesheet('help','assets/help.png', 397, 60);
 		game.load.spritesheet('resume','assets/buttons/resume.png',236,80);
+		game.load.spritesheet('restart','assets/buttons/restart.png',264,80);
 		game.load.spritesheet('menu','assets/buttons/menu.png',168,80);
 		game.load.spritesheet('helpbutton','assets/buttons/helpbutton.png',204,80);
 		game.load.spritesheet('fullscreen','assets/buttons/fullscreen.png',84,92);
@@ -230,7 +231,15 @@ var game = {
 				pauseResume.anchor.setTo(0.5,0.5);
 				pauseGroup.add(pauseResume);
 
-				let pauseMenu = game.add.button(300, 450, 'menu', () => {
+				let pauseRestart = game.add.button(300, 450, 'restart', () => {
+					jeu.paused = false;
+						this.musicGame.stop();
+					  this.state.start('Game');
+				},this,1,0,2);
+				pauseRestart.anchor.setTo(0.5,0.5);
+				pauseGroup.add(pauseRestart);
+
+				let pauseMenu = game.add.button(300, 600, 'menu', () => {
 					// Retour au menu
 					jeu.paused = false;
 					this.musicGame.stop();
