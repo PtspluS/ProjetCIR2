@@ -202,8 +202,8 @@ var game = {
 				let banner = game.add.button(300,100,'title',()=>{
 					let mapName = game.add.bitmapText(500,30,'font','Map : '+levels[MenuGame.cursorMap].name,30);
 					let timerInfo = game.add.bitmapText(500,60,'font','Time : '+Math.floor((this.mytimer.timemax-this.mytimer.valuetime)/60)+':'+((this.mytimer.timemax-this.mytimer.valuetime)%60),30);
-					let score = game.add.bitmapText(500,90,'font','Money : '+this.score.score+'$');
-					let polution = game.add.bitmapText(500,120,'font','Pollution :'+this.polution.polution);
+					let score = game.add.bitmapText(500,90,'font','Profit : '+this.score.score+'$');
+					let polution = game.add.bitmapText(500,120,'font','Pollution : '+this.polution.polution);
 					pauseGroup.add(mapName);
 					pauseGroup.add(timerInfo);
 					pauseGroup.add(score);
