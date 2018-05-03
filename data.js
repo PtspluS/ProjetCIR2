@@ -102,7 +102,7 @@ var levels = [
       'Pour laver les seaux, il faut aller à une bassine, deposer le seau à l\'interieur, puis le laver en appuyant une dizaine de fois sur la touche d\'action.#5#',
       'Le plastique ainsi recyclé sera fondu en fibres de plastique pour faire des polaires, ou en bouteilles, ou encore en de nouveaux objets en plastique',
     ],
-    tutoGuys : [1,0,0,0],
+    tutoGuys : [0,1,0,0],
     tips : "Avec 7 bidons on peut réaliser un siège bébé pour les sales gosses."
   },{
     matrice: [
@@ -135,7 +135,7 @@ var levels = [
       'Celui-ci doit etre compressé puis transformé en pâte à papier dans la bassine. Vous savez comment faire ces manipulations, le fonctionnement est le même que pour laver un seau.',
       'La pâte doit ensuite être pressée pour créer de nouvelles plaques de carton à deposer dans le bac bleu.#1#'
     ],
-    tutoGuys : [1,0,0,0],
+    tutoGuys : [0,0,1,0],
     tips : "Le carton c'est comme les chats, ça a plusieurs vies, et en plus ça griffe pas. Donc pensez à l'adopter dans votre quotidien pour un environnement plus sain!."
   },{
     matrice: [
@@ -168,7 +168,7 @@ var levels = [
       'Les canettes doivent être à nouveau compressées puis fondues dans un four. Pour récupérer le métal en fusion il vous faudra être équipé d\'un seau et enuite le verser dans une presse.#0#',
       'Les plaques de metal ainsi obtenu sont envoyées à d\'autres usines ou elles seront refondues pour refaire des canettes ou de la carroserie.'
     ],
-    tutoGuys : [1,0,0,0],
+    tutoGuys : [0,0,0,1],
     tips : "Avec ce que vous venez de recycler vous pouvez offrir un cadeau à un enfant.\nLe métal pour construire un vélo et le carton pour l'emballage ... un cadeau utile et écolo!",
   },{
     matrice: [
@@ -392,7 +392,7 @@ var levels = [
     tutoText: [
       'Vous avez besoin d\'être une équipe de 4 pour réussir dans cette usine, chacun à un poste et vous ne pouvez vous envoyer les objets qu\'avec des tapis roulants.'
     ],
-    tutoGuys : [0,1,0,0],
+    tutoGuys : [0,0,1,0],
   }
   ,{
     matrice: [

@@ -8,7 +8,7 @@ var end = {
     end.load.spritesheet('next','assets/buttons/next.png',168,80);
 	end.load.spritesheet('restart','assets/buttons/restart.png',264,80);
 	end.load.spritesheet('menu','assets/buttons/menu.png',168,80);
-	
+
     end.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
     end.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
   },
@@ -126,14 +126,14 @@ var end = {
     },this,1,0,2);
     next.anchor.setTo(0.5,0.5);
 
-    let restart = end.add.button(end.world.width-750, posY+40*indication.length+162,'restart',()=>{
+    let restart = end.add.button(end.world.width-615,posY+40*indication.length+60+140,'restart',()=>{
       this.state.start('Game');
       this.musicEnd.stop();
 
     },this,1,0,2);
     restart.anchor.setTo(0.5,0.5);
 
-    let toMenu = end.add.button(end.world.width-1010, posY+40*indication.length+162,'menu',()=>{
+    let toMenu = end.add.button(end.world.width-890, posY+40*indication.length+60+140,'menu',()=>{
       this.state.start('MenuGame');
       this.musicEnd.stop();
       //  Menu.musicMenu.play('',0,0.6,true);
