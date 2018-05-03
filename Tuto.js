@@ -21,8 +21,9 @@ var Tuto ={
 	},
 	preload : function(){
 		Tuto.load.spritesheet('martintuto','assets/martintuto.png',140,340);
-		Tuto.load.spritesheet('petuto','assets/petuto.png',140,300);
+		Tuto.load.spritesheet('petuto','assets/petuto.png',140,308);
 		Tuto.load.spritesheet('pierretuto','assets/pierretuto.png',128,292);
+		Tuto.load.spritesheet('tottituto','assets/tottituto.png',132,300);
 		Tuto.load.spritesheet('help','assets/help.png', 397, 60);
 		Tuto.load.spritesheet('skip','assets/buttons/skip.png',196,80);
 	},
@@ -63,6 +64,12 @@ var Tuto ={
 			pierre.anchor.setTo(0.5,0.5);
 			pierre.animations.add('vie3', [0,1,2], 5, true);
 			pierre.animations.play('vie3');
+		}
+		if(levels[this.id].tutoGuys[3]==true){
+			var totti = Tuto.add.image(0.6 * MenuGame.world.centerX, MenuGame.world.centerY+24,'tottituto');
+			totti.anchor.setTo(0.5,0.5);
+			totti.animations.add('vie4', [0,1,2,3], 5, true);
+			totti.animations.play('vie4');
 		}
 		this.groupeimage=Tuto.add.group()
 		this.work(texte);
