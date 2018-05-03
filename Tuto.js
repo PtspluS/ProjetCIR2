@@ -46,19 +46,19 @@ var Tuto ={
 
 
 		Tuto.input.onDown.add(() => {this.next(texte);}, this);
-		if(levels[this.id].tutoGuys[0]==1){
+		if(levels[this.id].tutoGuys[0]==true){
 			var martin = Tuto.add.image(0.5 * MenuGame.world.centerX, MenuGame.world.centerY,'martintuto');
 			martin.anchor.setTo(0.5,0.5);
 			martin.animations.add('vie1', [0,1,2], 5, true);
 			martin.animations.play('vie1');
 		}
-		if(levels[this.id].tutoGuys[1]==1){
+		if(levels[this.id].tutoGuys[1]==true){
 			var pe = Tuto.add.image(0.3 * MenuGame.world.centerX, MenuGame.world.centerY+20,'petuto');
 			pe.anchor.setTo(0.5,0.5);
 			pe.animations.add('vie2', [0,1,2], 5, true);
 			pe.animations.play('vie2');
 		}
-		if(levels[this.id].tutoGuys[2]==1){
+		if(levels[this.id].tutoGuys[2]==true){
 			var pierre = Tuto.add.image(0.4 * MenuGame.world.centerX, MenuGame.world.centerY+40,'pierretuto');
 			pierre.anchor.setTo(0.5,0.5);
 			pierre.animations.add('vie3', [0,1,2], 5, true);

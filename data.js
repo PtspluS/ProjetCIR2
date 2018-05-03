@@ -56,11 +56,11 @@ var levels = [
     imagePath: "assets/miniMap/level1.PNG",
     name: "Tutoriel 1",
     tutoText:[
-      'Bonjour messieurs. Alors comme ça c\'est vous la nouvelle equipe de recyclage ?\nSi vous souhaitez que je saute les étapes afin de continuer les instructions, cliquez dans le vide.\nSi vous savez déja comment tout fonctionne, je ne vous retiens pas plus, vous pouvez cliquer sur \"SKIP\". ',
+      'Bonjour messieurs. Alors comme ça c\'est vous la nouvelle équipe de recyclage ?\nSi vous souhaitez que je saute les étapes afin de continuer les instructions, cliquez dans le vide.\nSi vous savez déjà comment tout fonctionne, je ne vous retiens pas plus, vous pouvez cliquer sur \"SKIP\". ',
       'Pour faire simple, nous devons traiter les déchets qui nous arrivent depuis la ville. Nous allons commencer par le tri des pneus.',
-      'Les pneus vont arriver sur le tapis roulant, attrapez les avant qu\'ils ne soient incinérés afin d\'éviter de polluer d\'avantage l\'atmosphère qu\'il ne l\'est déja et mettez les dans le broyeur.#2#',
+      'Les pneus vont arriver sur le tapis roulant, attrapez les avant qu\'ils ne soient incinérés afin d\'éviter de polluer d\'avantage l\'atmosphère qu\'il ne l\'est déjà et mettez les dans le broyeur.#2#',
       'Le pneu broyé, appelé broyat, doit être ramassé avec un seau et vidé dans le conteneur correspondant: le gris. On peut mettre jusqu\'à 3 doses de broyats dans un seul seau.',
-      'En cas de probleme appuyez sur ENTREE pour mettre le jeu en pause et regarder l\'aide si vous ne vous souvenez plus comment on fait pour recycler!'
+      'En cas de probleme appuyez sur ENTREE pour mettre le jeu en pause et regarder l\'aide si vous ne vous souvenez plus comment on fait pour recycler !'
     ],
     tutoGuys : [1,0,0],
     tips : 'Au final, ce que vous venez de recycler servira de combustible pour des entreprises, pour entretenir les terrains de foot synthétiques ou, le broyat une fois fondu, peut servir de revêtement sur les terrains de jeu pour enfants.'
