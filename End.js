@@ -1,4 +1,5 @@
 var end = {
+  target : 0,
   musicEnd : 0,
   equationResult : 0,//donne le nombre de point que peut raporter un joueur sur la levels[MenuGame.cursorMap] au max
   preload : function(){
@@ -14,7 +15,8 @@ var end = {
   },
   create : function(){
     this.equationResult = game.polution.polution * (Math.floor((game.score.score*levels[MenuGame.cursorMap].itemSpeed)/(MenuOpt.nbPlayers*levels[MenuGame.cursorMap].chrono)));//polution*score par joueur par seconde
-    if (levels[MenuGame.cursorMap].score*0.42==this.equationResult) {this.musicEnd = end.add.audio('easterEgg');}
+    this.target = levels[MenuGame.cursorMap].score*(Math.log2(MenuOpt.nbPlayers)+1);
+    if (this.target*0.42==this.equationResult) {this.musicEnd = end.add.audio('easterEgg');}
     else {this.musicEnd = end.add.audio('endMusic');}
     //let musicEnd = end.add.audio('endMusic');
     this.musicEnd.play('',0,1,true);
@@ -42,41 +44,41 @@ var end = {
         let GradeL = end.add.bitmapText(end.world.width-300, 200+Result.height+40*indication.length+60,'fontred','',60);
         GradeL.anchor.setTo(0.5,0.5);
         //choix du grade
-        if(this.equationResult>=2*levels[MenuGame.cursorMap].score){
+        if(this.equationResult>=2*this.target){
           GradeL.text = 'A+';
           message.text = 'SUCCESS';
           MenuGame.cursorMap += 1;
-        }else if(levels[MenuGame.cursorMap].score*2>this.equationResult && this.equationResult>=1.7*levels[MenuGame.cursorMap].score){
+        }else if(this.target*2>this.equationResult && this.equationResult>=1.7*this.target){
           GradeL.text = 'A';
           message.text = 'SUCCESS';
           MenuGame.cursorMap += 1;
-        }else if(levels[MenuGame.cursorMap].score*1.7>this.equationResult && this.equationResult>=1.5*levels[MenuGame.cursorMap].score){
+        }else if(this.target*1.7>this.equationResult && this.equationResult>=1.5*this.target){
           GradeL.text = 'A-';
           message.text = 'SUCCESS';
           MenuGame.cursorMap += 1;
-        }else if(levels[MenuGame.cursorMap].score*1.5>this.equationResult && this.equationResult>=1.3*levels[MenuGame.cursorMap].score){
+        }else if(this.target*1.5>this.equationResult && this.equationResult>=1.3*this.target){
           GradeL.text = 'B';
           message.text = 'SUCCESS';
           MenuGame.cursorMap += 1;
-        }else if(levels[MenuGame.cursorMap].score*1.3>this.equationResult && this.equationResult>=1.2*levels[MenuGame.cursorMap].score){
+        }else if(this.target*1.3>this.equationResult && this.equationResult>=1.2*this.target){
           GradeL.text = 'B-';
           message.text = 'SUCCESS';
           MenuGame.cursorMap += 1;
-        }else if(levels[MenuGame.cursorMap].score*1.2>this.equationResult && this.equationResult>=1.1*levels[MenuGame.cursorMap].score){
+        }else if(this.target*1.2>this.equationResult && this.equationResult>=1.1*this.target){
           GradeL.text = 'C+';
           message.text = 'SUCCESS';
           MenuGame.cursorMap += 1;
-        }else if(levels[MenuGame.cursorMap].score*1.1>this.equationResult && this.equationResult>=1*levels[MenuGame.cursorMap].score){
+        }else if(this.target*1.1>this.equationResult && this.equationResult>=1*this.target){
           GradeL.text = 'C';
           message.text = 'SUCCESS';
           MenuGame.cursorMap += 1;
-        }else if(levels[MenuGame.cursorMap].score*1>this.equationResult && this.equationResult>=0.95*levels[MenuGame.cursorMap].score){
+        }else if(this.target*1>this.equationResult && this.equationResult>=0.95*this.target){
           GradeL.text = 'C-';
           message.text = 'FAILURE';
-        }else if(levels[MenuGame.cursorMap].score*0.95>this.equationResult && this.equationResult>=0.75*levels[MenuGame.cursorMap].score){
+        }else if(this.target*0.95>this.equationResult && this.equationResult>=0.75*this.target){
           GradeL.text='D';
           message.text = 'FAILURE';
-        }else if(levels[MenuGame.cursorMap].score*0.75>this.equationResult && this.equationResult>=0.5*levels[MenuGame.cursorMap].score){
+        }else if(this.target*0.75>this.equationResult && this.equationResult>=0.5*this.target){
           GradeL.text = 'E';
           message.text = 'FAILURE';
         }else {
@@ -103,7 +105,7 @@ var end = {
     });
     tip.fill = 'white';
     let go = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'go',()=>{
-      //if(this.equationResult>=levels[MenuGame.cursorMap].score){MenuGame.cursorMap += 1};
+      //if(this.equationResult>=this.target){MenuGame.cursorMap += 1};
       this.state.start('MenuGame');
       this.musicEnd.stop();
 
