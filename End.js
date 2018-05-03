@@ -103,7 +103,7 @@ var end = {
 		});
 		tip.fill = 'white';
     let go = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'go',()=>{
-      Tuto.id++;
+      Tuto.id = (Tuto.id + 1) % levels.length;
         this.state.start('Tuto');
       this.musicEnd.stop();
 
