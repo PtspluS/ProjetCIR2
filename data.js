@@ -470,7 +470,7 @@ var levels = [
     itemSpeed : 140,
     chrono: 240,
     score : 500,
-    polution : 10,
+    pollution : 10,
     spawnpoints: [[5,5],[9,5],[7,5],[11,5]],
     seauSpawnpoints: [[7,7],[11,8],[5,10]],
     imagePath: "assets/miniMap/Way.PNG",
