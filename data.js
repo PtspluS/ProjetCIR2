@@ -25,8 +25,11 @@ var levels = [
     seauSpawnpoints: [],
     imagePath: "assets/miniMap/debugmap.png",
     name: "Level test",
-    tutoText: [],
-    tutoGuys : [0,0,0],//martin,pe,pierre
+    tutoText: [
+		'Bon, ce niveau est principalement là pour faire du déboguage, il est jouable mais très grand, dur et les seaux arrivent aussi parmi les dechets.',
+		'Il sera quand même préférable de faire les autres niveaux plutôt que celui-ci.'
+	],
+    tutoGuys : [0,0,0,1],//martin,pe,pierre
     tips : "Vous savez que ce niveau est là pour le debug hein?",
   },
   {
@@ -62,7 +65,7 @@ var levels = [
       'Le pneu broyé, appelé broyat, doit être ramassé avec un seau et vidé dans le conteneur correspondant: le gris. On peut mettre jusqu\'à 3 doses de broyats dans un seul seau.',
       'En cas de probleme appuyez sur ENTREE pour mettre le jeu en pause et regarder l\'aide si vous ne vous souvenez plus comment on fait pour recycler !'
     ],
-    tutoGuys : [1,0,0],
+    tutoGuys : [1,0,0,0],
     tips : 'Au final, ce que vous venez de recycler servira de combustible pour des entreprises, pour entretenir les terrains de foot synthétiques ou, le broyat une fois fondu, peut servir de revêtement sur les terrains de jeu pour enfants.'
   },{
     matrice: [
@@ -99,7 +102,7 @@ var levels = [
       'Pour laver les seaux, il faut aller à une bassine, deposer le seau à l\'interieur, puis le laver en appuyant une dizaine de fois sur la touche d\'action.#5#',
       'Le plastique ainsi recyclé sera fondu en fibres de plastique pour faire des polaires, ou en bouteilles, ou encore en de nouveaux objets en plastique',
     ],
-    tutoGuys : [1,0,0],
+    tutoGuys : [1,0,0,0],
     tips : "Avec 7 bidons on peut réaliser un siège bébé pour les sales gosses."
   },{
     matrice: [
@@ -132,7 +135,7 @@ var levels = [
       'Celui-ci doit etre compressé puis transformé en pâte à papier dans la bassine. Vous savez comment faire ces manipulations, le fonctionnement est le même que pour laver un seau.',
       'La pâte doit ensuite être pressée pour créer de nouvelles plaques de carton à deposer dans le bac bleu.#1#'
     ],
-    tutoGuys : [1,0,0],
+    tutoGuys : [1,0,0,0],
     tips : "Le carton c'est comme les chats, ça a plusieurs vies, et en plus ça griffe pas. Donc pensez à l'adopter dans votre quotidien pour un environnement plus sain!."
   },{
     matrice: [
@@ -165,7 +168,7 @@ var levels = [
       'Les canettes doivent être à nouveau compressées puis fondues dans un four. Pour récupérer le métal en fusion il vous faudra être équipé d\'un seau et enuite le verser dans une presse.#0#',
       'Les plaques de metal ainsi obtenu sont envoyées à d\'autres usines ou elles seront refondues pour refaire des canettes ou de la carroserie.'
     ],
-    tutoGuys : [1,0,0],
+    tutoGuys : [1,0,0,0],
     tips : "Avec ce que vous venez de recycler vous pouvez offrir un cadeau à un enfant.\nLe métal pour construire un vélo et le carton pour l'emballage ... un cadeau utile et écolo!",
   },{
     matrice: [
@@ -199,7 +202,7 @@ var levels = [
       'Le verre doit ensuite être fondu dans le four. Vous pourrez ensuite amener le verre fondu dans la soufflerie à l\'aide d\'un seau.#4#',
       'La machine soufflera de nouvelles bouteilles qu\'il vous faudra déposer dans le bac à verre qui lui-même est vert.'
     ],
-    tutoGuys : [1,0,0],
+    tutoGuys : [1,0,0,0],
     tips : "Le verre c'est comme les diamants, c'est éternel, une bouteille recyclée à le même cycle de vie qu'une bouteille qui vient d'être créée et on ne peut pas voir la différence.",
   },{
     matrice: [
@@ -232,7 +235,7 @@ var levels = [
       'Pour ouvrir un de ces sacs, emmenez-le sur un etabli complètement vide, vous ne souhaitez pas mélanger encore plus les nouveaux déchets avec ceux déjà présents, et appuyez sur la touche action.#6# ',
       'Il peut y avoir de 1 à 3 dechets dans un sac poubelle alors faites attention!',
     ],
-    tutoGuys : [0,1,0],
+    tutoGuys : [0,1,0,0],
     tips : "Tout le monde veut sauver la planète, mais personne veut descendre les poubelles.",
   }
   ,{
@@ -266,7 +269,7 @@ var levels = [
       'Soit vous utiliserez les tables soit vous avez assez confiance dans votre camarade pour qu\'il récupère l\'objet avant qu\'il soit jeté à l\'incinérateur.',
       'Ca va être dur, mais c\'est un bon moyen de voir si vous savez communiquer.'
     ],
-    tutoGuys : [1,0,1],
+    tutoGuys : [1,0,1,0],
   },
   {
     matrice: [
@@ -295,7 +298,7 @@ var levels = [
     imagePath: "assets/miniMap/fondrie.PNG",
     name: "Fondrie",
     tutoText: [],
-    tutoGuys : [0,1,0],
+    tutoGuys : [0,1,0,0],
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -326,7 +329,7 @@ var levels = [
       'Ce niveau est conseillé pour 4 ouvriers.',
       'Chacun a sa place sur la chaîne et si chacun fait bien son travail ils n\'y aura pas de problèmes.'
     ],
-    tutoGuys : [1,1,1],
+    tutoGuys : [1,1,1,1],
     tips : "Le recyclage est une industrie à part entière et on peut y appliquer les même techniques de travail que dans une usine de production.",
   },{
     matrice: [
@@ -357,7 +360,7 @@ var levels = [
     tutoText: [
       'Vous avez besoin d\'être une équipe de 4 pour réussir dans cette usine, chacun à un poste et vous ne pouvez vous envoyer les objets qu\'avec des tapis roulants.'
     ],
-    tutoGuys : [0,1,0],
+    tutoGuys : [0,1,0,0],
   }
   ,{
     matrice: [
@@ -386,7 +389,7 @@ var levels = [
     imagePath: "assets/miniMap/rond.PNG",
     name: "Rond-point",
     tutoText: [],
-    tutoGuys : [0,1,0],
+    tutoGuys : [0,1,0,0],
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -414,7 +417,7 @@ var levels = [
     imagePath: "assets/miniMap/Un par un.PNG",
     name: "Un par un",
     tutoText: [],
-    tutoGuys : [1,1,1],
+    tutoGuys : [1,1,1,0],
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -444,7 +447,7 @@ var levels = [
     tutoText: [
       "On a plus beaucoup de seau ici.\nVous allez devoir frotter les amis!"
     ],
-    tutoGuys : [1,0,0],
+    tutoGuys : [1,0,0,0],
   }
 
 

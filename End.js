@@ -105,8 +105,21 @@ var end = {
     });
     tip.fill = 'white';
     let go = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'go',()=>{
-      //if(this.equationResult>=this.target){MenuGame.cursorMap += 1};
-      this.state.start('MenuGame');
+      //if(this.equationResult>=levels[MenuGame.cursorMap].score){MenuGame.cursorMap += 1};
+      MenuGame.cursorMap++;
+      if(levels[MenuGame.cursorMap].tutoText.length < 1){
+        game.id =   MenuGame.cursorMap;
+        game.playersskins = MenuGame.playersskins;
+        game.nbPlayers = MenuOpt.nbPlayers;
+        this.state.start('Game');
+      }else{
+        Tuto.id =   MenuGame.cursorMap;
+        game.id =  MenuGame.cursorMap;
+        game.playersskins = MenuGame.playersskins;
+        game.nbPlayers = MenuOpt.nbPlayers;
+        this.state.start('Tuto');
+      }
+
       this.musicEnd.stop();
 
     },this,1,0,2);
