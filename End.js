@@ -5,10 +5,10 @@ var end = {
     end.load.audio('endMusic','musics/endMusic.mp3');
     end.load.audio('easterEgg','musics/eminem.mp3');
     end.load.spritesheet('title','assets/logo.png',408,222);
-    end.load.spritesheet('next','assets/buttons/next.png',172,76);
-    for (let sk in skins) {//boucle de chargement de tt les skins
-      end.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
-    }
+    end.load.spritesheet('next','assets/buttons/next.png',168,80);
+	end.load.spritesheet('restart','assets/buttons/restart.png',264,80);
+	end.load.spritesheet('menu','assets/buttons/menu.png',168,80);
+	
     end.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
     end.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
   },
