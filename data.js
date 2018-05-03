@@ -474,7 +474,7 @@ var levels = [
     spawnpoints: [[5,5],[9,5],[7,5],[11,5]],
     seauSpawnpoints: [[7,7],[11,8],[5,10]],
     imagePath: "assets/miniMap/Way.PNG",
-    name: "Show me the way",
+    name: "Show me da way",
     tutoText: [
       "Do you know the way ?"
     ],
