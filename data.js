@@ -18,7 +18,7 @@ var levels = [
     itemsTime: 10000,
     itemsPattern: true,
     itemSpeed : 100,
-    chrono: 10000,
+    chrono: 1,
     score : 1000,
     pollution : 0,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
@@ -237,6 +237,38 @@ var levels = [
     ],
     tutoGuys : [0,1,0,0],
     tips : "Tout le monde veut sauver la planète, mais personne veut descendre les poubelles.",
+  },{
+    matrice: [
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,22,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1, 3,15, 3, 3, 3, 3, 3, 3, 3, 3, 3,23,23, 3, 3,-1,-1,-1],
+      [-1,-1,-1, 3,11, 0, 0, 6, 0, 0, 0, 2, 2, 3, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0,16, 3,-1,-1,-1],
+      [-1,-1,-1, 3,11, 0, 0, 5, 5, 2, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3,11, 0, 0, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0,18, 3,-1,-1,-1],
+      [-1,-1,-1, 3,14, 0, 7, 0, 0, 0, 0,21,21, 3, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,23,23, 3, 3,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+    ],
+    items: [itemsId.Plastique,itemsId.Verre],
+    itemsTime: 8000,
+    itemsPattern: false,
+    itemSpeed : 140,
+    chrono: 180,
+    score : 500,
+      pollution : 0,
+    spawnpoints: [[5,5],[6,4],[7,5],[5,4]],
+    seauSpawnpoints: [[6,8],[9,5],[9,6]],
+    imagePath: "assets/miniMap/level7.PNG",
+    name: "Tutoriel 7",
+    tutoText: [
+      'Il ce peut que des véhicules de transports circulent pres de votre espace de travail. Attention à l\'accident !',
+
+    ],
+    tutoGuys : [0,0,1,0],
+    tips : "Tout le monde veut sauver la planète, mais personne veut descendre les poubelles.",
   }
   ,{
     matrice: [
@@ -289,7 +321,7 @@ var levels = [
     items:[itemsId.Metal,itemsId.Verre] ,
     itemsTime: 10000,
     itemsPattern: false,
-    itemSpeed : 100,
+    itemSpeed : 140,
     chrono: 180,
     score : 500,
     pollution : 0,

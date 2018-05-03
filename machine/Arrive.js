@@ -28,7 +28,7 @@ if(infront.drop(this.pattern ? this.tab[this.patnum++ % this.tab.length] : this.
 
 Arrive.prototype.addscore=function(){
 	game.world.bringToTop(this.scoretext);
-this.scoretext.text=-1;
+this.scoretext.text="+10%";
 this.scoretext.body.velocity.y=-50;
 game.time.events.add(1000, () => {	game.polution.updatePolution(-1);
 this.scoretext.x=this.posx;
