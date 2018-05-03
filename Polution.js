@@ -1,14 +1,18 @@
-PolutionObject = function(){
-  this.polution = levels[MenuGame.cursorMap].polution;
-  this.polutionText = game.add.bitmapText(game.world.centerX-100,0,'font','Pollution : '+this.polution,64);
+PollutionObject = function(taux, envirronement){
+  this.pollution = taux;
+  this.pollutionText = game.add.bitmapText(game.world.centerX-100,0,'font','Pollution : ' + this.pollution + '%',64);
+  this.envirronement = envirronement;
 }
 
-PolutionObject.prototype.updatePolution = function(val){
-    this.polution += val;
-  if(this.polution<3){
-    this.polutionText.font ='fontred';
-  }
-
-
-  this.polutionText.text = 'Pollution : '+this.polution;
+PollutionObject.prototype.updatePollution = function(val){
+    this.pollution += val;
+	if(this.pollution > 70){
+		this.pollutionText.font ='fontred';
+	}
+	if(this.pollution < 100){
+		for(let i = 0; i < this.envirronement.length; i++){
+			this.envirronement[i].frame = Math.floor(this.pollution / 10);
+		}
+	}
+	this.pollutionText.text = 'Pollution : ' + this.pollution + '%';
 }
