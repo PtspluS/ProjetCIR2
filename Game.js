@@ -50,6 +50,121 @@ var game = {
 			this.camera.y = 0;
 		}
 	},
+	pauseGroup: undefined, // Sera le groupe de pause
+	pauseEvent: function(){
+			if(jeu.paused){
+				// Destruction des elements de la pause
+				this.pauseGroup.removeAll(true,true);
+				document.body.style.cursor = 'none';
+				jeu.paused = false;
+			} else {
+				// Fond Gris
+				document.body.style.cursor = 'default';
+				var pauseRect = game.add.graphics(0, 0);
+				pauseRect.beginFill(0x222222);
+				pauseRect.drawRect(0, 0, 1344, 768)
+				pauseRect.alpha = 0.8;
+				this.pauseGroup.add(pauseRect);
+
+				// Aides
+				var pauseHelps = [];
+				pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+				pauseHelps[pauseHelps.length - 1].frame = 5;
+				pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+				pauseHelps[pauseHelps.length - 1].alpha = 0;
+				if(levels[this.id].items.indexOf(itemsId.Metal) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 0;
+							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
+				}
+				if(levels[this.id].items.indexOf(itemsId.Carton) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 1;
+							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
+				}
+				if(levels[this.id].items.indexOf(itemsId.Pneu) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 2;
+							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
+				}
+				if(levels[this.id].items.indexOf(itemsId.Plastique) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 3;
+							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
+				}
+				if(levels[this.id].items.indexOf(itemsId.Verre) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 4;
+							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
+				}
+
+				// Boutons
+				let pauseHelpb = game.add.button(900, 100, 'helpbutton', () => {
+					// Affiche / enleve les aides
+					for(let i = 0; i < pauseHelps.length; i++){
+						pauseHelps[i].alpha = (pauseHelps[i].alpha + 1) % 2;
+					}
+				},this,1,0,2);
+				pauseHelpb.anchor.setTo(0.5,0.5);
+				this.pauseGroup.add(pauseHelpb);
+
+				let banner = game.add.button(300,100,'title',()=>{
+					let mapName = game.add.bitmapText(500,30,'font','Map : '+levels[MenuGame.cursorMap].name,30);
+					let timerInfo = game.add.bitmapText(500,60,'font','Time : '+Math.floor((this.mytimer.timemax-this.mytimer.valuetime)/60)+':'+((this.mytimer.timemax-this.mytimer.valuetime)%60),30);
+					let score = game.add.bitmapText(500,90,'font','Profit : '+this.score.score+'$');
+					let pollution = game.add.bitmapText(500,120,'font','Pollution : '+this.pollution.pollution);
+					this.pauseGroup.add(mapName);
+					this.pauseGroup.add(timerInfo);
+					this.pauseGroup.add(score);
+					this.pauseGroup.add(pollution);
+				});//banniere pour le menu de pause
+				banner.anchor.setTo(0.5,0.5);
+				banner.scale.setTo(0.75,0.75);
+				this.pauseGroup.add(banner);
+
+				// Bouton Fullscreen
+				let goFullscreen = game.add.button(game.world.width-104, 20,'fullscreen',() => {
+					if (jeu.scale.isFullScreen){
+						jeu.scale.stopFullScreen();
+					} else {
+						jeu.scale.startFullScreen(false);
+					}
+				},this,1,0,2);
+				this.pauseGroup.add(goFullscreen);
+
+				let pauseResume = game.add.button(300, 300, 'resume', () => {
+					// Destruction des elements de la pause
+					this.pauseGroup.removeAll(true,true);
+					jeu.paused = false;
+				},this,1,0,2);
+				pauseResume.anchor.setTo(0.5,0.5);
+				this.pauseGroup.add(pauseResume);
+
+				let pauseRestart = game.add.button(300, 450, 'restart', () => {
+					jeu.paused = false;
+						this.musicGame.stop();
+					  this.state.start('Game');
+				},this,1,0,2);
+				pauseRestart.anchor.setTo(0.5,0.5);
+				this.pauseGroup.add(pauseRestart);
+
+				let pauseMenu = game.add.button(300, 600, 'menu', () => {
+					// Retour au menu
+					jeu.paused = false;
+					this.musicGame.stop();
+					this.state.start('Menu');
+				},this,1,0,2);
+				pauseMenu.anchor.setTo(0.5,0.5);
+				this.pauseGroup.add(pauseMenu);
+
+				jeu.paused = true;
+			}
+		},
 	preload : function() {
 		for (let sk in skins) {//boucle de chargement de tout les skins
 			game.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
@@ -143,122 +258,13 @@ var game = {
 		this.score = new MyScore();
 
 		// PAUSE
-		var pauseGroup = game.add.group();
+		this.pauseGroup = game.add.group();
 		var keyPause = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-		keyPause.onDown.add(()=>{
-			if(jeu.paused){
-				// Destruction des elements de la pause
-				pauseGroup.removeAll(true,true);
-				document.body.style.cursor = 'none';
-				jeu.paused = false;
-			} else {
-				// Fond Gris
-				document.body.style.cursor = 'default';
-				var pauseRect = game.add.graphics(0, 0);
-				pauseRect.beginFill(0x222222);
-				pauseRect.drawRect(0, 0, 1344, 768)
-				pauseRect.alpha = 0.8;
-				pauseGroup.add(pauseRect);
-
-				// Aides
-				var pauseHelps = [];
-				pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
-				pauseHelps[pauseHelps.length - 1].frame = 5;
-				pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
-				pauseHelps[pauseHelps.length - 1].alpha = 0;
-				if(levels[this.id].items.indexOf(itemsId.Metal) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
-					pauseHelps[pauseHelps.length - 1].frame = 0;
-							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
-					pauseHelps[pauseHelps.length - 1].alpha = 0;
-				}
-				if(levels[this.id].items.indexOf(itemsId.Carton) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
-					pauseHelps[pauseHelps.length - 1].frame = 1;
-							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
-					pauseHelps[pauseHelps.length - 1].alpha = 0;
-				}
-				if(levels[this.id].items.indexOf(itemsId.Pneu) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
-					pauseHelps[pauseHelps.length - 1].frame = 2;
-							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
-					pauseHelps[pauseHelps.length - 1].alpha = 0;
-				}
-				if(levels[this.id].items.indexOf(itemsId.Plastique) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
-					pauseHelps[pauseHelps.length - 1].frame = 3;
-							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
-					pauseHelps[pauseHelps.length - 1].alpha = 0;
-				}
-				if(levels[this.id].items.indexOf(itemsId.Verre) != -1){
-					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
-					pauseHelps[pauseHelps.length - 1].frame = 4;
-							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
-					pauseHelps[pauseHelps.length - 1].alpha = 0;
-				}
-
-				// Boutons
-				let pauseHelpb = game.add.button(900, 100, 'helpbutton', () => {
-					// Affiche / enleve les aides
-					for(let i = 0; i < pauseHelps.length; i++){
-						pauseHelps[i].alpha = (pauseHelps[i].alpha + 1) % 2;
-					}
-				},this,1,0,2);
-				pauseHelpb.anchor.setTo(0.5,0.5);
-				pauseGroup.add(pauseHelpb);
-
-				let banner = game.add.button(300,100,'title',()=>{
-					let mapName = game.add.bitmapText(500,30,'font','Map : '+levels[MenuGame.cursorMap].name,30);
-					let timerInfo = game.add.bitmapText(500,60,'font','Time : '+Math.floor((this.mytimer.timemax-this.mytimer.valuetime)/60)+':'+((this.mytimer.timemax-this.mytimer.valuetime)%60),30);
-					let score = game.add.bitmapText(500,90,'font','Profit : '+this.score.score+'$');
-					let pollution = game.add.bitmapText(500,120,'font','Pollution : '+this.pollution.pollution);
-					pauseGroup.add(mapName);
-					pauseGroup.add(timerInfo);
-					pauseGroup.add(score);
-					pauseGroup.add(pollution);
-				});//banniere pour le menu de pause
-				banner.anchor.setTo(0.5,0.5);
-				banner.scale.setTo(0.75,0.75);
-				pauseGroup.add(banner);
-
-				// Bouton Fullscreen
-				let goFullscreen = game.add.button(game.world.width-104, 20,'fullscreen',() => {
-					if (jeu.scale.isFullScreen){
-						jeu.scale.stopFullScreen();
-					} else {
-						jeu.scale.startFullScreen(false);
-					}
-				},this,1,0,2);
-				pauseGroup.add(goFullscreen);
-
-				let pauseResume = game.add.button(300, 300, 'resume', () => {
-					// Destruction des elements de la pause
-					pauseGroup.removeAll(true,true);
-					jeu.paused = false;
-				},this,1,0,2);
-				pauseResume.anchor.setTo(0.5,0.5);
-				pauseGroup.add(pauseResume);
-
-				let pauseRestart = game.add.button(300, 450, 'restart', () => {
-					jeu.paused = false;
-						this.musicGame.stop();
-					  this.state.start('Game');
-				},this,1,0,2);
-				pauseRestart.anchor.setTo(0.5,0.5);
-				pauseGroup.add(pauseRestart);
-
-				let pauseMenu = game.add.button(300, 600, 'menu', () => {
-					// Retour au menu
-					jeu.paused = false;
-					this.musicGame.stop();
-					this.state.start('Menu');
-				},this,1,0,2);
-				pauseMenu.anchor.setTo(0.5,0.5);
-				pauseGroup.add(pauseMenu);
-
-				jeu.paused = true;
-			}
-		},this);
+		keyPause.onDown.add(this.pauseEvent,this);
+		if(MenuOpt.P1KeyCodes[0]) game.input.gamepad.pad1.addCallbacks(this,{ onDown: function(){ if(game.input.gamepad.pad1.isDown(Phaser.Gamepad.XBOX360_START)) this.pauseEvent(); } });
+		if(MenuOpt.P1KeyCodes[1]) game.input.gamepad.pad2.addCallbacks(this,{ onDown: function(){ if(game.input.gamepad.pad2.isDown(Phaser.Gamepad.XBOX360_START)) this.pauseEvent(); } });
+		if(MenuOpt.P1KeyCodes[2]) game.input.gamepad.pad3.addCallbacks(this,{ onDown: function(){ if(game.input.gamepad.pad3.isDown(Phaser.Gamepad.XBOX360_START)) this.pauseEvent(); } });
+		if(MenuOpt.P1KeyCodes[3]) game.input.gamepad.pad4.addCallbacks(this,{ onDown: function(){ if(game.input.gamepad.pad4.isDown(Phaser.Gamepad.XBOX360_START)) this.pauseEvent(); } });
 		// FIN PAUSE
 	},
 	update : function() {

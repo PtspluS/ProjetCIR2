@@ -96,7 +96,7 @@ var end = {
     else {
       info = citations[Math.floor(Math.random()*citations.length)];
     }
-    let tip = end.add.text(0, 0.7 * end.world.centerY,info,{
+    let tip = end.add.text(100, 0.7 * end.world.centerY,info,{
       align: "left",
       wordWrap: true,
       wordWrapWidth: 800

@@ -18,7 +18,7 @@ var levels = [
     itemsTime: 10000,
     itemsPattern: true,
     itemSpeed : 100,
-    chrono: 1,
+    chrono: 3600,
     score : 1000,
     pollution : 0,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
