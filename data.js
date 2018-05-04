@@ -63,6 +63,7 @@ var levels = [
       'Pour faire simple, nous devons traiter les déchets qui nous arrivent depuis la ville. Nous allons commencer par le tri des pneus.',
       'Les pneus vont arriver sur le tapis roulant, attrapez les avant qu\'ils ne soient incinérés afin d\'éviter de polluer d\'avantage l\'atmosphère qu\'il ne l\'est déjà et mettez les dans le broyeur.#2#',
       'Le pneu broyé, appelé broyat, doit être ramassé avec un seau et vidé dans le conteneur correspondant: le gris. On peut mettre jusqu\'à 3 doses de broyats dans un seul seau.',
+	  'A chaque fois que vous laisserez tomber des déchets dans l\'incinerateur, vous détruirez notre envirronement. Si jamais vous le laissez se détériorer jusqu\'au point de non-retour, notre mission sera un échec...',
       'En cas de probleme appuyez sur ENTREE pour mettre le jeu en pause et regarder l\'aide si vous ne vous souvenez plus comment on fait pour recycler !'
     ],
     tutoGuys : [1,0,0,0],
@@ -98,7 +99,7 @@ var levels = [
       'Pour les pneux vous savez déja comment cela fonctionne.\nJe vous fait quand même un petit rappel: #2#',
       'Sinon, pour le plastique, vous devez premièrement le compresser.\nPour ce faire il faut mettre les déchets dans le compresseur. On peut mettre jusqu\'à 3 objets dans un compresseur, alors essayez de maximiser cette capacité pour rendre le travail plus facile.\nUne fois que vous souhaitez lancer la compression, activez la machine avec le bouton d\action.',
       'Une fois compressé, vous devrez le broyer, puis comme pour les pneux vous déposerez les paillettes de plastique dans le bac correspondant: le jaune.#3#"',
-      'N\'Oubliez pas non plus que le but du tri c\'est de pas mélanger.\nVous devrez donc laver les seaux si vous souhaitez transporter du plastique après avoir transporté des broyats de pneu car ceux-ci seront sales.',
+      'N\'Oubliez pas non plus que le but du tri c\'est de ne pas mélanger.\nVous devrez donc laver les seaux si vous souhaitez transporter du plastique après avoir transporté des broyats de pneu car ceux-ci seront sales.',
       'Pour laver les seaux, il faut aller à une bassine, deposer le seau à l\'interieur, puis le laver en appuyant une dizaine de fois sur la touche d\'action.#5#',
       'Le plastique ainsi recyclé sera fondu en fibres de plastique pour faire des polaires, ou en bouteilles, ou encore en de nouveaux objets en plastique',
     ],
@@ -164,7 +165,7 @@ var levels = [
     imagePath: "assets/miniMap/level4.PNG",
     name: "Tutoriel 4",
     tutoText: [
-      'Aujourd\'hui, en plus du carton vous devrez recycler des canettes métalliques.',
+      'Aujourd\'hui, en plus du carton vous devrez recycler des canettes métalliques. Vous n\'imaginez pas on en récupère chaque année!',
       'Les canettes doivent être à nouveau compressées puis fondues dans un four. Pour récupérer le métal en fusion il vous faudra être équipé d\'un seau et enuite le verser dans une presse.#0#',
       'Les plaques de metal ainsi obtenu sont envoyées à d\'autres usines ou elles seront refondues pour refaire des canettes ou de la carroserie.'
     ],
@@ -264,11 +265,10 @@ var levels = [
     imagePath: "assets/miniMap/level7.PNG",
     name: "Tutoriel 7",
     tutoText: [
-      'Il ce peut que des véhicules de transports circulent pres de votre espace de travail. Attention à l\'accident !',
-
+      'Il se peut que des véhicules de transport circulent près de votre espace de travail.',
+	  'N\'essayez pas de jouer au héros, entre un poid lourd et vous, il n\'y a pas a savoir qui l\'emportera. Alors attention à l\'accident !',
     ],
-    tutoGuys : [0,0,1,0],
-    tips : "Tout le monde veut sauver la planète, mais personne veut descendre les poubelles.",
+    tutoGuys : [0,0,1,0]
   }
   ,{
     matrice: [
