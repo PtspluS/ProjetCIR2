@@ -269,8 +269,7 @@ var levels = [
 	  'N\'essayez pas de jouer au héros, entre un poids lourd et vous, il n\'y a pas a savoir qui l\'emportera. Alors attention à l\'accident !',
     ],
     tutoGuys : [0,0,1,0]
-  }
-  ,{
+  },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1,-1,-1, 3, 3, 3, 4, 3, 4, 3, 3, 3, 4, 3, 4, 3, 3, 3,-1,-1,-1],
@@ -302,8 +301,7 @@ var levels = [
       'Ca va être dur, mais c\'est un bon moyen de voir si vous savez communiquer.'
     ],
     tutoGuys : [1,0,1,0],
-  },
-  {
+  },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3,-1],
@@ -393,8 +391,7 @@ var levels = [
       'Vous avez besoin d\'être une équipe de 4 pour réussir dans cette usine, chacun à un poste et vous ne pouvez vous envoyer les objets qu\'avec des tapis roulants.'
     ],
     tutoGuys : [0,0,1,0],
-  }
-  ,{
+  },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -480,7 +477,7 @@ var levels = [
     tutoText: [
       "On a plus beaucoup de seau ici.\nVous allez devoir frotter les amis!"
     ],
-    tutoGuys : [1,0,0,0],
+    tutoGuys : [0,1,0,0],
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -511,6 +508,37 @@ var levels = [
       "Do you know the way ?"
     ],
     tutoGuys : [1,0,0,0],
+  },{
+    matrice: [
+      [ 3, 0, 0, 0, 0, 0, 3,22,22, 3,-1,-1,22,22,22,22,-1,-1,-1,-1,-1],
+      [ 3, 3, 3,15, 3, 3, 3,23,23, 3,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3, 3],
+      [ 3,11,13,13, 1, 1, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 1, 1, 3],
+      [ 3,11, 0, 0, 0, 0, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 0, 0, 3],
+      [ 3,11, 0, 8, 8, 0, 0, 0, 0, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0,21, 3],
+      [ 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 3],
+      [ 3,11, 0, 0, 0, 0, 0,-1,-1, 2, 0, 2,-1,-1,-1,-1,-1, 3, 0, 2, 3],
+      [ 3,14, 0, 0, 0, 2, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 3],
+      [ 3, 3, 0, 0, 0, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 3],
+      [ 2, 0, 0, 0, 0, 0, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3,16,17, 3],
+      [ 3, 9, 0, 0, 0, 9, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0,-1]
+    ],
+    items: [itemsId.Metal,itemsId.Verre],
+    itemsTime: 10000,
+    itemsPattern: false,
+    itemSpeed : 120,
+    chrono: 180,
+    score : 500,
+      pollution : 0,
+    spawnpoints: [[4,5],[18,5],[10,5],[4,10]],
+    seauSpawnpoints: [[9,6],[11,6],[5,7]],
+    imagePath: "assets/miniMap/Autoroute.png",
+    name: "Autoroute",
+    tutoText: [
+      'Une aire d\'autoroute vient d\'être installée ici, seulement, elle n\'a pas encore de système pour amener les déchets dans notre usine. Nous allons devoir aller travailler sur place!',
+	  'La circulation est dense et notre entrepôt de stockage se trouve de l\'autre coté de la route, pensez à regarder des deux cotés avant de traverser!'
+    ],
+    tutoGuys : [0,0,0,1]
   }
 
 
@@ -559,4 +587,4 @@ var citations = [
   "'Nous n'héritons pas de la terre de nos parents, nous l'empruntons à nos enfants.'\nAntoine de Saint-Exupéry",
   "'Le développement durable n'est ni une utopie ni même une contestation, mais la condition de survie de l'économie de marché.'\nLouis Schweitzer",
 
-]
+];
