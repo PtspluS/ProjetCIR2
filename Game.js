@@ -200,6 +200,9 @@ var game = {
 		game.load.image('benneplastique','assets/benneplastique.png');
 		game.load.image('bennepneu','assets/bennepneu.png');
 		game.load.image('bennecarton','assets/bennecarton.png');
+		game.load.image('pipe','assets/pipe.png');
+		game.load.image('barrel','assets/barrel.png');
+		game.load.image('crate','assets/crate.png');
 
 		//Sprites Pause
 		game.load.spritesheet('help','assets/help.png', 397, 60);

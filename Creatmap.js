@@ -22,7 +22,7 @@
 	// Generation de la map
 	for(let j = 0; j < matrice.length; j++){
 	  for(let i = 0; i < matrice[0].length; i++){
-		if(map[j][i] == undefined){
+		if(map[j][i] == undefined){ // Si rien n'est encore present a l'emplacement [j][i] de map
 		  switch(matrice[j][i]){
 		  case -1:
 			let herbe;
@@ -253,6 +253,42 @@
 			}
 			map[0][i] = new Camion('truck',i*64,truckGroup, barrieres);
 			break;}
+			
+			case 24:{ // CAISSE
+			let tuile = platformsSolid.create(i*64, j*64, 'ground');
+			tuile.body.immovable = true;
+			object.create(i*64, j*64 - 20, 'crate');
+			map[j][i] = 0;
+			break;}
+			
+			case 25:{ // BARILS // CASE A GAUCHE
+			let tuile = platformsSolid.create(i*64, j*64, 'ground');
+			tuile.body.immovable = true;
+			object.create(i*64, j*64 - 20, 'barrel');
+			map[j][i] = 0;
+			if(i < matrice[j].length - 1){
+				map[j][i+1] = 0;
+				let tuile2 = platformsSolid.create((i+1)*64, j*64, 'ground');
+				tuile2.body.immovable = true;
+			}
+			break;}
+			
+			case 26:{ // TUYAU // CASE DU HAUT
+			let tuile = platformsSolid.create(i*64, j*64, 'ground');
+			tuile.body.immovable = true;
+			object.create(i*64, j*64 - 42, 'pipe');
+			map[j][i] = 0;
+			if(j < matrice.length - 1){
+				map[j+1][i] = 0;
+				let tuile2 = platformsSolid.create(i*64, (j+1)*64, 'ground');
+				tuile2.body.immovable = true;
+			}
+			break;}
+			
+			default:
+			game.add.sprite(i*64, j*64, 'ground');
+			map[j][i] = 0;
+		    break;
 		  }
 		}
 	  }}
