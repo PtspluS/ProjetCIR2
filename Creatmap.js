@@ -48,6 +48,13 @@
 					tree.frame = Math.floor(level.pollution / 10);
 					game.pollution.push(tree);
 					break;
+				case 3:
+					herbe = platformsSolid.create(i*64, j*64, 'grass');
+					herbe.body.immovable = true;
+					let fox = object.create(i*64, j*64, 'fox');
+					fox.frame = Math.floor(level.pollution / 10);
+					game.pollution.push(fox);
+					break;
 				default:
 					herbe = game.add.sprite(i*64, j*64, 'grass');
 					break;

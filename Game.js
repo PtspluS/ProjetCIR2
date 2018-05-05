@@ -192,6 +192,7 @@ var game = {
 		game.load.spritesheet('flower','assets/enviflower.png',64,64);
 		game.load.spritesheet('puddle','assets/envipuddle.png',64,64);
 		game.load.spritesheet('tree','assets/envitree.png',64,104);
+		game.load.spritesheet('fox','assets/envifox.png',64,64);
 		game.load.image('truck','assets/truck.png');
 		game.load.image('ground','assets/beton.png');
 		game.load.image('table','assets/table.png');
