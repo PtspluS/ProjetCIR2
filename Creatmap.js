@@ -1,11 +1,13 @@
  Creatmap= function(level){
-
+	
 	var matrice = level.matrice;
 
 	var map = Array(matrice.length);
 	for(let i = 0; i < matrice.length; i++){
 	  map[i] = Array(matrice[0].length);
 	}
+	
+	game.pollution = [];
 
 	// Groupes de sprites
 	platformsSolid = game.add.group();
@@ -23,6 +25,29 @@
 		if(map[j][i] == undefined){
 		  switch(matrice[j][i]){
 		  case -1:
+			let herbe = game.add.sprite(i*64, j*64, 'grass');
+			herbe.frame = Math.floor(level.pollution / 10);
+			game.pollution.push(herbe);
+			if(Math.floor(Math.random() * 9) == 1){
+				switch(Math.floor(Math.random() * 3)){
+					case 0:
+						let puddle = object.create(i*64, j*64, 'puddle');
+						puddle.frame = Math.floor(level.pollution / 10);
+						game.pollution.push(puddle);
+						break;
+					case 1:
+						let flower = object.create(i*64, j*64, 'flower');
+						flower.frame = Math.floor(level.pollution / 10);
+						game.pollution.push(flower);
+						break;
+					case 2:
+					default:
+						let tree = object.create(i*64, j*64 - 40, 'tree');
+						tree.frame = Math.floor(level.pollution / 10);
+						game.pollution.push(tree);
+						break;
+				}
+			}
 			map[j][i] = 0;
 			break;
 		  case 0: // SOL

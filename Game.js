@@ -1,6 +1,6 @@
 var game = {
 	mod : 0,
-	polution : 1,
+	pollution : [],
 	id : 0,
 	playersskins : [0, 0, 0, 0],
 	nbPlayers : 2,
@@ -73,6 +73,10 @@ var game = {
 		game.load.spritesheet('soufflerie','assets/soufflerie.png',64,90);
 		game.load.spritesheet('route','assets/route.png',128,64);
 		game.load.spritesheet('barriere','assets/barriere.png',128,80);
+		game.load.spritesheet('grass','assets/grass.png',64,64);
+		game.load.spritesheet('flower','assets/enviflower.png',64,64);
+		game.load.spritesheet('puddle','assets/envipuddle.png',64,64);
+		game.load.spritesheet('tree','assets/envitree.png',64,104);
 		game.load.image('truck','assets/truck.png');
 		game.load.image('ground','assets/beton.png');
 		game.load.image('table','assets/table.png');
@@ -118,11 +122,6 @@ var game = {
 		// Bordures de la scene
 		game.world.setBounds(-10, -10, jeu.width + 10, jeu.height + 10);
 
-		//creation de la Pollution
-		this.polution = levels[MenuGame.cursorMap].polution;
-		this.polution = new PolutionObject(this.polution);
-		//this.polution.z = 0;
-
 		// Creation de la map
 		let level = levels[this.id];
 		map = Creatmap(level);
@@ -133,6 +132,9 @@ var game = {
 
 		//enleve le cursor
 		document.body.style.cursor = 'none';
+
+		//Creation de la Pollution
+		this.pollution = new PollutionObject(levels[MenuGame.cursorMap].pollution, this.pollution);
 
 		//Creation du timer
 		this.mytimer = new MyTimer(level.chrono);
@@ -162,30 +164,36 @@ var game = {
 				var pauseHelps = [];
 				pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 				pauseHelps[pauseHelps.length - 1].frame = 5;
+				pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 				pauseHelps[pauseHelps.length - 1].alpha = 0;
 				if(levels[this.id].items.indexOf(itemsId.Metal) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 0;
+							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Carton) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 1;
+							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Pneu) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 2;
+							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Plastique) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 3;
+							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 				if(levels[this.id].items.indexOf(itemsId.Verre) != -1){
 					pauseHelps.push(pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 4;
+							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 
@@ -203,11 +211,11 @@ var game = {
 					let mapName = game.add.bitmapText(500,30,'font','Map : '+levels[MenuGame.cursorMap].name,30);
 					let timerInfo = game.add.bitmapText(500,60,'font','Time : '+Math.floor((this.mytimer.timemax-this.mytimer.valuetime)/60)+':'+((this.mytimer.timemax-this.mytimer.valuetime)%60),30);
 					let score = game.add.bitmapText(500,90,'font','Profit : '+this.score.score+'$');
-					let polution = game.add.bitmapText(500,120,'font','Pollution : '+this.polution.polution);
+					let pollution = game.add.bitmapText(500,120,'font','Pollution : '+this.pollution.pollution);
 					pauseGroup.add(mapName);
 					pauseGroup.add(timerInfo);
 					pauseGroup.add(score);
-					pauseGroup.add(polution);
+					pauseGroup.add(pollution);
 				});//banniere pour le menu de pause
 				banner.anchor.setTo(0.5,0.5);
 				banner.scale.setTo(0.75,0.75);
@@ -261,7 +269,7 @@ var game = {
 		}
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 		this.mytimer.updatetimer();
-		if(this.mytimer.valuetime == this.mytimer.timemax || this.polution.polution == 0){
+		if(this.mytimer.valuetime == this.mytimer.timemax || this.pollution.pollution == 100){
 			document.body.style.cursor = 'default';
 			this.musicGame.stop();
 			this.state.start('End');

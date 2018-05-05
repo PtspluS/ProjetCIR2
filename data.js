@@ -20,7 +20,7 @@ var levels = [
     itemSpeed : 100,
     chrono: 1,
     score : 1000,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
     seauSpawnpoints: [],
     imagePath: "assets/miniMap/debugmap.png",
@@ -53,7 +53,7 @@ var levels = [
     itemSpeed : 120,
     chrono: 80,
     score : 50,//score pour un joueur
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[5,6],[7,6],[9,6],[11,7]],
     seauSpawnpoints: [[7,4],[12,7]],
     imagePath: "assets/miniMap/level1.PNG",
@@ -63,6 +63,7 @@ var levels = [
       'Pour faire simple, nous devons traiter les déchets qui nous arrivent depuis la ville. Nous allons commencer par le tri des pneus.',
       'Les pneus vont arriver sur le tapis roulant, attrapez les avant qu\'ils ne soient incinérés afin d\'éviter de polluer d\'avantage l\'atmosphère qu\'il ne l\'est déjà et mettez les dans le broyeur.#2#',
       'Le pneu broyé, appelé broyat, doit être ramassé avec un seau et vidé dans le conteneur correspondant: le gris. On peut mettre jusqu\'à 3 doses de broyats dans un seul seau.',
+	  'A chaque fois que vous laisserez tomber des déchets dans l\'incinerateur, vous détruirez notre envirronement. Si jamais vous le laissez se détériorer jusqu\'au point de non-retour, notre mission sera un échec...',
       'En cas de probleme appuyez sur ENTREE pour mettre le jeu en pause et regarder l\'aide si vous ne vous souvenez plus comment on fait pour recycler !'
     ],
     tutoGuys : [1,0,0,0],
@@ -88,7 +89,7 @@ var levels = [
     itemSpeed : 120,
     chrono: 180,
     score : 150,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[5,6],[12,5],[7,6],[14,5]],
     seauSpawnpoints: [[8,6],[9,6]],
     imagePath: "assets/miniMap/level2.PNG",
@@ -98,11 +99,11 @@ var levels = [
       'Pour les pneux vous savez déja comment cela fonctionne.\nJe vous fait quand même un petit rappel: #2#',
       'Sinon, pour le plastique, vous devez premièrement le compresser.\nPour ce faire il faut mettre les déchets dans le compresseur. On peut mettre jusqu\'à 3 objets dans un compresseur, alors essayez de maximiser cette capacité pour rendre le travail plus facile.\nUne fois que vous souhaitez lancer la compression, activez la machine avec le bouton d\action.',
       'Une fois compressé, vous devrez le broyer, puis comme pour les pneux vous déposerez les paillettes de plastique dans le bac correspondant: le jaune.#3#"',
-      'N\'Oubliez pas non plus que le but du tri c\'est de pas mélanger.\nVous devrez donc laver les seaux si vous souhaitez transporter du plastique après avoir transporté des broyats de pneu car ceux-ci seront sales.',
+      'N\'Oubliez pas non plus que le but du tri c\'est de ne pas mélanger.\nVous devrez donc laver les seaux si vous souhaitez transporter du plastique après avoir transporté des broyats de pneu car ceux-ci seront sales.',
       'Pour laver les seaux, il faut aller à une bassine, deposer le seau à l\'interieur, puis le laver en appuyant une dizaine de fois sur la touche d\'action.#5#',
       'Le plastique ainsi recyclé sera fondu en fibres de plastique pour faire des polaires, ou en bouteilles, ou encore en de nouveaux objets en plastique',
     ],
-    tutoGuys : [1,0,0,0],
+    tutoGuys : [0,1,0,0],
     tips : "Avec 7 bidons on peut réaliser un siège bébé pour les sales gosses."
   },{
     matrice: [
@@ -125,7 +126,7 @@ var levels = [
     itemSpeed : 120,
     chrono: 180,
     score : 200,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[5,6],[13,6],[9,6],[15,6]],
     seauSpawnpoints: [],
     imagePath: "assets/miniMap/level3.PNG",
@@ -135,7 +136,7 @@ var levels = [
       'Celui-ci doit etre compressé puis transformé en pâte à papier dans la bassine. Vous savez comment faire ces manipulations, le fonctionnement est le même que pour laver un seau.',
       'La pâte doit ensuite être pressée pour créer de nouvelles plaques de carton à deposer dans le bac bleu.#1#'
     ],
-    tutoGuys : [1,0,0,0],
+    tutoGuys : [0,0,1,0],
     tips : "Le carton c'est comme les chats, ça a plusieurs vies, et en plus ça griffe pas. Donc pensez à l'adopter dans votre quotidien pour un environnement plus sain!."
   },{
     matrice: [
@@ -158,17 +159,17 @@ var levels = [
     itemSpeed : 120,
     chrono: 180,
     score : 500,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[4,5],[14,6],[7,5],[11,6]],
     seauSpawnpoints: [[13,4],[5,8]],
     imagePath: "assets/miniMap/level4.PNG",
     name: "Tutoriel 4",
     tutoText: [
-      'Aujourd\'hui, en plus du carton vous devrez recycler des canettes métalliques.',
+      'Aujourd\'hui, en plus du carton vous devrez recycler des canettes métalliques. Vous n\'imaginez pas on en récupère chaque année!',
       'Les canettes doivent être à nouveau compressées puis fondues dans un four. Pour récupérer le métal en fusion il vous faudra être équipé d\'un seau et enuite le verser dans une presse.#0#',
       'Les plaques de metal ainsi obtenu sont envoyées à d\'autres usines ou elles seront refondues pour refaire des canettes ou de la carroserie.'
     ],
-    tutoGuys : [1,0,0,0],
+    tutoGuys : [0,0,0,1],
     tips : "Avec ce que vous venez de recycler vous pouvez offrir un cadeau à un enfant.\nLe métal pour construire un vélo et le carton pour l'emballage ... un cadeau utile et écolo!",
   },{
     matrice: [
@@ -191,7 +192,7 @@ var levels = [
     itemSpeed : 140,
     chrono: 180,
     score : 500,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
     seauSpawnpoints: [[4,8],[16,8]],
     imagePath: "assets/miniMap/level5.PNG",
@@ -225,7 +226,7 @@ var levels = [
     itemSpeed : 140,
     chrono: 180,
     score : 500,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[4,5],[14,4],[7,5],[12,4]],
     seauSpawnpoints: [[16,8],[16,7]],
     imagePath: "assets/miniMap/level6.PNG",
@@ -237,6 +238,37 @@ var levels = [
     ],
     tutoGuys : [0,1,0,0],
     tips : "Tout le monde veut sauver la planète, mais personne veut descendre les poubelles.",
+  },{
+    matrice: [
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,22,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1, 3,15, 3, 3, 3, 3, 3, 3, 3, 3, 3,23,23, 3, 3,-1,-1,-1],
+      [-1,-1,-1, 3,11, 0, 0, 6, 0, 0, 0, 2, 2, 3, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0,16, 3,-1,-1,-1],
+      [-1,-1,-1, 3,11, 0, 0, 5, 5, 2, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3,11, 0, 0, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0,18, 3,-1,-1,-1],
+      [-1,-1,-1, 3,14, 0, 7, 0, 0, 0, 0,21,21, 3, 0, 0, 0, 3,-1,-1,-1],
+      [-1,-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,23,23, 3, 3,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+    ],
+    items: [itemsId.Plastique,itemsId.Verre],
+    itemsTime: 8000,
+    itemsPattern: false,
+    itemSpeed : 140,
+    chrono: 180,
+    score : 500,
+      pollution : 0,
+    spawnpoints: [[5,5],[6,4],[7,5],[5,4]],
+    seauSpawnpoints: [[6,8],[9,5],[9,6]],
+    imagePath: "assets/miniMap/level7.PNG",
+    name: "Tutoriel 7",
+    tutoText: [
+      'Il se peut que des véhicules de transport circulent près de votre espace de travail.',
+	  'N\'essayez pas de jouer au héros, entre un poid lourd et vous, il n\'y a pas a savoir qui l\'emportera. Alors attention à l\'accident !',
+    ],
+    tutoGuys : [0,0,1,0]
   }
   ,{
     matrice: [
@@ -259,7 +291,7 @@ var levels = [
     itemSpeed : 50,
     chrono: 180,
     score : 500,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[6,5],[14,5],[8,5],[12,5]],
     seauSpawnpoints: [[10,4],[10,7]],
     imagePath: "assets/miniMap/levelCoop1.PNG",
@@ -289,10 +321,10 @@ var levels = [
     items:[itemsId.Metal,itemsId.Verre] ,
     itemsTime: 10000,
     itemsPattern: false,
-    itemSpeed : 100,
+    itemSpeed : 140,
     chrono: 180,
     score : 500,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[4,5],[14,4],[7,6],[13,6]],
     seauSpawnpoints: [[3,3],[15,3],[6,8]],
     imagePath: "assets/miniMap/fondrie.PNG",
@@ -320,7 +352,7 @@ var levels = [
     itemSpeed : 50,
     chrono: 180,
     score : 500,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[4,6],[7,5],[11,5],[16,5]],
     seauSpawnpoints: [[11,8],[12,8]],
     imagePath: "assets/miniMap/fordisme.PNG",
@@ -352,7 +384,7 @@ var levels = [
     itemSpeed : 70,
     chrono: 180,
     score : 500,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[4,7],[15,8],[3,3],[16,3]],
     seauSpawnpoints: [[5,2],[6,2],[17,9]],
     imagePath: "assets/miniMap/teletravail.PNG",
@@ -360,10 +392,11 @@ var levels = [
     tutoText: [
       'Vous avez besoin d\'être une équipe de 4 pour réussir dans cette usine, chacun à un poste et vous ne pouvez vous envoyer les objets qu\'avec des tapis roulants.'
     ],
-    tutoGuys : [0,1,0,0],
+    tutoGuys : [0,0,1,0],
   }
   ,{
     matrice: [
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1,-1,-1, 3, 3, 3, 3, 3, 3, 3, 3,15, 3, 3, 3, 3, 3,-1,-1,-1,-1],
       [-1,-1,-1, 3,14,13,13,13,13,13,13,13,17,20, 2, 2, 3,-1,-1,-1,-1],
@@ -374,8 +407,8 @@ var levels = [
       [-1,-1,-1, 3, 2, 0, 3, 3, 4, 3, 4, 3, 4, 3, 0, 2, 3,-1,-1,-1,-1],
       [-1,-1,-1, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3,-1,-1,-1,-1],
       [-1,-1,-1, 3, 2, 6, 0, 2, 2, 2, 2, 2, 2, 9, 1, 2, 3,-1,-1,-1,-1],
-      [-1,-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1,-1,-1],
-      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+      [-1,-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1,-1,-1]
+
     ],
     items: [itemsId.Metal,itemsId.Carton],
     itemsTime: 8000,
@@ -383,7 +416,7 @@ var levels = [
     itemSpeed : 70,
     chrono: 180,
     score : 500,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[5,7],[14,7],[5,4],[14,4]],
     seauSpawnpoints: [[15,7],[15,8]],
     imagePath: "assets/miniMap/rond.PNG",
@@ -411,7 +444,7 @@ var levels = [
     itemSpeed : 100,
     chrono: 180,
     score : 500,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[8,8],[13,6],[8,6],[13,8]],
     seauSpawnpoints: [[6,3],[15,3],[15,9],[8,9]],
     imagePath: "assets/miniMap/Un par un.PNG",
@@ -439,13 +472,43 @@ var levels = [
     itemSpeed : 100,
     chrono: 240,
     score : 500,
-    polution : 10,
+    pollution : 0,
     spawnpoints: [[5,7],[10,7],[7,3],[16,3]],
     seauSpawnpoints: [[4,6],[18,4]],
     imagePath: "assets/miniMap/Machine.PNG",
     name: "Machine a laver",
     tutoText: [
       "On a plus beaucoup de seau ici.\nVous allez devoir frotter les amis!"
+    ],
+    tutoGuys : [1,0,0,0],
+  },{
+    matrice: [
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      [ 3, 3, 3,-1, 3, 3, 3, 4, 3, 3, 3, 3, 3, 4, 3, 3, 3, 3, 3, 4, 3],
+      [ 3, 8, 3, 4, 3, 0, 0, 0, 0, 0,17, 3, 8, 0, 0, 0, 0, 0, 0, 0, 3],
+      [ 3, 0, 0, 0, 0, 0, 3,15, 3, 3, 3, 3, 3, 8, 0, 3, 3, 3, 3, 0, 3],
+      [ 3, 2, 0, 3, 3, 0, 3,12,12,12,12,12,12,14, 0, 0, 3, 9, 3, 0, 3],
+      [ 3, 8, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 3],
+      [ 3, 3, 3, 0, 3, 3, 3, 6, 0, 0, 6, 0, 6, 0, 3, 0, 3, 0, 3, 9, 3],
+      [ 3,18, 3, 0, 3, 1, 1, 2, 3, 0, 3, 3, 3, 3, 3, 0, 2, 0, 3, 3, 3],
+      [ 3, 0, 3, 0, 0, 0, 0, 0, 3, 0, 3, 2, 5, 3, 0, 0, 0, 0, 3, 20, 3],
+      [ 3, 0, 2, 0, 3, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 3, 4, 3, 3, 0, 3],
+      [ 3, 0, 0, 0, 3, 2, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3],
+      [ 3, 3, 3, 3, 3, 3, 3,-1,-1,-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+    ],
+    items: [itemsId.Plastique,itemsId.Metal,itemsId.Carton],
+    itemsTime: 9000,
+    itemsPattern: false,
+    itemSpeed : 140,
+    chrono: 240,
+    score : 500,
+    pollution : 10,
+    spawnpoints: [[5,5],[9,5],[7,5],[11,5]],
+    seauSpawnpoints: [[7,7],[11,8],[5,10]],
+    imagePath: "assets/miniMap/Way.PNG",
+    name: "Show me da way",
+    tutoText: [
+      "Do you know the way ?"
     ],
     tutoGuys : [1,0,0,0],
   }

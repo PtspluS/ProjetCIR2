@@ -6,10 +6,10 @@ var end = {
     end.load.audio('endMusic','musics/endMusic.mp3');
     end.load.audio('easterEgg','musics/eminem.mp3');
     end.load.spritesheet('title','assets/logo.png',408,222);
-    end.load.spritesheet('go','assets/buttons/go.png',104,80);
-    for (let sk in skins) {//boucle de chargement de tt les skins
-      end.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
-    }
+    end.load.spritesheet('next','assets/buttons/next.png',168,80);
+	end.load.spritesheet('restart','assets/buttons/restart.png',264,80);
+	end.load.spritesheet('menu','assets/buttons/menu.png',168,80);
+
     end.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
     end.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
   },
@@ -32,7 +32,7 @@ var end = {
     banner.anchor.setTo(0.5,0.5);
     banner.scale.setTo(0.6,0.6);
     //affichage du recap de partie et de la note
-    let indication = ['Player : '+MenuOpt.nbPlayers,'Time : '+Math.floor(levels[MenuGame.cursorMap].chrono/60)+':'+levels[MenuGame.cursorMap].chrono%60,'Pollution : '+game.polution.polution,'Profit : '+game.score.score +'$','Score : '+this.equationResult];//tableau contenant toutes les infos à afficher pour résumer la partie
+    let indication = ['Player : '+MenuOpt.nbPlayers,'Time : '+Math.floor(levels[MenuGame.cursorMap].chrono/60)+':'+levels[MenuGame.cursorMap].chrono%60,'Pollution : '+game.pollution.pollution,'Profit : '+game.score.score +'$','Score : '+this.equationResult];//tableau contenant toutes les infos à afficher pour résumer la partie
     let Result = end.add.bitmapText(end.world.width-500, 200,'font', 'The Result :', 56);
     let message = end.add.bitmapText(end.world.width-450, 200+Result.height+40*indication.length+100,'fontred','',60);
     let posY = 200+Result.height;
@@ -93,7 +93,7 @@ var end = {
     tips.anchor.setTo(0.5,0.5);
     let info = '';
     if(levels[MenuGame.cursorMap].tips){
-      info = levels[MenuGame.cursorMap].tips//+'\n'+citations[Math.floor(Math.random()*citations.length)];
+      info = levels[MenuGame.cursorMap].tips; //+'\n'+citations[Math.floor(Math.random()*citations.length)];
     }
     else {
       info = citations[Math.floor(Math.random()*citations.length)];
@@ -104,9 +104,12 @@ var end = {
       wordWrapWidth: 800
     });
     tip.fill = 'white';
-    let go = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'go',()=>{
+    let next = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'next',()=>{
       //if(this.equationResult>=levels[MenuGame.cursorMap].score){MenuGame.cursorMap += 1};
-      MenuGame.cursorMap++;
+
+      if(MenuGame.cursorMap+1>=levels.length-1){this.state.start('MenuGame');}
+      else{
+        MenuGame.cursorMap++;
       if(levels[MenuGame.cursorMap].tutoText.length < 1){
         game.id =   MenuGame.cursorMap;
         game.playersskins = MenuGame.playersskins;
@@ -118,25 +121,25 @@ var end = {
         game.playersskins = MenuGame.playersskins;
         game.nbPlayers = MenuOpt.nbPlayers;
         this.state.start('Tuto');
-      }
+      }}
 
       this.musicEnd.stop();
 
     },this,1,0,2);
-    go.anchor.setTo(0.5,0.5);
+    next.anchor.setTo(0.5,0.5);
 
-    let restart = end.add.button(end.world.width-750, posY+40*indication.length+162,'restart',()=>{
+    let restart = end.add.button(end.world.width-615,posY+40*indication.length+60+140,'restart',()=>{
       this.state.start('Game');
       this.musicEnd.stop();
 
     },this,1,0,2);
-    go.anchor.setTo(0.5,0.5);
+    restart.anchor.setTo(0.5,0.5);
 
-    let Menu = end.add.button(end.world.width-1010, posY+40*indication.length+162,'menu',()=>{
+    let toMenu = end.add.button(end.world.width-890, posY+40*indication.length+60+140,'menu',()=>{
       this.state.start('MenuGame');
       this.musicEnd.stop();
       //  Menu.musicMenu.play('',0,0.6,true);
     },this,1,0,2);
-    go.anchor.setTo(0.5,0.5);
+    toMenu.anchor.setTo(0.5,0.5);
   },
 };
