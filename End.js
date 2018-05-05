@@ -14,7 +14,7 @@ var end = {
     end.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
   },
   create : function(){
-    this.equationResult = game.pollution.pollution * (Math.floor((game.score.score*levels[MenuGame.cursorMap].itemSpeed)/(MenuOpt.nbPlayers*levels[MenuGame.cursorMap].chrono)));//polution*score par joueur par seconde
+    this.equationResult = -(game.pollution.pollution-100)/10 * (Math.floor((game.score.score*levels[MenuGame.cursorMap].itemSpeed)/(MenuOpt.nbPlayers*levels[MenuGame.cursorMap].chrono)));//polution*score par joueur par seconde
     this.target = levels[MenuGame.cursorMap].score*(Math.log2(MenuOpt.nbPlayers)+1);
     if (this.target*0.42==this.equationResult) {this.musicEnd = end.add.audio('easterEgg');}
     else {this.musicEnd = end.add.audio('endMusic');}
