@@ -98,7 +98,7 @@ var end = {
     else {
       info = citations[Math.floor(Math.random()*citations.length)];
     }
-    let tip = end.add.text(0, 0.7 * end.world.centerY,info,{
+    let tip = end.add.text(100, 0.7 * end.world.centerY,info,{
       align: "left",
       wordWrap: true,
       wordWrapWidth: 800
@@ -107,21 +107,23 @@ var end = {
     let next = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'next',()=>{
       //if(this.equationResult>=levels[MenuGame.cursorMap].score){MenuGame.cursorMap += 1};
 
-      if(MenuGame.cursorMap+1>=levels.length-1){this.state.start('MenuGame');}
+      if(MenuGame.cursorMap >= levels.length-1){this.state.start('MenuGame');
+      Menu.musicMenu.play("",0,0.6,true);}
       else{
         MenuGame.cursorMap++;
-      if(levels[MenuGame.cursorMap].tutoText.length < 1){
-        game.id =   MenuGame.cursorMap;
-        game.playersskins = MenuGame.playersskins;
-        game.nbPlayers = MenuOpt.nbPlayers;
-        this.state.start('Game');
-      }else{
-        Tuto.id =   MenuGame.cursorMap;
-        game.id =  MenuGame.cursorMap;
-        game.playersskins = MenuGame.playersskins;
-        game.nbPlayers = MenuOpt.nbPlayers;
-        this.state.start('Tuto');
-      }}
+		  if(levels[MenuGame.cursorMap].tutoText.length < 1){
+			game.id =   MenuGame.cursorMap;
+			game.playersskins = MenuGame.playersskins;
+			game.nbPlayers = MenuOpt.nbPlayers;
+			this.state.start('Game');
+		  }else{
+			Tuto.id =   MenuGame.cursorMap;
+			game.id =  MenuGame.cursorMap;
+			game.playersskins = MenuGame.playersskins;
+			game.nbPlayers = MenuOpt.nbPlayers;
+			this.state.start('Tuto');
+		  }
+	  }
 
       this.musicEnd.stop();
 
@@ -137,6 +139,7 @@ var end = {
 
     let toMenu = end.add.button(end.world.width-890, posY+40*indication.length+60+140,'menu',()=>{
       this.state.start('MenuGame');
+      Menu.musicMenu.play("",0,0.6,true);
       this.musicEnd.stop();
       //  Menu.musicMenu.play('',0,0.6,true);
     },this,1,0,2);

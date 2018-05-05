@@ -30,7 +30,7 @@ Arrive.prototype.addscore=function(){
 	game.world.bringToTop(this.scoretext);
 this.scoretext.text="+10%";
 this.scoretext.body.velocity.y=-50;
-game.time.events.add(1000, () => {	game.polution.updatePolution(-1);
+game.time.events.add(1000, () => {	game.pollution.updatePollution(10);
 this.scoretext.x=this.posx;
 this.scoretext.y=this.posy;
 this.scoretext.body.velocity.y=0;

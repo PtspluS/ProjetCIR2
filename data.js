@@ -1,24 +1,24 @@
 var levels = [
   {
     matrice: [
-      [ 3,15, 3, 3, 3, 4, 3, 3, 4, 4, 3, 3, 3,22,23, 3, 3,22,23, 3, 3],
-      [ 3,11, 0, 8, 0, 0, 0, 0, 0, 0, 7, 0, 7, 2, 2, 1, 1, 0, 0,16 ,3],
-      [ 3,11, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
-      [ 3,11, 0, 0, 0, 0, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0,17, 3],
-      [ 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 9, 0, 0, 1, 1, 0, 0, 0, 3],
-      [ 3,11, 0, 0, 0, 0, 8, 9, 0, 0, 0, 0, 0, 0, 0, 2, 2,23,23,18, 3],
-      [ 3,11, 0, 0, 0, 0,12,12,12,12,11, 0, 0, 0, 0, 5, 5, 0, 0, 0, 3],
-      [ 3,14, 0, 0, 0, 0,10,13,13,13,11, 0, 0, 0, 0,21, 0, 0, 0,19, 3],
-      [ 3, 0, 0, 0, 0, 0, 0, 0, 0,10,13, 0, 0, 0, 0, 0, 0, 0, 0,20, 3],
-      [ 3, 0, 0, 0, 12, 12, 12, 12, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,20, 3],
-      [ 3, 0, 0, 0, 1, 8, 9, 21, 16, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0,20, 3],
-      [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,23,23, 3, 3,23,23, 3, 3]
+      [ 3,15, 3, 3, 3, 4, 3, 3, 4, 4, 3, 3, 3,22,23, 3, 3,-1,-1, 3, 3],
+      [ 3,11, 0, 8,21, 0, 0, 0, 0, 0, 7, 0, 7, 2, 2, 1, 1,-1,-1,16 ,3],
+      [ 3,11, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1,-1, 3],
+      [ 3,11, 0, 0, 0, 0, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0,-1,-1,-1,17, 3],
+      [ 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 9, 0, 0, 1, 1,-1,-1,-1, 3],
+      [ 3,11, 0, 0, 0, 0, 8, 9, 0, 0, 0, 0, 0, 0, 0, 2, 2,-1,-1,18, 3],
+      [ 3,11, 0, 0, 0, 0,12,12,12,12,11, 0, 0, 0, 0, 0, 0, 0, 0, 5, 3],
+      [ 3,14, 0, 0, 0, 0,10,13,13,13,11, 0,26, 0, 0,26, 0, 0,20,19, 3],
+      [ 3, 0, 0,24,24, 0, 0, 0, 0,10,13, 0,26, 0, 0,26, 0,25,25, 0, 3],
+      [ 3, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
+      [ 3, 0, 0, 0, 1, 8, 9,21,16,17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3],
+      [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,23,23, 3, 3, 3, 3, 3, 3]
     ],
     items: [itemsId.Pneu, itemsId.Poubelle, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau, itemsId.Poubelle],
     itemsTime: 10000,
     itemsPattern: true,
     itemSpeed : 100,
-    chrono: 1,
+    chrono: 3600,
     score : 1000,
     pollution : 0,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
@@ -99,9 +99,9 @@ var levels = [
       'Pour les pneux vous savez déja comment cela fonctionne.\nJe vous fait quand même un petit rappel: #2#',
       'Sinon, pour le plastique, vous devez premièrement le compresser.\nPour ce faire il faut mettre les déchets dans le compresseur. On peut mettre jusqu\'à 3 objets dans un compresseur, alors essayez de maximiser cette capacité pour rendre le travail plus facile.\nUne fois que vous souhaitez lancer la compression, activez la machine avec le bouton d\action.',
       'Une fois compressé, vous devrez le broyer, puis comme pour les pneux vous déposerez les paillettes de plastique dans le bac correspondant: le jaune.#3#"',
-      'N\'Oubliez pas non plus que le but du tri c\'est de ne pas mélanger.\nVous devrez donc laver les seaux si vous souhaitez transporter du plastique après avoir transporté des broyats de pneu car ceux-ci seront sales.',
+      'N\'oubliez pas non plus que le but du tri c\'est de ne pas mélanger.\nVous devrez donc laver les seaux si vous souhaitez transporter du plastique après avoir transporté des broyats de pneu car ceux-ci seront sales.',
       'Pour laver les seaux, il faut aller à une bassine, deposer le seau à l\'interieur, puis le laver en appuyant une dizaine de fois sur la touche d\'action.#5#',
-      'Le plastique ainsi recyclé sera fondu en fibres de plastique pour faire des polaires, ou en bouteilles, ou encore en de nouveaux objets en plastique',
+      'Le plastique ainsi recyclé sera fondu en fibres de plastique pour faire des polaires, en bouteilles, ou encore en de nouveaux objets en plastique.',
     ],
     tutoGuys : [0,1,0,0],
     tips : "Avec 7 bidons on peut réaliser un siège bébé pour les sales gosses."
@@ -240,8 +240,8 @@ var levels = [
     tips : "Tout le monde veut sauver la planète, mais personne veut descendre les poubelles.",
   },{
     matrice: [
-      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
-      [-1,-1,-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,22,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,22,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1,-1,-1, 3,15, 3, 3, 3, 3, 3, 3, 3, 3, 3,23,23, 3, 3,-1,-1,-1],
       [-1,-1,-1, 3,11, 0, 0, 6, 0, 0, 0, 2, 2, 3, 0, 0, 0, 3,-1,-1,-1],
       [-1,-1,-1, 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0,16, 3,-1,-1,-1],
@@ -266,11 +266,10 @@ var levels = [
     name: "Tutoriel 7",
     tutoText: [
       'Il se peut que des véhicules de transport circulent près de votre espace de travail.',
-	  'N\'essayez pas de jouer au héros, entre un poid lourd et vous, il n\'y a pas a savoir qui l\'emportera. Alors attention à l\'accident !',
+	  'N\'essayez pas de jouer au héros, entre un poids lourd et vous, il n\'y a pas a savoir qui l\'emportera. Alors attention à l\'accident !',
     ],
     tutoGuys : [0,0,1,0]
-  }
-  ,{
+  },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1,-1,-1, 3, 3, 3, 4, 3, 4, 3, 3, 3, 4, 3, 4, 3, 3, 3,-1,-1,-1],
@@ -302,8 +301,7 @@ var levels = [
       'Ca va être dur, mais c\'est un bon moyen de voir si vous savez communiquer.'
     ],
     tutoGuys : [1,0,1,0],
-  },
-  {
+  },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3,-1],
@@ -326,7 +324,7 @@ var levels = [
     score : 500,
     pollution : 0,
     spawnpoints: [[4,5],[14,4],[7,6],[13,6]],
-    seauSpawnpoints: [[3,3],[15,3],[6,8]],
+    seauSpawnpoints: [[3,3],[15,3],[6,8],[14,8]],
     imagePath: "assets/miniMap/fondrie.PNG",
     name: "Fondrie",
     tutoText: [],
@@ -393,8 +391,7 @@ var levels = [
       'Vous avez besoin d\'être une équipe de 4 pour réussir dans cette usine, chacun à un poste et vous ne pouvez vous envoyer les objets qu\'avec des tapis roulants.'
     ],
     tutoGuys : [0,0,1,0],
-  }
-  ,{
+  },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -480,7 +477,7 @@ var levels = [
     tutoText: [
       "On a plus beaucoup de seau ici.\nVous allez devoir frotter les amis!"
     ],
-    tutoGuys : [1,0,0,0],
+    tutoGuys : [0,1,0,0],
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -511,6 +508,37 @@ var levels = [
       "Do you know the way ?"
     ],
     tutoGuys : [1,0,0,0],
+  },{
+    matrice: [
+      [ 3, 0, 0, 0, 0, 0, 3,22,22, 3,-1,-1,22,22,22,22,-1,-1,-1,-1,-1],
+      [ 3, 3, 3,15, 3, 3, 3,23,23, 3,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3, 3],
+      [ 3,11,13,13, 1, 1, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 1, 1, 3],
+      [ 3,11, 0, 0, 0, 0, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 0, 0, 3],
+      [ 3,11, 0, 6, 6, 0, 0, 0, 0, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0,21, 3],
+      [ 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 3],
+      [ 3,11, 0, 0, 0, 0, 0,-1,-1, 2, 0, 2,-1,-1,-1,-1,-1, 3, 0, 2, 3],
+      [ 3,14, 0, 0, 0, 2, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 3],
+      [ 3, 3, 0, 0, 0, 3, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 3],
+      [ 2, 0, 0, 0, 0, 0, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3,16,17, 3],
+      [ 3, 9, 0, 0, 0, 9, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0,-1]
+    ],
+    items: [itemsId.Metal,itemsId.Verre],
+    itemsTime: 10000,
+    itemsPattern: false,
+    itemSpeed : 120,
+    chrono: 180,
+    score : 500,
+      pollution : 0,
+    spawnpoints: [[4,5],[18,5],[10,5],[4,10]],
+    seauSpawnpoints: [[9,6],[11,6],[5,7]],
+    imagePath: "assets/miniMap/Autoroute.png",
+    name: "Autoroute",
+    tutoText: [
+      'Une aire d\'autoroute vient d\'être installée ici, seulement, elle n\'a pas encore de système pour amener les déchets dans notre usine. Nous allons devoir aller travailler sur place!',
+	  'La circulation est dense et notre entrepôt de stockage se trouve de l\'autre coté de la route, pensez à regarder des deux cotés avant de traverser!'
+    ],
+    tutoGuys : [0,0,0,1]
   }
 
 
@@ -559,4 +587,4 @@ var citations = [
   "'Nous n'héritons pas de la terre de nos parents, nous l'empruntons à nos enfants.'\nAntoine de Saint-Exupéry",
   "'Le développement durable n'est ni une utopie ni même une contestation, mais la condition de survie de l'économie de marché.'\nLouis Schweitzer",
 
-]
+];
