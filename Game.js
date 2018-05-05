@@ -275,7 +275,7 @@ var game = {
 		}
 		object.sort('y', Phaser.Group.SORT_ASCENDING);
 		this.mytimer.updatetimer();
-		if(this.mytimer.valuetime == this.mytimer.timemax || this.pollution.pollution == 100){
+		if(this.mytimer.valuetime == this.mytimer.timemax || this.pollution.pollution >= 100){
 			document.body.style.cursor = 'default';
 			this.musicGame.stop();
 			this.state.start('End');

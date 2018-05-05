@@ -105,7 +105,8 @@ var end = {
     let next = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'next',()=>{
       //if(this.equationResult>=levels[MenuGame.cursorMap].score){MenuGame.cursorMap += 1};
 
-      if(MenuGame.cursorMap >= levels.length-1){this.state.start('MenuGame');}
+      if(MenuGame.cursorMap >= levels.length-1){this.state.start('MenuGame');
+      Menu.musicMenu.play("",0,0.6,true);}
       else{
         MenuGame.cursorMap++;
 		  if(levels[MenuGame.cursorMap].tutoText.length < 1){
@@ -136,6 +137,7 @@ var end = {
 
     let toMenu = end.add.button(end.world.width-890, posY+40*indication.length+60+140,'menu',()=>{
       this.state.start('MenuGame');
+      Menu.musicMenu.play("",0,0.6,true);
       this.musicEnd.stop();
       //  Menu.musicMenu.play('',0,0.6,true);
     },this,1,0,2);

@@ -324,7 +324,7 @@ var levels = [
     score : 500,
     pollution : 0,
     spawnpoints: [[4,5],[14,4],[7,6],[13,6]],
-    seauSpawnpoints: [[3,3],[15,3],[6,8]],
+    seauSpawnpoints: [[3,3],[15,3],[6,8],[14,8]],
     imagePath: "assets/miniMap/fondrie.PNG",
     name: "Fondrie",
     tutoText: [],
