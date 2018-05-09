@@ -435,7 +435,7 @@ var levels = [
       [-1,-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1,-1,-1],
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
     ],
-    items: [itemsId.Plastique,itemsId.Verre],
+    items: [itemsId.Plastique,itemsId.Verre,itemsId.Plastique,itemsId.Verre,itemsId.Poubelle],
     itemsTime: 8000,
     itemsPattern: false,
     itemSpeed : 90,
@@ -463,7 +463,7 @@ var levels = [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
     ],
-    items: [itemsId.Plastique,itemsId.Verre,itemsId.Metal,itemsId.Pneu,itemsId.Plastique,itemsId.Verre,itemsId.Metal],
+    items: [itemsId.Plastique,itemsId.Verre,itemsId.Metal,itemsId.Pneu,itemsId.Plastique,itemsId.Verre,itemsId.Metal,itemsId.Poubelle],
     itemsTime: 8000,
     itemsPattern: false,
     itemSpeed : 90,
@@ -523,7 +523,7 @@ var levels = [
       [ 3, 9, 0, 0, 0, 9, 3,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0,-1],
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0,-1]
     ],
-    items: [itemsId.Metal,itemsId.Verre],
+    items: [itemsId.Metal,itemsId.Verre,itemsId.Metal,itemsId.Verre,itemsId.Metal,itemsId.Verre,itemsId.Poubelle],
     itemsTime: 10000,
     itemsPattern: false,
     itemSpeed : 120,
@@ -539,6 +539,36 @@ var levels = [
 	  'La circulation est dense et notre entrepôt de stockage se trouve de l\'autre coté de la route, pensez à regarder des deux cotés avant de traverser!'
     ],
     tutoGuys : [0,0,0,1]
+  },{
+    matrice: [
+      [ 3,17, 3, 2, 3,21,21, 2, 3, 3, 4, 3, 3, 3, 3, 3,24, 3,25, 0, 3],
+      [ 3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 7, 0, 0,15, 3],
+      [ 3,19, 0, 0, 3, 0, 3, 3, 4, 3, 3, 0, 3, 3, 0, 2, 0, 0, 0,11, 3],
+      [ 3, 3, 3, 0, 3, 0, 3, 9, 0, 0, 0, 0, 0, 3, 0, 0, 0,26, 0,11, 3],
+      [-1,-1, 3, 0, 3, 0, 3, 0, 3, 3, 3, 3, 0, 0, 0, 3, 0, 3, 0,11, 3],
+      [-1,-1, 3, 0, 0, 0, 3, 0, 3, 5, 5, 3, 0, 3, 0, 3, 0, 2, 0,11, 3],
+      [-1,-1, 3, 0, 3, 0, 3, 0, 3, 0, 0, 3, 0, 3, 0, 3, 0, 2, 0,11, 3],
+      [-1,-1, 3, 0, 3, 0, 0, 0, 3, 3, 0, 2, 0, 3, 0, 3, 0, 2, 0,11, 3],
+      [ 3, 3, 3, 0, 3, 0,26, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0,24, 0,11, 3],
+      [ 3,19, 0, 0, 3, 0, 3,24, 2, 1, 1, 0, 4, 3, 0, 3, 0, 0, 0,11, 3],
+      [ 3, 0, 0, 0, 3, 8, 8, 0, 2, 0, 0, 0, 0, 0, 0, 3, 6, 0, 0,14, 3],
+      [ 3,16, 3,24, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,24,24, 25,0, 3],
+    ],
+    items: [itemsId.Metal,itemsId.Pneu,itemsId.Verre,itemsId.Metal,itemsId.Pneu,itemsId.Verre,itemsId.Poubelle],
+    itemsTime: 10000,
+    itemsPattern: false,
+    itemSpeed : 140,
+    chrono: 180,
+    score : 500,
+      pollution : 0,
+    spawnpoints: [[18,4],[18,5],[18,6],[18,7]],
+    seauSpawnpoints: [[8,9],[15,2],[11,7]],
+    imagePath: "assets/miniMap/",
+    name: "j ai pas d idée",
+    tutoText: [
+
+    ],
+    tutoGuys : [0,1,0,0]
   }
 
 
