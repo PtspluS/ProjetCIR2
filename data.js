@@ -539,6 +539,34 @@ var levels = [
 	  'La circulation est dense et notre entrepôt de stockage se trouve de l\'autre coté de la route, pensez à regarder des deux cotés avant de traverser!'
     ],
     tutoGuys : [0,0,0,1]
+  },{
+  matrice: [
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,3,3,-1,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 3, 3, 3, 3, 3, 4,3, 3, 3, 3, 15, 3, 3,-1,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 14, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 24, 3,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, -1,-1,-1,-1],
+    [-1,-1,-1, 3, 16, 0, 18, 0, 0, 0, 0, 9, 0, 20, 0, 0, 3,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 3, 4, 4, 3, 11, 13, 13, 3, 3, 3, 3, 4, 3,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 1, 0, 0, 0, 11, 26, 10, 0, 7, 0, 0, 0, 3,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 0, 0, 5, 0, 11, 0, 10, 0, 0, 0, 0, 0, 3,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 2, 0, 0, 0, 12, 12, 10, 0, 7, 0, 0, 0, 3,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1,-1,-1],
+    [-1,-1,-1, 3, 2, 2, 2, 0, 0, 0, 6, 0, 0, 0, 0, 0, 3, 25,-1,-1,-1],
+    [-1,-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1,-1,-1]
+  ],
+    items: [itemsId.Plastique,itemsId.Verre,itemsId.carton,itemsId.Poubelle],
+    itemsTime: 7500,
+    itemsPattern: false,
+    itemSpeed : 110,
+    chrono: 240,
+    score : 400,
+    pollution : 0,
+    spawnpoints: [[10,4],[13,7],[8,6],[13,8]],
+    seauSpawnpoints: [[4,10],[4,9]],
+    imagePath: "assets/miniMap/Dock.PNG",
+    name: "Dock",
+    tutoText: ["On est ici sur un dock les gars !!!"],
+    tutoGuys : [0,0,1,0],
   }
 
 
@@ -586,5 +614,6 @@ var citations = [
   "'Le coût de la protection du milieu naturel est beaucoup plus faible que le coût de sa reconstitution. La défense de la nature est rentable pour les nations.'\nPhilippe St Marc",
   "'Nous n'héritons pas de la terre de nos parents, nous l'empruntons à nos enfants.'\nAntoine de Saint-Exupéry",
   "'Le développement durable n'est ni une utopie ni même une contestation, mais la condition de survie de l'économie de marché.'\nLouis Schweitzer",
+  "'Je ne me sens pas très bien ...'\nP.Parker",
 
 ];
