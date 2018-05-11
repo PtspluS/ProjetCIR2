@@ -53,9 +53,12 @@ var game = {
 	pauseGroup: undefined, // Sera le groupe de pause
 	pauseEvent: function(){
 			if(jeu.paused){
+			document.body.style.cursor = 'none';
+
 				// Destruction des elements de la pause
 				this.pauseGroup.removeAll(true,true);
-				document.body.style.cursor = 'none';
+
+
 				jeu.paused = false;
 			} else {
 				// Fond Gris
@@ -139,8 +142,13 @@ var game = {
 
 				let pauseResume = game.add.button(300, 300, 'resume', () => {
 					// Destruction des elements de la pause
+
 					this.pauseGroup.removeAll(true,true);
 					jeu.paused = false;
+				document.body.style.cursor = 'none';
+
+		
+
 				},this,1,0,2);
 				pauseResume.anchor.setTo(0.5,0.5);
 				this.pauseGroup.add(pauseResume);
@@ -272,7 +280,8 @@ var game = {
 		// FIN PAUSE
 	},
 	update : function() {
-		document.body.style.cursor != 'none' ? document.body.style.cursor = 'none' : true;
+
+
 		let playersControls = [this.controlP1, this.controlP2, this.controlP3, this.controlP4];
 		for(let i = 0; i < this.nbPlayers; i++){
 			players[i].update(playersControls[i][0],playersControls[i][1],playersControls[i][2],playersControls[i][3],playersControls[i][4],playersControls[i][5],platformsSolid,truckGroup,players);

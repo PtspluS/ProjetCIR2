@@ -86,6 +86,7 @@ var end = {
           message.text = 'FAILURE';
         }
       }
+    
     },this);
     let Grade = end.add.bitmapText(end.world.width-400, posY+40*indication.length+60,'font','Grade : ',42);
     Grade.anchor.setTo(0.5,0.5);
@@ -104,7 +105,8 @@ var end = {
       wordWrapWidth: 800
     });
     tip.fill = 'white';
-    if(message.text == 'SUCCESS'){
+
+    if(this.equationResult>=1*this.target){
     let next = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'next',()=>{
 
 
