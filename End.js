@@ -104,13 +104,14 @@ var end = {
       wordWrapWidth: 800
     });
     tip.fill = 'white';
+    if(message.text == 'SUCCESS'){
     let next = end.add.button(end.world.width-350, posY+40*indication.length+60+140,'next',()=>{
-      //if(this.equationResult>=levels[MenuGame.cursorMap].score){MenuGame.cursorMap += 1};
+
 
       if(MenuGame.cursorMap >= levels.length-1){this.state.start('MenuGame');
       Menu.musicMenu.play("",0,0.6,true);}
       else{
-        MenuGame.cursorMap++;
+
 		  if(levels[MenuGame.cursorMap].tutoText.length < 1){
 			game.id =   MenuGame.cursorMap;
 			game.playersskins = MenuGame.playersskins;
@@ -128,8 +129,9 @@ var end = {
       this.musicEnd.stop();
 
     },this,1,0,2);
-    next.anchor.setTo(0.5,0.5);
 
+    next.anchor.setTo(0.5,0.5);
+}
     let restart = end.add.button(end.world.width-615,posY+40*indication.length+60+140,'restart',()=>{
       this.state.start('Game');
       this.musicEnd.stop();

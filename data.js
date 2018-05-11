@@ -15,7 +15,7 @@ var levels = [
       [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,23,23, 3, 3, 3, 3, 3, 3]
     ],
     items: [itemsId.Pneu, itemsId.Poubelle, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau, itemsId.Poubelle],
-    itemsTime: 10000,
+    itemsTime: 1,
     itemsPattern: true,
     itemSpeed : 100,
     chrono: 3600,
@@ -541,6 +541,7 @@ var levels = [
     tutoGuys : [0,0,0,1]
   },{
     matrice: [
+      [ 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1,-1,-1,-1,-1, 3, 3, 3, 3, 3, 3],
       [ 3,17, 3, 2, 3,21,21, 2, 3, 3, 4, 3, 3, 3, 3, 3,24, 3,25, 0, 3],
       [ 3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 7, 0, 0,15, 3],
       [ 3,19, 0, 0, 3, 0, 3, 3, 4, 3, 3, 0, 3, 3, 0, 2, 0, 0, 0,11, 3],
@@ -551,8 +552,7 @@ var levels = [
       [-1,-1, 3, 0, 3, 0, 0, 0, 3, 3, 0, 2, 0, 3, 0, 3, 0, 2, 0,11, 3],
       [ 3, 3, 3, 0, 3, 0,26, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0,24, 0,11, 3],
       [ 3,19, 0, 0, 3, 0, 3,24, 2, 1, 1, 0, 4, 3, 0, 3, 0, 0, 0,11, 3],
-      [ 3, 0, 0, 0, 3, 8, 8, 0, 2, 0, 0, 0, 0, 0, 0, 3, 6, 0, 0,14, 3],
-      [ 3,16, 3,24, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,24,24, 25,0, 3],
+      [ 3,16, 0, 0, 3, 8, 8, 0, 2, 0, 0, 0, 0, 0, 0, 3, 6, 0, 0,14, 3]
     ],
     items: [itemsId.Metal,itemsId.Pneu,itemsId.Verre,itemsId.Metal,itemsId.Pneu,itemsId.Verre,itemsId.Poubelle],
     itemsTime: 10000,
@@ -562,7 +562,7 @@ var levels = [
     score : 500,
       pollution : 0,
     spawnpoints: [[18,4],[18,5],[18,6],[18,7]],
-    seauSpawnpoints: [[8,9],[15,2],[11,7]],
+    seauSpawnpoints: [[8,10],[15,3],[11,8]],
     imagePath: "assets/miniMap/",
     name: "j ai pas d idée",
     tutoText: [
