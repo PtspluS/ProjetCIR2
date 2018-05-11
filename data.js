@@ -15,10 +15,10 @@ var levels = [
       [ 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,23,23, 3, 3, 3, 3, 3, 3]
     ],
     items: [itemsId.Pneu, itemsId.Poubelle, itemsId.Plastique, itemsId.Metal, itemsId.Verre, itemsId.Carton, itemsId.Sceau, itemsId.Poubelle],
-    itemsTime: 1,
+    itemsTime: 100,
     itemsPattern: true,
     itemSpeed : 100,
-    chrono: 3600,
+    chrono: 3,
     score : 1000,
     pollution : 0,
     spawnpoints: [[2,4],[3,4],[4,4],[5,4]],
@@ -260,7 +260,7 @@ var levels = [
     chrono: 180,
     score : 500,
       pollution : 0,
-    spawnpoints: [[5,5],[6,4],[7,5],[5,4]],
+    spawnpoints: [[5,5],[6,4],[6,5],[5,4]],
     seauSpawnpoints: [[6,8],[9,5],[9,6]],
     imagePath: "assets/miniMap/level7.PNG",
     name: "Tutoriel 7",
@@ -564,7 +564,7 @@ var levels = [
     spawnpoints: [[18,4],[18,5],[18,6],[18,7]],
     seauSpawnpoints: [[8,10],[15,3],[11,8]],
     imagePath: "assets/miniMap/",
-    name: "j ai pas d idée",
+    name: "Pathfinding",
     tutoText: [
 
     ],
@@ -591,7 +591,7 @@ var levels = [
     chrono: 240,
     score : 400,
     pollution : 0,
-    spawnpoints: [[10,4],[13,7],[8,6],[13,8]],
+    spawnpoints: [[10,4],[13,7],[7,6],[13,9]],
     seauSpawnpoints: [[4,10],[4,9]],
     imagePath: "assets/miniMap/Dock.PNG",
     name: "Dock",
@@ -627,9 +627,38 @@ var levels = [
     name: "Route 66",
     tutoText: ["Vroum Vroum"],
     tutoGuys : [0,0,1,0],
-  }
+  },
+  {
+    matrice: [
+      [ 3, 3, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 4, 3, 3],
+      [ 3,-1,25,-1,-1, 0, 0, 0, 0,17,-1, 0, 0, 0, 0, 0, 0,-1,-1,-1, 3],
+      [-1,-1,-1, 9, 9, 0,-1,-1, 0, 0, 0, 0,-1,24,-1,-1, 0, 0, 0,-1, 3],
+      [-1, 0, 0, 0, 0, 0, 2,-1,-1, 0,-1,-1, 7,-1,-1,-1, 8, 8, 0,-1, 0],
+      [-1, 0, 6, 0,-1,-1,-1,-1,-1, 0, 0, 0, 0, 0, 0,-1,-1,-1, 0,-1,26],
+      [-1, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0,-1,-1, 0,-1,-1, 0, 0,-1,-1],
+      [18, 0,-1,-1,-1,15,-1,-1,-1,-1, 0, 0,-1,-1, 0, 0,-1, 0, 6,-1,-1],
+      [ 3, 0,-1,-1,-1,12,12,12,12,12,12,12,12,14,-1, 0,-1, 0,24, 0,-1],
+      [ 3, 0, 0,-1,-1,-1,-1,-1,-1, 0,-1,-1,-1,-1,-1, 0, 2, 0, 0,-1,-1],
+      [ 3, 5, 5,-1,-1, 0,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0,20, 1, 1,-1, 3],
+      [ 3, 3, 0,-1,-1,25,-1,-1,-1,-1,-1,-1,-1, 6,-1,-1,-1,-1,-1,-1, 3],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3, 3,-1,-1,-1,-1,-1,-1, 3, 3]
+    ],
+    items: [itemsId.Poubelle,itemsId.Metal,itemsId.Plastique,itemsId.Carton],
+    itemsTime: 8000,
+    itemsPattern: false,
+    itemSpeed : 120,
+    chrono: 240,
+    score : 50,//score pour un joueur
+    pollution : 0,
+    spawnpoints: [[8,2],[9,2],[10,2],[11,2]],
+    seauSpawnpoints: [[6,3],[16,8]],
+    imagePath: "assets/miniMap/Nature.PNG",
+    name: "Nature",
+    tutoText:["Cette usine est abandonné. La nature y a repris ses droits"],
+    tutoGuys : [0,0,0,1],
 
 
+}
 
 ];
 
