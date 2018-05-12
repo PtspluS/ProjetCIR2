@@ -22,10 +22,14 @@ var end = {
     else {this.musicEnd = end.add.audio('endMusic');}
     //let musicEnd = end.add.audio('endMusic');
     this.musicEnd.play('',0,1,true);
-	
+
 	let success = false;
 	let successGrade = "";
-	if(this.equationResult>=2*this.target){
+  if(this.equationResult>=2*this.target && game.pollution.pollution == 0){
+    successGrade = 'S';
+	  success = true;
+  }
+	else if(this.equationResult>=1.9*this.target && game.pollution.pollution != 0){
 	  successGrade = 'A+';
 	  success = true;
 	  MenuGame.cursorMap += 1;
@@ -66,7 +70,7 @@ var end = {
 	  successGrade = 'F';
 	  success = false;
 	}
-	
+
 	// Fond d'ecran
 	let fond = end.add.sprite(end.world.centerX, end.world.centerY, ( (success) ? 'backgroundendg' : 'backgroundendb') );
 	fond.anchor.setTo(0.5,0.5);
@@ -75,7 +79,7 @@ var end = {
     for(let i = 0; i < 99; i++){
       tab[i] = i;
     }
-	
+
     //affichage du recap de partie et de la note
     let indication = ['Player : '+MenuOpt.nbPlayers,'Time : '+Math.floor(levels[MenuGame.cursorMap].chrono/60)+':'+levels[MenuGame.cursorMap].chrono%60,'Pollution : '+game.pollution.pollution+' %','Profit : '+game.score.score +'$','Score : '+this.equationResult];//tableau contenant toutes les infos à afficher pour résumer la partie
     let Result = end.add.bitmapText(end.world.width-500, 150,'font', 'Result :', 56);
@@ -92,7 +96,7 @@ var end = {
         GradeL.text = successGrade;
 		message.text = (success) ? "SUCCESS" : "FAILURE";
       }
-    
+
     },this);
     let Grade = end.add.bitmapText(end.world.width-400, posY+40*indication.length+60,'font','Grade : ',42);
     Grade.anchor.setTo(0.5,0.5);
