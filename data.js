@@ -696,32 +696,32 @@ var skins = [//permet de stocker tout les skins des persos
     name : 'billy',
     sprite : 'assets/billy.PNG',
     width : 44,
-    height : 68,
+    height : 68
   },{
     name : 'bob',
     sprite : 'assets/bob.PNG',
     width : 44,
-    height : 68,
+    height : 68
   },{
     name : 'walle',
     sprite : 'assets/walle.PNG',
     width : 44,
-    height : 68,
+    height : 68
   },{
     name : 'ghostbuster',
     sprite : 'assets/ghostbuster.PNG',
     width : 44,
-    height : 68,
+    height : 68
   },{
     name : 'hazman',
     sprite : 'assets/hazman.PNG',
     width : 44,
-    height : 68,
+    height : 68
   },{
     name : 'janine',
     sprite : 'assets/janine.PNG',
     width :44,
-    height : 68,
+    height : 68
   }
 ];
 
@@ -729,10 +729,7 @@ var citations = [
   "'Les musées préservent notre passé;\nle recyclage préserve notre avenir.'\n Theodor Wiesengrund Adorno",
   "'Il n'y a pas de passagers sur le vaisseau Terre. Nous sommes tous des membres de l'équipage.'\nMarshall McLuhan",
   "'L'homme se doit d'être le gardien de la nature, non son propriétaire.'\nPhilippe St Marc",
-  "'Les problèmes du monde ne peuvent être résolus par des sceptiques ou des cyniques dont les horizons se limitent aux réalités évidentes. Nous avons besoin d'hommes capables d'imaginer ce qui n'a jamais existé.'\nJohn F. Kennedy",
   "'Le coût de la protection du milieu naturel est beaucoup plus faible que le coût de sa reconstitution. La défense de la nature est rentable pour les nations.'\nPhilippe St Marc",
   "'Nous n'héritons pas de la terre de nos parents, nous l'empruntons à nos enfants.'\nAntoine de Saint-Exupéry",
-  "'Le développement durable n'est ni une utopie ni même une contestation, mais la condition de survie de l'économie de marché.'\nLouis Schweitzer",
-  "'Je ne me sens pas très bien ...'\nP.Parker",
-
+  "'Le développement durable n'est ni une utopie ni même une contestation, mais la condition de survie de l'économie de marché.'\nLouis Schweitzer"
 ];

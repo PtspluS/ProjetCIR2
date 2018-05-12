@@ -46,7 +46,7 @@ var Menu = {
     Menu.load.spritesheet('title','assets/logo.png',408,222);
     Menu.load.spritesheet('game','assets/buttons/game.png',172,80);
     Menu.load.spritesheet('controls','assets/buttons/controls.png',296,80);
-    Menu.load.spritesheet('background','assets/backgroundplanet.png',1344,768);
+    Menu.load.spritesheet('backgroundplanet','assets/backgroundplanet.png',1344,768);
 	Menu.load.spritesheet('items','assets/items.png', 56, 56);
   },
   create : function(){
@@ -58,7 +58,7 @@ var Menu = {
 	Menu.world.setBounds(0, 0, jeu.width, jeu.height);
 
 	// Fond d'ecran
-	let fond = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY, 'background');
+	let fond = Menu.add.sprite(Menu.world.centerX, Menu.world.centerY, 'backgroundplanet');
     fond.anchor.setTo(0.5,0.5);
     fond.animations.add('life', [0,1], 1, true);
     fond.play('life');
