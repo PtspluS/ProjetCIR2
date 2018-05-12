@@ -66,7 +66,6 @@ var end = {
 	  successGrade = 'F';
 	  success = false;
 	}
-	success = true;
 	
 	// Fond d'ecran
 	let fond = end.add.sprite(end.world.centerX, end.world.centerY, ( (success) ? 'backgroundendg' : 'backgroundendb') );
