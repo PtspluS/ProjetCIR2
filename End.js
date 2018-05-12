@@ -111,7 +111,7 @@ var end = {
     tip.fill = 'white';
 
     if(success){
-		let next = end.add.button(1225, 695,'next',()=>{
+		let next = end.add.button(1225, 690,'next',()=>{
 
 
 		  if(MenuGame.cursorMap >= levels.length-1){this.state.start('MenuGame');
@@ -138,14 +138,14 @@ var end = {
 
 		next.anchor.setTo(0.5,0.5);
 	}
-    let restart = end.add.button(1000,695,'restart',()=>{
+    let restart = end.add.button(1000,690,'restart',()=>{
       this.state.start('Game');
       this.musicEnd.stop();
 
     },this,1,0,2);
     restart.anchor.setTo(0.5,0.5);
 
-    let toMenu = end.add.button(775, 695,'menu',()=>{
+    let toMenu = end.add.button(775, 690,'menu',()=>{
       this.state.start('MenuGame');
       Menu.musicMenu.play("",0,0.6,true);
       this.musicEnd.stop();
