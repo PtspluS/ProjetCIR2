@@ -1,6 +1,6 @@
 MyScore=function(){
 this.score=0;
-this.scoretext = game.add.bitmapText(0, 0, 'font', 'Profit : '+this.score, 64);
+this.scoretext = game.add.bitmapText(0, 0, 'font', 'Profit : '+this.score+'$', 64);
 
 }
 
