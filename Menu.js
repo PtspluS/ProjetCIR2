@@ -41,18 +41,7 @@ var Menu = {
 
 		Menu.time.events.add(Math.floor(Math.random() * 2000) + 500, () => {this.moreJunk(groupe);} , this);
 	},
-  preload : function(){
-    Menu.load.audio('musicMenu','musics/musicMenu.mp3');//Musique du menu
-    Menu.load.spritesheet('title','assets/logo.png',408,222);
-    Menu.load.spritesheet('game','assets/buttons/game.png',172,80);
-    Menu.load.spritesheet('controls','assets/buttons/controls.png',296,80);
-    Menu.load.spritesheet('backgroundplanet','assets/backgroundplanet.png',1344,768);
-	Menu.load.spritesheet('items','assets/items.png', 56, 56);
-  },
   create : function(){
-
-    jeu.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL; // SHOW_ALL pour eviter les etirements
-    jeu.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT; // Rempli toute la fenetre (etirement minime en fullscreen)
 
 	// Bordures de la scene
 	Menu.world.setBounds(0, 0, jeu.width, jeu.height);
@@ -119,33 +108,12 @@ var MenuGame ={
 	mapName.text = levels[this.cursorMap].name;
 	imgMap.loadTexture(levels[this.cursorMap].name,0);
   },
-  preload : function(){
-    MenuGame.load.spritesheet('go','assets/buttons/go.png',104,80);
-    MenuGame.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
-    MenuGame.load.spritesheet('leftArrow', 'assets/buttons/leftbutton.png',74,76);
-    MenuGame.load.spritesheet('rightArrow','assets/buttons/rightbutton.png',74,76);
-    MenuGame.load.image('player1','assets/buttons/player1.png',104,92);
-    MenuGame.load.image('player2','assets/buttons/player2.png',104,92);
-    MenuGame.load.image('player3','assets/buttons/player3.png',104,92);
-    MenuGame.load.image('player4','assets/buttons/player4.png',104,92);
-    MenuGame.load.image('background','assets/backgroundselection.png',1344,768);
-    MenuGame.load.image('case','assets/case.png',376,276);
-    MenuGame.load.image('casemap','assets/casemap.png',380,516);
-
-    for (let lvl in levels) {//boucle de chargement de tt les lvl
-      MenuGame.load.image(levels[lvl].name,levels[lvl].imagePath);
-    };
-    for (let sk in skins) {//boucle de chargement de tt les skins
-      MenuGame.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
-    }
-    MenuGame.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
-  },
   create : function(){
 	// Bordures de la scene
 	MenuGame.world.setBounds(0, 0, jeu.width, jeu.height);
 
 	// Fond d'ecran
-	let fond = MenuGame.add.sprite(MenuGame.world.centerX, MenuGame.world.centerY, 'background');
+	let fond = MenuGame.add.sprite(MenuGame.world.centerX, MenuGame.world.centerY, 'backgroundselection');
 	fond.anchor.setTo(0.5,0.5);
 	let casemap = MenuGame.add.sprite(MenuGame.world.centerX, MenuGame.world.centerY + 10, 'casemap');
 	casemap.anchor.setTo(0.5,0.5);
@@ -421,26 +389,6 @@ createPlayerColumn: function(groupe, id){
     groupe.add(buttonP_0);
   }
 },
-preload: function(){
-  MenuOpt.load.spritesheet('background','assets/backgroundtiled.png',1344,768);
-  MenuOpt.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
-  MenuOpt.load.spritesheet('pbup','assets/buttons/pbup.png',174,60);
-  MenuOpt.load.spritesheet('pbdown','assets/buttons/pbdown.png',174,60);
-  MenuOpt.load.spritesheet('pbleft','assets/buttons/pbleft.png',174,60);
-  MenuOpt.load.spritesheet('pbright','assets/buttons/pbright.png',174,60);
-  MenuOpt.load.spritesheet('pbgrab','assets/buttons/pbgrab.png',174,60);
-  MenuOpt.load.spritesheet('pbaction','assets/buttons/pbaction.png',174,60);
-  MenuOpt.load.spritesheet('leftArrow', 'assets/buttons/leftbutton.png',74,76);
-  MenuOpt.load.spritesheet('rightArrow','assets/buttons/rightbutton.png',74,76);
-  MenuOpt.load.spritesheet('gamepad','assets/buttons/gamepad.png',104,92);
-  MenuOpt.load.spritesheet('fullscreen','assets/buttons/fullscreen.png',84,92);
-  MenuOpt.load.image('player1','assets/buttons/player1.png',104,92);
-  MenuOpt.load.image('player2','assets/buttons/player2.png',104,92);
-  MenuOpt.load.image('player3','assets/buttons/player3.png',104,92);
-  MenuOpt.load.image('player4','assets/buttons/player4.png',104,92);
-
-  MenuOpt.load.bitmapFont('font', 'fonts/fontwith.png', 'fonts/fontwith.fnt');//chargement de la police
-},
 create : function(){
 
   MenuOpt.input.gamepad.start();
@@ -450,7 +398,7 @@ create : function(){
   MenuOpt.world.setBounds(0, 0, jeu.width, jeu.height);
 
   // Fond d'ecran
-  let fond = MenuOpt.add.sprite(MenuOpt.world.centerX, MenuOpt.world.centerY, 'background');
+  let fond = MenuOpt.add.sprite(MenuOpt.world.centerX, MenuOpt.world.centerY, 'backgroundtiled');
   fond.anchor.setTo(0.5,0.5);
 
   var playersGroups = [MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group(), MenuOpt.add.group()];

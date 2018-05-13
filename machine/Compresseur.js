@@ -1,8 +1,8 @@
 Compresseur = function(sprite,posx,posy,groupe,itemgroupe){
-  this.compresseur = groupe.create(posx,posy,sprite);
-  this.compresseur.animations.add('actif', [ 0, 1, 2, 3, 0, 4, 5, 6, 5, 4, 0, 1, 2, 3, 0], 10, false);
-  this.compresseur.frame = 0;
-  this.work = false;
+    this.compresseur = groupe.create(posx,posy,sprite);
+    this.compresseur.animations.add('actif', [ 0, 1, 2, 3, 0, 4, 5, 6, 5, 4, 0, 1, 2, 3, 0], 10, false);
+    this.compresseur.frame = 0;
+    this.work = false;
 
 	this.item1 = itemgroupe.create(this.compresseur.x + 2, this.compresseur.y + 24, 'itemsbubbles');
 	this.item1.frame = 0;
@@ -16,7 +16,6 @@ Compresseur = function(sprite,posx,posy,groupe,itemgroupe){
 	this.itemf = itemgroupe.create(this.compresseur.x + 100, this.compresseur.y + 14, 'itemsbubbles');
 	this.itemf.frame = 0;
 	this.stockf = 0;
-		this.compresseurrsound = game.add.audio('compresseursound');
 }
 
 Compresseur.prototype.interact = function(){
@@ -90,7 +89,6 @@ Compresseur.prototype.typesort = function(itemend){
 	this.item1.frame = 0;
 	this.item2.frame = 0;
 	this.item3.frame = 0;
-  this.compresseurrsound.play();
 	game.time.events.add(1400, () => {this.iswork(itemend);} , this);
 	return;
 }

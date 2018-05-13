@@ -1,16 +1,13 @@
 Presse = function(sprite,posx,posy,groupe,itemgroupe){
-  this.presse = groupe.create(posx,posy,sprite);
-  this.presse.animations.add('actif', [0,1,2,3,4,5,6,7,8,9,10,11,12,8,7,6,5,4,3,2,1,0], 5, false);
-  this.presse.frame = 0;
-  this.stock = 0;
-  this.work = false;
-  this.weight=0;
+    this.presse = groupe.create(posx,posy,sprite);
+   this.presse.animations.add('actif', [0,1,2,3,4,5,6,7,8,9,10,11,12,8,7,6,5,4,3,2,1,0], 5, false);
+    this.presse.frame = 0;
+    this.stock = 0;
+    this.work = false;
+    this.weight=0;
 
 	this.item = itemgroupe.create(this.presse.x + 18, this.presse.y + 70, 'itemsbubbles');
 	this.item.frame = 0;
-
-  this.pressesound = game.add.audio('pressesound');
-
 }
 
 Presse.prototype.interact = function(){
@@ -67,7 +64,6 @@ Presse.prototype.typesort = function(itemId, itemend){
 	this.presse.play('actif');
 	this.stock = itemId;
 	this.item.frame = itemId;
-    this.pressesound.play();
 	game.time.events.add(4400, () => {this.iswork(itemend);} , this);
 	return;
 }

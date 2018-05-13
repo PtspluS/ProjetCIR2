@@ -8,7 +8,6 @@ Benne = function(sprite,posx,posy,groupe,type){
 	this.posy=posy+10;
 	this.scoretext = game.add.bitmapText(this.posx,this.posy, 'font', '', 30);
 	game.physics.arcade.enable([ this.scoretext ]);
-
 }
 Benne.prototype.addscore=function(value){
 	game.world.bringToTop(this.scoretext);
@@ -20,8 +19,6 @@ Benne.prototype.addscore=function(value){
 		this.scoretext.body.velocity.y=0;
 		this.scoretext.text='';
 	},this);
-
-
 }
 
 Benne.prototype.interact = function(){

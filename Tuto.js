@@ -19,15 +19,6 @@ var Tuto ={
 
 		}
 	},
-	preload : function(){
-		Tuto.load.spritesheet('martintuto','assets/martintuto.png',140,340);
-		Tuto.load.spritesheet('petuto','assets/petuto.png',140,308);
-		Tuto.load.spritesheet('pierretuto','assets/pierretuto.png',128,292);
-		Tuto.load.spritesheet('tottituto','assets/tottituto.png',132,300);
-		Tuto.load.spritesheet('help','assets/help.png', 397, 60);
-		Tuto.load.spritesheet('skip','assets/buttons/skip.png',196,80);
-		Tuto.load.spritesheet('backgroundtuto','assets/backgroundTuto.png',1344,768);
-	},
 	create : function(){
 		this.textCursor = 0;
 		this.charCursor = 0;

@@ -1,16 +1,13 @@
 Soufflerie = function(sprite,posx,posy,groupe,itemgroupe){
-  this.souffle = groupe.create(posx,posy,sprite);
-  this.souffle.animations.add('actif', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22], 5, false);
-  this.souffle.frame = 0;
-  this.stock = 0;
-  this.work = false;
-  this.weight=0;
+    this.souffle = groupe.create(posx,posy,sprite);
+    this.souffle.animations.add('actif', [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22], 5, false);
+    this.souffle.frame = 0;
+    this.stock = 0;
+    this.work = false;
+    this.weight=0;
 
 	this.item = itemgroupe.create(this.souffle.x + 18, this.souffle.y + 60, 'itemsbubbles');
 	this.item.frame = 0;
-
-    this.souffleriesound = game.add.audio('souffleriesound');
-
 }
 
 Soufflerie.prototype.interact = function(){
@@ -42,9 +39,6 @@ Soufflerie.prototype.drop=function(itemId){
 				this.typesort(itemsId.SceauVerreLiquide3, itemsId.BouteilleVerre3);
 				return itemsId.SceauVerreLiquide0;
 				break;
-
-
-
 		}
 	}
 	// En cas de possible erreur, on retourne l'objet passe en argument
@@ -55,7 +49,6 @@ Soufflerie.prototype.typesort = function(itemId, itemend){
 	this.work = true;
 	this.souffle.play('actif');
 	this.stock = itemId;
-  this.souffleriesound.play();
 	game.time.events.add(4400, () => {this.iswork(itemend);} , this);
 	return;
 }

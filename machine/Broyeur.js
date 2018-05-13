@@ -1,10 +1,10 @@
 Broyeur = function(sprite,posx,posy,groupe,itemgroupe){
-		this.broyeur = groupe.create(posx,posy,sprite);
+	this.broyeur = groupe.create(posx,posy,sprite);
 	this.broyeur.animations.add('actif', [0, 1], 10, true);
 	this.stock = 0;
-  this.work=false;
+    this.work=false;
 	this.container=null;
-this.weight=0;
+	this.weight=0;
 
 	this.item = itemgroupe.create(this.broyeur.x + 18, this.broyeur.y + 10, 'itemsbubbles');
 	this.item.frame = 0;

@@ -1,16 +1,14 @@
 Bassine = function(sprite,posx,posy,groupe,itemgroupe){
-  this.bassine = groupe.create(posx,posy,sprite);
-  this.bassine.animations.add('actif', [ 3, 4, 5], 10, true);
-  this.bassine.animations.add('inactif', [ 1, 2], 2, true);
-  this.bassine.frame = 0;
-  this.stock = 0;
-  this.work = false;
-  this.working = 0;
+    this.bassine = groupe.create(posx,posy,sprite);
+    this.bassine.animations.add('actif', [ 3, 4, 5], 10, true);
+    this.bassine.animations.add('inactif', [ 1, 2], 2, true);
+    this.bassine.frame = 0;
+    this.stock = 0;
+    this.work = false;
+    this.working = 0;
 
 	this.item = itemgroupe.create(this.bassine.x + 18, this.bassine.y + 34, 'itemsbubbles');
 	this.item.frame = 0;
-
-this.bassinesound = game.add.audio('bassinesound');
 }
 
 Bassine.prototype.interact = function(){
@@ -18,7 +16,6 @@ Bassine.prototype.interact = function(){
 		this.bassine.animations.stop();
 		this.bassine.play('actif');
 		this.working++;
-  this.bassinesound.play();
 	}else if (this.work){
 		this.working++;
 		if(this.working >= 10){

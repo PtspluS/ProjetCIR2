@@ -7,7 +7,6 @@ Incinerateur = function(sprite,posx,posy,groupe){
 	this.posy=posy+10;
 	this.scoretext = game.add.bitmapText(this.posx,this.posy, 'fontred', '', 30);
 	game.physics.arcade.enable([ this.scoretext ]);
-	this.incinerateursound = game.add.audio('incinerateursound');
 }
 
 Incinerateur.prototype.addscore=function(){
@@ -21,8 +20,6 @@ Incinerateur.prototype.addscore=function(){
 		this.scoretext.body.velocity.y=0;
 		this.scoretext.text='';
 	},this);
-
-
 }
 
 Incinerateur.prototype.interact = function(){
@@ -33,7 +30,6 @@ Incinerateur.prototype.drop = function(itemId){
 	if(itemId != 0){
 		game.cameraShake(0);
 		this.addscore(-100);
-		this.incinerateursound.play();
 		return 0;
 	}
 	// En cas de possible erreur, on retourne l'objet passe en argument

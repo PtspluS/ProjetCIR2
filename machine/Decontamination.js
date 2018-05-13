@@ -41,6 +41,7 @@ DecontaminationDecontaminateur = function(sprite, posx, posy, groupe, itemGroup)
 	this.decontaminateur.frame = 0;
 	
 	this.stock = 0;
+	this.work = false;
 	
 	this.item = itemGroup.create(this.decontaminateur.x + 18, this.decontaminateur.y + 60, 'itemsbubbles');
 	this.item.frame = 0;
@@ -51,7 +52,7 @@ DecontaminationDecontaminateur.prototype.interact = function(){
 }
 
 DecontaminationDecontaminateur.prototype.drop = function(itemId){
-	if(itemId == 0 && this.stock != 0){
+	if(itemId == 0 && this.stock != 0 && this.work == false){
 		this.decontaminateur.frame = 0;
 		this.item.frame = 0;
 		let tmp = this.stock;
@@ -92,6 +93,7 @@ DecontaminationBouton.prototype.interact = function(){
 		// On demarre les decontaminateurs
 		for(let i = 0; i < this.deconta.decontaminateurs.length; i++){
 			this.deconta.decontaminateurs[i].decontaminateur.play('actif');
+			this.deconta.decontaminateurs[i].work = true;
 		}
 		// On lance la fumee
 		for(let i = 0; i < this.deconta.sols.length; i++){
@@ -109,8 +111,11 @@ DecontaminationBouton.prototype.interact = function(){
 			// On arrete les decontaminateurs
 			for(let i = 0; i < this.deconta.decontaminateurs.length; i++){
 				this.deconta.decontaminateurs[i].decontaminateur.play('fin');
-				this.deconta.decontaminateurs[i].item.frame = itemsId.Nucleaire;
-				this.deconta.decontaminateurs[i].stock = itemsId.Nucleaire;
+				game.time.events.add(1000, () => { // Afin d'attendre que l'animation se termine
+					this.deconta.decontaminateurs[i].item.frame = itemsId.Nucleaire;
+					this.deconta.decontaminateurs[i].stock = itemsId.Nucleaire;
+					this.deconta.decontaminateurs[i].work = false;
+				}, this);
 			}
 			
 			// On decontamine les objets
