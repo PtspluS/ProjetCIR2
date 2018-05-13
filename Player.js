@@ -158,7 +158,7 @@ Player.prototype.wait=function(){
 	}
 }
 
-Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,trucks,otherplayer){
+Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,cursordrop,cursorinteract,platforms,trucks,fumee,otherplayer){
 	for(let i = 0; i < otherplayer.length; i++){ // Eviter que les joueurs rentre dans les autres joueurs ou murs
 		var hitPlatform = game.physics.arcade.collide(otherplayer[i].player,platforms);
 		var hitPlayer = game.physics.arcade.collide(this.player,otherplayer[i].player);
@@ -173,10 +173,21 @@ Player.prototype.update=function(cursorup,cursordown,cursorleft,cursorright,curs
 			this.player.alpha = 0.2;
 			let stuntime = 3000; // Duree de la paralysie
 			game.add.tween(this.player).to( { alpha: 1 }, stuntime, Phaser.Easing.Linear.None, true);
-			game.time.events.add(3000, () => {this.stun = false;} , this);
+			game.time.events.add(stuntime, () => {this.stun = false;} , this);
 			
 			game.cameraShake(0);
 		}
+	}
+	
+	if(game.physics.arcade.collide(this.player,fumee)){
+		this.stun = true;
+		this.player.position.x = this.spawnx;
+		this.player.position.y = this.spawny;
+		this.player.alpha = 0.2;
+		let stuntime = 4000; // Duree de la paralysie
+		game.add.tween(this.player).to( { alpha: 1 }, stuntime, Phaser.Easing.Linear.None, true);
+		game.time.events.add(stuntime, () => {this.stun = false;} , this);
+		game.cameraShake(0);
 	}
 	
 	this.item.x = this.player.x - 6;
