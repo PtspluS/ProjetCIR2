@@ -19,6 +19,8 @@
 	object.enableBody = true;
 	itemGui=game.add.group();
 	itemGui.enableBody = true;
+	smokeGroup=game.add.group();
+	smokeGroup.enableBody = true;
 
 	// Generation de la map
 	for(let j = 0; j < matrice.length; j++){
@@ -307,12 +309,13 @@
 			case 29:{ // DECONTAMINATION BOUTON
 				let tuile = platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
-				map[j][i] = new DecontaminationBouton('decontabouton', i*64, j*64 - (74 - 64), object, processDeconta);
+				map[j][i] = new DecontaminationBouton('decontabouton', i*64, j*64 - (74 - 64), object, processDeconta, smokeGroup);
 			break;}
 			
 			case 30:{ // DECONTAMINATION TABLE
 				let tuile=platformsSolid.create(i*64, j*64, 'decontasol');
 				tuile.body.immovable = true;
+				processDeconta.sols.push(tuile);
 				let table = new Table('decontatable', i*64, j*64 - (84-64), object, itemGui);
 				processDeconta.tables.push(table);
 				map[j][i] = table;
@@ -326,7 +329,7 @@
 			break;}
 			
 			case 32:{ // DECONTAMINATION DECONTAMINATEUR
-				let tuile=platformsSolid.create(i*64, j*64, 'decontasol');
+				let tuile=platformsSolid.create(i*64, j*64, 'ground');
 				tuile.body.immovable = true;
 				let decontaminateur = new DecontaminationDecontaminateur('decontaminateur', i*64, j*64 - (96 - 64), object, itemGui);
 				processDeconta.decontaminateurs.push(decontaminateur);
@@ -348,6 +351,7 @@
 	game.world.bringToTop(truckGroup);
 	game.world.bringToTop(object);
 	game.world.bringToTop(itemGui);
+	game.world.bringToTop(smokeGroup);
 
 	  return map;
   }

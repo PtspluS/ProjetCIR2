@@ -63,11 +63,14 @@ DecontaminationDecontaminateur.prototype.drop = function(itemId){
 
 // ====== BOUTON ======
 
-DecontaminationBouton = function(sprite, posx, posy, groupe, processusDecontamination){
+DecontaminationBouton = function(sprite, posx, posy, groupe, processusDecontamination, smoke){
 	this.bouton = groupe.create(posx, posy, sprite);
 	this.bouton.animations.add('actif', [1, 2], 5, true);
 	this.bouton.frame = 0;
 	this.work = false;
+	this.groupeFumee = smoke;
+	
+	this.decontatime = 5000;
 	
 	this.deconta = processusDecontamination;
 }
@@ -90,7 +93,14 @@ DecontaminationBouton.prototype.interact = function(){
 		for(let i = 0; i < this.deconta.decontaminateurs.length; i++){
 			this.deconta.decontaminateurs[i].decontaminateur.play('actif');
 		}
-		game.time.events.add(5000, () => {
+		// On lance la fumee
+		for(let i = 0; i < this.deconta.sols.length; i++){
+			let smoke = this.groupeFumee.create(this.deconta.sols[i].position.x, this.deconta.sols[i].position.y - 14, 'decontafumee');
+			game.add.tween(smoke).to( { alpha: 0 }, this.decontatime, Phaser.Easing.Linear.None, true);
+			smoke.body.immovable = true;
+			game.time.events.add(this.decontatime, () => {smoke.destroy();},this);
+		}
+		game.time.events.add(this.decontatime, () => {
 			this.bouton.frame = 0;
 			// On ouvre les sas
 			for(let i = 0; i < this.deconta.sas.length; i++){

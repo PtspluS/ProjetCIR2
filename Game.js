@@ -220,6 +220,7 @@ var game = {
 		game.load.image('decontatable','assets/decontatable.png');
 		game.load.image('decontasol','assets/decontasol.png');
 		game.load.image('decontabarrils','assets/decontabarrils.png');
+		game.load.image('decontafumee','assets/decontafumee.png');
 
 		//Sprites Pause
 		game.load.spritesheet('help','assets/help.png', 397, 60);
