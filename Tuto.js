@@ -22,7 +22,7 @@ var Tuto ={
 	create : function(){
 		this.textCursor = 0;
 		this.charCursor = 0;
-		
+
 		// Fond d'ecran
 		let fond = Tuto.add.sprite(Tuto.world.centerX, Tuto.world.centerY, 'backgroundtuto');
 		fond.anchor.setTo(0.5,0.5);
@@ -90,7 +90,7 @@ var Tuto ={
 				j++;
 				imagetuto.scale.setTo(1.2,1.2);
 				imagetuto.anchor.setTo(0.5,0.5);
-				imagetuto.frame=4;//parseInt(i.substr(1,1));
+				imagetuto.frame=parseInt(i.substr(1,1));
 			}}
 		}
 	}
