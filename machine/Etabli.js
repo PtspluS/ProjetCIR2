@@ -15,7 +15,7 @@ Etabli = function(sprite, posx, posy, poubelles, groupe,itemgroupe){
 	// On enleve les sacs des possibles objets sortant des sacs poubelle
 	this.mapJunk = [];
 	for(let i = 0; i < poubelles.length; i++){
-		if(poubelles[i] != itemsId.Poubelle){
+		if(poubelles[i] != itemsId.Poubelle && poubelles[i] != itemsId.RadPoubelle){
 			this.mapJunk.push(poubelles[i]);
 		}
 	}
