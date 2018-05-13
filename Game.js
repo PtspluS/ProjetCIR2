@@ -71,43 +71,55 @@ var game = {
 
 				// Aides
 				var pauseHelps = [];
-				pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+				pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 110), 'help'));
 				pauseHelps[pauseHelps.length - 1].frame = 5;
 				pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 				pauseHelps[pauseHelps.length - 1].alpha = 0;
-				if(levels[this.id].items.indexOf(itemsId.Metal) != -1){
-					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+				if(levels[this.id].items.indexOf(itemsId.Metal) != -1 || levels[this.id].items.indexOf(itemsId.RadMetal) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 110), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 0;
-							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
-				if(levels[this.id].items.indexOf(itemsId.Carton) != -1){
-					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+				if(levels[this.id].items.indexOf(itemsId.Carton) != -1 || levels[this.id].items.indexOf(itemsId.RadCarton) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 110), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 1;
-							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
-				if(levels[this.id].items.indexOf(itemsId.Pneu) != -1){
-					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+				if(levels[this.id].items.indexOf(itemsId.Pneu) != -1 || levels[this.id].items.indexOf(itemsId.RadPneu) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 110), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 2;
-							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
-				if(levels[this.id].items.indexOf(itemsId.Plastique) != -1){
-					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+				if(levels[this.id].items.indexOf(itemsId.Plastique) != -1 || levels[this.id].items.indexOf(itemsId.RadPlastique) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 110), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 3;
-							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
-				if(levels[this.id].items.indexOf(itemsId.Verre) != -1){
-					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 200), 'help'));
+				if(levels[this.id].items.indexOf(itemsId.Verre) != -1 || levels[this.id].items.indexOf(itemsId.RadVerre) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 110), 'help'));
 					pauseHelps[pauseHelps.length - 1].frame = 4;
-							pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
+				}
+				if(levels[this.id].items.indexOf(itemsId.Poubelle) != -1 || levels[this.id].items.indexOf(itemsId.RadPoubelle) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 110), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 6;
+					pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
+					pauseHelps[pauseHelps.length - 1].alpha = 0;
+				}
+				if(levels[this.id].items.indexOf(itemsId.RadPoubelle) != -1 || levels[this.id].items.indexOf(itemsId.RadCarton) != -1 || levels[this.id].items.indexOf(itemsId.RadVerre) != -1 || levels[this.id].items.indexOf(itemsId.RadPlastique) != -1 || levels[this.id].items.indexOf(itemsId.RadPneu) != -1 || levels[this.id].items.indexOf(itemsId.RadMetal) != -1){
+					pauseHelps.push(this.pauseGroup.create(700, (pauseHelps.length * 80 + 110), 'help'));
+					pauseHelps[pauseHelps.length - 1].frame = 7;
+					pauseHelps[pauseHelps.length - 1].scale.setTo(1.4,1.4);
 					pauseHelps[pauseHelps.length - 1].alpha = 0;
 				}
 
 				// Boutons
-				let pauseHelpb = game.add.button(900, 100, 'helpbutton', () => {
+				let pauseHelpb = game.add.button(900, 50, 'helpbutton', () => {
 					// Affiche / enleve les aides
 					for(let i = 0; i < pauseHelps.length; i++){
 						pauseHelps[i].alpha = (pauseHelps[i].alpha + 1) % 2;
