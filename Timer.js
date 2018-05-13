@@ -4,7 +4,7 @@ MyTimer=function(duration){
   this.timer = game.time.create(false);//timer
   this.timer.loop(1000,()=>{this.valuetime++;}, this);
   this.timer.start();
-  this.timertext = game.add.bitmapText(21*64, 0, 'font', 'Time '+(this.timemax/60)+':'+(this.timemax%60), 64);
+  this.timertext = game.add.bitmapText(21*64, 0, 'font', 'Temps '+(this.timemax/60)+':'+(this.timemax%60), 64);
 
   this.timertext.anchor.x=1;
 

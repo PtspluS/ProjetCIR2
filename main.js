@@ -18,15 +18,15 @@ Preloader = { // Chargement de toutes les dependances
 		// Barre de chargement
 		let background = this.add.sprite(0, 0, 'backgroundloading');
 		this.preloadBar = this.add.sprite(Preloader.world.centerX - 672/2, Preloader.world.centerY, 'loadingbar');
-		
+
 		this.preloadBar.animations.add('run', [0,1,2,3], 4, true);
 		this.preloadBar.play('run');
 		this.preloadBar.anchor.setTo(0,0.5);
 		this.load.setPreloadSprite(this.preloadBar);
-		
+
 		let loadText = Preloader.add.bitmapText(Preloader.world.centerX, 250,'font','Loading...',100);
 		loadText.anchor.setTo(0.5,0.5);
-		
+
 		// ---- Dependances du Menu ----
 		Preloader.load.audio('musicMenu','musics/musicMenu.mp3');//Musique du menu
 		Preloader.load.spritesheet('title','assets/logo.png',408,222);
@@ -34,7 +34,7 @@ Preloader = { // Chargement de toutes les dependances
 		Preloader.load.spritesheet('controls','assets/buttons/controls.png',296,80);
 		Preloader.load.spritesheet('backgroundplanet','assets/backgroundplanet.png',1344,768);
 		Preloader.load.spritesheet('items','assets/items.png', 56, 56);
-		
+
 		// ---- Dependances du Menu de Selection des niveaux ----
 		Preloader.load.spritesheet('go','assets/buttons/go.png',104,80);
 		Preloader.load.spritesheet('back','assets/buttons/backbutton.png',68,84);
@@ -47,14 +47,14 @@ Preloader = { // Chargement de toutes les dependances
 		Preloader.load.image('backgroundselection','assets/backgroundselection.png',1344,768);
 		Preloader.load.image('case','assets/case.png',376,276);
 		Preloader.load.image('casemap','assets/casemap.png',380,516);
-		
+
 		for (let lvl in levels) {// Chargement de toutes les minimaps des levels
 			Preloader.load.image(levels[lvl].name,levels[lvl].imagePath);
 		};
 		for (let sk in skins) {// Chargement de toutes les skins de joueur
 			Preloader.load.spritesheet(skins[sk].name, skins[sk].sprite, skins[sk].width, skins[sk].height);
 		}
-		
+
 		// ---- Dependances du Menu des Options ----
 		Preloader.load.spritesheet('backgroundtiled','assets/backgroundtiled.png',1344,768);
 		Preloader.load.spritesheet('pbup','assets/buttons/pbup.png',174,60);
@@ -65,7 +65,7 @@ Preloader = { // Chargement de toutes les dependances
 		Preloader.load.spritesheet('pbaction','assets/buttons/pbaction.png',174,60);
 		Preloader.load.spritesheet('gamepad','assets/buttons/gamepad.png',104,92);
 		Preloader.load.spritesheet('fullscreen','assets/buttons/fullscreen.png',84,92);
-		
+
 		// ---- Dependances du Tuto ----
 		Preloader.load.spritesheet('martintuto','assets/martintuto.png',140,340);
 		Preloader.load.spritesheet('petuto','assets/petuto.png',140,308);
@@ -74,9 +74,9 @@ Preloader = { // Chargement de toutes les dependances
 		Preloader.load.spritesheet('help','assets/help.png', 397, 60);
 		Preloader.load.spritesheet('skip','assets/buttons/skip.png',196,80);
 		Preloader.load.spritesheet('backgroundtuto','assets/backgroundTuto.png',1344,768);
-		
+
 		//  ---- Dependances du Jeu ----
-		
+
 		// Sprites du jeu
 		Preloader.load.spritesheet('oven','assets/ovenanimation.png',64,94)
 		Preloader.load.spritesheet('items','assets/items.png', 56, 56);
@@ -110,7 +110,7 @@ Preloader = { // Chargement de toutes les dependances
 		Preloader.load.image('pipe','assets/pipe.png');
 		Preloader.load.image('barrel','assets/barrel.png');
 		Preloader.load.image('crate','assets/crate.png');
-		
+
 		//Sprites Decontamination
 		Preloader.load.spritesheet('decontaminateur','assets/decontaminateur.png',64,96);
 		Preloader.load.spritesheet('decontabouton','assets/decontabouton.png',64,74);
@@ -125,15 +125,17 @@ Preloader = { // Chargement de toutes les dependances
 		Preloader.load.spritesheet('restart','assets/buttons/restart.png',264,80);
 		Preloader.load.spritesheet('menu','assets/buttons/menu.png',168,80);
 		Preloader.load.spritesheet('helpbutton','assets/buttons/helpbutton.png',204,80);
-		
+
 		Preloader.load.bitmapFont('fontred', 'fonts/font.png', 'fonts/font.fnt');//chargement de la police
-		
+
 		Preloader.load.audio('musicGame','musics/Indystopia.mp3')
-		
+
 		// ---- Dependances de la Fin ----
 		Preloader.load.audio('endMusic','musics/endMusic.mp3');
 		Preloader.load.audio('easterEgg','musics/eminem.mp3');
-		
+
+		Preloader.load.spritesheet('next','assets/buttons/next.png',168,80);
+
 		Preloader.load.spritesheet('backgroundendg','assets/backgroundEndG.png',1344,768);
 		Preloader.load.spritesheet('backgroundendb','assets/backgroundEndB.png',1344,768);
 	},
