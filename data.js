@@ -629,7 +629,7 @@ var levels = [
       pollution : 0,
     spawnpoints: [[18,4],[18,5],[18,6],[18,7]],
     seauSpawnpoints: [[8,10],[15,3],[11,8]],
-    imagePath: "assets/miniMap/",
+    imagePath: "assets/miniMap/pathfinding.png",
     name: "Pathfinding",
     tutoText: [],
     tutoGuys : [0,1,0,0]
@@ -657,7 +657,7 @@ var levels = [
     pollution : 0,
     spawnpoints: [[10,4],[13,7],[7,6],[13,9]],
     seauSpawnpoints: [[4,10],[4,9]],
-    imagePath: "assets/miniMap/Dock.PNG",
+    imagePath: "assets/miniMap/dock.PNG",
     name: "Dock",
     tutoText: [],
     tutoGuys : [0,0,1,0]
@@ -687,7 +687,7 @@ var levels = [
     pollution : 0,
     spawnpoints: [[1,5],[15,5],[2,5],[16,5]],
     seauSpawnpoints: [[2,4],[4,9],[4,6],[15,7],[17,4]],
-    imagePath: "assets/miniMap/Route.PNG",
+    imagePath: "assets/miniMap/route66.PNG",
     name: "Route 66",
     tutoText: [],
     tutoGuys : [0,0,1,0]
@@ -715,11 +715,11 @@ var levels = [
     pollution : 0,
     spawnpoints: [[4,5],[4,7],[5,5],[5,7]],
     seauSpawnpoints: [[8,10],[9,10],[3,10],[7,2],[14,2],[15,2]],
-    imagePath: "assets/miniMap/Route.PNG",
+    imagePath: "assets/miniMap/chaquecote.PNG",
     name: "De chaque cote",
     tutoText: [],
     tutoGuys : [0,0,1,0]
-  }/* en vrai je l aime pas, {
+  }, {
     matrice: [
     [ 3, 3,25,-1, 6,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3, 3, 3, 3],
     [ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,20,16,24, 3],
@@ -743,12 +743,12 @@ var levels = [
     pollution : 0,
     spawnpoints: [[2,8],[3,8],[2,9],[2,7]],
     seauSpawnpoints: [[3,7],[5,8]],
-    imagePath: "assets/miniMap/Nature.PNG",
-    name: "3 voie",
+    imagePath: "assets/miniMap/3voies.PNG",
+    name: "3 voies",
     tutoText:["Je sais pas d ou ca sort mais j ai deja vu ca quelque part"],
     tutoGuys : [0,0,0,1],
 
-}*/
+}
 
 ];
 
@@ -759,18 +759,13 @@ var skins = [//permet de stocker tout les skins des persos
     width : 44,
     height : 68
   },{
+    name : 'janine',
+    sprite : 'assets/janine.PNG',
+    width :44,
+    height : 68
+  },{
     name : 'bob',
     sprite : 'assets/bob.PNG',
-    width : 44,
-    height : 68
-  },{
-    name : 'walle',
-    sprite : 'assets/walle.PNG',
-    width : 44,
-    height : 68
-  },{
-    name : 'ghostbuster',
-    sprite : 'assets/ghostbuster.PNG',
     width : 44,
     height : 68
   },{
@@ -779,9 +774,14 @@ var skins = [//permet de stocker tout les skins des persos
     width : 44,
     height : 68
   },{
-    name : 'janine',
-    sprite : 'assets/janine.PNG',
-    width :44,
+    name : 'ghostbuster',
+    sprite : 'assets/ghostbuster.PNG',
+    width : 44,
+    height : 68
+  },{
+    name : 'walle',
+    sprite : 'assets/walle.PNG',
+    width : 44,
     height : 68
   }
 ];
