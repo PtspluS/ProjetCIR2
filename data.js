@@ -273,9 +273,8 @@ var levels = [
   {
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
-      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
       [-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1],
-      [-1,-1, 3,15, 0, 3,30,30,30, 3,25, 0, 0, 0, 9, 9, 2, 2, 3,-1,-1],
+      [-1,-1, 3,15, 0, 3,30,30,30, 3,25,25, 0, 0, 9, 9, 2, 2, 3,-1,-1],
       [-1,-1, 3,11, 0, 3,28,28,28, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1],
       [-1,-1, 3,11, 0, 3,29,31, 3, 3, 0, 6, 0, 0, 1, 1, 0, 0, 3,-1,-1],
       [-1,-1, 3,11, 0, 0, 0, 0,32, 0, 0, 6, 0, 0, 0, 0, 0, 0, 3,-1,-1],
@@ -284,6 +283,7 @@ var levels = [
       [-1,-1, 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1],
       [-1,-1, 3,12,12,12,14, 0, 2, 0,27,17,19,20, 0, 0, 8, 8, 3,-1,-1],
       [-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
     ],
     items: [itemsId.RadPneu,itemsId.RadCarton,itemsId.RadMetal],
     itemsTime: 15000,
@@ -292,17 +292,18 @@ var levels = [
     chrono: 360,
     score : 50,//score pour un joueur
     pollution : 0,
-    spawnpoints: [[4,3],[4,4],[4,5],[4,6]],
-    seauSpawnpoints: [[15,8],[16,3]],
-    imagePath: "assets/miniMap/tuto8.PNG",
+    spawnpoints: [[4,2],[12,2],[4,8],[17,8]],
+    seauSpawnpoints: [[15,7],[16,2]],
+    imagePath: "assets/miniMap/level8.png",
     name: "Tutoriel 8",
-    tutoText:["Alors voici un cas exeptionel. Ici les dechet sont radioactif",
-    "Il faut poser les objets radioactif sur les table blanche dans la salle de decontamination. Ensuite appuyer sur la commande de lancement",
-    "Ne rester pas dans le sas ce n est pas tres bon pour la santé",
-    "La decontamination créée des dechets radioactifs qu'il faut deposer sur un palette puis qui seront enterrés "
+    tutoText:[
+	"Mince, nous sommes confrontés à un cas exeptionel! Suite à une fuite dans une centrale nucléaire, nous devons empêcher la propagation de la radioactivité en nettoyant les détritus.",
+    "Pour ce faire, nous devons poser les objets radioactifs sur les tables blanches dans la chambre de décontamination. Vous pourrez ensuite actionner le bouton en face de celle-ci pour lancer le processus.#7#",
+    "Ne restez pas dans la chambre, les produits utilisés pour nettoyer les objets ne sont pas bons pour votre santé.#7#",
+    "Malheureusement, ce système génère des dechets radioactifs. Déposez-les sur une palette ainsi nous pourrons les stocker plus tard dans des zones prévues à cet effet.#7#"
     ],
     tutoGuys : [1,0,0,0],
-    tips : 'Au final, ce que vous venez de recycler servira de combustible pour des entreprises, pour entretenir les terrains de foot synthétiques ou, le broyat une fois fondu, peut servir de revêtement sur les terrains de jeu pour enfants.'
+    tips : 'Nous ne pouvons pas encore recycler nos déchets nucléaires. Il nous faut encore attendre pour que nous puissions y arriver plus tard, pour l\'instant nous les conservons sous terre à l\'abri de toute propagation.'
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -509,7 +510,7 @@ var levels = [
     imagePath: "assets/miniMap/Machine.PNG",
     name: "Machine a laver",
     tutoText: [
-      "On a plus beaucoup de seau ici.\nVous allez devoir frotter les amis!"
+      "On a plus beaucoup de seaux ici.\nVous allez devoir frotter les amis!"
     ],
     tutoGuys : [0,1,0,0],
   },{
@@ -567,9 +568,9 @@ var levels = [
     pollution : 0,
     spawnpoints: [[8,2],[9,2],[10,2],[11,2]],
     seauSpawnpoints: [[6,3],[16,8]],
-    imagePath: "assets/miniMap/nature.PNG",
+    imagePath: "assets/miniMap/nature.png",
     name: "Nature",
-    tutoText:["Cette usine est abandonné. La nature y a repris ses droits"],
+    tutoText:["Cette usine est abandonnée. La nature y a repris ses droits, mais nous allons quand même y faire un tour!"],
     tutoGuys : [0,0,0,1],
 
 
@@ -630,9 +631,7 @@ var levels = [
     seauSpawnpoints: [[8,10],[15,3],[11,8]],
     imagePath: "assets/miniMap/pathfinding.png",
     name: "Pathfinding",
-    tutoText: [
-
-    ],
+    tutoText: [],
     tutoGuys : [0,1,0,0]
   },{
   matrice: [
@@ -660,8 +659,8 @@ var levels = [
     seauSpawnpoints: [[4,10],[4,9]],
     imagePath: "assets/miniMap/dock.PNG",
     name: "Dock",
-    tutoText: ["On est ici sur un dock les gars !!!"],
-    tutoGuys : [0,0,1,0],
+    tutoText: [],
+    tutoGuys : [0,0,1,0]
   }
 
   ,{
@@ -690,8 +689,8 @@ var levels = [
     seauSpawnpoints: [[2,4],[4,9],[4,6],[15,7],[17,4]],
     imagePath: "assets/miniMap/road66.PNG",
     name: "Route 66",
-    tutoText: ["Vroum Vroum"],
-    tutoGuys : [0,0,1,0],
+    tutoText: [],
+    tutoGuys : [0,0,1,0]
   },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -719,7 +718,7 @@ var levels = [
     imagePath: "assets/miniMap/cote.PNG",
     name: "De chaque cote",
     tutoText: [],
-    tutoGuys : [0,0,1,0],
+    tutoGuys : [0,0,1,0]
   }/* en vrai je l aime pas, {
     matrice: [
     [ 3, 3,25,-1, 6,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3, 3, 3, 3],
