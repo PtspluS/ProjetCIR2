@@ -510,7 +510,7 @@ var levels = [
     imagePath: "assets/miniMap/Machine.PNG",
     name: "Machine a laver",
     tutoText: [
-      "On a plus beaucoup de seau ici.\nVous allez devoir frotter les amis!"
+      "On a plus beaucoup de seaux ici.\nVous allez devoir frotter les amis!"
     ],
     tutoGuys : [0,1,0,0],
   },{
@@ -568,9 +568,9 @@ var levels = [
     pollution : 0,
     spawnpoints: [[8,2],[9,2],[10,2],[11,2]],
     seauSpawnpoints: [[6,3],[16,8]],
-    imagePath: "assets/miniMap/Nature.PNG",
+    imagePath: "assets/miniMap/nature.png",
     name: "Nature",
-    tutoText:["Cette usine est abandonné. La nature y a repris ses droits"],
+    tutoText:["Cette usine est abandonnée. La nature y a repris ses droits, mais nous allons quand même y faire un tour!"],
     tutoGuys : [0,0,0,1],
 
 
@@ -631,9 +631,7 @@ var levels = [
     seauSpawnpoints: [[8,10],[15,3],[11,8]],
     imagePath: "assets/miniMap/",
     name: "Pathfinding",
-    tutoText: [
-
-    ],
+    tutoText: [],
     tutoGuys : [0,1,0,0]
   },{
   matrice: [
@@ -661,8 +659,8 @@ var levels = [
     seauSpawnpoints: [[4,10],[4,9]],
     imagePath: "assets/miniMap/Dock.PNG",
     name: "Dock",
-    tutoText: ["On est ici sur un dock les gars !!!"],
-    tutoGuys : [0,0,1,0],
+    tutoText: [],
+    tutoGuys : [0,0,1,0]
   }
 
   ,{
@@ -691,8 +689,8 @@ var levels = [
     seauSpawnpoints: [[2,4],[4,9],[4,6],[15,7],[17,4]],
     imagePath: "assets/miniMap/Route.PNG",
     name: "Route 66",
-    tutoText: ["Vroum Vroum"],
-    tutoGuys : [0,0,1,0],
+    tutoText: [],
+    tutoGuys : [0,0,1,0]
   },{
   matrice: [
     [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -720,7 +718,7 @@ var levels = [
     imagePath: "assets/miniMap/Route.PNG",
     name: "De chaque cote",
     tutoText: [],
-    tutoGuys : [0,0,1,0],
+    tutoGuys : [0,0,1,0]
   }/* en vrai je l aime pas, {
     matrice: [
     [ 3, 3,25,-1, 6,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 3, 3, 3, 3, 3, 3],
