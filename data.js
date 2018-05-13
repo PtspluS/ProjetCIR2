@@ -269,6 +269,40 @@ var levels = [
 	  'N\'essayez pas de jouer au héros, entre un poids lourd et vous, il n\'y a pas a savoir qui l\'emportera. Alors attention à l\'accident !',
     ],
     tutoGuys : [0,0,1,0]
+  },
+  {
+    matrice: [
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+      [-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1],
+      [-1,-1, 3,15, 0, 3,30,30,30, 3,25, 0, 0, 0, 9, 9, 2, 2, 3,-1,-1],
+      [-1,-1, 3,11, 0, 3,28,28,28, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1],
+      [-1,-1, 3,11, 0, 3,29,31, 3, 3, 0, 6, 0, 0, 1, 1, 0, 0, 3,-1,-1],
+      [-1,-1, 3,11, 0, 0, 0, 0,32, 0, 0, 6, 0, 0, 0, 0, 0, 0, 3,-1,-1],
+      [-1,-1, 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1],
+      [-1,-1, 3,11, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 5, 2, 0, 0, 3,-1,-1],
+      [-1,-1, 3,11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3,-1,-1],
+      [-1,-1, 3,12,12,12,14, 0, 2, 0,27,17,19,20, 0, 0, 8, 8, 3,-1,-1],
+      [-1,-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,-1,-1],
+    ],
+    items: [itemsId.RadPneu,itemsId.RadCarton,itemsId.RadMetal],
+    itemsTime: 15000,
+    itemsPattern: false,
+    itemSpeed : 140,
+    chrono: 360,
+    score : 50,//score pour un joueur
+    pollution : 0,
+    spawnpoints: [[4,3],[4,4],[4,5],[4,6]],
+    seauSpawnpoints: [[15,8],[16,3]],
+    imagePath: "assets/miniMap/level1.PNG",
+    name: "Tutoriel 8",
+    tutoText:["Alors voici un cas exeptionel. Ici les dechet sont radioactif",
+    "Il faut poser les objets radioactif sur les table blanche dans la salle de decontamination. Ensuite appuyer sur la commande de lancement",
+    "Ne rester pas dans le sas ce n est pas tres bon pour la santé",
+    "La decontamination créée des dechets radioactifs qu'il faut deposer sur un palette puis qui seront enterrés "
+    ],
+    tutoGuys : [1,0,0,0],
+    tips : 'Au final, ce que vous venez de recycler servira de combustible pour des entreprises, pour entretenir les terrains de foot synthétiques ou, le broyat une fois fondu, peut servir de revêtement sur les terrains de jeu pour enfants.'
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
