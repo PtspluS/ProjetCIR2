@@ -8,6 +8,7 @@
 	}
 	
 	game.pollution = [];
+	var processDeconta = new Decontamination();
 
 	// Groupes de sprites
 	platformsSolid = game.add.group();
@@ -91,17 +92,17 @@
 			let down = true;
 			if(j == matrice.length - 1){ // Bas
 			  down = false;
-			}else if(matrice[j+1][i] != 3 && matrice[j+1][i] != 4){
+			}else if(matrice[j+1][i] != 3 && matrice[j+1][i] != 4 && matrice[j+1][i] != 29){
 			  down = false;
 			}
 			if(i == 0){ // Gauche
 			  left = false;
-			}else if(matrice[j][i-1] != 3 && matrice[j][i-1] != 4){
+			}else if(matrice[j][i-1] != 3 && matrice[j][i-1] != 4 && matrice[j][i-1] != 29 && matrice[j][i-1] != 31){
 			  left = false;
 			}
 			if(i == matrice[0].length - 1){ // Droite
 			  right = false;
-			}else if(matrice[j][i+1] != 3 && matrice[j][i+1] != 4){
+			}else if(matrice[j][i+1] != 3 && matrice[j][i+1] != 4 && matrice[j][i+1] != 29 && matrice[j][i+1] != 31){
 			  right = false;
 			}
 
@@ -290,6 +291,46 @@
 				let tuile2 = platformsSolid.create(i*64, (j+1)*64, 'ground');
 				tuile2.body.immovable = true;
 			}
+			break;}
+			
+			case 27:{ // DECONTAMINATION BENNE
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new Benne('decontabarrils',i*64,j*64 - (74-64),object,'nucleaire');
+			break;}
+			
+			case 28:{ // DECONTAMINATION SOL
+				processDeconta.sols.push(game.add.sprite(i*64, j*64, 'decontasol'));
+				map[j][i] = 0;
+			break;}
+			
+			case 29:{ // DECONTAMINATION BOUTON
+				let tuile = platformsSolid.create(i*64, j*64, 'ground');
+				tuile.body.immovable = true;
+				map[j][i] = new DecontaminationBouton('decontabouton', i*64, j*64 - (74 - 64), object, processDeconta);
+			break;}
+			
+			case 30:{ // DECONTAMINATION TABLE
+				let tuile=platformsSolid.create(i*64, j*64, 'decontasol');
+				tuile.body.immovable = true;
+				let table = new Table('decontatable', i*64, j*64 - (84-64), object, itemGui);
+				processDeconta.tables.push(table);
+				map[j][i] = table;
+			break;}
+			
+			case 31:{ // DECONTAMINATION SAS
+				game.add.sprite(i*64, j*64, 'ground');
+				let porte = new DecontaminationSAS('decontasas', i*64, j*64 - 6, object, platformsSolid);
+				processDeconta.sas.push(porte);
+				map[j][i] = 0;
+			break;}
+			
+			case 32:{ // DECONTAMINATION DECONTAMINATEUR
+				let tuile=platformsSolid.create(i*64, j*64, 'decontasol');
+				tuile.body.immovable = true;
+				let decontaminateur = new DecontaminationDecontaminateur('decontaminateur', i*64, j*64 - (96 - 64), object, itemGui);
+				processDeconta.decontaminateurs.push(decontaminateur);
+				map[j][i] = decontaminateur;
 			break;}
 			
 			default:

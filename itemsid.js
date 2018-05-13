@@ -46,5 +46,12 @@ var itemsId = Object.freeze({
   PateCarton1:36,
   PateCarton2:37,
   PateCarton3:38,
-  Poubelle:48
+  Poubelle:48,
+  Nucleaire:49,
+  RadCarton:50,
+  RadPlastique:51,
+  RadMetal:52,
+  RadVerre:53,
+  RadPneu:54,
+  RadPoubelle:55
 });

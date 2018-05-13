@@ -126,6 +126,13 @@ Benne.prototype.drop=function(itemId){
 				break;
 			}
 			break;
+			case 'nucleaire':
+			if(itemId == itemsId.Nucleaire){
+				this.weight += 1;
+				this.addscore(0);
+				return 0;
+			}
+			break;
 		}
 	}
 	return itemId;

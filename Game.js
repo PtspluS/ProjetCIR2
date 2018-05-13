@@ -212,6 +212,14 @@ var game = {
 		game.load.image('pipe','assets/pipe.png');
 		game.load.image('barrel','assets/barrel.png');
 		game.load.image('crate','assets/crate.png');
+		
+		//Sprites Decontamination
+		game.load.spritesheet('decontaminateur','assets/decontaminateur.png',64,96);
+		game.load.spritesheet('decontabouton','assets/decontabouton.png',64,74);
+		game.load.spritesheet('decontasas','assets/decontasas.png',64,64);
+		game.load.image('decontatable','assets/decontatable.png');
+		game.load.image('decontasol','assets/decontasol.png');
+		game.load.image('decontabarrils','assets/decontabarrils.png');
 
 		//Sprites Pause
 		game.load.spritesheet('help','assets/help.png', 397, 60);
