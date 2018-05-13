@@ -1,6 +1,6 @@
 Arrive = function(sprite,posx,posy,groupe,tabEl,time,pattern){
 	this.arrive = groupe.create(posx,posy,sprite);
-	this.arrive.animations.add('actif', [ 0, 1, 2, 3], 500/(levels[MenuGame.cursorMap].itemSpeed*2/MenuOpt.nbPlayers), true);
+	this.arrive.animations.add('actif', [ 0, 1, 2, 3], 500/(levels[MenuGame.cursorMap].itemSpeed*2.50/MenuOpt.nbPlayers), true);
 	this.arrive.play('actif');
 	this.tab = tabEl;
 	this.time = time;
@@ -19,7 +19,7 @@ Arrive.prototype.envoie = function(){
 	if(infront.drop(this.pattern ? this.tab[this.patnum++ % this.tab.length] : this.tab[Math.floor(Math.random() * this.tab.length)])!=0){
 		this.addscore(-100);
 	};
-	
+
 	game.time.events.add(this.time, () => {this.envoie();} , this);
 }
 
@@ -32,7 +32,7 @@ Arrive.prototype.addscore=function(){
 		this.scoretext.y=this.posy;
 		this.scoretext.body.velocity.y=0;
 		this.scoretext.text='';
-	},this);	
+	},this);
 }
 
 Arrive.prototype.interact = function(){

@@ -1,7 +1,7 @@
 Conveyor = function(sprite,posx,posy,groupe,itemgroupe,sens){
 	this.conveyor = groupe.create(posx,posy,sprite);
 	this.stock = 0;
-	this.speed= levels[MenuGame.cursorMap].itemSpeed*1,25/MenuOpt.nbPlayers;
+	this.speed= levels[MenuGame.cursorMap].itemSpeed*2.50/MenuOpt.nbPlayers;
 	this.sens = sens;
 	switch(sens){
 		case 'up':

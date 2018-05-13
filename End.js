@@ -7,14 +7,23 @@ var end = {
 		this.target = levels[MenuGame.cursorMap].score*(Math.log2(MenuOpt.nbPlayers)+1);
 		if (this.target*0.42==this.equationResult) {this.musicEnd = end.add.audio('easterEgg');}
 		else {this.musicEnd = end.add.audio('endMusic');}
-		
+
 		this.musicEnd.play('',0,1,true);
+
+    let info = '';
+		if(levels[MenuGame.cursorMap].tips){
+		    info = levels[MenuGame.cursorMap].tips; //+'\n'+citations[Math.floor(Math.random()*citations.length)];
+		}
+		else {
+		    info = citations[Math.floor(Math.random()*citations.length)];
+		}
 
 		let success = false;
 		let successGrade = "";
 		if(this.equationResult>=2*this.target && game.pollution.pollution == 0){
 			successGrade = 'S';
 			success = true;
+      MenuGame.cursorMap += 1;
 	    }else if(this.equationResult>=1.9*this.target && game.pollution.pollution != 0){
 		    successGrade = 'A+';
 		    success = true;
@@ -85,14 +94,8 @@ var end = {
 		},this);
 		let Grade = end.add.bitmapText(end.world.width-400, posY+40*indication.length+60,'font','Grade : ',42);
 		Grade.anchor.setTo(0.5,0.5);
-		let info = '';
-		if(levels[MenuGame.cursorMap].tips){
-		    info = levels[MenuGame.cursorMap].tips; //+'\n'+citations[Math.floor(Math.random()*citations.length)];
-		}
-		else {
-		    info = citations[Math.floor(Math.random()*citations.length)];
-		}
-		
+
+
 		let tip = end.add.text(95, 500,info,{
 		    align: "left",
 		    wordWrap: true,
@@ -123,7 +126,7 @@ var end = {
 			},this,1,0,2);
 			next.anchor.setTo(0.5,0.5);
 		}
-		
+
 		let restart = end.add.button(1000,690,'restart',()=>{
 			this.state.start('Game');
 			this.musicEnd.stop();
