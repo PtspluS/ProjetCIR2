@@ -1,6 +1,6 @@
 var levels = [
-  {
-    /*matrice: [
+  /*{
+    matrice: [
       [ 3,15, 3, 3, 3, 3, 3,29, 4, 4, 3, 3, 3,22,23, 3, 3,-1,-1, 3, 3],
       [ 3,11, 3,30,30,32, 3, 0, 0, 0, 7, 0, 7, 2, 2, 1, 1,-1,-1,16 ,3],
       [ 3,11, 3,28,28,28, 3, 0, 2, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1,-1, 3],
@@ -772,7 +772,7 @@ var levels = [
     pollution : 0,
     spawnpoints: [[4,4],[13,6],[5,7],[18,5]],
     seauSpawnpoints: [[5,4],[18,6],[18,8]],
-    imagePath: "assets/miniMap/sas.PNG",
+    imagePath: "assets/miniMap/sas.png",
     name: "SAS",
     tutoText:[],
     tutoGuys : [0,1,1,0],
