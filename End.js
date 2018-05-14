@@ -4,7 +4,7 @@ var end = {
     equationResult : 0,//donne le nombre de point que peut raporter un joueur sur la levels[MenuGame.cursorMap] au max
     create : function(){
 		this.equationResult = -(game.pollution.pollution-100)/10 * (Math.floor((game.score.score*levels[MenuGame.cursorMap].itemSpeed)/(MenuOpt.nbPlayers*levels[MenuGame.cursorMap].chrono)));//pollution*score par joueur par seconde
-		this.target = levels[MenuGame.cursorMap].score*(Math.log2(MenuOpt.nbPlayers)+1);
+		this.target = levels[MenuGame.cursorMap].score;
 		if (this.target*0.42==this.equationResult) {this.musicEnd = end.add.audio('easterEgg');}
 		else {this.musicEnd = end.add.audio('endMusic');}
 
