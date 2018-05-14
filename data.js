@@ -1,6 +1,6 @@
 var levels = [
   {
-    matrice: [
+    /*matrice: [
       [ 3,15, 3, 3, 3, 3, 3,29, 4, 4, 3, 3, 3,22,23, 3, 3,-1,-1, 3, 3],
       [ 3,11, 3,30,30,32, 3, 0, 0, 0, 7, 0, 7, 2, 2, 1, 1,-1,-1,16 ,3],
       [ 3,11, 3,28,28,28, 3, 0, 2, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1,-1, 3],
@@ -31,7 +31,7 @@ var levels = [
 	],
     tutoGuys : [0,0,0,1],//martin,pe,pierre
     tips : "Vous savez que ce niveau est là pour le debug hein?",
-  },
+  },*/
   {
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
@@ -745,11 +745,38 @@ var levels = [
     seauSpawnpoints: [[3,7],[5,8]],
     imagePath: "assets/miniMap/3voies.PNG",
     name: "3 voies",
-    tutoText:["Je sais pas d ou ca sort mais j ai deja vu ca quelque part"],
+    tutoText:[],
     tutoGuys : [0,0,0,1],
 
+}, {
+    matrice: [
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,22,22,-1,-1,-1,-1],
+    [-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3,23,23, 3, 3, 3,-1],
+    [-1, 3,15, 7, 7, 7, 3,25,25,21, 1,21,28,32, 3, 0, 0,24,27, 3,-1],
+    [-1, 3,11, 0, 0, 0, 3,28,28,28,28,28,28,28, 3, 0, 0, 0,27, 3,-1],
+    [-1, 3,11, 0, 0, 2,29,31, 3,30,28,30, 3,31,29, 0, 0, 0,16, 3,-1],
+    [-1, 3,11, 0, 0, 0, 0, 0, 3,30,28,30, 3, 0, 0, 0, 0, 0, 0, 3,-1],
+    [-1, 3,11, 0,17, 0, 0, 0, 3,30,28,26, 3, 0, 0, 0, 0, 0, 2, 3,-1],
+    [-1, 3,11, 0,24, 0, 3,31, 3,30,28,26, 3,31, 3, 0, 0, 0, 2, 3,-1],
+    [-1, 3,11, 0, 0, 0, 3,28,28,28,28,28,28,28, 3, 0, 0, 0, 2, 3,-1],
+    [-1, 3,12,12,12,14, 3, 8, 6, 6,25,25, 1, 8, 3, 0, 0, 9, 9, 3,-1],
+    [-1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,23,23, 3, 3, 3,-1],
+    [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+    ],
+    items: [itemsId.Poubelle,itemsId.RadMetal,itemsId.RadVerre,itemsId.Carton,itemsId.Plastique],
+    itemsTime: 9500,
+    itemsPattern: false,
+    itemSpeed : 140,
+    chrono: 240,
+    score : 250,//score pour un joueur
+    pollution : 0,
+    spawnpoints: [[4,4],[13,6],[5,7],[18,5]],
+    seauSpawnpoints: [[5,4],[18,6],[18,8]],
+    imagePath: "assets/miniMap/sas.PNG",
+    name: "SAS",
+    tutoText:[],
+    tutoGuys : [0,1,1,0],
 }
-
 ];
 
 var skins = [//permet de stocker tout les skins des persos
