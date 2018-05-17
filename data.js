@@ -104,7 +104,7 @@ var levels = [
       'Le plastique ainsi recyclé sera fondu en fibres de plastique pour faire des polaires, en bouteilles, ou encore en de nouveaux objets en plastique.',
     ],
     tutoGuys : [0,1,0,0],
-    tips : "Avec 7 bidons on peut réaliser un siège bébé pour les sales gosses."
+    tips : "Avec 7 bidons on peut réaliser un siège enfant, comme quoi le recyclage peut aider les générations futures de différentes façons."
   },{
     matrice: [
       [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
